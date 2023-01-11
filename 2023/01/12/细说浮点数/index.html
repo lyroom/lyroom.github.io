@@ -6,20 +6,40 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://lyroom.github.io">
-  <title>Archives | Henry&#39;Blog</title>
+  <title>细说浮点数 | Henry&#39;Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Henry&#39;Blog">
-<meta property="og:url" content="https://lyroom.github.io/archives/index.html">
+  <meta name="description" content="一.什么是浮点数​	 浮点数能够表示带小数部分的数字，如我们小学常定义的Π值3.1415926，它们提供的值范围也更大也更为精准。当然如果数字很大，以至于无法表示为long类型，如人体的细菌数（估计超过100兆），则可以使用浮点类型来表示。 ​    使用浮点类型可以表示诸如2.5、3.14159和122442.32这样的数字，即带小数部分的数字。计算机将这样的值分成两部分存储。一部分表示值，另一">
+<meta property="og:type" content="article">
+<meta property="og:title" content="细说浮点数">
+<meta property="og:url" content="https://lyroom.github.io/2023/01/12/%E7%BB%86%E8%AF%B4%E6%B5%AE%E7%82%B9%E6%95%B0/index.html">
 <meta property="og:site_name" content="Henry&#39;Blog">
-<meta property="og:description" content="博客">
+<meta property="og:description" content="一.什么是浮点数​	 浮点数能够表示带小数部分的数字，如我们小学常定义的Π值3.1415926，它们提供的值范围也更大也更为精准。当然如果数字很大，以至于无法表示为long类型，如人体的细菌数（估计超过100兆），则可以使用浮点类型来表示。 ​    使用浮点类型可以表示诸如2.5、3.14159和122442.32这样的数字，即带小数部分的数字。计算机将这样的值分成两部分存储。一部分表示值，另一">
 <meta property="og:locale">
+<meta property="og:image" content="https://lyroom.github.io/2023/01/12/%E7%BB%86%E8%AF%B4%E6%B5%AE%E7%82%B9%E6%95%B0/%E7%BB%86%E8%AF%B4%E6%B5%AE%E7%82%B9%E6%95%B0.png">
+<meta property="og:image" content="http://c.biancheng.net/uploads/allimg/180905/2-1PZ512395Ub.jpg">
+<meta property="og:image" content="http://c.biancheng.net/uploads/allimg/180905/2-1PZ5123R0330.jpg">
+<meta property="og:image" content="https://lyroom.github.io/%E7%BB%86%E8%AF%B4%E6%B5%AE%E7%82%B9%E6%95%B0/iee%E6%B5%AE%E7%82%B9%E6%95%B0%E6%A0%87%E5%87%86.jpg">
+<meta property="og:image" content="http://c.biancheng.net/uploads/allimg/180905/2-1PZ5113250V9.jpg">
+<meta property="og:image" content="http://c.biancheng.net/uploads/allimg/180905/2-1PZ5113454539.jpg">
+<meta property="og:image" content="http://c.biancheng.net/uploads/allimg/180905/2-1PZ5113513641.jpg">
+<meta property="og:image" content="http://c.biancheng.net/uploads/allimg/180905/2-1PZ51135521X.jpg">
+<meta property="og:image" content="http://c.biancheng.net/uploads/allimg/180905/2-1PZ5113635337.jpg">
+<meta property="og:image" content="http://c.biancheng.net/uploads/allimg/180905/2-1PZ5113A11L.jpg">
+<meta property="og:image" content="http://c.biancheng.net/uploads/allimg/180905/2-1PZ5113F5634.jpg">
+<meta property="og:image" content="http://c.biancheng.net/uploads/allimg/180905/2-1PZ5113PG33.jpg">
+<meta property="og:image" content="http://c.biancheng.net/uploads/allimg/180905/2-1PZ5113Z24L.jpg">
+<meta property="og:image" content="http://c.biancheng.net/uploads/allimg/180905/2-1PZ511393c48.jpg">
+<meta property="og:image" content="http://c.biancheng.net/uploads/allimg/180905/2-1PZ51141464S.jpg">
+<meta property="og:image" content="http://c.biancheng.net/uploads/allimg/180905/2-1PZ511421O36.jpg">
+<meta property="article:published_time" content="2023-01-11T18:00:38.000Z">
+<meta property="article:modified_time" content="2023-01-11T18:09:18.917Z">
 <meta property="article:author" content="迪丽惹Bug">
-<meta property="article:tag" content="Henry,博客">
+<meta property="article:tag" content="c++">
+<meta property="article:tag" content="float">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lyroom.github.io/2023/01/12/%E7%BB%86%E8%AF%B4%E6%B5%AE%E7%82%B9%E6%95%B0/%E7%BB%86%E8%AF%B4%E6%B5%AE%E7%82%B9%E6%95%B0.png">
   
     <link rel="alternative" href="/atom.xml" title="Henry&#39;Blog" type="application/atom+xml">
   
@@ -193,41 +213,356 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-  
-  
+            <article id="post-细说浮点数" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
     
-    
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2023" class="archive-year">2023</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/01/12/%E7%BB%86%E8%AF%B4%E6%B5%AE%E7%82%B9%E6%95%B0/" class="archive-article-date">
-        <time datetime="2023-01-11T18:00:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-12</time>
-</a>
-
-        </div>
-    	 
+      <header class="article-header">
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2023/01/12/%E7%BB%86%E8%AF%B4%E6%B5%AE%E7%82%B9%E6%95%B0/" target="_blank">细说浮点数</a>
   
+    <h1 class="article-title" itemprop="name">
+      细说浮点数
     </h1>
   
 
 
-        <div class="article-info info-on-right">
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2023/01/12/%E7%BB%86%E8%AF%B4%E6%B5%AE%E7%82%B9%E6%95%B0/" class="archive-article-date">
+        <time datetime="2023-01-11T18:00:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-12</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">5.1k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">20分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <h2 id="一-什么是浮点数"><a href="#一-什么是浮点数" class="headerlink" title="一.什么是浮点数"></a>一.什么是浮点数</h2><p>​	 浮点数能够表示带小数部分的数字，如我们小学常定义的Π值3.1415926，它们提供的值范围也更大也更为精准。当然如果数字很大，以至于无法表示为long类型，如人体的细菌数（估计超过100兆），则可以使用浮点类型来表示。</p>
+<p>​    使用浮点类型可以表示诸如2.5、3.14159和122442.32这样的数字，即带小数部分的数字。计算机将这样的值分成两部分存储。一部分表示值，另一部分用于对值进行放大或缩小。下面打个比方。对于数字34.1245和34124.5，它们除了小数点的位置不同外，其他都是相同的。可以把第一个数表示为0.341245（基准值）和100（缩放因子），而将第二个数表示为0.341245（基准值相同）和10000（缩放因子更大）。缩放因子的作用是移动小数点的位置，术语浮点因此而得名。C++内部表示浮点数的方法与此相同，只不过它基于的是二进制数，因此缩放因子是2的幂，不是10的幂。幸运的是，初学计算的程序员不必详细了解内部表示（当你学过计组之后就会有详细的认识）。重要的是，浮点数能够表示小数值、非常大和非常小的值，它们的内部表示方法与整数有天壤之别。</p>
+<span id="more"></span>
+<h2 id="二-浮点数的书写"><a href="#二-浮点数的书写" class="headerlink" title="二.浮点数的书写"></a>二.浮点数的书写</h2><p>​		在c++中浮点数分两种写法：</p>
+<ul>
+<li><p>标准小数点的写法（我们常见的小数写法）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3.14</span></span><br><span class="line"><span class="number">100.45</span></span><br><span class="line"><span class="number">99.1</span></span><br><span class="line"><span class="number">1.0</span></span><br></pre></td></tr></table></figure>
+
+
+</li>
+<li><p>E表示法（类似于我们常见的科学计数法）</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">3.14e3</span><span class="comment">//表示3.14*10^3</span></span><br><span class="line"><span class="number">3.14e+3</span><span class="comment">//表示3.14*10^3</span></span><br><span class="line"><span class="number">9.11e-31</span><span class="comment">//表示9.11*10^(-31)电子质量，单位千克</span></span><br></pre></td></tr></table></figure></li>
+</ul>
+<img src="/2023/01/12/%E7%BB%86%E8%AF%B4%E6%B5%AE%E7%82%B9%E6%95%B0/细说浮点数.png" alt="E表示方法" style="zoom:15%;">
+
+<p>​      </p>
+<h2 id="三-浮点数的分类"><a href="#三-浮点数的分类" class="headerlink" title="三.浮点数的分类"></a>三.浮点数的分类</h2><p>​		和ANSI C一样，C++也有3种浮点类型：float、double和long double。这些类型是按它们可以表示的有效数位和允许的指数最小范围来描述的。有效位（significant figure）是数字中有意义的位。例如，珠穆朗玛峰的高度是8,849米，该数字使用了4个有效位，指出了最接近的高度数。然而，将珠穆朗玛峰的高度写成约8800米时，有效位数为2位，因为结果经过四舍五入精确到了百位。在这种情况下，其余的2位只不过是占位符而已。有效位数不依赖于小数点的位置。例如，可以将高度写成8.849米。这样仍有4个有效位，因为这个值精确到了第4位。</p>
+<p>​		事实上，C和C++对于有效位数的要求是，float至少32位，double至少48位，且不少于float，long double至少和double一样多。这三种类型的有效位数可以一样多。然而，通常，float为32位，double为64位，long double为80、96或128位。另外，这3种类型的指数范围至少是−37到37。可以从头文件cfloat或float.h中找到系统的限制。以下是float.h的部分代码，关键位置标有中文注</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// float.h</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//      Copyright (c) Microsoft Corporation. All rights reserved.</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Implementation-defined values commonly used by sophisticated numerical</span></span><br><span class="line"><span class="comment">// (floating point) programs.</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// Define the floating point precision used.定义使用的浮点精度</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">FLT_EVAL_METHOD 用来指明在表达式求值（尤其是数学运算）过程中是否需要提升浮点数的类型，可能的取值有：</span></span><br><span class="line"><span class="comment">    -1：未知的，不确定的。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    0：不提升类型，使用当前的类型。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    1：将浮点数提升到 double 类型，大于等于 double 类型的保持不变；也就是说，将 float 类型提升为 double 类型，double 和 long double 类型不变。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">    2：将浮点数提升到 long double；也就是说，将 float、double 提升到 long double 类型，long double 类型保持不变。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	【注】FLT_EVAL_METHOD 对所有浮点数类型（float、double 和 long double）都有效，也就是说，所有浮点数类型都必须采用相同的类型提升。提升类型能够提高浮点数的精度，让表达式的结果更加精确。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> _M_FP_FAST</span></span><br><span class="line">    <span class="meta">#<span class="keyword">define</span> FLT_EVAL_METHOD -1</span></span><br><span class="line"><span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">    <span class="meta">#<span class="keyword">ifdef</span> _M_IX86</span></span><br><span class="line">        <span class="meta">#<span class="keyword">if</span> _M_IX86_FP &gt;= 2</span></span><br><span class="line">            <span class="meta">#<span class="keyword">define</span> FLT_EVAL_METHOD 0</span></span><br><span class="line">        <span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">            <span class="meta">#<span class="keyword">define</span> FLT_EVAL_METHOD 2</span></span><br><span class="line">        <span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line">    <span class="meta">#<span class="keyword">else</span></span></span><br><span class="line">        <span class="meta">#<span class="keyword">define</span> FLT_EVAL_METHOD 0</span></span><br><span class="line">    <span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// Constants 定义了各种类型的数据的精度，即小数点的位数</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">    <span class="comment">//DBL开头的是double类型的</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DBL_DECIMAL_DIG  17                      <span class="comment">// # of decimal digits of rounding precision</span></span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    从 float/double/long double 转换到至少有 FLT_DECIMAL_DIG/DBL_DECIMAL_DIG/LDBL_DECIMAL_DIG 位数字的十进制，再转换回原类型为恒等转换：这是序列化/反序列化浮点值所要求的十进制精度。分别定义为至少 6、10 和 10，对于 IEEE float 为 9，对于 IEEE double 为 17。</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DBL_DIG          15                      <span class="comment">// # 转换成十进制形式后，小数点后精确数字（能够保证精度的数字）的位数。</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DBL_EPSILON      2.2204460492503131e-016 <span class="comment">// smallest such that 1.0+DBL_EPSILON != 1.0 1和大于1的最小浮点数的差值，可以表示最小的有效数字</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DBL_HAS_SUBNORM  1                       <span class="comment">//指明类型是否支持非正规数值</span></span></span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    -1: 为不确定，</span></span><br><span class="line"><span class="comment">    0:  为不支持，</span></span><br><span class="line"><span class="comment">    1:  为支持。</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DBL_MANT_DIG     53                      <span class="comment">// # of bits in mantissa</span></span></span><br><span class="line">    <span class="comment">// 基数（进制）为 FLT_RADIX 时，尾数 mantissa 的最大长度（最大位数），也可以说是浮点数的精度。注意，这里所说的长度包含了整数部分和小数部分。</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DBL_MAX          1.7976931348623158e+308 <span class="comment">// max value 基数（进制）为 FLT_RADIX 时，规格化浮点数的指数（也即 exponent）的最大值（为正数）。</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DBL_MAX_10_EXP   308                     <span class="comment">// max decimal exponent 转换为10进制后，规格化浮点数的的指数的最大值</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DBL_MAX_EXP      1024                    <span class="comment">// max binary exponent double指数最大二进制</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DBL_MIN          2.2250738585072014e-308 <span class="comment">// 定义了双精度浮点数的最小值</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DBL_MIN_10_EXP   (-307)                  <span class="comment">// 转换成十进制形式后，规格化浮点数的指数的最小值（为负数）。</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DBL_MIN_EXP      (-1021)                 <span class="comment">// 基数（进制）为 FLT_RADIX(此时为2)时，规格化浮点数的指数(也即exponent)的最小值(为负数)</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> _DBL_RADIX       2                       <span class="comment">// exponent radix 指数的进制</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DBL_TRUE_MIN     4.9406564584124654e-324 <span class="comment">// min positive value 双精度浮点数的最小值</span></span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//FLT开头的是float类型的，各种变量的含义同double</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FLT_DECIMAL_DIG  9                       <span class="comment">// # of decimal digits of rounding precision</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FLT_DIG          6                       <span class="comment">// # of decimal digits of precision</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FLT_EPSILON      1.192092896e-07F        <span class="comment">// smallest such that 1.0+FLT_EPSILON != 1.0</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FLT_HAS_SUBNORM  1                       <span class="comment">// type does support subnormal numbers</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FLT_GUARD        0</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FLT_MANT_DIG     24                      <span class="comment">// # of bits in mantissa</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FLT_MAX          3.402823466e+38F        <span class="comment">// max value</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FLT_MAX_10_EXP   38                      <span class="comment">// max decimal exponent</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FLT_MAX_EXP      128                     <span class="comment">// max binary exponent</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FLT_MIN          1.175494351e-38F        <span class="comment">// min normalized positive value</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FLT_MIN_10_EXP   (-37)                   <span class="comment">// min decimal exponent</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FLT_MIN_EXP      (-125)                  <span class="comment">// min binary exponent</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FLT_NORMALIZE    0</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FLT_RADIX        2                       <span class="comment">// 定义了浮点数的进制，对所有的浮点数都有效，所有的浮点数都必须采用2进制</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FLT_TRUE_MIN     1.401298464e-45F        <span class="comment">// min positive value</span></span></span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    </span><br><span class="line">    <span class="comment">//开头的是double long类型的，各种变量的含义同double</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LDBL_DIG         DBL_DIG                 <span class="comment">// # of decimal digits of precision</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LDBL_EPSILON     DBL_EPSILON             <span class="comment">// smallest such that 1.0+LDBL_EPSILON != 1.0</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LDBL_HAS_SUBNORM DBL_HAS_SUBNORM         <span class="comment">// type does support subnormal numbers</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LDBL_MANT_DIG    DBL_MANT_DIG            <span class="comment">// # of bits in mantissa</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LDBL_MAX         DBL_MAX                 <span class="comment">// max value</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LDBL_MAX_10_EXP  DBL_MAX_10_EXP          <span class="comment">// max decimal exponent</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LDBL_MAX_EXP     DBL_MAX_EXP             <span class="comment">// max binary exponent</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LDBL_MIN         DBL_MIN                 <span class="comment">// min normalized positive value</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LDBL_MIN_10_EXP  DBL_MIN_10_EXP          <span class="comment">// min decimal exponent</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LDBL_MIN_EXP     DBL_MIN_EXP             <span class="comment">// min binary exponent</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> _LDBL_RADIX      _DBL_RADIX              <span class="comment">// exponent radix</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> LDBL_TRUE_MIN    DBL_TRUE_MIN            <span class="comment">// min positive value</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> DECIMAL_DIG      DBL_DECIMAL_DIG</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//定义了浮点数的舍入方式</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">由下列代码可知，每种浮点数舍入方式是必须相同的，均是由__fpe_flt_rounds()函数确定的，不同的返回值，代表的含义如下</span></span><br><span class="line"><span class="comment">-1、不确定：即舍入方式不确定</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">1、就近舍入：</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	即十进制下的四舍五入。但是也会出现以下几种情况：</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">	多余数字是1001，它大于0.5，故最低位进1。</span></span><br><span class="line"><span class="comment">	多余数字是0111，它小于0.5，则直接舍掉多余数字。</span></span><br><span class="line"><span class="comment">	多余数字是1000，正好是等于0.5的特殊情况；那么此时最低位为0则舍掉多余位，最低位为1则进位1。</span></span><br><span class="line"><span class="comment">	注意这里说明的数位都是指二进制数。因为这是尾数，所以在计算这些二进制和0.5的关系的时候，也即转为10进制的时候，我们用每一位的权重乘以2^(-i)然后求和即可。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">2、朝0舍入：即朝数轴零点方向舍入，所以我们直接截尾即可。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">3、朝正无穷舍入：对正数而言，多余位全为0则直接截尾，不全为0则向最低有效位进1；负数的话不管多余位是多少直接截尾即可。</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">4、朝负无穷舍入：对负数而言，多余位全为0则直接截尾，不全为0则向最低有效位进1；正数的话不管多余位是多少直接截尾即可。</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> FLT_ROUNDS   (__fpe_flt_rounds())</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> _DBL_ROUNDS  FLT_ROUNDS</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> _LDBL_ROUNDS _DBL_ROUNDS</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">// IEEE Recommended Functions IEEE(电气电子工程师学会) 推荐的一些浮点型的常用方法</span></span><br><span class="line"><span class="comment">//</span></span><br><span class="line"><span class="comment">//-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+-+</span></span><br><span class="line"><span class="comment">/*copysign()函数是cmath标头的库函数，用于获取带有第二个参数的符号的第一个参数的值，它接受两个参数( x，y )并以y的符号返回x的大小。*/</span></span><br><span class="line">_Check_return_ _ACRTIMP <span class="type">double</span> __cdecl _copysign(_In_ <span class="type">double</span> _Number, _In_ <span class="type">double</span> _Sign);</span><br><span class="line"><span class="comment">//返回一个与 _X 符号相反数值相同的数（正变为负，负变为正）；</span></span><br><span class="line">_Check_return_ _ACRTIMP <span class="type">double</span> __cdecl _chgsign(_In_ <span class="type">double</span> _X);</span><br><span class="line"><span class="comment">//输出x乘以2的y次幂的结果；</span></span><br><span class="line">_Check_return_ _ACRTIMP <span class="type">double</span> __cdecl _scalb(_In_ <span class="type">double</span> _X, _In_ <span class="type">long</span> _Y);</span><br><span class="line"><span class="comment">// 求输入数是2的多少次幂，返回值对确切结果向0取整；</span></span><br><span class="line">_Check_return_ _ACRTIMP <span class="type">double</span> __cdecl _logb(_In_ <span class="type">double</span> _X);</span><br><span class="line"><span class="comment">// 输出x对y方向在double精度上的下一个值；</span></span><br><span class="line">_Check_return_ _ACRTIMP <span class="type">double</span> __cdecl _nextafter(_In_ <span class="type">double</span> _X, _In_ <span class="type">double</span> _Y);</span><br><span class="line"><span class="comment">//检查输入是否有效，若为 INT 或 NaN 则返回0，有效数值返回1；</span></span><br><span class="line">_Check_return_ _ACRTIMP <span class="type">int</span>    __cdecl _finite(_In_ <span class="type">double</span> _X);</span><br><span class="line"><span class="comment">//返回输入是否为 NaN。</span></span><br><span class="line">_Check_return_ _ACRTIMP <span class="type">int</span>    __cdecl _isnan(_In_ <span class="type">double</span> _X);</span><br><span class="line">    <span class="comment">/*</span></span><br><span class="line"><span class="comment">    返回一个浮点数的分类，具体如下：</span></span><br><span class="line"><span class="comment">    _FPCLASS_SNAN	信号 NaN</span></span><br><span class="line"><span class="comment">    _FPCLASS_QNAN	安静的南</span></span><br><span class="line"><span class="comment">    _FPCLASS_NINF	负无穷大 ( -INF)</span></span><br><span class="line"><span class="comment">    _FPCLASS_NN	负归一化非零</span></span><br><span class="line"><span class="comment">    _FPCLASS_ND	负非规范化</span></span><br><span class="line"><span class="comment">    _FPCLASS_NZ	负零 (-0)</span></span><br><span class="line"><span class="comment">    _FPCLASS_PZ	正 0 (+0)</span></span><br><span class="line"><span class="comment">    _FPCLASS_PD	正反规格化</span></span><br><span class="line"><span class="comment">    _FPCLASS_PN	正归一化非零</span></span><br><span class="line"><span class="comment">    _FPCLASS_PINF	正无穷大 ( +INF)</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">_Check_return_ _ACRTIMP <span class="type">int</span>    __cdecl _fpclass(_In_ <span class="type">double</span> _X);</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">ifdef</span> _M_X64</span></span><br><span class="line">    _Check_return_ _ACRTIMP <span class="type">float</span> __cdecl _scalbf(_In_ <span class="type">float</span> _X, _In_ <span class="type">long</span> _Y);</span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">_CRT_END_C_HEADER</span><br><span class="line">_UCRT_RESTORE_CLANG_WARNINGS</span><br><span class="line"><span class="meta">#<span class="keyword">pragma</span> <span class="keyword">warning</span>(pop) <span class="comment">// _UCRT_DISABLED_WARNINGS</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span> <span class="comment">// _INC_FLOAT</span></span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<h2 id="四-浮点数的“四舍五入”"><a href="#四-浮点数的“四舍五入”" class="headerlink" title="四.浮点数的“四舍五入”"></a>四.浮点数的“四舍五入”</h2><p>​			在浮点数的舍入问题上，IEEE 浮点格式定义了 4 种不同的舍入方式，如下表所示。其中，默认的舍入方法是向偶数舍入，而其他三种可用于计算上界和下界。</p>
+<p><img src="http://c.biancheng.net/uploads/allimg/180905/2-1PZ512395Ub.jpg" alt="img"></p>
+<p>下表是 4 种舍入方式的应用举例。这里需要特别说明的是，向偶数舍入（向最接近的值舍入）方式会试图找到一个最接近的匹配值。因此，它将 1.4 舍入成 1，将 1.6 舍入成 2，而将 1.5 和 2.5 都舍入成 2。</p>
+<p><img src="http://c.biancheng.net/uploads/allimg/180905/2-1PZ5123R0330.jpg" alt="img"></p>
+<p>​		或许看了上面的内容你会问：为什么要采用向偶数舍入这样的舍入策略，而不直接使用我们已经习惯的“四舍五入”呢？</p>
+<p>​		其原因我们可以这样来理解：在进行舍入的时候，最后一位数字从 1 到 9，舍去的有 1、2、3、4；它正好可以和进位的 9、8、7、6 相对应，而 5 却被单独留下。如果我们采用四舍五入每次都将 5 进位的话，在进行一些大量数据的统计时，就会累积比较大的偏差。而如果采用向偶数舍入的策略，在大多数情况下，5 舍去还是进位概率是差不多的，统计时产生的偏差也就相应要小一些。</p>
+<p>​		同样，针对浮点数据，向偶数舍入方式只需要简单地考虑最低有效数字是奇数还是偶数即可。例如，假设我们想将十进制数舍入到最接近的百分位。不管用哪种舍入方式，我们都将把 1.2349999 舍入到 1.23，而将 1.2350001 舍入到 1.24，因为它们不是在 1.23 和 1.24 的正中间。另一方面我们将把两个数 1.2350000 和 1.2450000 都舍入到 1.24，因为 4 是偶数。</p>
+<h2 id="五-浮点数标准IEEE754"><a href="#五-浮点数标准IEEE754" class="headerlink" title="五.浮点数标准IEEE754"></a>五.浮点数标准IEEE754</h2><h3 id="1-IEEE浮点数标准简介"><a href="#1-IEEE浮点数标准简介" class="headerlink" title="1.IEEE浮点数标准简介"></a>1.IEEE浮点数标准简介</h3><p>​		IEEE 于 1987 年推出了与底数无关的二进制浮点运算标准 IEEE 854，并于同年被美国引用为 ANSI 标准。1989 年，国际标准组织 IEC 批准 IEEE 754&#x2F;854 为国际标准 IEC 559：1989。后来经修订后，标准号改为 IEC 60559。现在，几乎所有的浮点处理器完全或基本支持 IEC 60559。同时，C99 的浮点运算也支持 IEC 60559。</p>
+<p>​		IEEE 浮点数标准是从逻辑上用三元组{S，E，M}来表示一个数 V 的，即 <strong>V &#x3D;（-1)^S  * M * 2^E</strong>，如下图所示：</p>
+<p><img src="/./%E7%BB%86%E8%AF%B4%E6%B5%AE%E7%82%B9%E6%95%B0/iee%E6%B5%AE%E7%82%B9%E6%95%B0%E6%A0%87%E5%87%86.jpg" alt="ieee浮点数标准"></p>
+<ul>
+<li>符号位S（sign）:S &#x3D; 0: 表示该数为正数，S &#x3D; 1:表示该数为负数</li>
+<li>指数位E（Exponent）:在计算机中用移码表示，表示2的多少次幂</li>
+<li>有效位M（Significand）：在计算机中用补码表示，表示二进制小数，也称尾数</li>
+</ul>
+<h3 id="2-IEEE754标准下的浮点数的格式"><a href="#2-IEEE754标准下的浮点数的格式" class="headerlink" title="2.IEEE754标准下的浮点数的格式"></a>2.IEEE754标准下的浮点数的格式</h3><blockquote>
+<p><strong>补：原码，反码，补码，移码（以8位为例）</strong></p>
+<p><strong>二进制整数都是以补码形式出现的。</strong></p>
+<ul>
+<li>正数的补码与反码、原码一致，</li>
+<li>负数的补码是反码+1.这样使减法运算可以使用加法器实现，符号位也参与运算;</li>
+<li>移码与补码就是符号位取反</li>
+</ul>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>十进制原码</th>
+<th>二进制原码</th>
+<th>反码</th>
+<th>补码</th>
+<th>移码</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>-128</td>
+<td>无</td>
+<td>无</td>
+<td>1000 0000</td>
+<td>0000 0000</td>
+</tr>
+<tr>
+<td>-127</td>
+<td>1111 1111</td>
+<td>1000 0000</td>
+<td>1000 0001</td>
+<td>0000 0001</td>
+</tr>
+<tr>
+<td>-126</td>
+<td>1111 1110</td>
+<td>1000 0001</td>
+<td>1000 0010</td>
+<td>0000 0010</td>
+</tr>
+<tr>
+<td>……</td>
+<td>……</td>
+<td>……</td>
+<td>……</td>
+<td>……</td>
+</tr>
+<tr>
+<td>-1</td>
+<td>1000 0001</td>
+<td>1111 1110</td>
+<td>1111 1111</td>
+<td>0111 1111</td>
+</tr>
+<tr>
+<td>-0</td>
+<td>1000 0000</td>
+<td>1111 1111</td>
+<td>无</td>
+<td>无</td>
+</tr>
+<tr>
+<td>+0</td>
+<td>0000 0000</td>
+<td>0000 0000</td>
+<td>0000 0000</td>
+<td>1000 0000</td>
+</tr>
+<tr>
+<td>+1</td>
+<td>0000 0001</td>
+<td>0000 0001</td>
+<td>0000 0001</td>
+<td>1000 0001</td>
+</tr>
+<tr>
+<td>……</td>
+<td>……</td>
+<td>……</td>
+<td>……</td>
+<td>……</td>
+</tr>
+<tr>
+<td>+126</td>
+<td>0111 1110</td>
+<td>0111 1110</td>
+<td>0111 1110</td>
+<td>1111 1110</td>
+</tr>
+<tr>
+<td>+127</td>
+<td>0111 1111</td>
+<td>0111 1111</td>
+<td>0111 1111</td>
+<td>1111 1111</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p><em>移码</em>的计算方法：</p>
+<p>​	<strong>移码 &#x3D; 真值+偏置值</strong></p>
+<p>偏置值的计算方法</p>
+<table>
+<thead>
+<tr>
+<th>偏置值</th>
+<th>ieee754偏置值</th>
+<th>普通偏置值</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>计算方法</td>
+<td>2^(n-1) - 1</td>
+<td>2^(n-1)</td>
+</tr>
+<tr>
+<td>n代表的含义</td>
+<td>表示移码的位数</td>
+<td>原码的位数</td>
+</tr>
+</tbody></table>
+</blockquote>
+<p>​		在IEEE754标准中，规格化的浮点数的尾数部分通常隐藏最高有效位1</p>
+<table>
+<thead>
+<tr>
+<th>数符</th>
+<th>阶码部分，使用移码表示（阶码全1或全0特殊用途）</th>
+<th>尾数部分，用原码表示（隐藏最高位为1）</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>A</td>
+<td>E</td>
+<td>M（1.M）</td>
+</tr>
+</tbody></table>
+<p>​		各类浮点数各部分占用位数及格式：</p>
+<table>
+<thead>
+<tr>
+<th>类型</th>
+<th>大小（B)</th>
+<th>数符</th>
+<th>阶码</th>
+<th>尾数</th>
+<th>总位数（bit）</th>
+<th>16位偏置</th>
+<th>10位偏置</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>float</td>
+<td>4</td>
+<td>1</td>
+<td>8</td>
+<td>23</td>
+<td>32</td>
+<td>7FH</td>
+<td>127</td>
+</tr>
+<tr>
+<td>double</td>
+<td>8</td>
+<td>1</td>
+<td>11</td>
+<td>52</td>
+<td>64</td>
+<td>3FFH</td>
+<td>1023</td>
+</tr>
+<tr>
+<td>long double</td>
+<td>10</td>
+<td>1</td>
+<td>15</td>
+<td>64</td>
+<td>80</td>
+<td>3FFFH</td>
+<td>16383</td>
+</tr>
+</tbody></table>
+<h3 id="3-浮点数的规格化"><a href="#3-浮点数的规格化" class="headerlink" title="3.浮点数的规格化"></a>3.浮点数的规格化</h3><h3 id><a href="#" class="headerlink" title></a><img src="http://c.biancheng.net/uploads/allimg/180905/2-1PZ5113250V9.jpg" alt="img"></h3><p>​		对于一个小数段frac，可解释为描述小数值 f，其中 0≤f&lt;1，其二进制表示为 0.fn-1… f1f0，也就是二进制小数点在最高有效位的左边。有效数字定义为 M&#x3D;1+f。有时候，这种方式也叫作<strong>隐含的以 1 开头的表示法</strong>，因为我们可以把 M 看成一个二进制表达式为 1.fn-1fn-2…f0 的数字。既然我们总是能够调整指数 E，使得有效数字 M 的范围为 1≤M&lt;2（假设没有溢出），那么这种表示方法是一种轻松获得一个额外精度位的技巧。同时，由于第一位总是等于 1，因此我们就不需要显式地表示它。拿<strong>单精度数为例，按照上面所介绍的知识，实际上可以用 23 位长的有效数字来表达 24 位的有效数字</strong>。</p>
+<p>​		比如，对单精度数而言，二进制的 1001.101（即十进制的 9.625）可以表达为 1.001101×2^3，所以实际保存在有效数字位中（即尾数部分）的值为：</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">00110100000000000000000</span></span><br></pre></td></tr></table></figure>
+
+<p>即，去掉小数点及其左边的1，并用0补齐尾数（涉及到了补码的位数扩展，详细细节请查阅相关资料）</p>
+<p>​		根据上述规则，下面是将-9.625转化为单精度浮点数的的具体过程：</p>
+<p>1、首先，需要将 -9.625 用二进制浮点数表达出来，然后变换为相应的浮点数格式。即 -9.625 的二进制为 1001.101，用规范的浮点数表达应为 1.001101×2^3。</p>
+<p>2、其次，因为 -9.625 是负数，所以符号段为 1。而这里的指数为 3，所以指数段为 3+127&#x3D;130，即二进制的 10000010。有效数字省略掉小数点左侧的 1 之后为 001101，然后在右侧用零补齐。因此所得的最终结果为：</p>
+<p><img src="http://c.biancheng.net/uploads/allimg/180905/2-1PZ5113454539.jpg" alt="img"></p>
+<p>3、最后，我们还可以将浮点数形式表示为十六进制的数据，如下所示：</p>
+<p><img src="http://c.biancheng.net/uploads/allimg/180905/2-1PZ5113513641.jpg" alt="img"></p>
+<p>即最终的十六进制结果为 0xC11A0000。</p>
+<h3 id="4-揭示特殊值"><a href="#4-揭示特殊值" class="headerlink" title="4.揭示特殊值"></a>4.揭示特殊值</h3><p>​		IEEE 标准指定了以下特殊值：±0、反向规格化的数、±∞ 和 NaN（如下表所示）。这些特殊值都是使用 emax+1 或 emin-1 的指数进行编码的。</p>
+<img src="http://c.biancheng.net/uploads/allimg/180905/2-1PZ51135521X.jpg" alt="img" style="zoom:150%;">
+
+<h4 id="NaN"><a href="#NaN" class="headerlink" title="NaN"></a>NaN</h4><p>​		NaN：当指数段 exp 全为 1 时，小数段为非零时，结果值就被称为“NaN”（Not any Number），如下图 所示。</p>
+<p>​						<img src="http://c.biancheng.net/uploads/allimg/180905/2-1PZ5113635337.jpg" alt="img"></p>
+<p>一般情况下，我们将 0&#x2F;0 或:</p>
+<p><img src="http://c.biancheng.net/uploads/allimg/180905/2-1PZ5113A11L.jpg" alt="img"></p>
+<p>视为导致计算终止的不可恢复错误。但是，一些示例表明在这样的情况下继续进行计算是有意义的。这时候就可以通过引入特殊值 NaN，并指定诸如 0&#x2F;0 或</p>
+<p><img src="http://c.biancheng.net/uploads/allimg/180905/2-1PZ5113F5634.jpg" alt="img"></p>
+<p>之类的表达式计算来生成 NaN 而不是停止计算，从而避免此问题。下表中列出了一些可以导致 NaN 的情况。</p>
+<p><img src="http://c.biancheng.net/uploads/allimg/180905/2-1PZ5113PG33.jpg" alt="img"></p>
+<h4 id="无穷"><a href="#无穷" class="headerlink" title="无穷"></a>无穷</h4><p>​		无穷：当指数段 e全为 1，小数段全为 0 时，得到的值表示无穷。当 s&#x3D;0 时是 +∞，或者当 s&#x3D;1 时是 -∞。如下图所示。</p>
+<p><img src="http://c.biancheng.net/uploads/allimg/180905/2-1PZ5113Z24L.jpg" alt="img"></p>
+<p>无穷用于表达计算中产生的上溢问题。比如两个极大的数相乘时，尽管两个操作数本身可以保存为浮点数，但其结果可能大到无法保存为浮点数，必须进行舍入操作。根据IEEE标准，此时不能将结果舍入为可以保存的最大浮点数（因为这个数可能与实际的结果相差太远而毫无意义），而应将其舍入为无穷。对于结果为负数的情况也是如此，只不过此时会舍入为负无穷，也就是说符号域为1的无穷。</p>
+<h4 id="非格式化值"><a href="#非格式化值" class="headerlink" title="非格式化值"></a>非格式化值</h4><p>当指数段 exp 全为 0 时，所表示的数就是非规格化形式，如图 5 所示。</p>
+<p><img src="http://c.biancheng.net/uploads/allimg/180905/2-1PZ511393c48.jpg" alt="img"></p>
+<p>在这种情况下，指数值 E&#x3D;1-Bias，而有效数字的值 M&#x3D;f，也就是说它是小数段的值，不包含隐含的开头的 1。</p>
+<p><strong>非规格化值有两个用途：</strong></p>
+<ul>
+<li><p>第一，它提供了一种表示数值 0 的方法。因为规格化数必须得使有效数字 M 在范围 1≤M&lt;2 之中，即 M≥1，因此它就不能表示 0。实际上，+0.0 的浮点表示的位模式为全 0（即符号位是 0，指数段全为 0，而小数段也全为 0），这就得到 M&#x3D;f&#x3D;0。令人奇怪的是，当符号位为 1，而其他段全为 0 时，就会得到值 -0.0。根据 IEEE 的浮点格式来看，值 +0.0 和 -0.0 在某些方面是不同的。</p>
+</li>
+<li><p>第二，它表示那些非常接近于 0.0 的数。它们提供了一种属性，称为逐渐下溢出。其中，可能的数值分布均匀地接近于 0.0。</p>
+</li>
+</ul>
+<p>下面的单精度浮点数就是一个非格式化的示例。</p>
+<p>它被转换成十进制表示大约等于 1.4×10-45，实际上它就是单精度浮点数所能表达的最小非格式化数。以此类推，格式化值和非格式化值所能表达的非负数值范围如下表所示。</p>
+<img src="http://c.biancheng.net/uploads/allimg/180905/2-1PZ51141464S.jpg" alt="img" style="zoom: 150%;">
+
+
+
+<img src="http://c.biancheng.net/uploads/allimg/180905/2-1PZ511421O36.jpg" style="zoom: 150%;">
+
+<h2 id="六-小小的总结"><a href="#六-小小的总结" class="headerlink" title="六.小小的总结"></a>六.小小的总结</h2><p>​	通过学习IEEE754标准后，再回顾float.h,相信对一些宏定义的值就有了比较好的理解了，例如</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#define FLT_DIG          6                       // # of decimal digits of precision</span><br><span class="line">#define DBL_DIG          15                      // # 转换成十进制形式后，小数点后精确数字（能够保证精度的数字）的位数。</span><br></pre></td></tr></table></figure>
+
+<p>因为单精度浮点数的尾数有23位，2^23 &#x3D; 8388608，一共七位十进制数，这意味着转化为十进制之后，最多能有7位有效数字，但绝对能保证的为6位，也即float的精度为6~7位有效数字。双精度浮点数同理。</p>
+
+    
+
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          迪丽惹Bug
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://lyroom.github.io/2023/01/12/细说浮点数/" title="细说浮点数" target="_blank">https://lyroom.github.io/2023/01/12/细说浮点数/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
@@ -243,119 +578,120 @@
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://lyroom.github.io/2023/01/12/%E7%BB%86%E8%AF%B4%E6%B5%AE%E7%82%B9%E6%95%B0/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-  
-    
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2023/01/12/%E3%80%8A%E5%8D%83%E4%B8%8E%E5%8D%83%E5%AF%BB%E3%80%8B%E6%88%91%E7%9A%84%E8%B7%AF/" class="archive-article-date">
-        <time datetime="2023-01-11T17:12:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2023-01-12</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2023/01/12/%E3%80%8A%E5%8D%83%E4%B8%8E%E5%8D%83%E5%AF%BB%E3%80%8B%E6%88%91%E7%9A%84%E8%B7%AF/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">《千与千寻》我的路</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2023/01/12/%E3%80%8A%E5%8D%83%E4%B8%8E%E5%8D%83%E5%AF%BB%E3%80%8B%E6%88%91%E7%9A%84%E8%B7%AF/" target="_blank">《千与千寻》我的路</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">浮生六记</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80-%E4%BB%80%E4%B9%88%E6%98%AF%E6%B5%AE%E7%82%B9%E6%95%B0"><span class="toc-number">1.</span> <span class="toc-text">一.什么是浮点数</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C-%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E4%B9%A6%E5%86%99"><span class="toc-number">2.</span> <span class="toc-text">二.浮点数的书写</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89-%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E5%88%86%E7%B1%BB"><span class="toc-number">3.</span> <span class="toc-text">三.浮点数的分类</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B-%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E2%80%9C%E5%9B%9B%E8%88%8D%E4%BA%94%E5%85%A5%E2%80%9D"><span class="toc-number">4.</span> <span class="toc-text">四.浮点数的“四舍五入”</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94-%E6%B5%AE%E7%82%B9%E6%95%B0%E6%A0%87%E5%87%86IEEE754"><span class="toc-number">5.</span> <span class="toc-text">五.浮点数标准IEEE754</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-IEEE%E6%B5%AE%E7%82%B9%E6%95%B0%E6%A0%87%E5%87%86%E7%AE%80%E4%BB%8B"><span class="toc-number">5.1.</span> <span class="toc-text">1.IEEE浮点数标准简介</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-IEEE754%E6%A0%87%E5%87%86%E4%B8%8B%E7%9A%84%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E6%A0%BC%E5%BC%8F"><span class="toc-number">5.2.</span> <span class="toc-text">2.IEEE754标准下的浮点数的格式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-%E6%B5%AE%E7%82%B9%E6%95%B0%E7%9A%84%E8%A7%84%E6%A0%BC%E5%8C%96"><span class="toc-number">5.3.</span> <span class="toc-text">3.浮点数的规格化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">5.4.</span> <span class="toc-text"></span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E6%8F%AD%E7%A4%BA%E7%89%B9%E6%AE%8A%E5%80%BC"><span class="toc-number">5.5.</span> <span class="toc-text">4.揭示特殊值</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#NaN"><span class="toc-number">5.5.1.</span> <span class="toc-text">NaN</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%A0%E7%A9%B7"><span class="toc-number">5.5.2.</span> <span class="toc-text">无穷</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%9D%9E%E6%A0%BC%E5%BC%8F%E5%8C%96%E5%80%BC"><span class="toc-number">5.5.3.</span> <span class="toc-text">非格式化值</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD-%E5%B0%8F%E5%B0%8F%E7%9A%84%E6%80%BB%E7%BB%93"><span class="toc-number">6.</span> <span class="toc-text">六.小小的总结</span></a></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-    
-    
-      
-        </div></section>
-      
-      
-      <section class="archives-wrap">
-        <div class="archive-year-wrap">
-          <a href="/archives/2020" class="archive-year">2020</a>
-        </div>
-        <div class="archives">
-    
-    <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2020/08/09/%E5%85%AB%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E5%8F%8AJava%E5%AE%9E%E7%8E%B0/" class="archive-article-date">
-        <time datetime="2020-08-09T11:23:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2020-08-09</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2020/08/09/%E5%85%AB%E7%A7%8D%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E5%8E%9F%E7%90%86%E5%8F%8AJava%E5%AE%9E%E7%8E%B0/" target="_blank">八大排序算法</a>
-  
-    </h1>
-  
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">排序算法</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-  
-  
-    </div></section>
-  
 
-    
+
+
+
+
+
+
+
 
 
           </div>
@@ -396,8 +732,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
