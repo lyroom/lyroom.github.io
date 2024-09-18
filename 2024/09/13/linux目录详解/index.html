@@ -10,19 +10,28 @@
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="http:&#x2F;&#x2F;localhost:40401&#x2F;2024&#x2F;09&#x2F;13&#x2F;linux%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3&#x2F;linux%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3&#x2F;test.mp4http:&#x2F;&#x2F;localhost:40401&#x2F;2024&#x2F;05&#x2F;11&#x2F;hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%">
+  <meta name="description" content="概览不同于 windows，在一切资源为文件的 linux 系统中，是以树结构来管理文件系统，根节点被称为根目录，用“&#x2F;”表示">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux目录详解">
 <meta property="og:url" content="https://lyroom.github.io/2024/09/13/linux%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3/index.html">
 <meta property="og:site_name" content="Henry&#39;Blog">
-<meta property="og:description" content="http:&#x2F;&#x2F;localhost:40401&#x2F;2024&#x2F;09&#x2F;13&#x2F;linux%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3&#x2F;linux%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3&#x2F;test.mp4http:&#x2F;&#x2F;localhost:40401&#x2F;2024&#x2F;05&#x2F;11&#x2F;hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%">
+<meta property="og:description" content="概览不同于 windows，在一切资源为文件的 linux 系统中，是以树结构来管理文件系统，根节点被称为根目录，用“&#x2F;”表示">
 <meta property="og:locale">
+<meta property="og:image" content="https://lyroom.github.io/2024/09/13/linux%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3/%E7%9B%AE%E5%BD%95.webp">
+<meta property="og:image" content="https://lyroom.github.io/2024/09/13/linux%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3/%E5%B8%B8%E8%A7%81%E7%9B%AE%E5%BD%95.png">
+<meta property="og:image" content="https://lyroom.github.io/2024/09/13/linux%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3/sys.png">
+<meta property="og:image" content="https://lyroom.github.io/2024/09/13/linux%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3/cpu.png">
+<meta property="og:image" content="https://lyroom.github.io/2024/09/13/linux%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3/proc.png">
+<meta property="og:image" content="https://lyroom.github.io/2024/09/13/linux%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3/root.png">
+<meta property="og:image" content="https://lyroom.github.io/2024/09/13/linux%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3/binorder.png">
+<meta property="og:image" content="https://lyroom.github.io/2024/09/13/linux%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3/image.png">
 <meta property="article:published_time" content="2024-09-13T01:18:02.000Z">
 <meta property="article:modified_time" content="2024-09-13T01:18:02.000Z">
 <meta property="article:author" content="迪丽惹Bug">
 <meta property="article:tag" content="linux">
 <meta property="article:tag" content="目录">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lyroom.github.io/2024/09/13/linux%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3/%E7%9B%AE%E5%BD%95.webp">
   
     <link rel="alternative" href="/atom.xml" title="Henry&#39;Blog" type="application/atom+xml">
   
@@ -241,7 +250,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">71字</span>
+      <span class="post-count">1.3k字</span>
     </span>
   </span>
 
@@ -250,7 +259,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">1分</span>
+      <span class="post-count">4分</span>
     </span>
   </span>
 </div>
@@ -261,16 +270,111 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <!-- <iframe src="//player.bilibili.com/player.html?isOutside=true&aid=112977336403920&bvid=BV11HpZeWE9y&cid=500001652752861&p=1&autoplay=0&muted=0&t=25" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" class="video-box"></iframe>
+    <h2 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h2><p>不同于 windows，在一切资源为文件的 linux 系统中，是以树结构来管理文件系统，根节点被称为根目录，用“&#x2F;”表示</p>
+<span id="more"></span>
+<img src="/2024/09/13/linux目录详解/目录.webp"  alt="linux文件系统" style="zoom: 60%;" />
 
-<div style="position: relative; width: 100%; height: 0; padding-bottom: 75%;">
-<iframe src="//player.bilibili.com/player.html?aid=90978812&cid=155358422&page=1&high_quality=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" style="position: absolute; width: 100%; height: 100%; Left: 0; top: 0;" ></iframe></div> -->
+<h2 id="常见目录及功能"><a href="#常见目录及功能" class="headerlink" title="常见目录及功能"></a>常见目录及功能</h2><center>
+<img src="/2024/09/13/linux目录详解/常见目录.png"  style="zoom:67%;" />
+</center>
 
 
-<video style="width:100%; height:500px; object-fit:contain" controls src="./linux目录详解/test.mp4"></video>
+<h2 id="x2F-sys-目录详解"><a href="#x2F-sys-目录详解" class="headerlink" title="&#x2F;sys 目录详解"></a>&#x2F;sys 目录详解</h2><img src="/2024/09/13/linux%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3/sys.png" class="">
 
-<p><a target="_blank" rel="noopener" href="http://localhost:40401/2024/09/13/linux%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3/linux%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3/test.mp4">http://localhost:40401/2024/09/13/linux%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3/linux%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3/test.mp4</a><br><a target="_blank" rel="noopener" href="http://localhost:40401/2024/05/11/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5%E9%97%AE%E9%A2%98/%E6%99%AE%E9%81%8D%E6%96%B9%E6%B3%95.png">http://localhost:40401/2024/05/11/hexo%E5%9B%BE%E7%89%87%E6%8F%92%E5%85%A5%E9%97%AE%E9%A2%98/%E6%99%AE%E9%81%8D%E6%96%B9%E6%B3%95.png</a></p>
-<div class="video-container"><iframe src="https://www.youtube.com/embed/CN31plHbI-w" frameborder="0" loading="lazy" allowfullscreen=""></iframe></div>
+<p><strong>偏向硬件和底层</strong>，专门用于提供与内核和硬件设备的交互，提供了内核对象及其属性的可视化界面，通常用于监控和管理硬件设备。</p>
+<p>例如查看cpu的核心线程数量（13600kf：6大核，4小核，20线程）可以访问：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /sys/devices/system/cpu</span><br></pre></td></tr></table></figure>
+
+<p>可以看到以下信息：</p>
+<img src="/2024/09/13/linux%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3/cpu.png" class="">
+
+<h2 id="x2F-proc-目录详解"><a href="#x2F-proc-目录详解" class="headerlink" title="&#x2F;proc 目录详解"></a>&#x2F;proc 目录详解</h2><p>面向进程&#x2F;运行时统计信息</p>
+<img src="/2024/09/13/linux%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3/proc.png" class="">
+
+<h2 id="x2F-bin-目录详解"><a href="#x2F-bin-目录详解" class="headerlink" title="&#x2F;bin 目录详解"></a>&#x2F;bin 目录详解</h2><center>
+<img src="/2024/09/13/linux目录详解/root.png"  alt="linux文件系统" style="zoom: 45%;" />
+</center>
+linux文件系统中有很多个bin目录，如上图，他们通常起着不同的作用：
+
+<blockquote>
+<p>usr:并不是user的缩写，而是Unix System Resources ,代表Unix系统资源</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>目录</th>
+<th>含义</th>
+<th>包含</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>&#x2F;bin（binary）</td>
+<td>存放核心OS程序和脚本文件，一般是系统预装的程序</td>
+<td>cat,bash,ls,pwd等</td>
+</tr>
+<tr>
+<td>&#x2F;user&#x2F;bin</td>
+<td>存放用户程序的二进制文件，不是系统自带的程序，用户自己安装的发行版程序</td>
+<td>gcc,g++,git等</td>
+</tr>
+<tr>
+<td>&#x2F;user&#x2F;local&#x2F;bin</td>
+<td>存放用户自己的可执行程序，不会被系统升级而覆盖同名文件，例如gcc之后的文件。</td>
+<td></td>
+</tr>
+<tr>
+<td>&#x2F;sbin</td>
+<td>存放root用户或者使用sudo权限的用户才能访问的程序或者命令</td>
+<td>ifconfig,shutdown,mount等</td>
+</tr>
+</tbody></table>
+<p>存放于bin目录下的程序或者脚本是可以直接执行的，执行的顺序取决于环境变量中各个文件夹的前后顺序！</p>
+<img src="/2024/09/13/linux%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3/binorder.png" class="">
+
+<p>根据环境变量可知.如果这几个bin目录中有同一个可执行文件，他们的执行顺序会是：**&#x2F;usr&#x2F;local&#x2F;bin &gt; &#x2F;sbin &gt; &#x2F;bin** </p>
+<h2 id="x2F-etc-目录详解"><a href="#x2F-etc-目录详解" class="headerlink" title="&#x2F;etc 目录详解"></a>&#x2F;etc 目录详解</h2><p>存储<strong>系统配置文件</strong>和<strong>全局配置文件</strong></p>
+<ul>
+<li><p>系统配置文件：passwd文件储存用户密码，group文件存储用户自定义组信息，hosts定义本地主机名字和IP地址的映射，ssh存储与ssh服务相关配置文件等</p>
+</li>
+<li><p>全局配置文件：.bashrc文件存储全系统的bash配置等</p>
+</li>
+</ul>
+<h2 id="x2F-run-目录详解"><a href="#x2F-run-目录详解" class="headerlink" title="&#x2F;run 目录详解"></a>&#x2F;run 目录详解</h2><img src="/2024/09/13/linux%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3/image.png" class="" title="alt text">
+<p><code>run</code> 目录在 Linux 系统中通常位于根目录下 (<code>/run</code>)。这个目录主要用于存储系统和进程的运行时数据，例如 PID 文件、套接字文件、锁文件等。</p>
+<p>一些 <code>run</code> 目录的特点：</p>
+<ul>
+<li><strong>临时文件系统 (tmpfs)：</strong> <code>/run</code> 通常挂载为 <code>tmpfs</code>，这意味着它在系统启动时创建，并在系统关闭或重启后清空。</li>
+<li><strong>早期启动：</strong> 由于 <code>/run</code> 是在系统早期启动时创建的，所以它可以用于存储需要在其他文件系统挂载之前可用的临时文件。</li>
+<li><strong>权限和所有权：</strong> 只有 root 用户和特定服务或进程可以在 <code>/run</code> 目录中创建文件。</li>
+</ul>
+<p>常见的子目录和文件：</p>
+<ul>
+<li><code>/run/lock/</code>：锁文件目录，进程用来避免多个实例同时运行。</li>
+<li><code>/run/user/</code>：每个用户有自己的运行时目录，用于用户进程的临时文件。</li>
+<li><code>/run/systemd/</code>：Systemd 使用的一些运行时数据。</li>
+</ul>
+<h2 id="x2F-home-目录详解"><a href="#x2F-home-目录详解" class="headerlink" title="&#x2F;home 目录详解"></a>&#x2F;home 目录详解</h2><p>在 Linux 系统中，<code>/home</code> 目录是用户的主目录，存放每个用户的个人数据和配置文件。每个用户通常在 <code>/home</code> 目录下有一个独立的子目录，这个子目录以该用户的用户名命名。</p>
+<p>一些特点和用途：</p>
+<ul>
+<li><strong>用户数据存储</strong>：用户的个人文件、文档、下载、图片、音乐等通常存储在他们的主目录下（例如 <code>/home/username</code>）。</li>
+<li><strong>配置文件</strong>：用户配置文件（如桌面环境、应用程序的设置）通常保存在主目录中的隐藏文件夹或文件中。这些文件夹和文件的名称以 <code>.</code> 开头，例如 <code>.bashrc</code>、<code>.config</code> 等。</li>
+<li><strong>权限</strong>：每个用户通常只对自己的 <code>/home/username</code> 目录有完全的读写权限，而对其他用户的主目录没有权限，除非是系统管理员（root）用户。</li>
+<li><strong>分区</strong>：有些系统管理员在安装操作系统时会将 <code>/home</code> 分为一个单独的分区，这样在系统重装时可以保留用户的数据。</li>
+</ul>
+<p>你可以通过 <code>cd ~</code> 或 <code>cd /home/username</code> 来切换到当前用户的主目录。</p>
+<h2 id="x2F-root-目录详解"><a href="#x2F-root-目录详解" class="headerlink" title="&#x2F;root 目录详解"></a>&#x2F;root 目录详解</h2><p>在 Linux 系统中，<code>/root</code> 文件夹是专门为 <strong>root</strong> 用户（超级用户）设置的主目录。与普通用户的主目录通常位于 <code>/home/username</code> 不同，root 用户的主目录位于系统的根目录下，即 <code>/root</code>。</p>
+<h3 id="关键点："><a href="#关键点：" class="headerlink" title="关键点："></a>关键点：</h3><ol>
+<li><p><strong>权限限制</strong>：只有 root 用户或具有足够权限的用户才能访问和修改 <code>/root</code> 目录中的文件。普通用户默认无法访问这个目录。</p>
+</li>
+<li><p><strong>用途</strong>：root 用户可以在 <code>/root</code> 目录中存储自己的配置文件、脚本和数据，类似于普通用户在他们的主目录中保存个人文件的方式。</p>
+</li>
+<li><p>**不要混淆 <code>/</code>**：<code>/root</code> 目录不同于根目录 <code>/</code>，根目录是整个文件系统的起点，而 <code>/root</code> 是 root 用户的个人主目录。</p>
+</li>
+</ol>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2>
+<center>
+<iframe src="//player.bilibili.com/player.html?isOutside=true&aid=113084559592586&bvid=BV1rNp3eUEFk&cid=25750277255&p=1" scrolling="no" border="0" frameborder="no" framespacing="0" allowfullscreen="true" class="video-box"></iframe>
+</center>
 
     
 
@@ -420,7 +524,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A6%82%E8%A7%88"><span class="toc-number">1.</span> <span class="toc-text">概览</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E7%9B%AE%E5%BD%95%E5%8F%8A%E5%8A%9F%E8%83%BD"><span class="toc-number">2.</span> <span class="toc-text">常见目录及功能</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x2F-sys-%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3"><span class="toc-number">3.</span> <span class="toc-text">&#x2F;sys 目录详解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x2F-proc-%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3"><span class="toc-number">4.</span> <span class="toc-text">&#x2F;proc 目录详解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x2F-bin-%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3"><span class="toc-number">5.</span> <span class="toc-text">&#x2F;bin 目录详解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x2F-etc-%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3"><span class="toc-number">6.</span> <span class="toc-text">&#x2F;etc 目录详解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x2F-run-%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3"><span class="toc-number">7.</span> <span class="toc-text">&#x2F;run 目录详解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x2F-home-%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3"><span class="toc-number">8.</span> <span class="toc-text">&#x2F;home 目录详解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x2F-root-%E7%9B%AE%E5%BD%95%E8%AF%A6%E8%A7%A3"><span class="toc-number">9.</span> <span class="toc-text">&#x2F;root 目录详解</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%85%B3%E9%94%AE%E7%82%B9%EF%BC%9A"><span class="toc-number">9.1.</span> <span class="toc-text">关键点：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">10.</span> <span class="toc-text">参考资料</span></a></li></ol>
                     </div>
                 </span>
             </div>
