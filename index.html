@@ -241,23 +241,10 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h2 id="tldr使用效果"><a href="#tldr使用效果" class="headerlink" title="tldr使用效果"></a>tldr使用效果</h2><p>在使用man手册查询命令的功能时候，往往会出现一大堆参数，如下:</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">$ man <span class="built_in">ls</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">LS(1)                            User Commands                           LS(1)</span><br><span class="line"></span><br><span class="line">NAME</span><br><span class="line">       <span class="built_in">ls</span> - list directory contents</span><br><span class="line"></span><br><span class="line">SYNOPSIS</span><br><span class="line">       <span class="built_in">ls</span> [OPTION]... [FILE]...</span><br><span class="line"></span><br><span class="line">DESCRIPTION</span><br><span class="line">       List  information  about  the FILEs (the current directory by default).</span><br><span class="line">       Sort entries alphabetically <span class="keyword">if</span> none of -cftuvSUX nor --<span class="built_in">sort</span>  is  speci‐</span><br><span class="line">       fied.</span><br><span class="line"></span><br><span class="line">       Mandatory  arguments  to  long  options are mandatory <span class="keyword">for</span> short options</span><br><span class="line">       too.</span><br><span class="line"></span><br><span class="line">       -a, --all</span><br><span class="line">              <span class="keyword">do</span> not ignore entries starting with .</span><br><span class="line"></span><br><span class="line">       -A, --almost-all</span><br><span class="line">              <span class="keyword">do</span> not list implied . and ..</span><br><span class="line"></span><br><span class="line">       --author</span><br><span class="line">              with -l, <span class="built_in">print</span> the author of each file</span><br><span class="line"></span><br><span class="line">       -b, --escape</span><br><span class="line">              <span class="built_in">print</span> C-style escapes <span class="keyword">for</span> nongraphic characters</span><br><span class="line"></span><br><span class="line">       --block-size=SIZE</span><br><span class="line">              with  -l,  scale  sizes  by  SIZE  when  printing  them;   e.g.,</span><br><span class="line">              <span class="string">&#x27;--block-size=M&#x27;</span>; see SIZE format below</span><br><span class="line"></span><br><span class="line">       -B, --ignore-backups</span><br><span class="line">              <span class="keyword">do</span> not list implied entries ending with ~</span><br><span class="line"></span><br><span class="line">       -c     with -lt: <span class="built_in">sort</span> by, and show, ctime (time of last modification of</span><br><span class="line">              file status information); with -l: show ctime and <span class="built_in">sort</span> by  name;</span><br><span class="line">              otherwise: <span class="built_in">sort</span> by ctime, newest first</span><br><span class="line"></span><br><span class="line">       -C     list entries by columns</span><br><span class="line"></span><br><span class="line">       --color[=WHEN]</span><br><span class="line">              colorize  the output; WHEN can be <span class="string">&#x27;always&#x27;</span> (default <span class="keyword">if</span> omitted),</span><br><span class="line">              <span class="string">&#x27;auto&#x27;</span>, or <span class="string">&#x27;never&#x27;</span>; more info below</span><br><span class="line"></span><br><span class="line">       -d, --directory</span><br><span class="line"></span><br></pre></td></tr></table></figure>
-<p>我们有时候需要快速的使用这个命令，而不希望需要查阅这么多的资料，这时候tldr工具就来了，使用效果如下：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">$ tldr <span class="built_in">ls</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">ls</span></span><br><span class="line"></span><br><span class="line">  列出目录中的内容。</span><br><span class="line">  更多信息：https://www.gnu.org/software/coreutils/ls.</span><br><span class="line"></span><br><span class="line">  - 列出目录中的文件，每个文件占一行：</span><br><span class="line">    <span class="built_in">ls</span> -1</span><br><span class="line"></span><br><span class="line">  - 列出包含隐藏文件的所有文件：</span><br><span class="line">    <span class="built_in">ls</span> -a</span><br><span class="line"></span><br><span class="line">  - 列出所有文件，如果是目录，则在目录名后面加上「/」：</span><br><span class="line">    <span class="built_in">ls</span> -F</span><br><span class="line"></span><br><span class="line">  - 列出包含隐藏文件的所有文件信息，包括权限，所有者，大小和修改日期：</span><br><span class="line">    <span class="built_in">ls</span> -la</span><br><span class="line"></span><br><span class="line">  - 列出所有文件信息，大小用人类可读的单位表示（KiB, MiB, GiB）：</span><br><span class="line">    <span class="built_in">ls</span> -lh</span><br><span class="line"></span><br><span class="line">  - 列出所有文件信息，按大小降序排序：</span><br><span class="line">    <span class="built_in">ls</span> -lSR</span><br><span class="line"></span><br><span class="line">  - 列出所有文件信息，按修改日期从旧到新排序：</span><br><span class="line">    <span class="built_in">ls</span> -ltr</span><br><span class="line"></span><br><span class="line">  - 只列出目录：</span><br><span class="line">    <span class="built_in">ls</span> -d */</span><br></pre></td></tr></table></figure>
-<p>tldr+命令可以快速且简短的给出使用说明，很节省时间。</p>
-<h2 id="tldr安装"><a href="#tldr安装" class="headerlink" title="tldr安装"></a>tldr安装</h2><p>tldr：全称是：too long，don&#96;t read,就是为了简短的显示命令的使用方式，以下是ubuntu下的安装方法。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install tldr</span><br></pre></td></tr></table></figure>
-<h2 id="汉化"><a href="#汉化" class="headerlink" title="汉化"></a>汉化</h2><p>前提是你安装了nodejs和npm,安装tldr客户端</p>
-<figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="attribute">sudo</span> npm install -g tldr</span><br></pre></td></tr></table></figure>
-<p>设置语言环境为中文，修改系统变量</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span> <span class="string">&#x27;export TLDR_LANG=zh&#x27;</span> &gt;&gt; ~/.bashrc</span><br><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure>
-<h2 id="更新tldr缓存"><a href="#更新tldr缓存" class="headerlink" title="更新tldr缓存"></a>更新tldr缓存</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tldr --update</span><br></pre></td></tr></table></figure>
-<p>如果失败也可以手动添加缓存</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git <span class="built_in">clone</span> https://github.com/tldr-pages/tldr.git</span><br><span class="line"><span class="built_in">cp</span> -r tldr/pages ~/.tldr/cache/pages</span><br></pre></td></tr></table></figure>
-
-<p>接下来就可以愉快使用啦！</p>
-
+    <h2 id="tldr使用效果"><a href="#tldr使用效果" class="headerlink" title="tldr使用效果"></a>tldr使用效果</h2><p>今天偶然发现了一个宝藏shell工具，推荐linux，macos用户使用：tldr</p>
+    
+    <a class="article-more-a" href="/2024/10/14/shell%E5%B0%8F%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90%E2%80%94%E2%80%94tldr/#more">more >></a>
+    
     
 
     
@@ -1348,10 +1335,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
@@ -1364,6 +1347,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
@@ -1372,11 +1359,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">浮生六记</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color5">浮生六记</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1388,15 +1375,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">c</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">文件操作</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
               </li>
              
               <li class="article-tag-list-item">
