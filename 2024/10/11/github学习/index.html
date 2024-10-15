@@ -256,7 +256,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">2.4k字</span>
+      <span class="post-count">4.7k字</span>
     </span>
   </span>
 
@@ -265,7 +265,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">9分</span>
+      <span class="post-count">19分</span>
     </span>
   </span>
 </div>
@@ -378,9 +378,11 @@
 <h5 id="1-查看合并的状态，找到冲突的文件"><a href="#1-查看合并的状态，找到冲突的文件" class="headerlink" title="1.查看合并的状态，找到冲突的文件"></a>1.查看合并的状态，找到冲突的文件</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">git status</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">位于分支 master</span><br><span class="line">您的分支领先 <span class="string">&#x27;origin/master&#x27;</span> 共 20 个提交。</span><br><span class="line">  （使用 <span class="string">&quot;git push&quot;</span> 来发布您的本地提交）</span><br><span class="line"></span><br><span class="line">您有尚未合并的路径。</span><br><span class="line">  （解决冲突并运行 <span class="string">&quot;git commit&quot;</span>）</span><br><span class="line">  （使用 <span class="string">&quot;git merge --abort&quot;</span> 终止合并）</span><br><span class="line"></span><br><span class="line">未合并的路径：</span><br><span class="line">  （使用 <span class="string">&quot;git add &lt;文件&gt;...&quot;</span> 标记解决方案）</span><br><span class="line">        双方修改：   README.md</span><br><span class="line"></span><br><span class="line">修改尚未加入提交（使用 <span class="string">&quot;git add&quot;</span> 和/或 <span class="string">&quot;git commit -a&quot;</span>）</span><br></pre></td></tr></table></figure>
 <h5 id="2-打开冲突的文件（README-md），解决冲突"><a href="#2-打开冲突的文件（README-md），解决冲突" class="headerlink" title="2.打开冲突的文件（README.md），解决冲突"></a>2.打开冲突的文件（README.md），解决冲突</h5><p>打开文件，会发现文件中有以下的标注，如下：</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD（当前分支的内容）</span><br><span class="line">这是当前分支的内容</span><br><span class="line">======= # 分割线，上面的是master内容，下面是分支1的内容</span><br><span class="line">这是branch修改的的内容</span><br><span class="line">&gt;&gt;&gt;&gt;&gt;&gt;&gt; branch（传入合并分支的内容）</span><br></pre></td></tr></table></figure>
+<center>
 <img src="/2024/10/11/github学习/readme冲突.png"  style="zoom:67%;" />
-可以手动的选择要保留的内容，保留后，删除'<<<<<<< HEAD'，'======= '，'>>>>>>> branch'，等标注，保存文件即可。
+</center>
 
+<p>可以手动的选择要保留的内容，保留后，删除’&lt;&lt;&lt;&lt;&lt;&lt;&lt; HEAD’，’&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;&#x3D; ‘，’&gt;&gt;&gt;&gt;&gt;&gt;&gt; branch’，等标注，保存文件即可。</p>
 <h5 id="3-提交解决冲突后的文件"><a href="#3-提交解决冲突后的文件" class="headerlink" title="3.提交解决冲突后的文件"></a>3.提交解决冲突后的文件</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git add README.md</span><br><span class="line">git commit -m <span class="string">&quot;解决冲突&quot;</span></span><br></pre></td></tr></table></figure>
 <h5 id="4-合并完成"><a href="#4-合并完成" class="headerlink" title="4.合并完成"></a>4.合并完成</h5><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git merge 分支1</span><br></pre></td></tr></table></figure>
 
@@ -390,25 +392,25 @@
 <h4 id="回到分支1创建前"><a href="#回到分支1创建前" class="headerlink" title="回到分支1创建前"></a>回到分支1创建前</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard <span class="built_in">hash</span>值 <span class="comment">#这个hash值就是每次commit后的hash值</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>如果你没有做好标记寻找创建分支前的hash值的技巧：git log –graph ,找到分叉前的一个提交的hash值!，如下就是第8次修改的hash值</p>
-<p>| | Author: lyroom <a href="mailto:&#99;&#x6f;&#x64;&#x69;&#110;&#103;&#102;&#105;&#x73;&#x68;&#64;&#x6f;&#117;&#116;&#108;&#111;&#x6f;&#x6b;&#x2e;&#x63;&#111;&#x6d;">&#99;&#x6f;&#x64;&#x69;&#110;&#103;&#102;&#105;&#x73;&#x68;&#64;&#x6f;&#117;&#116;&#108;&#111;&#x6f;&#x6b;&#x2e;&#x63;&#111;&#x6d;</a></p>
+<p>| | Author: lyroom <a href="mailto:&#x63;&#x6f;&#100;&#105;&#x6e;&#103;&#102;&#105;&#115;&#104;&#64;&#x6f;&#117;&#x74;&#x6c;&#x6f;&#x6f;&#107;&#46;&#x63;&#x6f;&#x6d;">&#x63;&#x6f;&#100;&#105;&#x6e;&#103;&#102;&#105;&#115;&#104;&#64;&#x6f;&#117;&#x74;&#x6c;&#x6f;&#x6f;&#107;&#46;&#x63;&#x6f;&#x6d;</a></p>
 <p>| | Date:   Mon Oct 14 16:59:48 2024 +0800</p>
 <p>| | </p>
 <p>| |     master的第10次提交</p>
 <p>| | </p>
 <p>* | commit 7362bced26a2648153fac6779e4c5d2067eab42b</p>
-<p>|&#x2F;  Author: lyroom <a href="mailto:&#99;&#x6f;&#100;&#x69;&#x6e;&#103;&#102;&#x69;&#115;&#x68;&#x40;&#x6f;&#117;&#x74;&#x6c;&#x6f;&#111;&#x6b;&#46;&#x63;&#x6f;&#109;">&#99;&#x6f;&#100;&#x69;&#x6e;&#103;&#102;&#x69;&#115;&#x68;&#x40;&#x6f;&#117;&#x74;&#x6c;&#x6f;&#111;&#x6b;&#46;&#x63;&#x6f;&#109;</a></p>
+<p>|&#x2F;  Author: lyroom <a href="mailto:&#x63;&#x6f;&#100;&#x69;&#110;&#x67;&#102;&#x69;&#x73;&#104;&#x40;&#x6f;&#x75;&#116;&#x6c;&#x6f;&#x6f;&#x6b;&#46;&#x63;&#111;&#109;">&#x63;&#x6f;&#100;&#x69;&#110;&#x67;&#102;&#x69;&#x73;&#104;&#x40;&#x6f;&#x75;&#116;&#x6c;&#x6f;&#x6f;&#x6b;&#46;&#x63;&#111;&#109;</a></p>
 <p>|   Date:   Mon Oct 14 16:57:45 2024 +0800</p>
 <p>|   </p>
 <p>|       master下的第九次修改</p>
 <p>| </p>
 <p>* commit 61126b34e2330bad3945c616374df80de7346be1</p>
-<p>| Author: lyroom <a href="mailto:&#x63;&#111;&#100;&#x69;&#x6e;&#103;&#102;&#x69;&#115;&#104;&#x40;&#111;&#x75;&#x74;&#x6c;&#x6f;&#111;&#107;&#x2e;&#x63;&#111;&#x6d;">&#x63;&#111;&#100;&#x69;&#x6e;&#103;&#102;&#x69;&#115;&#104;&#x40;&#111;&#x75;&#x74;&#x6c;&#x6f;&#111;&#107;&#x2e;&#x63;&#111;&#x6d;</a></p>
+<p>| Author: lyroom <a href="mailto:&#99;&#111;&#100;&#x69;&#110;&#x67;&#102;&#105;&#115;&#x68;&#x40;&#x6f;&#117;&#116;&#108;&#x6f;&#x6f;&#107;&#x2e;&#x63;&#x6f;&#x6d;">&#99;&#111;&#100;&#x69;&#110;&#x67;&#102;&#105;&#115;&#x68;&#x40;&#x6f;&#117;&#116;&#108;&#x6f;&#x6f;&#107;&#x2e;&#x63;&#x6f;&#x6d;</a></p>
 <p>| Date:   Mon Oct 14 16:17:33 2024 +0800</p>
 <p>| </p>
 <p>|     第8次修改</p>
 <p>| </p>
 <p>* commit ce7d1ccfd971bed9e79a3ececcdb67df97428692</p>
-<p>| Author: lyroom <a href="mailto:&#x63;&#111;&#x64;&#105;&#110;&#x67;&#102;&#x69;&#x73;&#x68;&#x40;&#111;&#x75;&#x74;&#x6c;&#111;&#111;&#x6b;&#x2e;&#x63;&#111;&#x6d;">&#x63;&#111;&#x64;&#105;&#110;&#x67;&#102;&#x69;&#x73;&#x68;&#x40;&#111;&#x75;&#x74;&#x6c;&#111;&#111;&#x6b;&#x2e;&#x63;&#111;&#x6d;</a></p>
+<p>| Author: lyroom <a href="mailto:&#x63;&#111;&#100;&#x69;&#x6e;&#103;&#x66;&#105;&#115;&#x68;&#64;&#x6f;&#x75;&#x74;&#108;&#x6f;&#111;&#107;&#46;&#99;&#x6f;&#109;">&#x63;&#111;&#100;&#x69;&#x6e;&#103;&#x66;&#105;&#115;&#x68;&#64;&#x6f;&#x75;&#x74;&#108;&#x6f;&#111;&#107;&#46;&#99;&#x6f;&#109;</a></p>
 <p>| Date:   Mon Oct 14 16:15:19 2024 +0800</p>
 </blockquote>
 <h3 id="创建分支fix-B"><a href="#创建分支fix-B" class="headerlink" title="创建分支fix-B"></a>创建分支fix-B</h3><p>当前状态：<br><img src="/2024/10/11/github学习/分支fix-B.png"  style="zoom:80%;" /><br>fix-B的下一个目标：<br><img src="/2024/10/11/github学习/next.png"  style="zoom:67%;" /></p>
