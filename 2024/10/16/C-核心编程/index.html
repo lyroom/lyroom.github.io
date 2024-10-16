@@ -6,24 +6,33 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://lyroom.github.io">
-  <title>Henry&#39;Blog</title>
+  <title>C++核心编程 | Henry&#39;Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-    
-    <!-- <meta name="keywords" content="Henry,博客">
-    <meta name="description" content="博客"> -->
-  
-  <meta name="description" content="博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Henry&#39;Blog">
-<meta property="og:url" content="https://lyroom.github.io/index.html">
+  <meta name="description" content="C++核心编程本阶段主要针对C++&#x3D;&#x3D;面向对象&#x3D;&#x3D;编程技术做详细讲解，探讨C++中的核心和精髓。 1 内存分区模型C++程序在执行时，将内存大方向划分为4个区域  代码区：存放函数体的二进制代码，由操作系统进行管理的 全局区：存放全局变量和静态变量以及常量 栈区：由编译器自动分配释放, 存放函数的参数值,局部变量等 堆区：由程序员分配和释放,若程序员不释放,">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++核心编程">
+<meta property="og:url" content="https://lyroom.github.io/2024/10/16/C-%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/index.html">
 <meta property="og:site_name" content="Henry&#39;Blog">
-<meta property="og:description" content="博客">
+<meta property="og:description" content="C++核心编程本阶段主要针对C++&#x3D;&#x3D;面向对象&#x3D;&#x3D;编程技术做详细讲解，探讨C++中的核心和精髓。 1 内存分区模型C++程序在执行时，将内存大方向划分为4个区域  代码区：存放函数体的二进制代码，由操作系统进行管理的 全局区：存放全局变量和静态变量以及常量 栈区：由编译器自动分配释放, 存放函数的参数值,局部变量等 堆区：由程序员分配和释放,若程序员不释放,">
 <meta property="og:locale">
+<meta property="og:image" content="https://lyroom.github.io/2024/10/16/C-%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/1545017602518.png">
+<meta property="og:image" content="https://lyroom.github.io/2024/10/16/C-%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/1545533548532.png">
+<meta property="og:image" content="https://lyroom.github.io/2024/10/16/C-%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/1545533829184.png">
+<meta property="og:image" content="https://lyroom.github.io/2024/10/16/C-%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/1544861202252.png">
+<meta property="og:image" content="https://lyroom.github.io/2024/10/16/C-%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/clip_image002.png">
+<meta property="og:image" content="https://lyroom.github.io/2024/10/16/C-%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/1545881904150.png">
+<meta property="og:image" content="https://lyroom.github.io/2024/10/16/C-%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/1545882158050.png">
+<meta property="og:image" content="https://lyroom.github.io/2024/10/16/C-%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/clip_image002.jpg">
+<meta property="og:image" content="https://lyroom.github.io/2024/10/16/C-%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/1545985945198.png">
+<meta property="article:published_time" content="2024-10-16T03:56:40.000Z">
+<meta property="article:modified_time" content="2024-10-16T03:56:40.000Z">
 <meta property="article:author" content="迪丽惹Bug">
-<meta property="article:tag" content="Henry,博客">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="文件">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lyroom.github.io/2024/10/16/C-%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/1545017602518.png">
   
     <link rel="alternative" href="/atom.xml" title="Henry&#39;Blog" type="application/atom+xml">
   
@@ -209,25 +218,25 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-
-  
-    <article id="post-C-核心编程" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+            <article id="post-C-核心编程" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/10/16/C-%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/" target="_blank">C++核心编程</a>
-  
+    <h1 class="article-title" itemprop="name">
+      C++核心编程
     </h1>
   
 
 
   
   
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
 <a href="/2024/10/16/C-%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/" class="archive-article-date">
         <time datetime="2024-10-16T03:56:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-10-16</time>
 </a>
@@ -235,6 +244,27 @@
   
   
     
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">17.8k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">80分</span>
+    </span>
+  </span>
+</div>
+
 
   
   </header>
@@ -1313,6 +1343,26 @@
     
 
     
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          迪丽惹Bug
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://lyroom.github.io/2024/10/16/C-核心编程/" title="C++核心编程" target="_blank">https://lyroom.github.io/2024/10/16/C-核心编程/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
 
   </div>
   <div class="article-info article-info-index">
@@ -1336,16 +1386,76 @@
     
 
     
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/10/16/C-%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/">展开全文 >></a>
-    </p>
+
     
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
+        </div>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://lyroom.github.io/2024/10/16/C-%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
 
     
     <div class="clearfix"></div>
   </div>
   </div>
 </article>
+
+
+<nav id="article-nav">
+  
+  
+    <a href="/2024/10/14/shell%E5%B0%8F%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90%E2%80%94%E2%80%94tldr/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">shell小工具推荐——tldr</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
 
 <aside class="wrap-side-operation">
     <div class="mod-side-operation">
@@ -1360,863 +1470,56 @@
         </div>
         
         
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-shell小工具推荐——tldr" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/10/14/shell%E5%B0%8F%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90%E2%80%94%E2%80%94tldr/" target="_blank">shell小工具推荐——tldr</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/10/14/shell%E5%B0%8F%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90%E2%80%94%E2%80%94tldr/" class="archive-article-date">
-        <time datetime="2024-10-14T06:27:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-10-14</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h2 id="tldr使用效果"><a href="#tldr使用效果" class="headerlink" title="tldr使用效果"></a>tldr使用效果</h2><p>今天偶然发现了一个宝藏shell工具，推荐linux，macos用户使用：tldr</p>
-    
-    <a class="article-more-a" href="/2024/10/14/shell%E5%B0%8F%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90%E2%80%94%E2%80%94tldr/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shell</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">shell工具推荐</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/10/14/shell%E5%B0%8F%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90%E2%80%94%E2%80%94tldr/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B"><span class="toc-number">1.</span> <span class="toc-text">C++核心编程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%E5%86%85%E5%AD%98%E5%88%86%E5%8C%BA%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.1.</span> <span class="toc-text">1 内存分区模型</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E5%89%8D"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 程序运行前</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E5%90%8E"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 程序运行后</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-new%E6%93%8D%E4%BD%9C%E7%AC%A6"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 new操作符</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E5%BC%95%E7%94%A8"><span class="toc-number">1.2.</span> <span class="toc-text">2 引用</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%BC%95%E7%94%A8%E7%9A%84%E5%9F%BA%E6%9C%AC%E4%BD%BF%E7%94%A8"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 引用的基本使用</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%BC%95%E7%94%A8%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 引用注意事项</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%BC%95%E7%94%A8%E5%81%9A%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 引用做函数参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E5%BC%95%E7%94%A8%E5%81%9A%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC"><span class="toc-number">1.2.4.</span> <span class="toc-text">2.4 引用做函数返回值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-5-%E5%BC%95%E7%94%A8%E7%9A%84%E6%9C%AC%E8%B4%A8"><span class="toc-number">1.2.5.</span> <span class="toc-text">2.5 引用的本质</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-6-%E5%B8%B8%E9%87%8F%E5%BC%95%E7%94%A8"><span class="toc-number">1.2.6.</span> <span class="toc-text">2.6 常量引用</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E5%87%BD%E6%95%B0%E6%8F%90%E9%AB%98"><span class="toc-number">1.3.</span> <span class="toc-text">3 函数提高</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%87%BD%E6%95%B0%E9%BB%98%E8%AE%A4%E5%8F%82%E6%95%B0"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 函数默认参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E5%87%BD%E6%95%B0%E5%8D%A0%E4%BD%8D%E5%8F%82%E6%95%B0"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 函数占位参数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3 函数重载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-1-%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD%E6%A6%82%E8%BF%B0"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">3.3.1 函数重载概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-2-%E5%87%BD%E6%95%B0%E9%87%8D%E8%BD%BD%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">3.3.2 函数重载注意事项</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E7%B1%BB%E5%92%8C%E5%AF%B9%E8%B1%A1"><span class="toc-number">1.4.</span> <span class="toc-text">4 类和对象</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E5%B0%81%E8%A3%85"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 封装</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-1-%E5%B0%81%E8%A3%85%E7%9A%84%E6%84%8F%E4%B9%89"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">4.1.1  封装的意义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-2-struct%E5%92%8Cclass%E5%8C%BA%E5%88%AB"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">4.1.2 struct和class区别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-3-%E6%88%90%E5%91%98%E5%B1%9E%E6%80%A7%E8%AE%BE%E7%BD%AE%E4%B8%BA%E7%A7%81%E6%9C%89"><span class="toc-number">1.4.1.3.</span> <span class="toc-text">4.1.3 成员属性设置为私有</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%AF%B9%E8%B1%A1%E7%9A%84%E5%88%9D%E5%A7%8B%E5%8C%96%E5%92%8C%E6%B8%85%E7%90%86"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 对象的初始化和清理</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-1-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E5%92%8C%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">4.2.1 构造函数和析构函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-2-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E7%9A%84%E5%88%86%E7%B1%BB%E5%8F%8A%E8%B0%83%E7%94%A8"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">4.2.2 构造函数的分类及调用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-3-%E6%8B%B7%E8%B4%9D%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E6%97%B6%E6%9C%BA"><span class="toc-number">1.4.2.3.</span> <span class="toc-text">4.2.3 拷贝构造函数调用时机</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-4-%E6%9E%84%E9%80%A0%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E8%A7%84%E5%88%99"><span class="toc-number">1.4.2.4.</span> <span class="toc-text">4.2.4 构造函数调用规则</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-5-%E6%B7%B1%E6%8B%B7%E8%B4%9D%E4%B8%8E%E6%B5%85%E6%8B%B7%E8%B4%9D"><span class="toc-number">1.4.2.5.</span> <span class="toc-text">4.2.5 深拷贝与浅拷贝</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-6-%E5%88%9D%E5%A7%8B%E5%8C%96%E5%88%97%E8%A1%A8"><span class="toc-number">1.4.2.6.</span> <span class="toc-text">4.2.6 初始化列表</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-7-%E7%B1%BB%E5%AF%B9%E8%B1%A1%E4%BD%9C%E4%B8%BA%E7%B1%BB%E6%88%90%E5%91%98"><span class="toc-number">1.4.2.7.</span> <span class="toc-text">4.2.7 类对象作为类成员</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-8-%E9%9D%99%E6%80%81%E6%88%90%E5%91%98"><span class="toc-number">1.4.2.8.</span> <span class="toc-text">4.2.8 静态成员</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-C-%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B%E5%92%8Cthis%E6%8C%87%E9%92%88"><span class="toc-number">1.4.3.</span> <span class="toc-text">4.3 C++对象模型和this指针</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-1-%E6%88%90%E5%91%98%E5%8F%98%E9%87%8F%E5%92%8C%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E5%88%86%E5%BC%80%E5%AD%98%E5%82%A8"><span class="toc-number">1.4.3.1.</span> <span class="toc-text">4.3.1 成员变量和成员函数分开存储</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-2-this%E6%8C%87%E9%92%88%E6%A6%82%E5%BF%B5"><span class="toc-number">1.4.3.2.</span> <span class="toc-text">4.3.2 this指针概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-3-%E7%A9%BA%E6%8C%87%E9%92%88%E8%AE%BF%E9%97%AE%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="toc-number">1.4.3.3.</span> <span class="toc-text">4.3.3 空指针访问成员函数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-4-const%E4%BF%AE%E9%A5%B0%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0"><span class="toc-number">1.4.3.4.</span> <span class="toc-text">4.3.4 const修饰成员函数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-%E5%8F%8B%E5%85%83"><span class="toc-number">1.4.4.</span> <span class="toc-text">4.4 友元</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-1-%E5%85%A8%E5%B1%80%E5%87%BD%E6%95%B0%E5%81%9A%E5%8F%8B%E5%85%83"><span class="toc-number">1.4.4.1.</span> <span class="toc-text">4.4.1 全局函数做友元</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-2-%E7%B1%BB%E5%81%9A%E5%8F%8B%E5%85%83"><span class="toc-number">1.4.4.2.</span> <span class="toc-text">4.4.2 类做友元</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-3-%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E5%81%9A%E5%8F%8B%E5%85%83"><span class="toc-number">1.4.4.3.</span> <span class="toc-text">4.4.3 成员函数做友元</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-number">1.4.5.</span> <span class="toc-text">4.5 运算符重载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-1-%E5%8A%A0%E5%8F%B7%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-number">1.4.5.1.</span> <span class="toc-text">4.5.1 加号运算符重载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-2-%E5%B7%A6%E7%A7%BB%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-number">1.4.5.2.</span> <span class="toc-text">4.5.2 左移运算符重载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-3-%E9%80%92%E5%A2%9E%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-number">1.4.5.3.</span> <span class="toc-text">4.5.3 递增运算符重载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-4-%E8%B5%8B%E5%80%BC%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-number">1.4.5.4.</span> <span class="toc-text">4.5.4 赋值运算符重载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-5-%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-number">1.4.5.5.</span> <span class="toc-text">4.5.5 关系运算符重载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-5-6-%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E8%BF%90%E7%AE%97%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-number">1.4.5.6.</span> <span class="toc-text">4.5.6 函数调用运算符重载</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-%E7%BB%A7%E6%89%BF"><span class="toc-number">1.4.6.</span> <span class="toc-text">4.6  继承</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-6-1-%E7%BB%A7%E6%89%BF%E7%9A%84%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95"><span class="toc-number">1.4.6.1.</span> <span class="toc-text">4.6.1 继承的基本语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-6-2-%E7%BB%A7%E6%89%BF%E6%96%B9%E5%BC%8F"><span class="toc-number">1.4.6.2.</span> <span class="toc-text">4.6.2 继承方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-6-3-%E7%BB%A7%E6%89%BF%E4%B8%AD%E7%9A%84%E5%AF%B9%E8%B1%A1%E6%A8%A1%E5%9E%8B"><span class="toc-number">1.4.6.3.</span> <span class="toc-text">4.6.3 继承中的对象模型</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-6-4-%E7%BB%A7%E6%89%BF%E4%B8%AD%E6%9E%84%E9%80%A0%E5%92%8C%E6%9E%90%E6%9E%84%E9%A1%BA%E5%BA%8F"><span class="toc-number">1.4.6.4.</span> <span class="toc-text">4.6.4 继承中构造和析构顺序</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-6-5-%E7%BB%A7%E6%89%BF%E5%90%8C%E5%90%8D%E6%88%90%E5%91%98%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-number">1.4.6.5.</span> <span class="toc-text">4.6.5 继承同名成员处理方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-6-6-%E7%BB%A7%E6%89%BF%E5%90%8C%E5%90%8D%E9%9D%99%E6%80%81%E6%88%90%E5%91%98%E5%A4%84%E7%90%86%E6%96%B9%E5%BC%8F"><span class="toc-number">1.4.6.6.</span> <span class="toc-text">4.6.6 继承同名静态成员处理方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-6-7-%E5%A4%9A%E7%BB%A7%E6%89%BF%E8%AF%AD%E6%B3%95"><span class="toc-number">1.4.6.7.</span> <span class="toc-text">4.6.7 多继承语法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-6-8-%E8%8F%B1%E5%BD%A2%E7%BB%A7%E6%89%BF"><span class="toc-number">1.4.6.8.</span> <span class="toc-text">4.6.8 菱形继承</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-7-%E5%A4%9A%E6%80%81"><span class="toc-number">1.4.7.</span> <span class="toc-text">4.7  多态</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-7-1-%E5%A4%9A%E6%80%81%E7%9A%84%E5%9F%BA%E6%9C%AC%E6%A6%82%E5%BF%B5"><span class="toc-number">1.4.7.1.</span> <span class="toc-text">4.7.1 多态的基本概念</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-7-2-%E5%A4%9A%E6%80%81%E6%A1%88%E4%BE%8B%E4%B8%80-%E8%AE%A1%E7%AE%97%E5%99%A8%E7%B1%BB"><span class="toc-number">1.4.7.2.</span> <span class="toc-text">4.7.2 多态案例一-计算器类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-7-3-%E7%BA%AF%E8%99%9A%E5%87%BD%E6%95%B0%E5%92%8C%E6%8A%BD%E8%B1%A1%E7%B1%BB"><span class="toc-number">1.4.7.3.</span> <span class="toc-text">4.7.3 纯虚函数和抽象类</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-7-4-%E5%A4%9A%E6%80%81%E6%A1%88%E4%BE%8B%E4%BA%8C-%E5%88%B6%E4%BD%9C%E9%A5%AE%E5%93%81"><span class="toc-number">1.4.7.4.</span> <span class="toc-text">4.7.4 多态案例二-制作饮品</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-7-5-%E8%99%9A%E6%9E%90%E6%9E%84%E5%92%8C%E7%BA%AF%E8%99%9A%E6%9E%90%E6%9E%84"><span class="toc-number">1.4.7.5.</span> <span class="toc-text">4.7.5 虚析构和纯虚析构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-7-6-%E5%A4%9A%E6%80%81%E6%A1%88%E4%BE%8B%E4%B8%89-%E7%94%B5%E8%84%91%E7%BB%84%E8%A3%85"><span class="toc-number">1.4.7.6.</span> <span class="toc-text">4.7.6 多态案例三-电脑组装</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C"><span class="toc-number">1.5.</span> <span class="toc-text">5 文件操作</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#5-1%E6%96%87%E6%9C%AC%E6%96%87%E4%BB%B6"><span class="toc-number">1.5.1.</span> <span class="toc-text">5.1文本文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-1%E5%86%99%E6%96%87%E4%BB%B6"><span class="toc-number">1.5.1.1.</span> <span class="toc-text">5.1.1写文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1-2%E8%AF%BB%E6%96%87%E4%BB%B6"><span class="toc-number">1.5.1.2.</span> <span class="toc-text">5.1.2读文件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-2-%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%96%87%E4%BB%B6"><span class="toc-number">1.5.2.</span> <span class="toc-text">5.2 二进制文件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-1-%E5%86%99%E6%96%87%E4%BB%B6"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">5.2.1 写文件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2-2-%E8%AF%BB%E6%96%87%E4%BB%B6"><span class="toc-number">1.5.2.2.</span> <span class="toc-text">5.2.2 读文件</span></a></li></ol></li></ol></li></ol></li></ol>
+                    </div>
+                </span>
             </div>
         </div>
         
-        
     </div>
 </aside>
 
 
 
 
-  
-    <article id="post-github学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/10/11/github%E5%AD%A6%E4%B9%A0/" target="_blank">github学习</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/10/11/github%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-        <time datetime="2024-10-11T09:05:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-10-11</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>本文会较为详细的学习github的一些操作，以下是具体的步骤。</p>
-<h1 id="安装与配置git"><a href="#安装与配置git" class="headerlink" title="安装与配置git"></a>安装与配置git</h1><p>安装git的环境，在这<a href="https://lyroom.github.io/2024/05/10/hexo%E5%8D%9A%E5%AE%A2%E7%9A%84%E8%BF%81%E7%A7%BB/">里有</a>详细的解答,便不过多赘述了。</p>
-<h1 id="git学习"><a href="#git学习" class="headerlink" title="git学习"></a>git学习</h1><p>这是git操作的基本流程</p>
-    
-    <a class="article-more-a" href="/2024/10/11/github%E5%AD%A6%E4%B9%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/10/11/github%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-正则表达式学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/10/11/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0/" target="_blank">正则表达式学习</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/10/11/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-        <time datetime="2024-10-11T05:37:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-10-11</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>正则表达式语法有点复杂，而且不同的工具使用的语法还不尽相同。下面我们介绍一些常用的正则表达式语法规则。</p>
-    
-    <a class="article-more-a" href="/2024/10/11/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">正则表达式</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/10/11/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-github抽风" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/09/13/github%E6%8A%BD%E9%A3%8E/" target="_blank">github抽风</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/09/13/github%E6%8A%BD%E9%A3%8E/" class="archive-article-date">
-        <time datetime="2024-09-13T03:51:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-09-13</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h2 id="端口-22-无法访问"><a href="#端口-22-无法访问" class="headerlink" title="端口 22 无法访问"></a>端口 22 无法访问</h2><p>今天突然发现 github 可以访问，但是克隆不了项目，问题如何下：</p>
-<img src="/2024/09/13/github%E6%8A%BD%E9%A3%8E/github0.png" class="" title="抽风">
-</br>
-    
-    <a class="article-more-a" href="/2024/09/13/github%E6%8A%BD%E9%A3%8E/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bug</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">clashverge</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/09/13/github%E6%8A%BD%E9%A3%8E/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-linux文件子系统" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/09/13/linux%E6%96%87%E4%BB%B6%E5%AD%90%E7%B3%BB%E7%BB%9F/" target="_blank">linux文件子系统</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/09/13/linux%E6%96%87%E4%BB%B6%E5%AD%90%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
-        <time datetime="2024-09-13T01:18:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-09-13</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h1 id="linux下常见的命令"><a href="#linux下常见的命令" class="headerlink" title="linux下常见的命令"></a>linux下常见的命令</h1><h2 id="linux下常见的目录"><a href="#linux下常见的目录" class="headerlink" title="linux下常见的目录"></a>linux下常见的目录</h2><h3 id="概览"><a href="#概览" class="headerlink" title="概览"></a>概览</h3><p>不同于 windows，在一切资源为文件的 linux 系统中，是以树结构来管理文件系统，根节点被称为根目录，用“&#x2F;”表示</p>
-    
-    <a class="article-more-a" href="/2024/09/13/linux%E6%96%87%E4%BB%B6%E5%AD%90%E7%B3%BB%E7%BB%9F/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">文件</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">目录</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/09/13/linux%E6%96%87%E4%BB%B6%E5%AD%90%E7%B3%BB%E7%BB%9F/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
 
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
 
 
 
 
-  
-    <article id="post-C-学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/09/11/C-%E5%AD%A6%E4%B9%A0/" target="_blank">C++学习</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/09/11/C-%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-        <time datetime="2024-09-11T05:36:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-09-11</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>这里主要记录了，我的 C++学习的一些书籍和资源。</p>
-<h2 id="c-学习路线"><a href="#c-学习路线" class="headerlink" title="c++学习路线"></a>c++学习路线</h2><h3 id="数据库学习"><a href="#数据库学习" class="headerlink" title="数据库学习"></a>数据库学习</h3><p>入门：</p>
-<ul>
-<li>书籍：<ul>
-<li><a href="SQL%E5%BF%85%E7%9F%A5%E5%BF%85%E4%BC%9A.pdf">SQL必知必会</a>：主要是SQL语句的书写</li>
-</ul>
-</li>
-</ul>
-
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">book</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/09/11/C-%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-VMware-Centos静态ip配置" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/09/06/VMware-Centos%E9%9D%99%E6%80%81ip%E9%85%8D%E7%BD%AE/" target="_blank">VMware+Centos静态ip配置</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/09/06/VMware-Centos%E9%9D%99%E6%80%81ip%E9%85%8D%E7%BD%AE/" class="archive-article-date">
-        <time datetime="2024-09-06T07:07:34.442Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-09-06</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h2 id=""><a href="#" class="headerlink" title=""></a></h2><p><strong>前提是你的Centos7安装时，网络适配器选择的是Net模式</strong></p>
-<p>第一步：VMware开启后，我们点击头部菜单中的“编辑”，在下拉菜单中点击“虚拟网络编辑器(N)…”，然后点击更改设置，如下图所示</p>
-    
-    <a class="article-more-a" href="/2024/09/06/VMware-Centos%E9%9D%99%E6%80%81ip%E9%85%8D%E7%BD%AE/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">Linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">VMware</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/09/06/VMware-Centos%E9%9D%99%E6%80%81ip%E9%85%8D%E7%BD%AE/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
 
 
-
-  
-    <article id="post-markdown学习" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/09/06/markdown%E5%AD%A6%E4%B9%A0/" target="_blank">markdown学习</a>
-  
-    </h1>
-  
-
-
-  
-  
-<a href="/2024/09/06/markdown%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-        <time datetime="2024-09-06T07:07:34.409Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-09-06</time>
-</a>
-
-  
-  
-    
-
-  
-  </header>
-  
-  <div class="article-entry" itemprop="articleBody">
-    
-    <h2 id="1-标题"><a href="#1-标题" class="headerlink" title="1.标题"></a>1.标题</h2><p>输入：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#（*n）+（空格）+ 标题内容+ Enter</span><br></pre></td></tr></table></figure>
-
-<p>n表示#的个数：</p>
-<p>​				n&#x3D;1,一级标题</p>
-<p>​				n&#x3D;2,二级标题</p>
-<p>​				n&#x3D;3,三级标题</p>
-<p>​				n&#x3D;k,k级标题</p>
-    
-    <a class="article-more-a" href="/2024/09/06/markdown%E5%AD%A6%E4%B9%A0/#more">more >></a>
-    
-    
-
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Markdown</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/09/06/markdown%E5%AD%A6%E4%B9%A0/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-    <article id="post-hexo如何打造个人书库" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-  
-  
-    <h1 itemprop="name">
-	
-	  <a class="article-title" href="/2024/07/22/hexo%E5%A6%82%E4%BD%95%E6%89%93%E9%80%A0%E4%B8%AA%E4%BA%BA%E4%B9%A6%E5%BA%93/" target="_blank">hexo如何打造个人书库</a>
   
-    </h1>
+  <div id="gitment-ctn"></div>
   
-
-
-  
+    <!-- 中文 -->
+    <link rel="stylesheet" href="/lib/gitment.css">
+    <script src="/lib/gitment.js"></script>
   
-<a href="/2024/07/22/hexo%E5%A6%82%E4%BD%95%E6%89%93%E9%80%A0%E4%B8%AA%E4%BA%BA%E4%B9%A6%E5%BA%93/" class="archive-article-date">
-        <time datetime="2024-07-22T09:48:05.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-07-22</time>
-</a>
+  <script>
+    <!-- id: "C++核心编程" -->
+    var gitment = new Gitment({
+      id: "20241016115640",
+      owner: 'lyroom',
+      repo: 'https://github.com/lyroom/bloggitment.git',
+      oauth: {
+        client_id: 'a7a065769b2246428fc8',
+        client_secret: '1c9ed0cad1180fe5f22ba7bb0bddea793dddf620',
+      },
+    })
+    gitment.render('gitment-ctn')
+  </script>
 
-  
-  
-    
 
-  
-  </header>
   
-  <div class="article-entry" itemprop="articleBody">
-    
-    <p>最近偶然发现可以在 hexo 中插入 pdf，就想着把自己看过的书都整理一下，做成电子书库。正好最近在整理书籍，就顺便做了这个事情。</p>
-    
-    <a class="article-more-a" href="/2024/07/22/hexo%E5%A6%82%E4%BD%95%E6%89%93%E9%80%A0%E4%B8%AA%E4%BA%BA%E4%B9%A6%E5%BA%93/#more">more >></a>
-    
-    
 
-    
-
-    
-
-  </div>
-  <div class="article-info article-info-index">
-    
-    
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">pdf</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-    
-
-    
-    <p class="article-more-link">
-      <a class="article-more-a" href="/2024/07/22/hexo%E5%A6%82%E4%BD%95%E6%89%93%E9%80%A0%E4%B8%AA%E4%BA%BA%E4%B9%A6%E5%BA%93/">展开全文 >></a>
-    </p>
-    
-
-    
-    <div class="clearfix"></div>
-  </div>
-  </div>
-</article>
-
-<aside class="wrap-side-operation">
-    <div class="mod-side-operation">
-        
-        <div class="jump-container" id="js-jump-container" style="display:none;">
-            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
-                <i class="icon-font icon-back"></i>
-            </a>
-            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
-                <i class="icon-font icon-plane jump-plane"></i>
-            </div>
-        </div>
-        
-        
-    </div>
-</aside>
-
-
-
-
-  
-  
-    <nav id="page-nav">
-      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &amp;raquo;</a>
-    </nav>
-  
 
 
           </div>
@@ -2256,8 +1559,8 @@
     <script>
 	var yiliaConfig = {
 		mathjax: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
