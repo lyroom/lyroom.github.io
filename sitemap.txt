@@ -1,3 +1,4 @@
+https://lyroom.github.io/2025/09/05/%E6%9E%84%E5%BB%BA%E5%B7%A5%E5%85%B7%E9%93%BE%E6%B7%B1%E5%BA%A6%E8%A7%A3%E6%9E%90%EF%BC%9AGCC%E3%80%81G-%E3%80%81CMake%E3%80%81Make%E3%80%81QMake-%E5%92%8C-CMakeLists-txt/
 https://lyroom.github.io/2025/09/04/ubuntu%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%AE%89%E8%A3%85vmtools%E9%81%87%E5%88%B0%E7%9A%84%E9%97%AE%E9%A2%98/
 https://lyroom.github.io/2025/07/04/markdown%E5%AD%A6%E4%B9%A0/
 https://lyroom.github.io/assets/demo/border1px.html
@@ -63,5 +64,11 @@ https://lyroom.github.io/tags/java/
 https://lyroom.github.io/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/
 https://lyroom.github.io/tags/c/
 https://lyroom.github.io/tags/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/
+https://lyroom.github.io/tags/c-c/
+https://lyroom.github.io/tags/GCC-G/
+https://lyroom.github.io/tags/Make/
+https://lyroom.github.io/tags/QMake/
+https://lyroom.github.io/tags/CMake/
+https://lyroom.github.io/tags/CMakeLists/
 https://lyroom.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/
 https://lyroom.github.io/tags/float/
