@@ -6,19 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://lyroom.github.io">
-  <title>Archives: 2024/9 | Henry&#39;Blog</title>
+  <title>C++朝花夕拾-assert宏用法 | Henry&#39;Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Henry&#39;Blog">
-<meta property="og:url" content="https://lyroom.github.io/archives/2024/09/index.html">
+  <meta name="description" content="刚学了 C++ 的 异常机制（throw &#x2F; try &#x2F; catch），现在问到 assert —— 它和异常看似都是“报错”，但用途、时机、行为完全不同！ 🧩 C++ 中的 assert —— 通俗易懂 + 详细对比异常机制">
+<meta property="og:type" content="article">
+<meta property="og:title" content="C++朝花夕拾-assert宏用法">
+<meta property="og:url" content="https://lyroom.github.io/2025/09/22/C-%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE-assert%E5%AE%8F%E7%94%A8%E6%B3%95/index.html">
 <meta property="og:site_name" content="Henry&#39;Blog">
-<meta property="og:description" content="博客">
+<meta property="og:description" content="刚学了 C++ 的 异常机制（throw &#x2F; try &#x2F; catch），现在问到 assert —— 它和异常看似都是“报错”，但用途、时机、行为完全不同！ 🧩 C++ 中的 assert —— 通俗易懂 + 详细对比异常机制">
 <meta property="og:locale">
+<meta property="article:published_time" content="2025-09-22T13:40:37.000Z">
+<meta property="article:modified_time" content="2025-09-22T13:40:37.000Z">
 <meta property="article:author" content="迪丽惹Bug">
-<meta property="article:tag" content="Henry,博客">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="朝花夕拾">
+<meta property="article:tag" content="assert">
+<meta property="article:tag" content="断言">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Henry&#39;Blog" type="application/atom+xml">
@@ -193,176 +198,449 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-              
-                
-                  
-                    
-                      
-                          
-                            <section class="archives-wrap">
-                              <div class="archive-year-wrap">
-                                <a href="/archives/2024" class="archive-year">
-                                  2024
-                                </a>
-                              </div>
-                              <div class="archives">
-                                
-                                  <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/09/13/github%E6%8A%BD%E9%A3%8E/" class="archive-article-date">
-        <time datetime="2024-09-13T03:51:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-09-13</time>
-</a>
-
-        </div>
-    	 
+            <article id="post-C-朝花夕拾-assert宏用法" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/09/13/github%E6%8A%BD%E9%A3%8E/" target="_blank">github抽风</a>
   
+    <h1 class="article-title" itemprop="name">
+      C++朝花夕拾-assert宏用法
     </h1>
   
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">bug</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">clashverge</a>
-        		</li>
-      		
-		</ul>
-	</div>
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
 
-          
+<a href="/2025/09/22/C-%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE-assert%E5%AE%8F%E7%94%A8%E6%B3%95/" class="archive-article-date">
+        <time datetime="2025-09-22T13:40:37.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-09-22</time>
+</a>
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">1.7k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">7分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <p>刚学了 C++ 的 <strong>异常机制（<code>throw</code> &#x2F; <code>try</code> &#x2F; <code>catch</code>）</strong>，现在问到 <code>assert</code> —— 它和异常看似都是“报错”，但<strong>用途、时机、行为完全不同</strong>！</p>
+<h1 id="🧩-C-中的-assert-——-通俗易懂-详细对比异常机制"><a href="#🧩-C-中的-assert-——-通俗易懂-详细对比异常机制" class="headerlink" title="🧩 C++ 中的 assert —— 通俗易懂 + 详细对比异常机制"></a>🧩 C++ 中的 <code>assert</code> —— 通俗易懂 + 详细对比异常机制</h1><span id="more"></span>
+<blockquote>
+<p>✅ 一句话总结：<br><strong><code>assert</code> 是“调试断言”，用于开发阶段捕捉“绝不应该发生”的程序错误；而 <code>异常</code> 是“运行时错误处理”，用于处理“可能发生”的意外情况。</strong></p>
+</blockquote>
+<hr>
+<h2 id="📌-一、什么是-assert？"><a href="#📌-一、什么是-assert？" class="headerlink" title="📌 一、什么是 assert？"></a>📌 一、什么是 <code>assert</code>？</h2><p><code>assert</code> 是一个<strong>宏（macro）</strong>，定义在头文件 <code>&lt;cassert&gt;</code> 中（C 语言是 <code>&lt;assert.h&gt;</code>）。</p>
+<p>它的作用是：</p>
+<blockquote>
+<p><strong>“如果条件为假（false），程序立即终止，并输出错误信息”</strong></p>
+</blockquote>
+<h3 id="🧪-基本语法："><a href="#🧪-基本语法：" class="headerlink" title="🧪 基本语法："></a>🧪 基本语法：</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cassert&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="built_in">assert</span>(条件表达式);</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="🎯-二、assert-的典型用法（调试神器！）"><a href="#🎯-二、assert-的典型用法（调试神器！）" class="headerlink" title="🎯 二、assert 的典型用法（调试神器！）"></a>🎯 二、<code>assert</code> 的典型用法（调试神器！）</h2><h3 id="✅-1-检查函数参数（前置条件）"><a href="#✅-1-检查函数参数（前置条件）" class="headerlink" title="✅ 1. 检查函数参数（前置条件）"></a>✅ 1. 检查函数参数（前置条件）</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cassert&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">double</span> <span class="title">divide</span><span class="params">(<span class="type">double</span> a, <span class="type">double</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">assert</span>(b != <span class="number">0.0</span>); <span class="comment">// 开发时确保调用者不会传 0</span></span><br><span class="line">    <span class="keyword">return</span> a / b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="built_in">divide</span>(<span class="number">10.0</span>, <span class="number">2.0</span>) &lt;&lt; endl; <span class="comment">// ✅ 正常</span></span><br><span class="line">    cout &lt;&lt; <span class="built_in">divide</span>(<span class="number">10.0</span>, <span class="number">0.0</span>) &lt;&lt; endl; <span class="comment">// ❌ 程序崩溃！输出错误位置</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>💥 如果 <code>b == 0.0</code>，程序会立即终止，并输出类似：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Assertion failed: b != 0.0, file test.cpp, line 6</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="✅-2-检查函数返回值或中间状态（不变式）"><a href="#✅-2-检查函数返回值或中间状态（不变式）" class="headerlink" title="✅ 2. 检查函数返回值或中间状态（不变式）"></a>✅ 2. 检查函数返回值或中间状态（不变式）</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">int</span> <span class="title">factorial</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">assert</span>(n &gt;= <span class="number">0</span>); <span class="comment">// 阶乘不能对负数计算！</span></span><br><span class="line"></span><br><span class="line">    <span class="type">int</span> result = <span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) &#123;</span><br><span class="line">        result *= i;</span><br><span class="line">        <span class="built_in">assert</span>(result &gt; <span class="number">0</span>); <span class="comment">// 防止整数溢出（调试用）</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="✅-3-检查指针不为空（防崩溃）"><a href="#✅-3-检查指针不为空（防崩溃）" class="headerlink" title="✅ 3. 检查指针不为空（防崩溃）"></a>✅ 3. 检查指针不为空（防崩溃）</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="type">void</span> <span class="title">printLength</span><span class="params">(<span class="type">const</span> <span class="type">char</span>* str)</span> </span>&#123;</span><br><span class="line">    <span class="built_in">assert</span>(str != <span class="literal">nullptr</span>); <span class="comment">// 确保调用者没传空指针</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;长度: &quot;</span> &lt;&lt; <span class="built_in">strlen</span>(str) &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="⚙️-三、assert-的底层机制（重点！）"><a href="#⚙️-三、assert-的底层机制（重点！）" class="headerlink" title="⚙️ 三、assert 的底层机制（重点！）"></a>⚙️ 三、<code>assert</code> 的底层机制（重点！）</h2><p><code>assert</code> 是一个<strong>预处理宏</strong>，它的行为取决于是否定义了 <code>NDEBUG</code> 宏：</p>
+<table>
+<thead>
+<tr>
+<th>编译模式</th>
+<th>NDEBUG 是否定义</th>
+<th>assert 行为</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Debug 模式</td>
+<td>❌ 未定义</td>
+<td>✅ 检查条件，失败则终止</td>
+</tr>
+<tr>
+<td>Release 模式</td>
+<td>✅ 已定义</td>
+<td>❌ 被完全移除，无开销</td>
+</tr>
+</tbody></table>
+<h3 id="🔍-举个例子："><a href="#🔍-举个例子：" class="headerlink" title="🔍 举个例子："></a>🔍 举个例子：</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 编译时：</span></span><br><span class="line"><span class="comment">// Debug: g++ -g -o test test.cpp</span></span><br><span class="line"><span class="comment">// Release: g++ -DNDEBUG -O2 -o test test.cpp</span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cassert&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> x = <span class="number">-1</span>;</span><br><span class="line">    <span class="built_in">assert</span>(x &gt;= <span class="number">0</span>); <span class="comment">// Debug 模式下会崩溃，Release 模式下这行代码不存在！</span></span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;x = &quot;</span> &lt;&lt; x &lt;&lt; endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>✅ <strong>设计哲学</strong>：<br><code>assert</code> 只用于<strong>开发调试阶段</strong>，捕捉程序员的逻辑错误；<br>发布版本中完全消失，不影响性能！</p>
+</blockquote>
+<hr>
+<h2 id="🆚-四、assert-vs-异常-——-核心区别表"><a href="#🆚-四、assert-vs-异常-——-核心区别表" class="headerlink" title="🆚 四、assert vs 异常 —— 核心区别表"></a>🆚 四、<code>assert</code> vs <code>异常</code> —— 核心区别表</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th><code>assert</code></th>
+<th><code>异常 (throw/catch)</code></th>
+</tr>
+</thead>
+<tbody><tr>
+<td><strong>用途</strong></td>
+<td>捕捉“程序员错误”（不该发生的）</td>
+<td>处理“运行时错误”（可能发生的）</td>
+</tr>
+<tr>
+<td><strong>是否可恢复</strong></td>
+<td>❌ 程序直接终止</td>
+<td>✅ 可捕获并恢复</td>
+</tr>
+<tr>
+<td><strong>是否影响发布版</strong></td>
+<td>❌ Release 模式下被移除</td>
+<td>✅ 始终存在</td>
+</tr>
+<tr>
+<td><strong>性能开销</strong></td>
+<td>❌ Debug 有开销，Release 无开销</td>
+<td>✅ 无异常时开销极小，抛异常时较大</td>
+</tr>
+<tr>
+<td><strong>适用阶段</strong></td>
+<td>开发调试阶段</td>
+<td>开发 + 发布阶段</td>
+</tr>
+<tr>
+<td><strong>典型场景</strong></td>
+<td>参数检查、不变式、内部逻辑错误</td>
+<td>文件打不开、网络断开、用户输入错误</td>
+</tr>
+<tr>
+<td><strong>能否被忽略</strong></td>
+<td>❌ 不能（直接 crash）</td>
+<td>✅ 能（但不推荐）</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🚫-五、什么时候不该用-assert？"><a href="#🚫-五、什么时候不该用-assert？" class="headerlink" title="🚫 五、什么时候不该用 assert？"></a>🚫 五、什么时候<strong>不该</strong>用 <code>assert</code>？</h2><h3 id="❌-1-检查用户输入"><a href="#❌-1-检查用户输入" class="headerlink" title="❌ 1. 检查用户输入"></a>❌ 1. 检查用户输入</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="type">int</span> age;</span><br><span class="line">cin &gt;&gt; age;</span><br><span class="line"><span class="built_in">assert</span>(age &gt;= <span class="number">0</span>); <span class="comment">// ❌ 错误！用户可能输入负数，这是“可预期错误”</span></span><br></pre></td></tr></table></figure>
+
+<p>✅ 应该用异常或错误码：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (age &lt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="built_in">invalid_argument</span>(<span class="string">&quot;年龄不能为负数！&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="❌-2-检查文件-x2F-网络等外部资源"><a href="#❌-2-检查文件-x2F-网络等外部资源" class="headerlink" title="❌ 2. 检查文件&#x2F;网络等外部资源"></a>❌ 2. 检查文件&#x2F;网络等外部资源</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">FILE* f = <span class="built_in">fopen</span>(<span class="string">&quot;data.txt&quot;</span>, <span class="string">&quot;r&quot;</span>);</span><br><span class="line"><span class="built_in">assert</span>(f != <span class="literal">nullptr</span>); <span class="comment">// ❌ 错误！文件可能不存在，这是“运行时异常”</span></span><br></pre></td></tr></table></figure>
+
+<p>✅ 应该用异常：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (!f) &#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="built_in">runtime_error</span>(<span class="string">&quot;无法打开文件 data.txt&quot;</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h3 id="❌-3-在析构函数中使用（危险！）"><a href="#❌-3-在析构函数中使用（危险！）" class="headerlink" title="❌ 3. 在析构函数中使用（危险！）"></a>❌ 3. 在析构函数中使用（危险！）</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">~<span class="built_in">MyClass</span>() &#123;</span><br><span class="line">    <span class="built_in">assert</span>(ptr != <span class="literal">nullptr</span>); <span class="comment">// ❌ 如果 assert 失败 → 程序终止，可能掩盖更严重问题</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>✅ 应记录日志或静默处理。</p>
+<hr>
+<h2 id="✅-六、什么时候该用-assert？"><a href="#✅-六、什么时候该用-assert？" class="headerlink" title="✅ 六、什么时候该用 assert？"></a>✅ 六、什么时候<strong>该</strong>用 <code>assert</code>？</h2><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>示例</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>函数前置条件</td>
+<td><code>assert(index &gt;= 0 &amp;&amp; index &lt; size);</code></td>
+</tr>
+<tr>
+<td>循环不变式</td>
+<td><code>assert(total &gt;= 0);</code></td>
+</tr>
+<tr>
+<td>指针有效性</td>
+<td><code>assert(p != nullptr);</code></td>
+</tr>
+<tr>
+<td>算法内部状态</td>
+<td><code>assert(sorted == true);</code></td>
+</tr>
+<tr>
+<td>测试驱动开发</td>
+<td><code>assert(result == expected);</code></td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>🎯 <strong>黄金法则</strong>：<br><strong>“如果这个条件为假，说明我的代码有 bug —— 用 <code>assert</code>”</strong><br><strong>“如果这个条件为假，是用户&#x2F;环境的问题 —— 用异常”</strong></p>
+</blockquote>
+<hr>
+<h2 id="🧰-七、自定义断言（高级技巧）"><a href="#🧰-七、自定义断言（高级技巧）" class="headerlink" title="🧰 七、自定义断言（高级技巧）"></a>🧰 七、自定义断言（高级技巧）</h2><p>你可以定义自己的断言宏，添加更多信息：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cstdlib&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MY_ASSERT(expr, msg) \</span></span><br><span class="line"><span class="meta">    do &#123; \</span></span><br><span class="line"><span class="meta">        <span class="keyword">if</span> (!(expr)) &#123; \</span></span><br><span class="line"><span class="meta">            std::cerr &lt;&lt; <span class="string">&quot;Assertion failed: &quot;</span> &lt;&lt; #expr \</span></span><br><span class="line"><span class="meta">                      &lt;&lt; <span class="string">&quot; (&quot;</span> &lt;&lt; msg &lt;&lt; <span class="string">&quot;) &quot;</span> \</span></span><br><span class="line"><span class="meta">                      &lt;&lt; <span class="string">&quot;in &quot;</span> &lt;&lt; __FILE__ &lt;&lt; <span class="string">&quot;:&quot;</span> &lt;&lt; __LINE__ &lt;&lt; std::endl; \</span></span><br><span class="line"><span class="meta">            std::abort(); \</span></span><br><span class="line"><span class="meta">        &#125; \</span></span><br><span class="line"><span class="meta">    &#125; while(0)</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">test</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> x = <span class="number">-1</span>;</span><br><span class="line">    <span class="built_in">MY_ASSERT</span>(x &gt;= <span class="number">0</span>, <span class="string">&quot;x 应该是非负数&quot;</span>); </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>🖨️ 输出：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Assertion failed: x &gt;= 0 (x 应该是非负数) in test.cpp:15</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="📊-八、assert-在大型项目中的使用（Google-x2F-Microsoft-风格）"><a href="#📊-八、assert-在大型项目中的使用（Google-x2F-Microsoft-风格）" class="headerlink" title="📊 八、assert 在大型项目中的使用（Google &#x2F; Microsoft 风格）"></a>📊 八、<code>assert</code> 在大型项目中的使用（Google &#x2F; Microsoft 风格）</h2><ul>
+<li>Google C++ Style Guide：<strong>鼓励使用 <code>assert</code> 检查内部不变式</strong></li>
+<li>Microsoft：在 Windows 内核开发中大量使用 <code>NT_ASSERT</code></li>
+<li>游戏引擎（如 Unreal）：<code>check()</code> 宏（类似 assert）</li>
+</ul>
+<blockquote>
+<p>✅ 原则：<strong>“Fail Fast” —— 尽早崩溃，比隐藏 bug 导致后续灾难要好！</strong></p>
+</blockquote>
+<hr>
+<h2 id="🧠-九、考考你！"><a href="#🧠-九、考考你！" class="headerlink" title="🧠 九、考考你！"></a>🧠 九、考考你！</h2><p>下面代码在 Debug 和 Release 模式下分别输出什么？</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;cassert&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">getValue</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;getValue 被调用了！&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">assert</span>(<span class="built_in">getValue</span>() &gt;= <span class="number">0</span>);</span><br><span class="line">    cout &lt;&lt; <span class="string">&quot;程序继续...&quot;</span> &lt;&lt; endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>✅ <strong>Debug 模式</strong>：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">getValue 被调用了！</span><br><span class="line">Assertion failed: getValue() &gt;= 0, file test.cpp, line 10</span><br><span class="line">💥 程序终止，不会输出“程序继续...”</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>✅ <strong>Release 模式</strong>：</p>
+</blockquote>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">程序继续...</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>🌟 解释：Release 模式下 <code>assert(...)</code> 整行被预处理器删除，<code>getValue()</code> 根本不会被调用！</p>
+</blockquote>
+<hr>
+<h2 id="🧩-十、static-assert-——-编译期断言（C-11）"><a href="#🧩-十、static-assert-——-编译期断言（C-11）" class="headerlink" title="🧩 十、static_assert —— 编译期断言（C++11）"></a>🧩 十、<code>static_assert</code> —— 编译期断言（C++11）</h2><p>除了运行时 <code>assert</code>，C++11 引入了 <strong>编译期断言</strong>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">static_assert</span>(<span class="built_in">sizeof</span>(<span class="type">int</span>) == <span class="number">4</span>, <span class="string">&quot;int 必须是 4 字节！&quot;</span>);</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>在<strong>编译时</strong>检查条件</li>
+<li>失败则编译报错</li>
+<li>常用于模板元编程、类型检查</li>
+</ul>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">process</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="built_in">static_assert</span>(std::is_integral_v&lt;T&gt;, <span class="string">&quot;T 必须是整数类型！&quot;</span>);</span><br><span class="line">    <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<h2 id="📌-总结：assert-使用口诀"><a href="#📌-总结：assert-使用口诀" class="headerlink" title="📌 总结：assert 使用口诀"></a>📌 总结：<code>assert</code> 使用口诀</h2><blockquote>
+<p>✅ <strong>用 assert</strong>：  </p>
+<ul>
+<li>检查“程序员的错”  </li>
+<li>调试阶段捕捉 bug  </li>
+<li>内部逻辑、不变式、前置条件  </li>
+<li>“Fail Fast” 原则</li>
+</ul>
+<p>❌ <strong>不用 assert</strong>：  </p>
+<ul>
+<li>用户输入、外部资源、可恢复错误  </li>
+<li>发布版本中需要处理的错误  </li>
+<li>析构函数中</li>
+</ul>
+<p>🔄 <strong>用异常</strong>：  </p>
+<ul>
+<li>处理“可能发生”的运行时错误  </li>
+<li>需要恢复或通知用户的场景  </li>
+<li>库函数、API 设计</li>
+</ul>
+</blockquote>
+<hr>
+<p>🎯 <strong>终极建议</strong>：</p>
+<blockquote>
+<p>把 <code>assert</code> 当作你的“代码保镖”，在开发阶段帮你揪出隐藏的逻辑错误；<br>把 <code>异常</code> 当作你的“错误处理专家”，在运行时优雅应对各种意外情况。</p>
+</blockquote>
+<p>两者配合，让你的 C++ 程序既健壮又安全！</p>
+
+    
+
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          迪丽惹Bug
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://lyroom.github.io/2025/09/22/C-朝花夕拾-assert宏用法/" title="C++朝花夕拾-assert宏用法" target="_blank">https://lyroom.github.io/2025/09/22/C-朝花夕拾-assert宏用法/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
+          
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
   </div>
-</article>
-                                    
-                  
-                    
-                                  <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/09/13/linux%E6%96%87%E4%BB%B6%E5%AD%90%E7%B3%BB%E7%BB%9F/" class="archive-article-date">
-        <time datetime="2024-09-13T01:18:02.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-09-13</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/09/13/linux%E6%96%87%E4%BB%B6%E5%AD%90%E7%B3%BB%E7%BB%9F/" target="_blank">linux文件子系统</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">目录</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">文件</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-                                    
-                  
-                    
-                                  <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/09/11/C-%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-        <time datetime="2024-09-11T05:36:18.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-09-11</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/09/11/C-%E5%AD%A6%E4%B9%A0/" target="_blank">C++学习</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">book</a>
-        		</li>
-      		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
         		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">朝花夕拾</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">assert</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">断言</a>
+        		</li>
       		
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://lyroom.github.io/2025/09/22/C-%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE-assert%E5%AE%8F%E7%94%A8%E6%B3%95/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-                                    
-                                      
-                              </div>
-                            </section>
-                            
 
-                              
 
-                                  
+<nav id="article-nav">
+  
+  
+    <a href="/2025/09/22/C-%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE-%E5%BC%82%E5%B8%B8%E6%9C%BA%E5%88%B6/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">C++朝花夕拾-异常机制</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
+        </div>
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%A7%A9-C-%E4%B8%AD%E7%9A%84-assert-%E2%80%94%E2%80%94-%E9%80%9A%E4%BF%97%E6%98%93%E6%87%82-%E8%AF%A6%E7%BB%86%E5%AF%B9%E6%AF%94%E5%BC%82%E5%B8%B8%E6%9C%BA%E5%88%B6"><span class="toc-number">1.</span> <span class="toc-text">🧩 C++ 中的 assert —— 通俗易懂 + 详细对比异常机制</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8C-%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF-assert%EF%BC%9F"><span class="toc-number">1.1.</span> <span class="toc-text">📌 一、什么是 assert？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A7%AA-%E5%9F%BA%E6%9C%AC%E8%AF%AD%E6%B3%95%EF%BC%9A"><span class="toc-number">1.1.1.</span> <span class="toc-text">🧪 基本语法：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-%E4%BA%8C%E3%80%81assert-%E7%9A%84%E5%85%B8%E5%9E%8B%E7%94%A8%E6%B3%95%EF%BC%88%E8%B0%83%E8%AF%95%E7%A5%9E%E5%99%A8%EF%BC%81%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">🎯 二、assert 的典型用法（调试神器！）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-1-%E6%A3%80%E6%9F%A5%E5%87%BD%E6%95%B0%E5%8F%82%E6%95%B0%EF%BC%88%E5%89%8D%E7%BD%AE%E6%9D%A1%E4%BB%B6%EF%BC%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">✅ 1. 检查函数参数（前置条件）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-2-%E6%A3%80%E6%9F%A5%E5%87%BD%E6%95%B0%E8%BF%94%E5%9B%9E%E5%80%BC%E6%88%96%E4%B8%AD%E9%97%B4%E7%8A%B6%E6%80%81%EF%BC%88%E4%B8%8D%E5%8F%98%E5%BC%8F%EF%BC%89"><span class="toc-number">1.2.2.</span> <span class="toc-text">✅ 2. 检查函数返回值或中间状态（不变式）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-3-%E6%A3%80%E6%9F%A5%E6%8C%87%E9%92%88%E4%B8%8D%E4%B8%BA%E7%A9%BA%EF%BC%88%E9%98%B2%E5%B4%A9%E6%BA%83%EF%BC%89"><span class="toc-number">1.2.3.</span> <span class="toc-text">✅ 3. 检查指针不为空（防崩溃）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9A%99%EF%B8%8F-%E4%B8%89%E3%80%81assert-%E7%9A%84%E5%BA%95%E5%B1%82%E6%9C%BA%E5%88%B6%EF%BC%88%E9%87%8D%E7%82%B9%EF%BC%81%EF%BC%89"><span class="toc-number">1.3.</span> <span class="toc-text">⚙️ 三、assert 的底层机制（重点！）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%8D-%E4%B8%BE%E4%B8%AA%E4%BE%8B%E5%AD%90%EF%BC%9A"><span class="toc-number">1.3.1.</span> <span class="toc-text">🔍 举个例子：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%86%9A-%E5%9B%9B%E3%80%81assert-vs-%E5%BC%82%E5%B8%B8-%E2%80%94%E2%80%94-%E6%A0%B8%E5%BF%83%E5%8C%BA%E5%88%AB%E8%A1%A8"><span class="toc-number">1.4.</span> <span class="toc-text">🆚 四、assert vs 异常 —— 核心区别表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9A%AB-%E4%BA%94%E3%80%81%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%B8%8D%E8%AF%A5%E7%94%A8-assert%EF%BC%9F"><span class="toc-number">1.5.</span> <span class="toc-text">🚫 五、什么时候不该用 assert？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9D%8C-1-%E6%A3%80%E6%9F%A5%E7%94%A8%E6%88%B7%E8%BE%93%E5%85%A5"><span class="toc-number">1.5.1.</span> <span class="toc-text">❌ 1. 检查用户输入</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9D%8C-2-%E6%A3%80%E6%9F%A5%E6%96%87%E4%BB%B6-x2F-%E7%BD%91%E7%BB%9C%E7%AD%89%E5%A4%96%E9%83%A8%E8%B5%84%E6%BA%90"><span class="toc-number">1.5.2.</span> <span class="toc-text">❌ 2. 检查文件&#x2F;网络等外部资源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9D%8C-3-%E5%9C%A8%E6%9E%90%E6%9E%84%E5%87%BD%E6%95%B0%E4%B8%AD%E4%BD%BF%E7%94%A8%EF%BC%88%E5%8D%B1%E9%99%A9%EF%BC%81%EF%BC%89"><span class="toc-number">1.5.3.</span> <span class="toc-text">❌ 3. 在析构函数中使用（危险！）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9C%85-%E5%85%AD%E3%80%81%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E8%AF%A5%E7%94%A8-assert%EF%BC%9F"><span class="toc-number">1.6.</span> <span class="toc-text">✅ 六、什么时候该用 assert？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%B0-%E4%B8%83%E3%80%81%E8%87%AA%E5%AE%9A%E4%B9%89%E6%96%AD%E8%A8%80%EF%BC%88%E9%AB%98%E7%BA%A7%E6%8A%80%E5%B7%A7%EF%BC%89"><span class="toc-number">1.7.</span> <span class="toc-text">🧰 七、自定义断言（高级技巧）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8A-%E5%85%AB%E3%80%81assert-%E5%9C%A8%E5%A4%A7%E5%9E%8B%E9%A1%B9%E7%9B%AE%E4%B8%AD%E7%9A%84%E4%BD%BF%E7%94%A8%EF%BC%88Google-x2F-Microsoft-%E9%A3%8E%E6%A0%BC%EF%BC%89"><span class="toc-number">1.8.</span> <span class="toc-text">📊 八、assert 在大型项目中的使用（Google &#x2F; Microsoft 风格）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%A0-%E4%B9%9D%E3%80%81%E8%80%83%E8%80%83%E4%BD%A0%EF%BC%81"><span class="toc-number">1.9.</span> <span class="toc-text">🧠 九、考考你！</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%A9-%E5%8D%81%E3%80%81static-assert-%E2%80%94%E2%80%94-%E7%BC%96%E8%AF%91%E6%9C%9F%E6%96%AD%E8%A8%80%EF%BC%88C-11%EF%BC%89"><span class="toc-number">1.10.</span> <span class="toc-text">🧩 十、static_assert —— 编译期断言（C++11）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8C-%E6%80%BB%E7%BB%93%EF%BC%9Aassert-%E4%BD%BF%E7%94%A8%E5%8F%A3%E8%AF%80"><span class="toc-number">1.11.</span> <span class="toc-text">📌 总结：assert 使用口诀</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
+        </div>
+        
+    </div>
+</aside>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
           </div>
         </div>
       </div>
@@ -401,8 +679,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
