@@ -34,8 +34,8 @@
 <meta property="article:published_time" content="2024-10-11T09:05:12.000Z">
 <meta property="article:modified_time" content="2024-10-11T09:05:12.000Z">
 <meta property="article:author" content="迪丽惹Bug">
-<meta property="article:tag" content="git">
 <meta property="article:tag" content="github">
+<meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://lyroom.github.io/2024/10/11/github%E5%AD%A6%E4%B9%A0/GitHub.webp">
   
@@ -380,25 +380,25 @@
 <h4 id="回到分支1创建前"><a href="#回到分支1创建前" class="headerlink" title="回到分支1创建前"></a>回到分支1创建前</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git reset --hard <span class="built_in">hash</span>值 <span class="comment">#这个hash值就是每次commit后的hash值</span></span><br></pre></td></tr></table></figure>
 <blockquote>
 <p>如果你没有做好标记寻找创建分支前的hash值的技巧：git log –graph ,找到分叉前的一个提交的hash值!，如下就是第8次修改的hash值</p>
-<p>| | Author: lyroom <a href="mailto:&#99;&#x6f;&#100;&#x69;&#110;&#103;&#x66;&#x69;&#x73;&#104;&#x40;&#111;&#117;&#116;&#x6c;&#x6f;&#x6f;&#x6b;&#x2e;&#x63;&#x6f;&#109;">&#99;&#x6f;&#100;&#x69;&#110;&#103;&#x66;&#x69;&#x73;&#104;&#x40;&#111;&#117;&#116;&#x6c;&#x6f;&#x6f;&#x6b;&#x2e;&#x63;&#x6f;&#109;</a></p>
+<p>| | Author: lyroom <a href="mailto:&#x63;&#x6f;&#x64;&#x69;&#x6e;&#x67;&#102;&#x69;&#115;&#104;&#x40;&#x6f;&#x75;&#116;&#108;&#x6f;&#x6f;&#x6b;&#x2e;&#x63;&#x6f;&#x6d;">&#x63;&#x6f;&#x64;&#x69;&#x6e;&#x67;&#102;&#x69;&#115;&#104;&#x40;&#x6f;&#x75;&#116;&#108;&#x6f;&#x6f;&#x6b;&#x2e;&#x63;&#x6f;&#x6d;</a></p>
 <p>| | Date:   Mon Oct 14 16:59:48 2024 +0800</p>
 <p>| | </p>
 <p>| |     master的第10次提交</p>
 <p>| | </p>
 <p>* | commit 7362bced26a2648153fac6779e4c5d2067eab42b</p>
-<p>|&#x2F;  Author: lyroom <a href="mailto:&#x63;&#x6f;&#100;&#105;&#x6e;&#x67;&#x66;&#105;&#115;&#104;&#x40;&#x6f;&#x75;&#116;&#108;&#x6f;&#111;&#107;&#x2e;&#x63;&#111;&#109;">&#x63;&#x6f;&#100;&#105;&#x6e;&#x67;&#x66;&#105;&#115;&#104;&#x40;&#x6f;&#x75;&#116;&#108;&#x6f;&#111;&#107;&#x2e;&#x63;&#111;&#109;</a></p>
+<p>|&#x2F;  Author: lyroom <a href="mailto:&#x63;&#111;&#x64;&#105;&#110;&#103;&#102;&#x69;&#115;&#x68;&#x40;&#x6f;&#x75;&#116;&#108;&#x6f;&#111;&#x6b;&#x2e;&#x63;&#111;&#109;">&#x63;&#111;&#x64;&#105;&#110;&#103;&#102;&#x69;&#115;&#x68;&#x40;&#x6f;&#x75;&#116;&#108;&#x6f;&#111;&#x6b;&#x2e;&#x63;&#111;&#109;</a></p>
 <p>|   Date:   Mon Oct 14 16:57:45 2024 +0800</p>
 <p>|   </p>
 <p>|       master下的第九次修改</p>
 <p>| </p>
 <p>* commit 61126b34e2330bad3945c616374df80de7346be1</p>
-<p>| Author: lyroom <a href="mailto:&#99;&#111;&#x64;&#x69;&#x6e;&#103;&#102;&#105;&#115;&#104;&#64;&#111;&#x75;&#x74;&#108;&#x6f;&#x6f;&#x6b;&#x2e;&#99;&#x6f;&#x6d;">&#99;&#111;&#x64;&#x69;&#x6e;&#103;&#102;&#105;&#115;&#104;&#64;&#111;&#x75;&#x74;&#108;&#x6f;&#x6f;&#x6b;&#x2e;&#99;&#x6f;&#x6d;</a></p>
+<p>| Author: lyroom <a href="mailto:&#99;&#x6f;&#100;&#105;&#x6e;&#103;&#102;&#105;&#115;&#x68;&#64;&#x6f;&#117;&#x74;&#108;&#x6f;&#x6f;&#x6b;&#46;&#x63;&#x6f;&#x6d;">&#99;&#x6f;&#100;&#105;&#x6e;&#103;&#102;&#105;&#115;&#x68;&#64;&#x6f;&#117;&#x74;&#108;&#x6f;&#x6f;&#x6b;&#46;&#x63;&#x6f;&#x6d;</a></p>
 <p>| Date:   Mon Oct 14 16:17:33 2024 +0800</p>
 <p>| </p>
 <p>|     第8次修改</p>
 <p>| </p>
 <p>* commit ce7d1ccfd971bed9e79a3ececcdb67df97428692</p>
-<p>| Author: lyroom <a href="mailto:&#99;&#x6f;&#100;&#105;&#110;&#103;&#102;&#x69;&#x73;&#x68;&#x40;&#x6f;&#x75;&#116;&#x6c;&#x6f;&#x6f;&#107;&#x2e;&#99;&#111;&#x6d;">&#99;&#x6f;&#100;&#105;&#110;&#103;&#102;&#x69;&#x73;&#x68;&#x40;&#x6f;&#x75;&#116;&#x6c;&#x6f;&#x6f;&#107;&#x2e;&#99;&#111;&#x6d;</a></p>
+<p>| Author: lyroom <a href="mailto:&#99;&#x6f;&#100;&#105;&#110;&#x67;&#x66;&#x69;&#x73;&#x68;&#64;&#x6f;&#117;&#x74;&#108;&#111;&#111;&#x6b;&#46;&#x63;&#x6f;&#109;">&#99;&#x6f;&#100;&#105;&#110;&#x67;&#x66;&#x69;&#x73;&#x68;&#64;&#x6f;&#117;&#x74;&#108;&#111;&#111;&#x6b;&#46;&#x63;&#x6f;&#109;</a></p>
 <p>| Date:   Mon Oct 14 16:15:19 2024 +0800</p>
 </blockquote>
 <h3 id="创建分支fix-B"><a href="#创建分支fix-B" class="headerlink" title="创建分支fix-B"></a>创建分支fix-B</h3><p>当前状态：<br><img src="/2024/10/11/github学习/分支fix-B.png"  style="zoom:80%;" /><br>fix-B的下一个目标：<br><img src="/2024/10/11/github学习/next.png"  style="zoom:67%;" /></p>
@@ -500,11 +500,11 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
         		</li>
       		
 		</ul>
@@ -787,6 +787,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">朝花夕拾</a>
               </li>
              
@@ -796,22 +800,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">断言</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">浅拷贝</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内存</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -843,23 +831,23 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
+                <a href="javascript:void(0)" class="js-tag color4">浅拷贝</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">编程技术</a>
+                <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
+                <a href="javascript:void(0)" class="js-tag color3">内存</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">bug</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -875,6 +863,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
@@ -883,11 +875,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">bug解决日记</a>
+                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">编程技术</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">pdf</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">bug解决日记</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -903,15 +903,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">shell工具推荐</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -923,15 +923,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">浮生六记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">const</a>
+                <a href="javascript:void(0)" class="js-tag color5">浮生六记</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -940,6 +936,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">const</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -952,6 +952,18 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">指针</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">float</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">unique_ptr</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -976,18 +988,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">CMakeLists</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">float</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">unique_ptr</a>
               </li>
             
             <div class="clearfix"></div>
