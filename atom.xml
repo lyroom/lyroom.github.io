@@ -6,7 +6,7 @@
   <link href="https://lyroom.github.io/atom.xml" rel="self"/>
   
   <link href="https://lyroom.github.io/"/>
-  <updated>2025-10-04T08:19:27.000Z</updated>
+  <updated>2025-10-19T01:16:49.000Z</updated>
   <id>https://lyroom.github.io/</id>
   
   <author>
@@ -15,6 +15,33 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>明道，明身</title>
+    <link href="https://lyroom.github.io/2025/10/19/%E6%98%8E%E9%81%93%EF%BC%8C%E6%98%8E%E8%BA%AB/"/>
+    <id>https://lyroom.github.io/2025/10/19/%E6%98%8E%E9%81%93%EF%BC%8C%E6%98%8E%E8%BA%AB/</id>
+    <published>2025-10-19T01:16:49.000Z</published>
+    <updated>2025-10-19T01:16:49.000Z</updated>
+    
+    <content type="html"><![CDATA[<!-- 空两格 --><p style="text-indent:2em;">​   你是谁->明身->明道->大无畏精神->直面自己，反求诸己，破而后立</p><!-- 右对齐 --><p style="text-align: right;">​    —— 2025/10/19</p><span id="more"></span><center><img src="/2025/10/19/明道，明身/森林.jpg"  title="深林" alt="图片好像走丢了" style="zoom:45%"><!--alt:表示图片未加载时显示的文字--><div class="img-alt is-center" align="center">《千与千寻》</div> <!--这里写的是图注--></center>]]></content>
+    
+    
+    <summary type="html">&lt;!-- 空两格 --&gt;
+&lt;p style=&quot;text-indent:2em;&quot;&gt;​	
+   你是谁-&gt;明身-&gt;明道-&gt;大无畏精神-&gt;直面自己，反求诸己，破而后立
+&lt;/p&gt;
+
+&lt;!-- 右对齐 --&gt;
+&lt;p style=&quot;text-align: right;&quot;&gt;​	
+    —— 2025/10/19
+&lt;/p&gt;</summary>
+    
+    
+    
+    
+    <category term="浮生六记" scheme="https://lyroom.github.io/tags/%E6%B5%AE%E7%94%9F%E5%85%AD%E8%AE%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>常量指针还是指针常量——const到底修饰了谁？</title>
@@ -194,9 +221,9 @@
     
     
     
-    <category term="c++" scheme="https://lyroom.github.io/tags/c/"/>
-    
     <category term="朝花夕拾" scheme="https://lyroom.github.io/tags/%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE/"/>
+    
+    <category term="c++" scheme="https://lyroom.github.io/tags/c/"/>
     
   </entry>
   
@@ -215,9 +242,9 @@
     
     
     
-    <category term="c++" scheme="https://lyroom.github.io/tags/c/"/>
-    
     <category term="朝花夕拾" scheme="https://lyroom.github.io/tags/%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE/"/>
+    
+    <category term="c++" scheme="https://lyroom.github.io/tags/c/"/>
     
   </entry>
   
@@ -236,9 +263,9 @@
     
     
     
-    <category term="c++" scheme="https://lyroom.github.io/tags/c/"/>
-    
     <category term="朝花夕拾" scheme="https://lyroom.github.io/tags/%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE/"/>
+    
+    <category term="c++" scheme="https://lyroom.github.io/tags/c/"/>
     
   </entry>
   
@@ -263,9 +290,9 @@
     
     <category term="智能指针" scheme="https://lyroom.github.io/tags/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/"/>
     
-    <category term="c++" scheme="https://lyroom.github.io/tags/c/"/>
-    
     <category term="朝花夕拾" scheme="https://lyroom.github.io/tags/%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE/"/>
+    
+    <category term="c++" scheme="https://lyroom.github.io/tags/c/"/>
     
     <category term="指针" scheme="https://lyroom.github.io/tags/%E6%8C%87%E9%92%88/"/>
     
@@ -461,29 +488,6 @@
     <category term="面向对象" scheme="https://lyroom.github.io/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/"/>
     
     <category term="编程技术" scheme="https://lyroom.github.io/tags/%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>shell小工具推荐——tldr</title>
-    <link href="https://lyroom.github.io/2024/10/14/shell%E5%B0%8F%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90%E2%80%94%E2%80%94tldr/"/>
-    <id>https://lyroom.github.io/2024/10/14/shell%E5%B0%8F%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90%E2%80%94%E2%80%94tldr/</id>
-    <published>2024-10-14T06:27:55.000Z</published>
-    <updated>2024-10-14T06:27:55.000Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="tldr使用效果"><a href="#tldr使用效果" class="headerlink" title="tldr使用效果"></a>tldr使用效果</h2><p>今天偶然发现了一个宝藏shell工具，推荐linux，macos用户使用：tldr</p><span id="more"></span><p>在使用man手册查询命令的功能时候，往往会出现一大堆参数，如下:</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">$ man <span class="built_in">ls</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">LS(1)                            User Commands                           LS(1)</span><br><span class="line"></span><br><span class="line">NAME</span><br><span class="line">       <span class="built_in">ls</span> - list directory contents</span><br><span class="line"></span><br><span class="line">SYNOPSIS</span><br><span class="line">       <span class="built_in">ls</span> [OPTION]... [FILE]...</span><br><span class="line"></span><br><span class="line">DESCRIPTION</span><br><span class="line">       List  information  about  the FILEs (the current directory by default).</span><br><span class="line">       Sort entries alphabetically <span class="keyword">if</span> none of -cftuvSUX nor --<span class="built_in">sort</span>  is  speci‐</span><br><span class="line">       fied.</span><br><span class="line"></span><br><span class="line">       Mandatory  arguments  to  long  options are mandatory <span class="keyword">for</span> short options</span><br><span class="line">       too.</span><br><span class="line"></span><br><span class="line">       -a, --all</span><br><span class="line">              <span class="keyword">do</span> not ignore entries starting with .</span><br><span class="line"></span><br><span class="line">       -A, --almost-all</span><br><span class="line">              <span class="keyword">do</span> not list implied . and ..</span><br><span class="line"></span><br><span class="line">       --author</span><br><span class="line">              with -l, <span class="built_in">print</span> the author of each file</span><br><span class="line"></span><br><span class="line">       -b, --escape</span><br><span class="line">              <span class="built_in">print</span> C-style escapes <span class="keyword">for</span> nongraphic characters</span><br><span class="line"></span><br><span class="line">       --block-size=SIZE</span><br><span class="line">              with  -l,  scale  sizes  by  SIZE  when  printing  them;   e.g.,</span><br><span class="line">              <span class="string">&#x27;--block-size=M&#x27;</span>; see SIZE format below</span><br><span class="line"></span><br><span class="line">       -B, --ignore-backups</span><br><span class="line">              <span class="keyword">do</span> not list implied entries ending with ~</span><br><span class="line"></span><br><span class="line">       -c     with -lt: <span class="built_in">sort</span> by, and show, ctime (time of last modification of</span><br><span class="line">              file status information); with -l: show ctime and <span class="built_in">sort</span> by  name;</span><br><span class="line">              otherwise: <span class="built_in">sort</span> by ctime, newest first</span><br><span class="line"></span><br><span class="line">       -C     list entries by columns</span><br><span class="line"></span><br><span class="line">       --color[=WHEN]</span><br><span class="line">              colorize  the output; WHEN can be <span class="string">&#x27;always&#x27;</span> (default <span class="keyword">if</span> omitted),</span><br><span class="line">              <span class="string">&#x27;auto&#x27;</span>, or <span class="string">&#x27;never&#x27;</span>; more info below</span><br><span class="line"></span><br><span class="line">       -d, --directory</span><br><span class="line"></span><br></pre></td></tr></table></figure><p>我们有时候需要快速的使用这个命令，而不希望需要查阅这么多的资料，这时候tldr工具就来了，使用效果如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">$ tldr <span class="built_in">ls</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="built_in">ls</span></span><br><span class="line"></span><br><span class="line">  列出目录中的内容。</span><br><span class="line">  更多信息：https://www.gnu.org/software/coreutils/ls.</span><br><span class="line"></span><br><span class="line">  - 列出目录中的文件，每个文件占一行：</span><br><span class="line">    <span class="built_in">ls</span> -1</span><br><span class="line"></span><br><span class="line">  - 列出包含隐藏文件的所有文件：</span><br><span class="line">    <span class="built_in">ls</span> -a</span><br><span class="line"></span><br><span class="line">  - 列出所有文件，如果是目录，则在目录名后面加上「/」：</span><br><span class="line">    <span class="built_in">ls</span> -F</span><br><span class="line"></span><br><span class="line">  - 列出包含隐藏文件的所有文件信息，包括权限，所有者，大小和修改日期：</span><br><span class="line">    <span class="built_in">ls</span> -la</span><br><span class="line"></span><br><span class="line">  - 列出所有文件信息，大小用人类可读的单位表示（KiB, MiB, GiB）：</span><br><span class="line">    <span class="built_in">ls</span> -lh</span><br><span class="line"></span><br><span class="line">  - 列出所有文件信息，按大小降序排序：</span><br><span class="line">    <span class="built_in">ls</span> -lSR</span><br><span class="line"></span><br><span class="line">  - 列出所有文件信息，按修改日期从旧到新排序：</span><br><span class="line">    <span class="built_in">ls</span> -ltr</span><br><span class="line"></span><br><span class="line">  - 只列出目录：</span><br><span class="line">    <span class="built_in">ls</span> -d */</span><br></pre></td></tr></table></figure><p>tldr+命令可以快速且简短的给出使用说明，很节省时间。</p><h2 id="tldr安装"><a href="#tldr安装" class="headerlink" title="tldr安装"></a>tldr安装</h2><p><del>tldr：全称是：too long，don&#96;t read,就是为了简短的显示命令的使用方式，以下是ubuntu下的安装方法。</del></p><p><del><code>sudo apt install tldr</code></del></p><p>以上方法被舍弃的原因是更新太麻烦了，<code>tldr --update</code>经常卡住，所以我们选择一种新的方法安装。</p><h3 id="tealdeer代替node-js安装"><a href="#tealdeer代替node-js安装" class="headerlink" title="tealdeer代替node.js安装"></a>tealdeer代替node.js安装</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 卸载npm安装的tldr</span></span><br><span class="line">npm uninstall -g tldr</span><br><span class="line"><span class="comment"># 安装tealdeer</span></span><br><span class="line">sudo apt update</span><br><span class="line">sudo apt install tealdeer</span><br></pre></td></tr></table></figure><h3 id="手动配置配置文件"><a href="#手动配置配置文件" class="headerlink" title="手动配置配置文件"></a>手动配置配置文件</h3><p>需要我们手动创建配置文件</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 创建新的目录</span></span><br><span class="line"><span class="built_in">mkdir</span> -p ~/.config/tealdeer</span><br><span class="line"><span class="comment"># 创建配置文件</span></span><br><span class="line"><span class="built_in">touch</span> ~/.config/tealdeer/config.toml</span><br></pre></td></tr></table></figure><p>配置文件内容如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># tealdeer 配置文件 (~/.config/tealdeer/config.toml)</span></span><br><span class="line"></span><br><span class="line">[display]</span><br><span class="line"><span class="comment"># 设置显示语言为中文</span></span><br><span class="line">language = <span class="string">&quot;zh&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 启用彩色输出（auto = 根据终端自动判断，always = 总是彩色，never = 禁用彩色）</span></span><br><span class="line">use_color = <span class="string">&quot;auto&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 是否显示命令示例前的标题（比如 &quot;Examples&quot;）</span></span><br><span class="line">show_headers = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 是否显示超链接（有的命令会带参考链接）</span></span><br><span class="line">hyperlinks = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line">[updates]</span><br><span class="line"><span class="comment"># 自动更新启用</span></span><br><span class="line">auto_update = <span class="literal">true</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 自动更新的时间间隔（单位：小时）</span></span><br><span class="line"><span class="comment"># 这里设置为 168 小时 = 7 天</span></span><br><span class="line">auto_update_interval_hours = 168</span><br></pre></td></tr></table></figure><h2 id="汉化"><a href="#汉化" class="headerlink" title="汉化"></a>汉化</h2><p><del>前提是你安装了nodejs和npm,安装tldr客户端</del><br><del><code>sudo npm install -g tldr</code></del><br><del>设置语言环境为中文，修改系统变量</del></p><p>首先查看终端语言环境和系统默认语言环境：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">locale</span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$LANG</span></span><br></pre></td></tr></table></figure><p>如果显示如下</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">locale</span><br><span class="line">LANG=en_US.UTF-8</span><br><span class="line">LANGUAGE=en_US.UTF-8</span><br><span class="line">LC_CTYPE=<span class="string">&quot;en_US.UTF-8&quot;</span></span><br><span class="line">LC_NUMERIC=<span class="string">&quot;en_US.UTF-8&quot;</span></span><br><span class="line">LC_TIME=<span class="string">&quot;en_US.UTF-8&quot;</span></span><br><span class="line">LC_COLLATE=<span class="string">&quot;en_US.UTF-8&quot;</span></span><br><span class="line">LC_MONETARY=<span class="string">&quot;en_US.UTF-8&quot;</span></span><br><span class="line">LC_MESSAGES=<span class="string">&quot;en_US.UTF-8&quot;</span></span><br><span class="line">LC_PAPER=<span class="string">&quot;en_US.UTF-8&quot;</span></span><br><span class="line">LC_NAME=<span class="string">&quot;en_US.UTF-8&quot;</span></span><br><span class="line">LC_ADDRESS=<span class="string">&quot;en_US.UTF-8&quot;</span></span><br><span class="line">LC_TELEPHONE=<span class="string">&quot;en_US.UTF-8&quot;</span></span><br><span class="line">LC_MEASUREMENT=<span class="string">&quot;en_US.UTF-8&quot;</span></span><br><span class="line">LC_IDENTIFICATION=<span class="string">&quot;en_US.UTF-8&quot;</span></span><br><span class="line">LC_ALL=en_US.UTF-8</span><br><span class="line"></span><br><span class="line"><span class="built_in">echo</span> <span class="variable">$LANG</span></span><br><span class="line">en_US.UTF-8</span><br></pre></td></tr></table></figure><p>则表明终端语言环境（LANG）和系统语言环境（LC_ALL）均为英文，我们需要修改终端语言环境如下：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vim ~/.bashrc</span><br></pre></td></tr></table></figure><p>在文件末尾添加：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">export</span> TLDR_LANG=zh</span><br><span class="line"><span class="built_in">export</span> TLDR_LANGUAGE=zh_Hans</span><br><span class="line"><span class="built_in">export</span> LANG=zh_CN.UTF-8</span><br><span class="line"><span class="built_in">export</span> TEALDEER_LANGUAGE=zh</span><br><span class="line"><span class="built_in">export</span> LANGUAGE=zh_CN:zh</span><br><span class="line"><span class="built_in">unset</span> LC_All <span class="comment">#仅仅修改终端让其不生效</span></span><br></pre></td></tr></table></figure><p>最后更新一下是更改生效：</p><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">source</span> ~/.bashrc</span><br></pre></td></tr></table></figure><h2 id="更新tldr缓存"><a href="#更新tldr缓存" class="headerlink" title="更新tldr缓存"></a>更新tldr缓存</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">tldr --update</span><br><span class="line">tldr <span class="built_in">ls</span> <span class="comment"># 查看一下成果吧</span></span><br></pre></td></tr></table></figure><p>接下来就可以愉快使用啦！</p>]]></content>
-    
-    
-    <summary type="html">&lt;h2 id=&quot;tldr使用效果&quot;&gt;&lt;a href=&quot;#tldr使用效果&quot; class=&quot;headerlink&quot; title=&quot;tldr使用效果&quot;&gt;&lt;/a&gt;tldr使用效果&lt;/h2&gt;&lt;p&gt;今天偶然发现了一个宝藏shell工具，推荐linux，macos用户使用：tldr&lt;/p&gt;</summary>
-    
-    
-    
-    
-    <category term="linux" scheme="https://lyroom.github.io/tags/linux/"/>
-    
-    <category term="shell" scheme="https://lyroom.github.io/tags/shell/"/>
-    
-    <category term="shell工具推荐" scheme="https://lyroom.github.io/tags/shell%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/"/>
     
   </entry>
   

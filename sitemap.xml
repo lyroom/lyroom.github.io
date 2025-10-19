@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://lyroom.github.io/2025/10/19/%E6%98%8E%E9%81%93%EF%BC%8C%E6%98%8E%E8%BA%AB/</loc>
+    
+    <lastmod>2025-10-19</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://lyroom.github.io/2025/10/04/%E5%B8%B8%E9%87%8F%E6%8C%87%E9%92%88%E8%BF%98%E6%98%AF%E6%8C%87%E9%92%88%E5%B8%B8%E9%87%8F%E2%80%94%E2%80%94const%E5%88%B0%E5%BA%95%E4%BF%AE%E9%A5%B0%E4%BA%86%E8%B0%81%EF%BC%9F/</loc>
     
     <lastmod>2025-10-04</lastmod>
@@ -146,7 +155,7 @@
   </url>
   
   <url>
-    <loc>https://lyroom.github.io/assets/demo/jiugongge_demo2.html</loc>
+    <loc>https://lyroom.github.io/assets/demo/jiugongge_demo.html</loc>
     
     <lastmod>2025-09-16</lastmod>
     
@@ -155,7 +164,7 @@
   </url>
   
   <url>
-    <loc>https://lyroom.github.io/assets/demo/jiugongge_demo.html</loc>
+    <loc>https://lyroom.github.io/assets/demo/jiugongge_demo2.html</loc>
     
     <lastmod>2025-09-16</lastmod>
     
@@ -400,7 +409,7 @@
 
   <url>
     <loc>https://lyroom.github.io/</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-10-19</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -408,399 +417,399 @@
   
   <url>
     <loc>https://lyroom.github.io/tags/book/</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://lyroom.github.io/tags/C/</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://lyroom.github.io/tags/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://lyroom.github.io/tags/shared-ptr/</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://lyroom.github.io/tags/auto-ptr/</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://lyroom.github.io/tags/weak-ptr/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/c/</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://lyroom.github.io/tags/%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE/</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://lyroom.github.io/tags/assert/</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://lyroom.github.io/tags/%E6%96%AD%E8%A8%80/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/%E6%B5%85%E6%8B%B7%E8%B4%9D/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/%E6%B7%B1%E6%8B%B7%E8%B4%9D/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/Linux/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/VMware/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/%E5%86%85%E5%AD%98/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/%E7%BB%A7%E6%89%BF/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/%E5%A4%9A%E6%80%81/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/%E8%99%9A%E5%87%BD%E6%95%B0/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/%E8%99%9A%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/bug/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/github/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/clashverge/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/git/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/hexo/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/%E5%8D%9A%E5%AE%A2/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/node/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/npm/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/bug%E8%A7%A3%E5%86%B3%E6%97%A5%E8%AE%B0/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/pdf/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/linux/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/%E7%9B%AE%E5%BD%95/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/%E6%96%87%E4%BB%B6/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/Markdown/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/shell/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/shell%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/Ubuntu/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/%E6%B5%AE%E7%94%9F%E5%85%AD%E8%AE%B0/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/vim/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/const/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/top/</loc>
-    <lastmod>2025-10-04</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.2</priority>
-  </url>
-  
-  <url>
-    <loc>https://lyroom.github.io/tags/%E6%8C%87%E9%92%88/</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://lyroom.github.io/tags/c/</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
-    <loc>https://lyroom.github.io/tags/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</loc>
-    <lastmod>2025-10-04</lastmod>
+    <loc>https://lyroom.github.io/tags/%E6%B5%85%E6%8B%B7%E8%B4%9D/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/%E6%B7%B1%E6%8B%B7%E8%B4%9D/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/%E5%86%85%E5%AD%98/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/Linux/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/VMware/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/%E7%BB%A7%E6%89%BF/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/%E5%A4%9A%E6%80%81/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/%E8%99%9A%E5%87%BD%E6%95%B0/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/%E8%99%9A%E5%87%BD%E6%95%B0%E8%A1%A8/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/%E8%99%9A%E5%87%BD%E6%95%B0%E6%8C%87%E9%92%88/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/%E9%9D%A2%E5%90%91%E5%AF%B9%E8%B1%A1/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/git/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/github/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/bug/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/clashverge/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/hexo/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/%E5%8D%9A%E5%AE%A2/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/node/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/npm/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/bug%E8%A7%A3%E5%86%B3%E6%97%A5%E8%AE%B0/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/pdf/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/linux/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/%E7%9B%AE%E5%BD%95/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/%E6%96%87%E4%BB%B6/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/shell/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/shell%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/Markdown/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/top/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/Ubuntu/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/%E6%B5%AE%E7%94%9F%E5%85%AD%E8%AE%B0/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/vim/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/const/</loc>
+    <lastmod>2025-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://lyroom.github.io/tags/java/</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://lyroom.github.io/tags/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/c/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/%E6%96%87%E4%BB%B6%E6%93%8D%E4%BD%9C/</loc>
+    <lastmod>2025-10-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://lyroom.github.io/tags/%E6%8C%87%E9%92%88/</loc>
+    <lastmod>2025-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://lyroom.github.io/tags/c-c/</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://lyroom.github.io/tags/GCC-G/</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://lyroom.github.io/tags/Make/</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://lyroom.github.io/tags/QMake/</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://lyroom.github.io/tags/CMake/</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://lyroom.github.io/tags/CMakeLists/</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://lyroom.github.io/tags/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F/</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://lyroom.github.io/tags/float/</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://lyroom.github.io/tags/unique-ptr/</loc>
-    <lastmod>2025-10-04</lastmod>
+    <lastmod>2025-10-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
