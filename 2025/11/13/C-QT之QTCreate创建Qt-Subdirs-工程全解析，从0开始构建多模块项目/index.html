@@ -6,22 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://lyroom.github.io">
-  <title>markdown学习 | Henry&#39;Blog</title>
+  <title>C++ QT之QTCreate创建Qt Subdirs 工程全解析，从0开始构建多模块项目 | Henry&#39;Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="📘 Markdown 学习笔记程序员必须要会的MarkDown语法，这是写博客的基石，下面我们来简短的学习一下语法。">
+  <meta name="description" content="C++ QT之QTCreate创建Qt Subdirs工程全解析从0开始构建多模块项目接下来简单介绍介绍QT结构化工程结构，也许初学者对subdirs未曾初识，我们就来一起探讨探讨吧！">
 <meta property="og:type" content="article">
-<meta property="og:title" content="markdown学习">
-<meta property="og:url" content="https://lyroom.github.io/2025/09/16/markdown%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:title" content="C++ QT之QTCreate创建Qt Subdirs 工程全解析，从0开始构建多模块项目">
+<meta property="og:url" content="https://lyroom.github.io/2025/11/13/C-QT%E4%B9%8BQTCreate%E5%88%9B%E5%BB%BAQt-Subdirs-%E5%B7%A5%E7%A8%8B%E5%85%A8%E8%A7%A3%E6%9E%90%EF%BC%8C%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E5%A4%9A%E6%A8%A1%E5%9D%97%E9%A1%B9%E7%9B%AE/index.html">
 <meta property="og:site_name" content="Henry&#39;Blog">
-<meta property="og:description" content="📘 Markdown 学习笔记程序员必须要会的MarkDown语法，这是写博客的基石，下面我们来简短的学习一下语法。">
+<meta property="og:description" content="C++ QT之QTCreate创建Qt Subdirs工程全解析从0开始构建多模块项目接下来简单介绍介绍QT结构化工程结构，也许初学者对subdirs未曾初识，我们就来一起探讨探讨吧！">
 <meta property="og:locale">
-<meta property="article:published_time" content="2025-09-16T02:03:49.511Z">
-<meta property="article:modified_time" content="2025-09-16T02:03:49.511Z">
+<meta property="og:image" content="https://lyroom.github.io/2025/11/13/C-QT%E4%B9%8BQTCreate%E5%88%9B%E5%BB%BAQt-Subdirs-%E5%B7%A5%E7%A8%8B%E5%85%A8%E8%A7%A3%E6%9E%90%EF%BC%8C%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E5%A4%9A%E6%A8%A1%E5%9D%97%E9%A1%B9%E7%9B%AE/">
+<meta property="og:image" content="https://lyroom.github.io/2025/11/13/C-QT%E4%B9%8BQTCreate%E5%88%9B%E5%BB%BAQt-Subdirs-%E5%B7%A5%E7%A8%8B%E5%85%A8%E8%A7%A3%E6%9E%90%EF%BC%8C%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E5%A4%9A%E6%A8%A1%E5%9D%97%E9%A1%B9%E7%9B%AE/">
+<meta property="article:published_time" content="2025-11-13T01:45:53.000Z">
+<meta property="article:modified_time" content="2025-11-13T01:45:53.000Z">
 <meta property="article:author" content="迪丽惹Bug">
-<meta property="article:tag" content="Markdown">
+<meta property="article:tag" content="Henry,博客">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://lyroom.github.io/2025/11/13/C-QT%E4%B9%8BQTCreate%E5%88%9B%E5%BB%BAQt-Subdirs-%E5%B7%A5%E7%A8%8B%E5%85%A8%E8%A7%A3%E6%9E%90%EF%BC%8C%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E5%A4%9A%E6%A8%A1%E5%9D%97%E9%A1%B9%E7%9B%AE/">
   
     <link rel="alternative" href="/atom.xml" title="Henry&#39;Blog" type="application/atom+xml">
   
@@ -195,14 +198,14 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-markdown学习" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-C-QT之QTCreate创建Qt-Subdirs-工程全解析，从0开始构建多模块项目" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
   
     <h1 class="article-title" itemprop="name">
-      markdown学习
+      C++ QT之QTCreate创建Qt Subdirs 工程全解析，从0开始构建多模块项目
     </h1>
   
 
@@ -214,8 +217,8 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2025/09/16/markdown%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-        <time datetime="2025-09-16T02:03:49.511Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-09-16</time>
+<a href="/2025/11/13/C-QT%E4%B9%8BQTCreate%E5%88%9B%E5%BB%BAQt-Subdirs-%E5%B7%A5%E7%A8%8B%E5%85%A8%E8%A7%A3%E6%9E%90%EF%BC%8C%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E5%A4%9A%E6%A8%A1%E5%9D%97%E9%A1%B9%E7%9B%AE/" class="archive-article-date">
+        <time datetime="2025-11-13T01:45:53.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2025-11-13</time>
 </a>
 
   
@@ -228,7 +231,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">810字</span>
+      <span class="post-count">1.7k字</span>
     </span>
   </span>
 
@@ -237,7 +240,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">3分</span>
+      <span class="post-count">6分</span>
     </span>
   </span>
 </div>
@@ -248,176 +251,175 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <hr>
-<h1 id="📘-Markdown-学习笔记"><a href="#📘-Markdown-学习笔记" class="headerlink" title="📘 Markdown 学习笔记"></a>📘 Markdown 学习笔记</h1><p>程序员必须要会的MarkDown语法，这是写博客的基石，下面我们来简短的学习一下语法。</p>
+    <h1 id="C-QT之QTCreate创建Qt-Subdirs工程全解析"><a href="#C-QT之QTCreate创建Qt-Subdirs工程全解析" class="headerlink" title="C++ QT之QTCreate创建Qt Subdirs工程全解析"></a>C++ QT之QTCreate创建Qt Subdirs工程全解析</h1><h2 id="从0开始构建多模块项目"><a href="#从0开始构建多模块项目" class="headerlink" title="从0开始构建多模块项目"></a>从0开始构建多模块项目</h2><p>接下来简单介绍介绍QT结构化工程结构，也许初学者对subdirs未曾初识，我们就来一起探讨探讨吧！</p>
 <span id="more"></span>
 
-<h2 id="1️⃣-标题"><a href="#1️⃣-标题" class="headerlink" title="1️⃣ 标题"></a>1️⃣ 标题</h2><p>输入格式：</p>
-<p><code>#（*n）+ 空格 + 标题内容</code></p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> <span class="code">`#`</span> 一级标题  </span><br><span class="line"><span class="bullet">-</span> <span class="code">`##`</span> 二级标题  </span><br><span class="line"><span class="bullet">-</span> <span class="code">`###`</span> 三级标题  </span><br><span class="line"><span class="bullet">-</span> <span class="code">`####`</span> 四级标题  </span><br></pre></td></tr></table></figure>
-
-<p>示例：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 一级标题</span></span><br><span class="line"><span class="section">## 二级标题</span></span><br><span class="line"><span class="section">### 三级标题</span></span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="2️⃣-字体"><a href="#2️⃣-字体" class="headerlink" title="2️⃣ 字体"></a>2️⃣ 字体</h2><ul>
-<li><em>斜体</em>：<code>*文本*</code> → <em>Hello World</em></li>
-<li><strong>加粗</strong>：<code>**文本**</code> → <strong>Hello World</strong></li>
-<li><em><strong>斜体加粗</strong></em>：<code>***文本***</code> → <em><strong>Hello World</strong></em></li>
-<li><del>删除线</del>：<code>~~文本~~</code> → <del>Hello World</del></li>
+<h2 id="一、什么是-Subdirs-工程？"><a href="#一、什么是-Subdirs-工程？" class="headerlink" title="一、什么是 Subdirs 工程？"></a>一、什么是 Subdirs 工程？</h2><p>在 Qt 中，<code>TEMPLATE = subdirs</code> 表示这是一个项目容器（Project Container），它本身不生成可执行文件或库，而是用于管理多个子项目（Sub-Projects），例如：</p>
+<ul>
+<li>主程序（App）</li>
+<li>静态库（StaticLib）</li>
+<li>动态库（SharedLib &#x2F; Plugin）</li>
+<li>测试项目（Test）</li>
+<li>工具项目（Tool）</li>
 </ul>
-<hr>
-<h2 id="3️⃣-引用"><a href="#3️⃣-引用" class="headerlink" title="3️⃣ 引用"></a>3️⃣ 引用</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; 这是一段引用</span></span><br></pre></td></tr></table></figure>
-
-<p>效果：</p>
-<blockquote>
-<p>宇宙很大，生活更大</p>
-</blockquote>
-<hr>
-<h2 id="4️⃣-分割线"><a href="#4️⃣-分割线" class="headerlink" title="4️⃣ 分割线"></a>4️⃣ 分割线</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">--- </span><br><span class="line"><span class="strong">**<span class="emphasis">*</span></span></span><br></pre></td></tr></table></figure>
-
-<p>效果：</p>
-<hr>
-<hr>
-<hr>
-<h2 id="5️⃣-图片"><a href="#5️⃣-图片" class="headerlink" title="5️⃣ 图片"></a>5️⃣ 图片</h2><p>语法：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">{% asset_img "span>" "<span class="string">图片描述</span>" %}</span><br></pre></td></tr></table></figure>
-
-<p>示例：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">![<span class="string">dilireba</span>](<span class="link">markdown学习/dilirebal.jpg</span>)</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h2 id="6️⃣-超链接"><a href="#6️⃣-超链接" class="headerlink" title="6️⃣ 超链接"></a>6️⃣ 超链接</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">点击跳转到 Henry 的博客</span>](<span class="link">https://lyroom.github.io/</span>)</span><br></pre></td></tr></table></figure>
-
-<p>效果：<br> <a href="https://lyroom.github.io/">点击跳转到 Henry 的博客</a></p>
-<hr>
-<h2 id="7️⃣-列表"><a href="#7️⃣-列表" class="headerlink" title="7️⃣ 列表"></a>7️⃣ 列表</h2><p>有序列表：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1.</span> A</span><br><span class="line"><span class="bullet">2.</span> B</span><br><span class="line"><span class="bullet">3.</span> C</span><br></pre></td></tr></table></figure>
-
-<p>无序列表：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> A</span><br><span class="line"><span class="bullet">-</span> B</span><br><span class="line"><span class="bullet">-</span> C</span><br></pre></td></tr></table></figure>
-
-<p>效果：</p>
-<ol>
-<li>A</li>
-<li>B</li>
-<li>C</li>
+<p><strong>换句话说</strong>：Subdirs 是「工程的工程」，它能让 Qt Creator 自动管理多个子工程的构建顺序与依赖关系。</p>
+<h2 id="二、Qt-Creator-创建-Subdirs-工程步骤"><a href="#二、Qt-Creator-创建-Subdirs-工程步骤" class="headerlink" title="二、Qt Creator 创建 Subdirs 工程步骤"></a>二、Qt Creator 创建 Subdirs 工程步骤</h2><ol>
+<li><p><strong>打开 Qt Creator</strong><br>→ 选择 <strong>新建项目</strong> → <strong>Other Project</strong> → <strong>Subdirs Project</strong>（子目录项目）</p>
+</li>
+<li><p><strong>命名工程</strong>（例如：SolutionProject）</p>
+</li>
+<li><p><strong>Qt Creator 自动生成一个 .pro 文件</strong>，内容大概是：</p>
+</li>
 </ol>
-<ul>
-<li>A</li>
-<li>B</li>
-<li>C</li>
-</ul>
-<p>任务列表：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">-</span> [x] 已完成的任务一</span><br><span class="line"><span class="bullet">-</span> [ ] 未完成的任务二</span><br><span class="line"><span class="bullet">-</span> [ ] 未完成的任务三</span><br></pre></td></tr></table></figure>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">TEMPLATE = <span class="keyword">subdirs</span></span><br><span class="line"><span class="keyword">SUBDIRS</span> +=</span><br></pre></td></tr></table></figure>
 
-<p>效果：</p>
-<ul>
-<li><input checked="" disabled="" type="checkbox"> 已完成的任务一</li>
-<li><input disabled="" type="checkbox"> 未完成的任务二</li>
-<li><input disabled="" type="checkbox"> 未完成的任务三</li>
-</ul>
-<hr>
-<h2 id="8️⃣-表格"><a href="#8️⃣-表格" class="headerlink" title="8️⃣ 表格"></a>8️⃣ 表格</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">| 名字 | 性别 | 生日 |</span><br><span class="line">| ---- | ---- | ---- |</span><br><span class="line">| 张三 | 男   | 2000 |</span><br><span class="line">| 李四 | 女   | 2001 |</span><br></pre></td></tr></table></figure>
+<p>这就是我们的「Solution」文件（类似于 VS 的 solution.sln）。</p>
+<h2 id="三、添加子项目"><a href="#三、添加子项目" class="headerlink" title="三、添加子项目"></a>三、添加子项目</h2><p>假设我们要创建这样一个结构：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">SolutionProject/</span><br><span class="line">│</span><br><span class="line">├── SolutionProject.pro     ← 顶层 <span class="keyword">subdirs</span> 工程</span><br><span class="line">│</span><br><span class="line">├── App/                    ← 主程序（可执行文件）</span><br><span class="line">│   └── App.pro</span><br><span class="line">│</span><br><span class="line">├── CoreLib/                ← 静态库</span><br><span class="line">│   └── CoreLib.pro</span><br><span class="line">│</span><br><span class="line">└── Plugins/                ← 插件目录</span><br><span class="line">    ├── PluginA/</span><br><span class="line">    │   └── PluginA.pro</span><br><span class="line">    └── PluginB/</span><br><span class="line">        └── PluginB.pro</span><br></pre></td></tr></table></figure>
 
-<p>效果：</p>
+<h2 id="四、顶层-SolutionProject-pro-内容详解"><a href="#四、顶层-SolutionProject-pro-内容详解" class="headerlink" title="四、顶层 SolutionProject.pro 内容详解"></a>四、顶层 SolutionProject.pro 内容详解</h2><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 顶层工程（Solution）</span></span><br><span class="line">TEMPLATE = <span class="keyword">subdirs</span></span><br><span class="line">CONFIG += ordered   <span class="comment"># 按顺序编译子项目（非常重要）</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">SUBDIRS</span> += \</span><br><span class="line">    CoreLib \</span><br><span class="line">    App \</span><br><span class="line">    Plugins/PluginA \</span><br><span class="line">    Plugins/PluginB</span><br><span class="line"></span><br><span class="line"><span class="comment"># 指定依赖关系（让主程序在库构建后再编译）</span></span><br><span class="line">App.depends = CoreLib PluginA PluginB</span><br></pre></td></tr></table></figure>
+
 <table>
 <thead>
 <tr>
-<th>名字</th>
-<th>性别</th>
-<th>生日</th>
+<th>配置项</th>
+<th>说明</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>张三</td>
-<td>男</td>
-<td>2000</td>
+<td><code>TEMPLATE = subdirs</code></td>
+<td>声明这是一个”多工程管理”项目</td>
 </tr>
 <tr>
-<td>李四</td>
-<td>女</td>
-<td>2001</td>
+<td><code>SUBDIRS += ...</code></td>
+<td>列出所有要包含的子工程路径</td>
+</tr>
+<tr>
+<td><code>CONFIG += ordered</code></td>
+<td>按声明顺序编译</td>
+</tr>
+<tr>
+<td><code>App.depends = CoreLib</code></td>
+<td>让主程序在 CoreLib 编译后构建，避免链接错误</td>
 </tr>
 </tbody></table>
-<hr>
-<h2 id="9️⃣-代码块"><a href="#9️⃣-代码块" class="headerlink" title="9️⃣ 代码块"></a>9️⃣ 代码块</h2><p>语法：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">```语言</span></span><br><span class="line"><span class="code">代码内容</span></span><br><span class="line"><span class="code">```</span></span><br></pre></td></tr></table></figure>
+<h2 id="五、子工程的结构和配置"><a href="#五、子工程的结构和配置" class="headerlink" title="五、子工程的结构和配置"></a>五、子工程的结构和配置</h2><h3 id="1-CoreLib-pro（静态库）"><a href="#1-CoreLib-pro（静态库）" class="headerlink" title="1. CoreLib.pro（静态库）"></a>1. CoreLib.pro（静态库）</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">TEMPLATE = lib</span><br><span class="line">CONFIG += staticlib c++<span class="number">17</span></span><br><span class="line">QT += core</span><br><span class="line"></span><br><span class="line"><span class="keyword">TARGET</span> = CoreLib</span><br><span class="line"></span><br><span class="line">SOURCES += \</span><br><span class="line">    core.cpp</span><br><span class="line"></span><br><span class="line">HEADERS += \</span><br><span class="line">    core.h</span><br></pre></td></tr></table></figure>
 
-<p>示例：</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">Hello</span> &#123;</span><br><span class="line">    <span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title function_">main</span><span class="params">(String []args)</span>&#123;</span><br><span class="line">        System.out.print(<span class="string">&quot;Hello World&quot;</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="2-App-pro（主程序）"><a href="#2-App-pro（主程序）" class="headerlink" title="2. App.pro（主程序）"></a>2. App.pro（主程序）</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">TEMPLATE = app</span><br><span class="line">QT += core gui widgets</span><br><span class="line">CONFIG += c++17</span><br><span class="line"></span><br><span class="line">TARGET = App</span><br><span class="line"></span><br><span class="line">SOURCES += \</span><br><span class="line">    main.cpp \</span><br><span class="line">    mainwindow.cpp</span><br><span class="line"></span><br><span class="line">HEADERS += \</span><br><span class="line">    mainwindow.h</span><br><span class="line"></span><br><span class="line">FORMS += \</span><br><span class="line">    mainwindow.ui</span><br><span class="line"></span><br><span class="line"># 指定依赖库路径（自动指向 CoreLib 的构建目录）</span><br><span class="line">LIBS += -L$$OUT_PWD/../CoreLib -lCoreLib</span><br><span class="line">INCLUDEPATH += $$PWD/../CoreLib</span><br><span class="line">DEPENDPATH += $$PWD/../CoreLib</span><br></pre></td></tr></table></figure>
 
-<hr>
-<h2 id="🔟-文章截断"><a href="#🔟-文章截断" class="headerlink" title="🔟 文章截断"></a>🔟 文章截断</h2><p>有些博客系统支持 <code>&lt;!--more--&gt;</code> 来截断正文。</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;!--more--&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><code>OUT_PWD</code>：Qt 自动变量，表示构建输出目录。</p>
+</blockquote>
+<h3 id="3-PluginA-pro（动态库-x2F-插件）"><a href="#3-PluginA-pro（动态库-x2F-插件）" class="headerlink" title="3. PluginA.pro（动态库 &#x2F; 插件）"></a>3. PluginA.pro（动态库 &#x2F; 插件）</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">TEMPLATE = lib</span><br><span class="line">CONFIG += plugin c++<span class="number">17</span></span><br><span class="line">QT += core gui widgets</span><br><span class="line"></span><br><span class="line"><span class="keyword">TARGET</span> = PluginA</span><br><span class="line"></span><br><span class="line">SOURCES += pluginA.cpp</span><br><span class="line">HEADERS += pluginA.h</span><br><span class="line"></span><br><span class="line">DESTDIR = $$PWD/../build_plugins</span><br></pre></td></tr></table></figure>
 
-<hr>
-<h2 id="1️⃣1️⃣-高亮文本"><a href="#1️⃣1️⃣-高亮文本" class="headerlink" title="1️⃣1️⃣ 高亮文本"></a>1️⃣1️⃣ 高亮文本</h2><p>语法（部分 Markdown 渲染器支持，如 Typora）：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">==高亮文本==</span><br><span class="line"><span class="language-xml"><span class="tag">&lt;<span class="name">mark</span>&gt;</span></span>高亮文本<span class="language-xml"><span class="tag">&lt;/<span class="name">mark</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>插件将被输出到 <code>build_plugins/</code> 目录。</p>
+</blockquote>
+<h2 id="六、构建顺序与自动依赖解析"><a href="#六、构建顺序与自动依赖解析" class="headerlink" title="六、构建顺序与自动依赖解析"></a>六、构建顺序与自动依赖解析</h2><p>当你在 Qt Creator 中点击「运行」或「构建」主工程：</p>
+<ol>
+<li><p>Qt 先解析顶层 .pro</p>
+</li>
+<li><p>发现包含子工程：CoreLib、App、PluginA、PluginB</p>
+</li>
+<li><p>根据 .depends 指令，确定编译顺序：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">CoreLib → PluginA → PluginB → App</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>Qt 会自动进入每个子目录执行 qmake → make</p>
+</li>
+<li><p>编译完成后，主程序自动链接到前面构建的库</p>
+</li>
+</ol>
+<p>因此，当你修改了子工程（如 CoreLib）代码并重新运行主程序时，Qt Creator 会自动先重新构建 CoreLib，再构建 App —— 不需要手动切换工程。</p>
+<h2 id="七、手动控制输出目录（推荐）"><a href="#七、手动控制输出目录（推荐）" class="headerlink" title="七、手动控制输出目录（推荐）"></a>七、手动控制输出目录（推荐）</h2><p>为避免不同子项目的 .obj、.moc 混在一起，可以添加：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">DESTDIR = $$PWD/../bin/$$<span class="keyword">TARGET</span></span><br><span class="line">OBJECTS_DIR = $$PWD/../build/.obj/$$<span class="keyword">TARGET</span></span><br><span class="line">MOC_DIR = $$PWD/../build/.moc/$$<span class="keyword">TARGET</span></span><br><span class="line">RCC_DIR = $$PWD/../build/.rcc/$$<span class="keyword">TARGET</span></span><br></pre></td></tr></table></figure>
 
-<p>效果：<br> &#x3D;&#x3D;这就是效果&#x3D;&#x3D;<br> <mark>这也是效果</mark></p>
-<hr>
-<h2 id="1️⃣2️⃣-行内代码"><a href="#1️⃣2️⃣-行内代码" class="headerlink" title="1️⃣2️⃣ 行内代码"></a>1️⃣2️⃣ 行内代码</h2><p>语法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">这里有一段 `代码` 在行内。</span><br></pre></td></tr></table></figure>
-
-<p>效果：</p>
-<p>这里有一段 <code>代码</code> 在行内。</p>
-<hr>
-<h2 id="1️⃣3️⃣-换行"><a href="#1️⃣3️⃣-换行" class="headerlink" title="1️⃣3️⃣ 换行"></a>1️⃣3️⃣ 换行</h2><p>语法：</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">1.行尾加两个空格[space][space]</span><br><span class="line">2.行尾加&lt;br&gt;</span><br><span class="line">3.行尾加反斜杠\</span><br></pre></td></tr></table></figure>
-
-<h2 id="效果：第一行第二行第三行"><a href="#效果：第一行第二行第三行" class="headerlink" title="效果：第一行第二行第三行\"></a>效果：<br>第一行<br>第二行<br><br>第三行\</h2><h2 id="1️⃣4️⃣-脚注"><a href="#1️⃣4️⃣-脚注" class="headerlink" title="1️⃣4️⃣ 脚注"></a>1️⃣4️⃣ 脚注</h2><p>语法：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">脚注内容</span>](<span class="link">#脚注 &quot;标题&quot;</span>)</span><br></pre></td></tr></table></figure>
-
-<p>效果：</p>
-<p><a href="#%E8%84%9A%E6%B3%A8" title="标题">脚注内容</a></p>
-<hr>
-<h2 id="1️⃣5️⃣-数学公式"><a href="#1️⃣5️⃣-数学公式" class="headerlink" title="1️⃣5️⃣ 数学公式"></a>1️⃣5️⃣ 数学公式</h2><p>语法：</p>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$$</span><br><span class="line">公式内容</span><br><span class="line">$$</span><br></pre></td></tr></table></figure>
-
-<p>效果：</p>
-<p>$$<br>公式内容<br>$$</p>
-<hr>
-<h2 id="1️⃣6️⃣-流程图"><a href="#1️⃣6️⃣-流程图" class="headerlink" title="1️⃣6️⃣ 流程图"></a>1️⃣6️⃣ 流程图</h2><p>语法：</p>
-<h2 id="1️⃣3️⃣-常用符号-amp-Emoji"><a href="#1️⃣3️⃣-常用符号-amp-Emoji" class="headerlink" title="1️⃣3️⃣ 常用符号 &amp; Emoji"></a>1️⃣3️⃣ 常用符号 &amp; Emoji</h2><h3 id="🔹-列表符号"><a href="#🔹-列表符号" class="headerlink" title="🔹 列表符号"></a>🔹 列表符号</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">- 🔹 蓝色小点</span><br><span class="line">- 🔸 橙色小点</span><br><span class="line">- 🔺 红色三角</span><br><span class="line">- 🔻 蓝色三角</span><br><span class="line">- ▶ 箭头</span><br><span class="line">- ➡ 右箭头</span><br><span class="line">- ⬅ 左箭头</span><br><span class="line">- ⬆ 上箭头</span><br><span class="line">- ⬇ 下箭头</span><br></pre></td></tr></table></figure>
-
-<p>效果：</p>
+<p><strong>优点</strong>：</p>
 <ul>
-<li>🔹 蓝色小点</li>
-<li>🔸 橙色小点</li>
-<li>🔺 红色三角</li>
-<li>🔻 蓝色三角</li>
-<li>▶ 箭头</li>
-<li>➡ 右箭头</li>
-<li>⬅ 左箭头</li>
-<li>⬆ 上箭头</li>
-<li>⬇ 下箭头</li>
+<li>所有生成文件集中管理</li>
+<li>清晰区分不同模块的构建产物</li>
+<li>跨平台一致（不污染源码目录）</li>
 </ul>
-<hr>
-<h3 id="✅-状态符号"><a href="#✅-状态符号" class="headerlink" title="✅ 状态符号"></a>✅ 状态符号</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">✅ 成功</span><br><span class="line">❌ 失败</span><br><span class="line">⚠️ 警告</span><br><span class="line">ℹ️ 信息</span><br><span class="line">❓ 疑问</span><br></pre></td></tr></table></figure>
-
-<p>效果：<br> ✅ 成功<br> ❌ 失败<br> ⚠️ 警告<br> ℹ️ 信息<br> ❓ 疑问</p>
-<hr>
-<h3 id="⭐-重点-x2F-装饰"><a href="#⭐-重点-x2F-装饰" class="headerlink" title="⭐ 重点&#x2F;装饰"></a>⭐ 重点&#x2F;装饰</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">⭐ 星标</span><br><span class="line">✨ 闪光</span><br><span class="line">🔥 火焰</span><br><span class="line">💡 想法</span><br><span class="line">📌 图钉</span><br><span class="line">📎 回形针</span><br><span class="line">📝 记事</span><br><span class="line">📂 文件夹</span><br><span class="line">📦 包裹</span><br></pre></td></tr></table></figure>
-
-<p>效果：<br> ⭐ 星标<br> ✨ 闪光<br> 🔥 火焰<br> 💡 想法<br> 📌 图钉<br> 📎 回形针<br> 📝 记事<br> 📂 文件夹<br> 📦 包裹</p>
-<hr>
-<h3 id="⏰-时间-x2F-进度"><a href="#⏰-时间-x2F-进度" class="headerlink" title="⏰ 时间&#x2F;进度"></a>⏰ 时间&#x2F;进度</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">⏰ 时钟</span><br><span class="line">⌛ 沙漏</span><br><span class="line">🔄 循环</span><br><span class="line">🚀 火箭</span><br></pre></td></tr></table></figure>
-
-<p>效果：<br> ⏰ 时钟<br> ⌛ 沙漏<br> 🔄 循环<br> 🚀 火箭</p>
-<hr>
-<h3 id="🔗-常用图标"><a href="#🔗-常用图标" class="headerlink" title="🔗 常用图标"></a>🔗 常用图标</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">💻 电脑</span><br><span class="line">📱 手机</span><br><span class="line">🌐 地球</span><br><span class="line">🔑 钥匙</span><br><span class="line">🔒 锁</span><br><span class="line">🔓 解锁</span><br><span class="line">⚙️ 齿轮</span><br><span class="line">🖥️ 显示器</span><br></pre></td></tr></table></figure>
-
-<p>效果：<br> 💻 电脑<br> 📱 手机<br> 🌐 地球<br> 🔑 钥匙<br> 🔒 锁<br> 🔓 解锁<br> ⚙️ 齿轮<br> 🖥️ 显示器</p>
-<hr>
-<h2 id="📌-小技巧"><a href="#📌-小技巧" class="headerlink" title="📌 小技巧"></a>📌 小技巧</h2><ul>
-<li>在 Markdown 里直接复制粘贴 Emoji 即可使用。</li>
-<li>可与 <code>-</code> 或 <code>*</code> 搭配，做成漂亮的列表。</li>
-<li>在标题里用 Emoji，让层次更清晰：</li>
+<h2 id="八、如何运行-Subdirs-工程？"><a href="#八、如何运行-Subdirs-工程？" class="headerlink" title="八、如何运行 Subdirs 工程？"></a>八、如何运行 Subdirs 工程？</h2><p>在 Qt Creator 左上角的「项目树」中：</p>
+<ul>
+<li>如果你点击 SolutionProject（顶层），Qt Creator 不会直接运行它（因为它没有可执行文件）</li>
+<li>你需要右键点击子项目（如 App） → 设为启动项目（Set as Startup Project）</li>
+<li>然后点击 <strong>运行</strong>，即可自动构建依赖、链接并运行主程序</li>
 </ul>
-<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="section">## 🚀 快速开始</span></span><br><span class="line"><span class="section">## ⚙️ 配置方法</span></span><br><span class="line"><span class="section">## 📝 使用示例</span></span><br><span class="line"><span class="section">## ❓ 常见问题</span></span><br></pre></td></tr></table></figure>
+<p>Qt Creator 会智能分析依赖关系，确保 App 运行前，其依赖的库已最新构建。</p>
+<h2 id="九、平台特定子项目（可选）"><a href="#九、平台特定子项目（可选）" class="headerlink" title="九、平台特定子项目（可选）"></a>九、平台特定子项目（可选）</h2><p>如果某些库只在特定平台编译，可以写条件：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">win32: <span class="keyword">SUBDIRS</span> += plugins/PluginWindows</span><br><span class="line">unix:  <span class="keyword">SUBDIRS</span> += plugins/PluginUnix</span><br></pre></td></tr></table></figure>
 
-<h2 id="参考链接"><a href="#参考链接" class="headerlink" title="参考链接"></a>参考链接</h2><p><a target="_blank" rel="noopener" href="https://www.runoob.com/markdown/md-tutorial.html">菜鸟markdown</a></p>
+<h2 id="十、更复杂的场景"><a href="#十、更复杂的场景" class="headerlink" title="十、更复杂的场景"></a>十、更复杂的场景</h2><p>Qt 支持通过配置变量扩展：</p>
+<figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">core.<span class="keyword">file</span> = CoreLib/CoreLib.pro</span><br><span class="line">core.config = staticlib</span><br><span class="line"></span><br><span class="line">app.<span class="keyword">file</span> = App/App.pro</span><br><span class="line">app.depends = core</span><br><span class="line"></span><br><span class="line"><span class="keyword">SUBDIRS</span> += core app</span><br></pre></td></tr></table></figure>
+
+<p>这种写法功能相同，只是更灵活。</p>
+<h2 id="十一、Subdirs-工程的优势总结"><a href="#十一、Subdirs-工程的优势总结" class="headerlink" title="十一、Subdirs 工程的优势总结"></a>十一、Subdirs 工程的优势总结</h2><table>
+<thead>
+<tr>
+<th>优势</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>✅ 模块化管理</td>
+<td>每个模块独立维护、编译、测试</td>
+</tr>
+<tr>
+<td>✅ 自动依赖编译</td>
+<td>修改库后主工程自动重建</td>
+</tr>
+<tr>
+<td>✅ 支持静态库、动态库、插件混合</td>
+<td></td>
+</tr>
+<tr>
+<td>✅ 跨平台一致</td>
+<td>同一结构可在 Windows &#x2F; Linux &#x2F; macOS 通用</td>
+</tr>
+<tr>
+<td>✅ 清晰的项目结构</td>
+<td>适合中大型 Qt 项目（如主程序 + 插件架构）</td>
+</tr>
+</tbody></table>
+<h2 id="十二、实际使用建议"><a href="#十二、实际使用建议" class="headerlink" title="十二、实际使用建议"></a>十二、实际使用建议</h2><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>建议</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>仅一个小应用</td>
+<td>不需要 subdirs</td>
+</tr>
+<tr>
+<td>有多个库或插件</td>
+<td>✅ 强烈建议使用 subdirs</td>
+</tr>
+<tr>
+<td>团队开发</td>
+<td>使用统一的 SolutionProject.pro 管理所有模块</td>
+</tr>
+<tr>
+<td>插件开发</td>
+<td>可以使用 DESTDIR 输出到统一的 plugins&#x2F; 目录</td>
+</tr>
+</tbody></table>
+<p><code>TEMPLATE = subdirs</code> 是 Qt 项目管理的”上帝视角”：它不会生成文件，但能调度整个工程结构、依赖、构建、清理，是 Qt 中大型工程的标准项目组织方式。</p>
+<p>一旦理解这套机制，你的 Qt 项目将更易扩展、更可维护、更专业。</p>
+<h2 id="十三、我的示例工程"><a href="#十三、我的示例工程" class="headerlink" title="十三、我的示例工程"></a>十三、我的示例工程</h2><h3 id="结构示例"><a href="#结构示例" class="headerlink" title="结构示例"></a>结构示例</h3><img src="/2025/11/13/C-QT之QTCreate创建Qt-Subdirs-工程全解析，从0开始构建多模块项目/"  style="zoom: 80%;" />
+
+<img src="/2025/11/13/C-QT之QTCreate创建Qt-Subdirs-工程全解析，从0开始构建多模块项目/"  style="zoom:67%;" />
+
+<p>就拿CoreLib来举例，他的插件属性是staticlib库，我想在开发的时候不需要生成静态库，而是直接编译源码，这样更方便调试，那我们就需要.pro和.pri 文件，.pri是自定义的，用于源码加载。</p>
+<h3 id="静态库配置（-pro）"><a href="#静态库配置（-pro）" class="headerlink" title="静态库配置（.pro）"></a>静态库配置（.pro）</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">QT -= gui</span><br><span class="line"></span><br><span class="line">TEMPLATE = lib</span><br><span class="line">CONFIG += staticlib</span><br><span class="line">CONFIG += c++<span class="number">17</span></span><br><span class="line"></span><br><span class="line">QT += core</span><br><span class="line"><span class="comment"># You can make your code fail to compile if it uses deprecated APIs.</span></span><br><span class="line"><span class="comment"># In order to do so, uncomment the following line.</span></span><br><span class="line"><span class="comment">#DEFINES += QT_DISABLE_DEPRECATED_BEFORE=0x060000    # disables all the APIs deprecated before Qt 6.0.0</span></span><br><span class="line"><span class="keyword">TARGET</span> = CoreLib</span><br><span class="line"></span><br><span class="line">DESTDIR = $$PWD/../plugins/CoreLib  <span class="comment">#生成的库放在什么位置</span></span><br><span class="line"><span class="comment"># OBJECTS_DIR = $$DESTDIR/.obj/UIlib</span></span><br><span class="line"><span class="comment"># MOC_DIR = $$DESTDIR/.moc/UIlib</span></span><br><span class="line"><span class="comment"># RCC_DIR = $$DESTDIR/.rcc/UIlib</span></span><br><span class="line"></span><br><span class="line">INCLUDEPATH += $$PWD <span class="comment">#因为需要加载头文件</span></span><br><span class="line">INCLUDEPATH += $$PWD/<span class="keyword">include</span>  <span class="comment">#这里放插件依赖的插件</span></span><br><span class="line"></span><br><span class="line">SOURCES += \</span><br><span class="line">    corelib.cpp</span><br><span class="line"></span><br><span class="line">HEADERS += \</span><br><span class="line">    corelib.h</span><br><span class="line"></span><br><span class="line"><span class="comment"># Default rules for deployment.</span></span><br><span class="line">unix &#123;</span><br><span class="line">    <span class="keyword">target</span>.path = $$[QT_INSTALL_PLUGINS]/generic</span><br><span class="line">&#125;</span><br><span class="line">!isEmpty(<span class="keyword">target</span>.path): INSTALLS += <span class="keyword">target</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># 分发文件（直接复制，不编译）</span></span><br><span class="line"><span class="comment"># DISTFILES += \</span></span><br><span class="line"><span class="comment">#     # 文档</span></span><br><span class="line"><span class="comment">#     README.md \</span></span><br><span class="line"><span class="comment">#     LICENSE \</span></span><br><span class="line"><span class="comment">#     docs/ \</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="源码引入配置（-pri）"><a href="#源码引入配置（-pri）" class="headerlink" title="源码引入配置（.pri）"></a>源码引入配置（.pri）</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 源码级别的引入</span></span><br><span class="line"><span class="comment">#指定头文件搜索路径</span></span><br><span class="line">INCLUDEPATH += $$PWD</span><br><span class="line"><span class="comment">#指定依赖文件搜索路径</span></span><br><span class="line">DEPENDPATH += $$PWD</span><br><span class="line"><span class="keyword">message</span>(<span class="string">&quot;$$PWD======CoreLib&quot;</span>)</span><br><span class="line"><span class="comment"># 添加源文件（源码直接参与编译）</span></span><br><span class="line">SOURCES += \</span><br><span class="line">    $$PWD/corelib.cpp</span><br><span class="line"></span><br><span class="line">HEADERS += \</span><br><span class="line">    $$PWD/myclass.h</span><br><span class="line"></span><br><span class="line"><span class="comment"># 依赖的 Qt 模块</span></span><br><span class="line"><span class="comment">#QT += network</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="在App主程序中应用模块"><a href="#在App主程序中应用模块" class="headerlink" title="在App主程序中应用模块"></a>在App主程序中应用模块</h3><figure class="highlight cmake"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">#引入CoreLib  staticlib</span></span><br><span class="line"><span class="comment"># 根据构建类型选择</span></span><br><span class="line">CONFIG(debug, debug|release) &#123;</span><br><span class="line">    <span class="keyword">message</span>(<span class="string">&quot;我是CoreLib debug&quot;</span>);</span><br><span class="line">    <span class="comment"># 调试版本使用 .pri，方便调试</span></span><br><span class="line">    <span class="comment">#include($$PWD/../CoreLib/CoreLib.pri)</span></span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="comment"># 发布版本使用 StaticLib，优化编译速度</span></span><br><span class="line">     <span class="keyword">message</span>(<span class="string">&quot;我是CoreLib release&quot;</span>);</span><br><span class="line">    <span class="comment">#INCLUDEPATH += ../CoreLib</span></span><br><span class="line">    <span class="comment">#win32:LIBS += -L$$PWD/../plugins/CoreLib -lCoreLib</span></span><br><span class="line">    <span class="comment">#unix:LIBS += -L$$PWD/../plugins/CoreLib -lCoreLib</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">include</span>(../CoreLib/CoreLib.pri) <span class="comment">#这里引入源码啦</span></span><br></pre></td></tr></table></figure>
+
+<p>OK，清楚了吗？这里不再举例了。我的工程也使用share、plugin其他插件类型的用法，这里不再说明了。上面就是我的subdirs 项目的介绍，有兴趣可以多关注，一起探讨。</p>
+<p><strong>我的工程开源地址</strong>：<a target="_blank" rel="noopener" href="https://gitee.com/codeceo_net/qt_solution">https://gitee.com/codeceo_net&#x2F;qt_solution</a></p>
 
     
 
@@ -432,7 +434,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://lyroom.github.io/2025/09/16/markdown学习/" title="markdown学习" target="_blank">https://lyroom.github.io/2025/09/16/markdown学习/</a>
+          <a href="https://lyroom.github.io/2025/11/13/C-QT之QTCreate创建Qt-Subdirs-工程全解析，从0开始构建多模块项目/" title="C++ QT之QTCreate创建Qt Subdirs 工程全解析，从0开始构建多模块项目" target="_blank">https://lyroom.github.io/2025/11/13/C-QT之QTCreate创建Qt-Subdirs-工程全解析，从0开始构建多模块项目/</a>
         </li>
         
         <li>
@@ -449,17 +451,6 @@
   <div class="article-info article-info-index">
     
     
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">Markdown</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
     
 
     
@@ -510,7 +501,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://lyroom.github.io/2025/09/16/markdown%E5%AD%A6%E4%B9%A0/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://lyroom.github.io/2025/11/13/C-QT%E4%B9%8BQTCreate%E5%88%9B%E5%BB%BAQt-Subdirs-%E5%B7%A5%E7%A8%8B%E5%85%A8%E8%A7%A3%E6%9E%90%EF%BC%8C%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E5%A4%9A%E6%A8%A1%E5%9D%97%E9%A1%B9%E7%9B%AE/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -525,18 +516,9 @@
 
 <nav id="article-nav">
   
-    <a href="/2025/09/16/top%E5%91%BD%E4%BB%A4%E8%A7%A3%E6%9E%90/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          top命令解析
-        
-      </div>
-    </a>
   
-  
-    <a href="/2025/09/16/linux%E7%A6%BB%E7%BA%BF%E5%AE%89%E8%A3%85%E8%BD%AF%E4%BB%B6%E6%96%B9%E6%B3%95/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">linux离线安装软件方法</div>
+    <a href="/2025/10/19/%E6%98%8E%E9%81%93%EF%BC%8C%E6%98%8E%E8%BA%AB/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">明道，明身</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -563,7 +545,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%93%98-Markdown-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0"><span class="toc-number">1.</span> <span class="toc-text">📘 Markdown 学习笔记</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1%EF%B8%8F%E2%83%A3-%E6%A0%87%E9%A2%98"><span class="toc-number">1.1.</span> <span class="toc-text">1️⃣ 标题</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2%EF%B8%8F%E2%83%A3-%E5%AD%97%E4%BD%93"><span class="toc-number">1.2.</span> <span class="toc-text">2️⃣ 字体</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3%EF%B8%8F%E2%83%A3-%E5%BC%95%E7%94%A8"><span class="toc-number">1.3.</span> <span class="toc-text">3️⃣ 引用</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4%EF%B8%8F%E2%83%A3-%E5%88%86%E5%89%B2%E7%BA%BF"><span class="toc-number">1.4.</span> <span class="toc-text">4️⃣ 分割线</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5%EF%B8%8F%E2%83%A3-%E5%9B%BE%E7%89%87"><span class="toc-number">1.5.</span> <span class="toc-text">5️⃣ 图片</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6%EF%B8%8F%E2%83%A3-%E8%B6%85%E9%93%BE%E6%8E%A5"><span class="toc-number">1.6.</span> <span class="toc-text">6️⃣ 超链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7%EF%B8%8F%E2%83%A3-%E5%88%97%E8%A1%A8"><span class="toc-number">1.7.</span> <span class="toc-text">7️⃣ 列表</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8%EF%B8%8F%E2%83%A3-%E8%A1%A8%E6%A0%BC"><span class="toc-number">1.8.</span> <span class="toc-text">8️⃣ 表格</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9%EF%B8%8F%E2%83%A3-%E4%BB%A3%E7%A0%81%E5%9D%97"><span class="toc-number">1.9.</span> <span class="toc-text">9️⃣ 代码块</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%9F-%E6%96%87%E7%AB%A0%E6%88%AA%E6%96%AD"><span class="toc-number">1.10.</span> <span class="toc-text">🔟 文章截断</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%EF%B8%8F%E2%83%A31%EF%B8%8F%E2%83%A3-%E9%AB%98%E4%BA%AE%E6%96%87%E6%9C%AC"><span class="toc-number">1.11.</span> <span class="toc-text">1️⃣1️⃣ 高亮文本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%EF%B8%8F%E2%83%A32%EF%B8%8F%E2%83%A3-%E8%A1%8C%E5%86%85%E4%BB%A3%E7%A0%81"><span class="toc-number">1.12.</span> <span class="toc-text">1️⃣2️⃣ 行内代码</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%EF%B8%8F%E2%83%A33%EF%B8%8F%E2%83%A3-%E6%8D%A2%E8%A1%8C"><span class="toc-number">1.13.</span> <span class="toc-text">1️⃣3️⃣ 换行</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%88%E6%9E%9C%EF%BC%9A%E7%AC%AC%E4%B8%80%E8%A1%8C%E7%AC%AC%E4%BA%8C%E8%A1%8C%E7%AC%AC%E4%B8%89%E8%A1%8C"><span class="toc-number">1.14.</span> <span class="toc-text">效果：第一行第二行第三行\</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%EF%B8%8F%E2%83%A34%EF%B8%8F%E2%83%A3-%E8%84%9A%E6%B3%A8"><span class="toc-number">1.15.</span> <span class="toc-text">1️⃣4️⃣ 脚注</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%EF%B8%8F%E2%83%A35%EF%B8%8F%E2%83%A3-%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F"><span class="toc-number">1.16.</span> <span class="toc-text">1️⃣5️⃣ 数学公式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%EF%B8%8F%E2%83%A36%EF%B8%8F%E2%83%A3-%E6%B5%81%E7%A8%8B%E5%9B%BE"><span class="toc-number">1.17.</span> <span class="toc-text">1️⃣6️⃣ 流程图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1%EF%B8%8F%E2%83%A33%EF%B8%8F%E2%83%A3-%E5%B8%B8%E7%94%A8%E7%AC%A6%E5%8F%B7-amp-Emoji"><span class="toc-number">1.18.</span> <span class="toc-text">1️⃣3️⃣ 常用符号 &amp; Emoji</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%B9-%E5%88%97%E8%A1%A8%E7%AC%A6%E5%8F%B7"><span class="toc-number">1.18.1.</span> <span class="toc-text">🔹 列表符号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-%E7%8A%B6%E6%80%81%E7%AC%A6%E5%8F%B7"><span class="toc-number">1.18.2.</span> <span class="toc-text">✅ 状态符号</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%AD%90-%E9%87%8D%E7%82%B9-x2F-%E8%A3%85%E9%A5%B0"><span class="toc-number">1.18.3.</span> <span class="toc-text">⭐ 重点&#x2F;装饰</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%8F%B0-%E6%97%B6%E9%97%B4-x2F-%E8%BF%9B%E5%BA%A6"><span class="toc-number">1.18.4.</span> <span class="toc-text">⏰ 时间&#x2F;进度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%97-%E5%B8%B8%E7%94%A8%E5%9B%BE%E6%A0%87"><span class="toc-number">1.18.5.</span> <span class="toc-text">🔗 常用图标</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8C-%E5%B0%8F%E6%8A%80%E5%B7%A7"><span class="toc-number">1.19.</span> <span class="toc-text">📌 小技巧</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E9%93%BE%E6%8E%A5"><span class="toc-number">1.20.</span> <span class="toc-text">参考链接</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-QT%E4%B9%8BQTCreate%E5%88%9B%E5%BB%BAQt-Subdirs%E5%B7%A5%E7%A8%8B%E5%85%A8%E8%A7%A3%E6%9E%90"><span class="toc-number">1.</span> <span class="toc-text">C++ QT之QTCreate创建Qt Subdirs工程全解析</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%8E0%E5%BC%80%E5%A7%8B%E6%9E%84%E5%BB%BA%E5%A4%9A%E6%A8%A1%E5%9D%97%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.1.</span> <span class="toc-text">从0开始构建多模块项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%80%E3%80%81%E4%BB%80%E4%B9%88%E6%98%AF-Subdirs-%E5%B7%A5%E7%A8%8B%EF%BC%9F"><span class="toc-number">1.2.</span> <span class="toc-text">一、什么是 Subdirs 工程？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%8C%E3%80%81Qt-Creator-%E5%88%9B%E5%BB%BA-Subdirs-%E5%B7%A5%E7%A8%8B%E6%AD%A5%E9%AA%A4"><span class="toc-number">1.3.</span> <span class="toc-text">二、Qt Creator 创建 Subdirs 工程步骤</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%B7%BB%E5%8A%A0%E5%AD%90%E9%A1%B9%E7%9B%AE"><span class="toc-number">1.4.</span> <span class="toc-text">三、添加子项目</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E9%A1%B6%E5%B1%82-SolutionProject-pro-%E5%86%85%E5%AE%B9%E8%AF%A6%E8%A7%A3"><span class="toc-number">1.5.</span> <span class="toc-text">四、顶层 SolutionProject.pro 内容详解</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BA%94%E3%80%81%E5%AD%90%E5%B7%A5%E7%A8%8B%E7%9A%84%E7%BB%93%E6%9E%84%E5%92%8C%E9%85%8D%E7%BD%AE"><span class="toc-number">1.6.</span> <span class="toc-text">五、子工程的结构和配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-CoreLib-pro%EF%BC%88%E9%9D%99%E6%80%81%E5%BA%93%EF%BC%89"><span class="toc-number">1.6.1.</span> <span class="toc-text">1. CoreLib.pro（静态库）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-App-pro%EF%BC%88%E4%B8%BB%E7%A8%8B%E5%BA%8F%EF%BC%89"><span class="toc-number">1.6.2.</span> <span class="toc-text">2. App.pro（主程序）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-PluginA-pro%EF%BC%88%E5%8A%A8%E6%80%81%E5%BA%93-x2F-%E6%8F%92%E4%BB%B6%EF%BC%89"><span class="toc-number">1.6.3.</span> <span class="toc-text">3. PluginA.pro（动态库 &#x2F; 插件）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AD%E3%80%81%E6%9E%84%E5%BB%BA%E9%A1%BA%E5%BA%8F%E4%B8%8E%E8%87%AA%E5%8A%A8%E4%BE%9D%E8%B5%96%E8%A7%A3%E6%9E%90"><span class="toc-number">1.7.</span> <span class="toc-text">六、构建顺序与自动依赖解析</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%83%E3%80%81%E6%89%8B%E5%8A%A8%E6%8E%A7%E5%88%B6%E8%BE%93%E5%87%BA%E7%9B%AE%E5%BD%95%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="toc-number">1.8.</span> <span class="toc-text">七、手动控制输出目录（推荐）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%85%AB%E3%80%81%E5%A6%82%E4%BD%95%E8%BF%90%E8%A1%8C-Subdirs-%E5%B7%A5%E7%A8%8B%EF%BC%9F"><span class="toc-number">1.9.</span> <span class="toc-text">八、如何运行 Subdirs 工程？</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9D%E3%80%81%E5%B9%B3%E5%8F%B0%E7%89%B9%E5%AE%9A%E5%AD%90%E9%A1%B9%E7%9B%AE%EF%BC%88%E5%8F%AF%E9%80%89%EF%BC%89"><span class="toc-number">1.10.</span> <span class="toc-text">九、平台特定子项目（可选）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E3%80%81%E6%9B%B4%E5%A4%8D%E6%9D%82%E7%9A%84%E5%9C%BA%E6%99%AF"><span class="toc-number">1.11.</span> <span class="toc-text">十、更复杂的场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%80%E3%80%81Subdirs-%E5%B7%A5%E7%A8%8B%E7%9A%84%E4%BC%98%E5%8A%BF%E6%80%BB%E7%BB%93"><span class="toc-number">1.12.</span> <span class="toc-text">十一、Subdirs 工程的优势总结</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%BA%8C%E3%80%81%E5%AE%9E%E9%99%85%E4%BD%BF%E7%94%A8%E5%BB%BA%E8%AE%AE"><span class="toc-number">1.13.</span> <span class="toc-text">十二、实际使用建议</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8D%81%E4%B8%89%E3%80%81%E6%88%91%E7%9A%84%E7%A4%BA%E4%BE%8B%E5%B7%A5%E7%A8%8B"><span class="toc-number">1.14.</span> <span class="toc-text">十三、我的示例工程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BB%93%E6%9E%84%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.14.1.</span> <span class="toc-text">结构示例</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%9D%99%E6%80%81%E5%BA%93%E9%85%8D%E7%BD%AE%EF%BC%88-pro%EF%BC%89"><span class="toc-number">1.14.2.</span> <span class="toc-text">静态库配置（.pro）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BA%90%E7%A0%81%E5%BC%95%E5%85%A5%E9%85%8D%E7%BD%AE%EF%BC%88-pri%EF%BC%89"><span class="toc-number">1.14.3.</span> <span class="toc-text">源码引入配置（.pri）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9C%A8App%E4%B8%BB%E7%A8%8B%E5%BA%8F%E4%B8%AD%E5%BA%94%E7%94%A8%E6%A8%A1%E5%9D%97"><span class="toc-number">1.14.4.</span> <span class="toc-text">在App主程序中应用模块</span></a></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
