@@ -242,7 +242,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">5.9k字</span>
+      <span class="post-count">5.7k字</span>
     </span>
   </span>
 
@@ -251,7 +251,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">23分</span>
+      <span class="post-count">22分</span>
     </span>
   </span>
 </div>
@@ -282,7 +282,31 @@
 <li><strong>具体产品（Concrete Product）：</strong> 真正被造出来的东西，继承自抽象产品。比如 <code>Motorcycle</code>（摩托车）和 <code>SportsCar</code>（跑车）。</li>
 <li><strong>工厂（Factory）：</strong> 核心类，负责根据传入的指令（如字符串），决定并 <code>new</code> 出哪一个具体产品的实例。</li>
 </ol>
-<h4 id="简单工厂模式-UML-类图"><a href="#简单工厂模式-UML-类图" class="headerlink" title="简单工厂模式 UML 类图"></a>简单工厂模式 UML 类图</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">    class Vehicle &#123;</span><br><span class="line">        &lt;&lt;abstract&gt;&gt;</span><br><span class="line">        +drive()*</span><br><span class="line">    &#125;</span><br><span class="line">    class Motorcycle &#123;</span><br><span class="line">        +drive()</span><br><span class="line">    &#125;</span><br><span class="line">    class SportsCar &#123;</span><br><span class="line">        +drive()</span><br><span class="line">    &#125;</span><br><span class="line">    class PropFactory &#123;</span><br><span class="line">        +createVehicle(type: String)$ unique_ptr~Vehicle~</span><br><span class="line">    &#125;</span><br><span class="line">    class Client &#123;</span><br><span class="line">        +main()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    Vehicle &lt;|-- Motorcycle : 泛化</span><br><span class="line">    Vehicle &lt;|-- SportsCar : 泛化</span><br><span class="line">    PropFactory ..&gt; Motorcycle : 依赖 (创建)</span><br><span class="line">    PropFactory ..&gt; SportsCar : 依赖 (创建)</span><br><span class="line">    PropFactory ..&gt; Vehicle : 依赖 (返回)</span><br><span class="line">    Client ..&gt; PropFactory : 依赖</span><br><span class="line">    Client ..&gt; Vehicle : 依赖</span><br></pre></td></tr></table></figure>
+<h4 id="简单工厂模式-UML-类图"><a href="#简单工厂模式-UML-类图" class="headerlink" title="简单工厂模式 UML 类图"></a>简单工厂模式 UML 类图</h4><pre class="mermaid">classDiagram
+    class Vehicle {
+        <<abstract>>
+        +drive()*
+    }
+    class Motorcycle {
+        +drive()
+    }
+    class SportsCar {
+        +drive()
+    }
+    class PropFactory {
+        +createVehicle(type: String)$ unique_ptr~Vehicle~
+    }
+    class Client {
+        +main()
+    }
+    
+    Vehicle <|-- Motorcycle : 泛化
+    Vehicle <|-- SportsCar : 泛化
+    PropFactory ..> Motorcycle : 依赖 (创建)
+    PropFactory ..> SportsCar : 依赖 (创建)
+    PropFactory ..> Vehicle : 依赖 (返回)
+    Client ..> PropFactory : 依赖
+    Client ..> Vehicle : 依赖</pre>
 
 <blockquote>
 <p><strong>UML 关系解读：</strong></p>
@@ -294,8 +318,7 @@
 </blockquote>
 <hr>
 <h3 id="3-C-代码生动演绎"><a href="#3-C-代码生动演绎" class="headerlink" title="3. C++ 代码生动演绎"></a>3. C++ 代码生动演绎</h3><p>我们将上面的片场故事转化为现代 C++ 代码（使用我们之前学过的 <code>std::unique_ptr</code> 来安全地管理内存）：</p>
-<p>C++</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">#include &lt;memory&gt;</span><br><span class="line"></span><br><span class="line">// ==========================================</span><br><span class="line">// 1. 抽象产品：交通工具接口</span><br><span class="line">// ==========================================</span><br><span class="line">class Vehicle &#123;</span><br><span class="line">public:</span><br><span class="line">    virtual ~Vehicle() = default;</span><br><span class="line">    virtual void drive() = 0; // 纯虚函数：所有车都必须能开</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// ==========================================</span><br><span class="line">// 2. 具体产品 A：重型摩托车</span><br><span class="line">// ==========================================</span><br><span class="line">class Motorcycle : public Vehicle &#123;</span><br><span class="line">public:</span><br><span class="line">    void drive() override &#123;</span><br><span class="line">        std::cout &lt;&lt; &quot;  [道具] 男主角跨上重型摩托车，拧下油门轰鸣而出！&quot; &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// ==========================================</span><br><span class="line">// 2. 具体产品 B：敞篷跑车</span><br><span class="line">// ==========================================</span><br><span class="line">class SportsCar : public Vehicle &#123;</span><br><span class="line">public:</span><br><span class="line">    void drive() override &#123;</span><br><span class="line">        std::cout &lt;&lt; &quot;  [道具] 男主角跳进敞篷跑车，一脚油门完成漂移！&quot; &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// ==========================================</span><br><span class="line">// 3. 核心：简单工厂类 (道具工厂)</span><br><span class="line">// ==========================================</span><br><span class="line">class PropFactory &#123;</span><br><span class="line">public:</span><br><span class="line">    // 通常使用静态方法，直接通过类名调用，不需要实例化工厂本身</span><br><span class="line">    static std::unique_ptr&lt;Vehicle&gt; createVehicle(const std::string&amp; type) &#123;</span><br><span class="line">        if (type == &quot;摩托车&quot;) &#123;</span><br><span class="line">            std::cout &lt;&lt; &quot;-&gt; 道具厂接到订单：正在仓库里准备一辆摩托车...&quot; &lt;&lt; std::endl;</span><br><span class="line">            return std::make_unique&lt;Motorcycle&gt;();</span><br><span class="line">        &#125; </span><br><span class="line">        else if (type == &quot;跑车&quot;) &#123;</span><br><span class="line">            std::cout &lt;&lt; &quot;-&gt; 道具厂接到订单：正在给敞篷跑车加满油...&quot; &lt;&lt; std::endl;</span><br><span class="line">            return std::make_unique&lt;SportsCar&gt;();</span><br><span class="line">        &#125; </span><br><span class="line">        else &#123;</span><br><span class="line">            std::cout &lt;&lt; &quot;-&gt; 道具厂：抱歉导演，没这种道具！&quot; &lt;&lt; std::endl;</span><br><span class="line">            return nullptr;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// ==========================================</span><br><span class="line">// 业务调用端：电影拍摄现场</span><br><span class="line">// ==========================================</span><br><span class="line">int main() &#123;</span><br><span class="line">    std::cout &lt;&lt; &quot;=== 《无间追击》第一场戏，Action! ===&quot; &lt;&lt; std::endl;</span><br><span class="line">    </span><br><span class="line">    // 演员只需要向工厂下达指令，不需要自己 new Motorcycle()</span><br><span class="line">    // 面向接口编程：用父类指针 (unique_ptr&lt;Vehicle&gt;) 接收具体对象</span><br><span class="line">    std::unique_ptr&lt;Vehicle&gt; vehicle1 = PropFactory::createVehicle(&quot;摩托车&quot;);</span><br><span class="line">    if (vehicle1) &#123;</span><br><span class="line">        vehicle1-&gt;drive(); // 多态的威力体现出来了</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; &quot;\n=== 《无间追击》第二场戏，Action! ===&quot; &lt;&lt; std::endl;</span><br><span class="line">    </span><br><span class="line">    std::unique_ptr&lt;Vehicle&gt; vehicle2 = PropFactory::createVehicle(&quot;跑车&quot;);</span><br><span class="line">    if (vehicle2) &#123;</span><br><span class="line">        vehicle2-&gt;drive();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;memory&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 1. 抽象产品：交通工具接口</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Vehicle</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">Vehicle</span>() = <span class="keyword">default</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">drive</span><span class="params">()</span> </span>= <span class="number">0</span>; <span class="comment">// 纯虚函数：所有车都必须能开</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 2. 具体产品 A：重型摩托车</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Motorcycle</span> : <span class="keyword">public</span> Vehicle &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">drive</span><span class="params">()</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [道具] 男主角跨上重型摩托车，拧下油门轰鸣而出！&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 2. 具体产品 B：敞篷跑车</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SportsCar</span> : <span class="keyword">public</span> Vehicle &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">drive</span><span class="params">()</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [道具] 男主角跳进敞篷跑车，一脚油门完成漂移！&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 3. 核心：简单工厂类 (道具工厂)</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PropFactory</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 通常使用静态方法，直接通过类名调用，不需要实例化工厂本身</span></span><br><span class="line">    <span class="function"><span class="type">static</span> std::unique_ptr&lt;Vehicle&gt; <span class="title">createVehicle</span><span class="params">(<span class="type">const</span> std::string&amp; type)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (type == <span class="string">&quot;摩托车&quot;</span>) &#123;</span><br><span class="line">            std::cout &lt;&lt; <span class="string">&quot;-&gt; 道具厂接到订单：正在仓库里准备一辆摩托车...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">            <span class="keyword">return</span> std::<span class="built_in">make_unique</span>&lt;Motorcycle&gt;();</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (type == <span class="string">&quot;跑车&quot;</span>) &#123;</span><br><span class="line">            std::cout &lt;&lt; <span class="string">&quot;-&gt; 道具厂接到订单：正在给敞篷跑车加满油...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">            <span class="keyword">return</span> std::<span class="built_in">make_unique</span>&lt;SportsCar&gt;();</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            std::cout &lt;&lt; <span class="string">&quot;-&gt; 道具厂：抱歉导演，没这种道具！&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">            <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 业务调用端：电影拍摄现场</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;=== 《无间追击》第一场戏，Action! ===&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 演员只需要向工厂下达指令，不需要自己 new Motorcycle()</span></span><br><span class="line">    <span class="comment">// 面向接口编程：用父类指针 (unique_ptr&lt;Vehicle&gt;) 接收具体对象</span></span><br><span class="line">    std::unique_ptr&lt;Vehicle&gt; vehicle1 = PropFactory::<span class="built_in">createVehicle</span>(<span class="string">&quot;摩托车&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (vehicle1) &#123;</span><br><span class="line">        vehicle1-&gt;<span class="built_in">drive</span>(); <span class="comment">// 多态的威力体现出来了</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;\n=== 《无间追击》第二场戏，Action! ===&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    </span><br><span class="line">    std::unique_ptr&lt;Vehicle&gt; vehicle2 = PropFactory::<span class="built_in">createVehicle</span>(<span class="string">&quot;跑车&quot;</span>);</span><br><span class="line">    <span class="keyword">if</span> (vehicle2) &#123;</span><br><span class="line">        vehicle2-&gt;<span class="built_in">drive</span>();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <hr>
 <h3 id="4-简单工厂的优缺点"><a href="#4-简单工厂的优缺点" class="headerlink" title="4. 简单工厂的优缺点"></a>4. 简单工厂的优缺点</h3><p>没有任何设计模式是完美的，了解它的利弊才能用在刀刃上。</p>
@@ -334,8 +357,7 @@
 <p>这其中，第 3 步**“更新材料密度”**是核心算法所在。目前学术界和工业界有多种优秀的算法，比如最经典的 <strong>OC 法（优化准则法，Optimality Criteria）</strong>，以及更高级的 <strong>MMA 法（移动渐近线法，Method of Moving Asymptotes）</strong>。</p>
 <ul>
 <li><p><strong>没有策略模式的情况：</strong> 你的 <code>TopologyOptimizer</code> 类里面会写满又臭又长的 <code>if-else</code>。</p>
-<p>C++</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">if (method == &quot;OC&quot;) &#123;</span><br><span class="line">    // 执行 500 行 OC 算法的代码</span><br><span class="line">&#125; else if (method == &quot;MMA&quot;) &#123;</span><br><span class="line">    // 执行 1000 行 MMA 算法的代码</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (method == <span class="string">&quot;OC&quot;</span>) &#123;</span><br><span class="line">    <span class="comment">// 执行 500 行 OC 算法的代码</span></span><br><span class="line">&#125; <span class="keyword">else</span> <span class="keyword">if</span> (method == <span class="string">&quot;MMA&quot;</span>) &#123;</span><br><span class="line">    <span class="comment">// 执行 1000 行 MMA 算法的代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>如果以后还要加 GCMMA、BESO 法，这个类会膨胀到无法维护，且极容易改出 BUG。</p>
 </li>
 <li><p><strong>使用策略模式：</strong> 我们把“密度更新”定义为一个<strong>接口（契约）</strong>。OC 法和 MMA 法分别是具体的**“策略”**。优化器（Optimizer）手里只握着策略接口的遥控器。用户想用什么算法，就在运行前把哪个“策略芯片”插进优化器里。优化器运行时，盲按遥控器即可。</p>
@@ -348,12 +370,39 @@
 <li><strong>具体策略（Concrete Strategy）：</strong> 实现了抽象策略接口的具体算法（如 OC 法、MMA 法）。它们与接口之间是<strong>实现&#x2F;泛化关系</strong>。</li>
 <li><strong>上下文（Context）：</strong> 用来操作策略的类（如 <code>TopologyOptimizer</code>）。它内部维护一个指向抽象策略的指针。它与策略接口之间是<strong>聚合或组合关系</strong>（取决于生命周期管理）。</li>
 </ol>
-<h4 id="策略模式-UML-类图"><a href="#策略模式-UML-类图" class="headerlink" title="策略模式 UML 类图"></a>策略模式 UML 类图</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">    class IUpdateStrategy &#123;</span><br><span class="line">        &lt;&lt;interface&gt;&gt;</span><br><span class="line">        +executeUpdate(densities: vector~double~)*</span><br><span class="line">    &#125;</span><br><span class="line">    class OcStrategy &#123;</span><br><span class="line">        +executeUpdate(densities: vector~double~)</span><br><span class="line">    &#125;</span><br><span class="line">    class MmaStrategy &#123;</span><br><span class="line">        +executeUpdate(densities: vector~double~)</span><br><span class="line">    &#125;</span><br><span class="line">    class TopologyOptimizer &#123;</span><br><span class="line">        -taskName: String</span><br><span class="line">        -currentDensities: vector~double~</span><br><span class="line">        -updateStrategy: unique_ptr~IUpdateStrategy~</span><br><span class="line">        +TopologyOptimizer(name: String)</span><br><span class="line">        +setStrategy(newStrategy: unique_ptr~IUpdateStrategy~)</span><br><span class="line">        +runIteration()</span><br><span class="line">    &#125;</span><br><span class="line">    class Client &#123;</span><br><span class="line">        +main()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    IUpdateStrategy &lt;|.. OcStrategy : 实现</span><br><span class="line">    IUpdateStrategy &lt;|.. MmaStrategy : 实现</span><br><span class="line">    TopologyOptimizer *-- IUpdateStrategy : 组合</span><br><span class="line">    Client ..&gt; TopologyOptimizer : 依赖</span><br><span class="line">    Client ..&gt; OcStrategy : 依赖 (创建)</span><br><span class="line">    Client ..&gt; MmaStrategy : 依赖 (创建)</span><br></pre></td></tr></table></figure>
+<h4 id="策略模式-UML-类图"><a href="#策略模式-UML-类图" class="headerlink" title="策略模式 UML 类图"></a>策略模式 UML 类图</h4><pre class="mermaid">classDiagram
+    class IUpdateStrategy {
+        <<interface>>
+        +executeUpdate(densities: vector~double~)*
+    }
+    class OcStrategy {
+        +executeUpdate(densities: vector~double~)
+    }
+    class MmaStrategy {
+        +executeUpdate(densities: vector~double~)
+    }
+    class TopologyOptimizer {
+        -taskName: String
+        -currentDensities: vector~double~
+        -updateStrategy: unique_ptr~IUpdateStrategy~
+        +TopologyOptimizer(name: String)
+        +setStrategy(newStrategy: unique_ptr~IUpdateStrategy~)
+        +runIteration()
+    }
+    class Client {
+        +main()
+    }
+    
+    IUpdateStrategy <|.. OcStrategy : 实现
+    IUpdateStrategy <|.. MmaStrategy : 实现
+    TopologyOptimizer *-- IUpdateStrategy : 组合
+    Client ..> TopologyOptimizer : 依赖
+    Client ..> OcStrategy : 依赖 (创建)
+    Client ..> MmaStrategy : 依赖 (创建)</pre>
 
 <hr>
-<h3 id="3-C-代码生动演绎-1"><a href="#3-C-代码生动演绎-1" class="headerlink" title="3. C++ 代码生动演绎"></a>3. C++ 代码生动演绎</h3><p>我们用现代 C++ 代码把这个拓扑优化场景写出来，体会一下在运行时“热插拔”算法的快感：</p>
-<p>C++</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;memory&gt;</span><br><span class="line"></span><br><span class="line">// ==========================================</span><br><span class="line">// 1. 抽象策略：密度更新算法接口</span><br><span class="line">// ==========================================</span><br><span class="line">class IUpdateStrategy &#123;</span><br><span class="line">public:</span><br><span class="line">    virtual ~IUpdateStrategy() = default;</span><br><span class="line">    </span><br><span class="line">    // 核心算法接口：传入灵敏度等参数，更新最终的密度数组</span><br><span class="line">    virtual void executeUpdate(std::vector&lt;double&gt;&amp; densities) = 0;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// ==========================================</span><br><span class="line">// 2. 具体策略 A：OC (优化准则法)</span><br><span class="line">// ==========================================</span><br><span class="line">class OcStrategy : public IUpdateStrategy &#123;</span><br><span class="line">public:</span><br><span class="line">    void executeUpdate(std::vector&lt;double&gt;&amp; densities) override &#123;</span><br><span class="line">        std::cout &lt;&lt; &quot;  [策略执行] 使用 OC (优化准则法) 更新材料密度...&quot; &lt;&lt; std::endl;</span><br><span class="line">        std::cout &lt;&lt; &quot;             -&gt; 计算二分法寻找拉格朗日乘子...&quot; &lt;&lt; std::endl;</span><br><span class="line">        // 模拟密度更新过程</span><br><span class="line">        for(auto&amp; d : densities) &#123; d = (d &gt; 0.5) ? 1.0 : 0.0; &#125; </span><br><span class="line">        </span><br><span class="line">        std::cout &lt;&lt; &quot;  [渲染提示] OC 法更新完毕。(视图系统已同步：高 density 区域渲染为红色，低 density 区域渲染为蓝色)&quot; &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// ==========================================</span><br><span class="line">// 2. 具体策略 B：MMA (移动渐近线法)</span><br><span class="line">// ==========================================</span><br><span class="line">class MmaStrategy : public IUpdateStrategy &#123;</span><br><span class="line">public:</span><br><span class="line">    void executeUpdate(std::vector&lt;double&gt;&amp; densities) override &#123;</span><br><span class="line">        std::cout &lt;&lt; &quot;  [策略执行] 使用 MMA (移动渐近线法) 更新材料密度...&quot; &lt;&lt; std::endl;</span><br><span class="line">        std::cout &lt;&lt; &quot;             -&gt; 构造凸近似子问题并求解...&quot; &lt;&lt; std::endl;</span><br><span class="line">        // 模拟密度更新过程</span><br><span class="line">        for(auto&amp; d : densities) &#123; d += 0.1; &#125; // 假设的数学平滑过程</span><br><span class="line">        </span><br><span class="line">        std::cout &lt;&lt; &quot;  [渲染提示] MMA 法更新完毕。(视图系统已同步：高 density 区域渲染为红色，低 density 区域渲染为蓝色)&quot; &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// ==========================================</span><br><span class="line">// 3. 上下文：拓扑优化器主体 (Context)</span><br><span class="line">// ==========================================</span><br><span class="line">class TopologyOptimizer &#123;</span><br><span class="line">private:</span><br><span class="line">    std::string taskName;</span><br><span class="line">    std::vector&lt;double&gt; currentDensities;</span><br><span class="line">    </span><br><span class="line">    // 【关键点】：优化器拥有一个“策略接口”的指针，而不是具体的算法对象</span><br><span class="line">    // 这里使用 unique_ptr 表达组合关系（也可以用裸指针或 shared_ptr 表达聚合，看具体业务）</span><br><span class="line">    std::unique_ptr&lt;IUpdateStrategy&gt; updateStrategy;</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line">    TopologyOptimizer(std::string name) : taskName(name), currentDensities(&#123;0.5, 0.5, 0.5&#125;) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    // 【热插拔接口】：允许在运行时动态更换算法</span><br><span class="line">    void setStrategy(std::unique_ptr&lt;IUpdateStrategy&gt; newStrategy) &#123;</span><br><span class="line">        updateStrategy = std::move(newStrategy);</span><br><span class="line">        std::cout &lt;&lt; &quot;&gt;&gt;&gt; 优化器 [&quot; &lt;&lt; taskName &lt;&lt; &quot;] 成功切换了底层更新策略。 &lt;&lt;&lt;&quot; &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    // 执行主干流程</span><br><span class="line">    void runIteration() &#123;</span><br><span class="line">        std::cout &lt;&lt; &quot;\n--- 开始执行优化迭代 ---&quot; &lt;&lt; std::endl;</span><br><span class="line">        std::cout &lt;&lt; &quot;1. 进行有限元分析...&quot; &lt;&lt; std::endl;</span><br><span class="line">        std::cout &lt;&lt; &quot;2. 计算敏度...&quot; &lt;&lt; std::endl;</span><br><span class="line">        </span><br><span class="line">        // 3. 盲按遥控器：不管里面插的是什么芯片，直接调用统一接口！</span><br><span class="line">        if (updateStrategy) &#123;</span><br><span class="line">            updateStrategy-&gt;executeUpdate(currentDensities);</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            std::cout &lt;&lt; &quot;  [错误] 尚未为优化器设置更新策略！&quot; &lt;&lt; std::endl;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        std::cout &lt;&lt; &quot;4. 检查收敛性...&quot; &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// ==========================================</span><br><span class="line">// 业务调用端：控制台</span><br><span class="line">// ==========================================</span><br><span class="line">int main() &#123;</span><br><span class="line">    TopologyOptimizer myOptimizer(&quot;悬臂梁轻量化_V1&quot;);</span><br><span class="line"></span><br><span class="line">    // 场景 1：用户一开始选择了经典、快速的 OC 法</span><br><span class="line">    myOptimizer.setStrategy(std::make_unique&lt;OcStrategy&gt;());</span><br><span class="line">    myOptimizer.runIteration();</span><br><span class="line"></span><br><span class="line">    // 场景 2：用户发现 OC 法有数值震荡，想换成更稳定的 MMA 法</span><br><span class="line">    // 根本不需要修改 TopologyOptimizer 的代码，直接换策略即可！</span><br><span class="line">    myOptimizer.setStrategy(std::make_unique&lt;MmaStrategy&gt;());</span><br><span class="line">    myOptimizer.runIteration();</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h3 id="3-C-代码生动演绎-1"><a href="#3-C-代码生动演绎-1" class="headerlink" title="3. C++ 代码生动演绎"></a>3. C++ 代码生动演绎</h3><p>我们用现代 C++ 代码把这个拓扑优化场景写出来，体会一下在运行时”热插拔”算法的快感：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;memory&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 1. 抽象策略：密度更新算法接口</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IUpdateStrategy</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">IUpdateStrategy</span>() = <span class="keyword">default</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 核心算法接口：传入灵敏度等参数，更新最终的密度数组</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">executeUpdate</span><span class="params">(std::vector&lt;<span class="type">double</span>&gt;&amp; densities)</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 2. 具体策略 A：OC (优化准则法)</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OcStrategy</span> : <span class="keyword">public</span> IUpdateStrategy &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">executeUpdate</span><span class="params">(std::vector&lt;<span class="type">double</span>&gt;&amp; densities)</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [策略执行] 使用 OC (优化准则法) 更新材料密度...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;             -&gt; 计算二分法寻找拉格朗日乘子...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        <span class="comment">// 模拟密度更新过程</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span>&amp; d : densities) &#123; d = (d &gt; <span class="number">0.5</span>) ? <span class="number">1.0</span> : <span class="number">0.0</span>; &#125; </span><br><span class="line">        </span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [渲染提示] OC 法更新完毕。(视图系统已同步：高 density 区域渲染为红色，低 density 区域渲染为蓝色)&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 2. 具体策略 B：MMA (移动渐近线法)</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MmaStrategy</span> : <span class="keyword">public</span> IUpdateStrategy &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">executeUpdate</span><span class="params">(std::vector&lt;<span class="type">double</span>&gt;&amp; densities)</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [策略执行] 使用 MMA (移动渐近线法) 更新材料密度...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;             -&gt; 构造凸近似子问题并求解...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        <span class="comment">// 模拟密度更新过程</span></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span>&amp; d : densities) &#123; d += <span class="number">0.1</span>; &#125; <span class="comment">// 假设的数学平滑过程</span></span><br><span class="line">        </span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [渲染提示] MMA 法更新完毕。(视图系统已同步：高 density 区域渲染为红色，低 density 区域渲染为蓝色)&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 3. 上下文：拓扑优化器主体 (Context)</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TopologyOptimizer</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::string taskName;</span><br><span class="line">    std::vector&lt;<span class="type">double</span>&gt; currentDensities;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 【关键点】：优化器拥有一个“策略接口”的指针，而不是具体的算法对象</span></span><br><span class="line">    <span class="comment">// 这里使用 unique_ptr 表达组合关系（也可以用裸指针或 shared_ptr 表达聚合，看具体业务）</span></span><br><span class="line">    std::unique_ptr&lt;IUpdateStrategy&gt; updateStrategy;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">TopologyOptimizer</span>(std::string name) : <span class="built_in">taskName</span>(name), <span class="built_in">currentDensities</span>(&#123;<span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.5</span>&#125;) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 【热插拔接口】：允许在运行时动态更换算法</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">setStrategy</span><span class="params">(std::unique_ptr&lt;IUpdateStrategy&gt; newStrategy)</span> </span>&#123;</span><br><span class="line">        updateStrategy = std::<span class="built_in">move</span>(newStrategy);</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;&gt;&gt;&gt; 优化器 [&quot;</span> &lt;&lt; taskName &lt;&lt; <span class="string">&quot;] 成功切换了底层更新策略。 &lt;&lt;&lt;&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 执行主干流程</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">runIteration</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;\n--- 开始执行优化迭代 ---&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;1. 进行有限元分析...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;2. 计算敏度...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 3. 盲按遥控器：不管里面插的是什么芯片，直接调用统一接口！</span></span><br><span class="line">        <span class="keyword">if</span> (updateStrategy) &#123;</span><br><span class="line">            updateStrategy-&gt;<span class="built_in">executeUpdate</span>(currentDensities);</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            std::cout &lt;&lt; <span class="string">&quot;  [错误] 尚未为优化器设置更新策略！&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        &#125;</span><br><span class="line">        </span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;4. 检查收敛性...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 业务调用端：控制台</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">TopologyOptimizer <span class="title">myOptimizer</span><span class="params">(<span class="string">&quot;悬臂梁轻量化_V1&quot;</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 场景 1：用户一开始选择了经典、快速的 OC 法</span></span><br><span class="line">    myOptimizer.<span class="built_in">setStrategy</span>(std::<span class="built_in">make_unique</span>&lt;OcStrategy&gt;());</span><br><span class="line">    myOptimizer.<span class="built_in">runIteration</span>();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 场景 2：用户发现 OC 法有数值震荡，想换成更稳定的 MMA 法</span></span><br><span class="line">    <span class="comment">// 根本不需要修改 TopologyOptimizer 的代码，直接换策略即可！</span></span><br><span class="line">    myOptimizer.<span class="built_in">setStrategy</span>(std::<span class="built_in">make_unique</span>&lt;MmaStrategy&gt;());</span><br><span class="line">    myOptimizer.<span class="built_in">runIteration</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <hr>
 <h3 id="4-策略模式的优缺点"><a href="#4-策略模式的优缺点" class="headerlink" title="4. 策略模式的优缺点"></a>4. 策略模式的优缺点</h3><h4 id="优点：-1"><a href="#优点：-1" class="headerlink" title="优点："></a>优点：</h4><ol>
@@ -434,7 +483,34 @@
 </ul>
 <hr>
 <h3 id="2-强强联手：策略模式-简单工厂"><a href="#2-强强联手：策略模式-简单工厂" class="headerlink" title="2. 强强联手：策略模式 + 简单工厂"></a>2. 强强联手：策略模式 + 简单工厂</h3><p>既然简单工厂能把具体的类隐藏起来，而策略模式能把算法的执行隔离开来，那为什么不把它们合体呢？</p>
-<h4 id="结合模式-UML-类图"><a href="#结合模式-UML-类图" class="headerlink" title="结合模式 UML 类图"></a>结合模式 UML 类图</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">    class IUpdateStrategy &#123;</span><br><span class="line">        &lt;&lt;interface&gt;&gt;</span><br><span class="line">        +executeUpdate(densities: vector~double~)*</span><br><span class="line">    &#125;</span><br><span class="line">    class OcStrategy &#123;</span><br><span class="line">        +executeUpdate(densities: vector~double~)</span><br><span class="line">    &#125;</span><br><span class="line">    class MmaStrategy &#123;</span><br><span class="line">        +executeUpdate(densities: vector~double~)</span><br><span class="line">    &#125;</span><br><span class="line">    class TopologyOptimizer &#123;</span><br><span class="line">        -taskName: String</span><br><span class="line">        -currentDensities: vector~double~</span><br><span class="line">        -updateStrategy: unique_ptr~IUpdateStrategy~</span><br><span class="line">        +TopologyOptimizer(name: String, methodType: String)</span><br><span class="line">        +runIteration()</span><br><span class="line">    &#125;</span><br><span class="line">    class Client &#123;</span><br><span class="line">        +main()</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    IUpdateStrategy &lt;|.. OcStrategy : 实现</span><br><span class="line">    IUpdateStrategy &lt;|.. MmaStrategy : 实现</span><br><span class="line">    TopologyOptimizer *-- IUpdateStrategy : 组合</span><br><span class="line">    TopologyOptimizer ..&gt; OcStrategy : 依赖 (内部创建)</span><br><span class="line">    TopologyOptimizer ..&gt; MmaStrategy : 依赖 (内部创建)</span><br><span class="line">    Client ..&gt; TopologyOptimizer : 依赖</span><br></pre></td></tr></table></figure>
+<h4 id="结合模式-UML-类图"><a href="#结合模式-UML-类图" class="headerlink" title="结合模式 UML 类图"></a>结合模式 UML 类图</h4><pre class="mermaid">classDiagram
+    class IUpdateStrategy {
+        <<interface>>
+        +executeUpdate(densities: vector~double~)*
+    }
+    class OcStrategy {
+        +executeUpdate(densities: vector~double~)
+    }
+    class MmaStrategy {
+        +executeUpdate(densities: vector~double~)
+    }
+    class TopologyOptimizer {
+        -taskName: String
+        -currentDensities: vector~double~
+        -updateStrategy: unique_ptr~IUpdateStrategy~
+        +TopologyOptimizer(name: String, methodType: String)
+        +runIteration()
+    }
+    class Client {
+        +main()
+    }
+    
+    IUpdateStrategy <|.. OcStrategy : 实现
+    IUpdateStrategy <|.. MmaStrategy : 实现
+    TopologyOptimizer *-- IUpdateStrategy : 组合
+    TopologyOptimizer ..> OcStrategy : 依赖 (内部创建)
+    TopologyOptimizer ..> MmaStrategy : 依赖 (内部创建)
+    Client ..> TopologyOptimizer : 依赖</pre>
 
 <blockquote>
 <p>📌 <strong>关键变化</strong>：客户端只需要知道 <code>TopologyOptimizer</code> 和字符串参数，完全不需要了解 <code>OcStrategy</code> 和 <code>MmaStrategy</code> 的存在！</p>
@@ -442,8 +518,7 @@
 <p><strong>结合的方法非常巧妙：让“上下文（Context）”自己兼任“简单工厂”的角色！</strong></p>
 <p>具体做法是：我们不再让使用者在外面创建策略对象并传进来；相反，我们让使用者直接把“暗号字符串”传给上下文的<strong>构造函数</strong>。上下文在自己初始化的同时，在内部偷偷把具体的策略创建好。</p>
 <h4 id="C-代码生动演绎（小米科技拓扑优化办公室的最终进化版）"><a href="#C-代码生动演绎（小米科技拓扑优化办公室的最终进化版）" class="headerlink" title="C++ 代码生动演绎（小米科技拓扑优化办公室的最终进化版）"></a>C++ 代码生动演绎（小米科技拓扑优化办公室的最终进化版）</h4><p>看看结合后的代码，业务调用端（<code>main</code> 函数）会变得多么干净：</p>
-<p>C++</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;string&gt;</span><br><span class="line">#include &lt;vector&gt;</span><br><span class="line">#include &lt;memory&gt;</span><br><span class="line"></span><br><span class="line">// --- 1. 策略接口与具体算法 (保持不变，外界不再需要包含它们的头文件) ---</span><br><span class="line">class IUpdateStrategy &#123;</span><br><span class="line">public:</span><br><span class="line">    virtual ~IUpdateStrategy() = default;</span><br><span class="line">    virtual void executeUpdate(std::vector&lt;double&gt;&amp; densities) = 0;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class OcStrategy : public IUpdateStrategy &#123;</span><br><span class="line">public:</span><br><span class="line">    void executeUpdate(std::vector&lt;double&gt;&amp; densities) override &#123;</span><br><span class="line">        std::cout &lt;&lt; &quot;  [底层运算] 执行 OC 法密度更新逻辑...&quot; &lt;&lt; std::endl;</span><br><span class="line">        std::cout &lt;&lt; &quot;  [渲染提示] 视图已同步：高 density 是红色的，低的是蓝色的。&quot; &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">class MmaStrategy : public IUpdateStrategy &#123;</span><br><span class="line">public:</span><br><span class="line">    void executeUpdate(std::vector&lt;double&gt;&amp; densities) override &#123;</span><br><span class="line">        std::cout &lt;&lt; &quot;  [底层运算] 执行 MMA 法密度更新逻辑...&quot; &lt;&lt; std::endl;</span><br><span class="line">        std::cout &lt;&lt; &quot;  [渲染提示] 视图已同步：高 density 是红色的，低的是蓝色的。&quot; &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// --- 2. 进化后的 Context：优化器 (兼职了工厂的角色) ---</span><br><span class="line">class TopologyOptimizer &#123;</span><br><span class="line">private:</span><br><span class="line">    std::string taskName;</span><br><span class="line">    std::unique_ptr&lt;IUpdateStrategy&gt; updateStrategy; // 私有拥有的策略</span><br><span class="line"></span><br><span class="line">public:</span><br><span class="line">    // 【核心变化】：构造函数直接接收“字符串参数”，内部执行简单工厂的逻辑！</span><br><span class="line">    TopologyOptimizer(std::string name, const std::string&amp; methodType) : taskName(name) &#123;</span><br><span class="line">        std::cout &lt;&lt; &quot;&gt;&gt;&gt; 小米科技拓扑优化办公室 - 任务 [&quot; &lt;&lt; taskName &lt;&lt; &quot;] 初始化 &lt;&lt;&lt;&quot; &lt;&lt; std::endl;</span><br><span class="line">        </span><br><span class="line">        // 在这里进行实例化，彻底对外部隐藏了 OcStrategy 和 MmaStrategy 的存在</span><br><span class="line">        if (methodType == &quot;OC&quot;) &#123;</span><br><span class="line">            updateStrategy = std::make_unique&lt;OcStrategy&gt;();</span><br><span class="line">        &#125; else if (methodType == &quot;MMA&quot;) &#123;</span><br><span class="line">            updateStrategy = std::make_unique&lt;MmaStrategy&gt;();</span><br><span class="line">        &#125; else &#123;</span><br><span class="line">            std::cout &lt;&lt; &quot;  [警告] 未知算法，将使用默认策略...&quot; &lt;&lt; std::endl;</span><br><span class="line">            updateStrategy = nullptr; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    void runIteration() &#123;</span><br><span class="line">        std::cout &lt;&lt; &quot;--- 正在使用选定的策略执行拓扑迭代 ---&quot; &lt;&lt; std::endl;</span><br><span class="line">        std::vector&lt;double&gt; dummyDensities = &#123;0.5, 0.5, 0.5&#125;;</span><br><span class="line">        if (updateStrategy) &#123;</span><br><span class="line">            updateStrategy-&gt;executeUpdate(dummyDensities); // 盲调接口</span><br><span class="line">        &#125;</span><br><span class="line">        std::cout &lt;&lt; &quot;--------------------------------------\n&quot; &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line">// --- 3. 业务调用端：见证奇迹的时刻 ---</span><br><span class="line">int main() &#123;</span><br><span class="line">    // 客户端现在爽翻了！</span><br><span class="line">    // 只需要知道 TopologyOptimizer 这一单个类，以及一个暗号 &quot;OC&quot; 或 &quot;MMA&quot;。</span><br><span class="line">    // 什么 IUpdateStrategy、OcStrategy，根本不需要知道，也不需要 include！</span><br><span class="line"></span><br><span class="line">    TopologyOptimizer optimizer1(&quot;悬臂梁&quot;, &quot;OC&quot;);</span><br><span class="line">    optimizer1.runIteration();</span><br><span class="line"></span><br><span class="line">    TopologyOptimizer optimizer2(&quot;桥梁结构&quot;, &quot;MMA&quot;);</span><br><span class="line">    optimizer2.runIteration();</span><br><span class="line"></span><br><span class="line">    return 0;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;memory&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// --- 1. 策略接口与具体算法 (保持不变，外界不再需要包含它们的头文件) ---</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IUpdateStrategy</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">IUpdateStrategy</span>() = <span class="keyword">default</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">executeUpdate</span><span class="params">(std::vector&lt;<span class="type">double</span>&gt;&amp; densities)</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OcStrategy</span> : <span class="keyword">public</span> IUpdateStrategy &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">executeUpdate</span><span class="params">(std::vector&lt;<span class="type">double</span>&gt;&amp; densities)</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [底层运算] 执行 OC 法密度更新逻辑...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [渲染提示] 视图已同步：高 density 是红色的，低的是蓝色的。&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MmaStrategy</span> : <span class="keyword">public</span> IUpdateStrategy &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">executeUpdate</span><span class="params">(std::vector&lt;<span class="type">double</span>&gt;&amp; densities)</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [底层运算] 执行 MMA 法密度更新逻辑...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [渲染提示] 视图已同步：高 density 是红色的，低的是蓝色的。&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// --- 2. 进化后的 Context：优化器 (兼职了工厂的角色) ---</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TopologyOptimizer</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::string taskName;</span><br><span class="line">    std::unique_ptr&lt;IUpdateStrategy&gt; updateStrategy; <span class="comment">// 私有拥有的策略</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 【核心变化】：构造函数直接接收“字符串参数”，内部执行简单工厂的逻辑！</span></span><br><span class="line">    <span class="built_in">TopologyOptimizer</span>(std::string name, <span class="type">const</span> std::string&amp; methodType) : <span class="built_in">taskName</span>(name) &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;&gt;&gt;&gt; 小米科技拓扑优化办公室 - 任务 [&quot;</span> &lt;&lt; taskName &lt;&lt; <span class="string">&quot;] 初始化 &lt;&lt;&lt;&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 在这里进行实例化，彻底对外部隐藏了 OcStrategy 和 MmaStrategy 的存在</span></span><br><span class="line">        <span class="keyword">if</span> (methodType == <span class="string">&quot;OC&quot;</span>) &#123;</span><br><span class="line">            updateStrategy = std::<span class="built_in">make_unique</span>&lt;OcStrategy&gt;();</span><br><span class="line">        &#125; <span class="keyword">else</span> <span class="keyword">if</span> (methodType == <span class="string">&quot;MMA&quot;</span>) &#123;</span><br><span class="line">            updateStrategy = std::<span class="built_in">make_unique</span>&lt;MmaStrategy&gt;();</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            std::cout &lt;&lt; <span class="string">&quot;  [警告] 未知算法，将使用默认策略...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">            updateStrategy = <span class="literal">nullptr</span>; </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">runIteration</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;--- 正在使用选定的策略执行拓扑迭代 ---&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        std::vector&lt;<span class="type">double</span>&gt; dummyDensities = &#123;<span class="number">0.5</span>, <span class="number">0.5</span>, <span class="number">0.5</span>&#125;;</span><br><span class="line">        <span class="keyword">if</span> (updateStrategy) &#123;</span><br><span class="line">            updateStrategy-&gt;<span class="built_in">executeUpdate</span>(dummyDensities); <span class="comment">// 盲调接口</span></span><br><span class="line">        &#125;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;--------------------------------------\n&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// --- 3. 业务调用端：见证奇迹的时刻 ---</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 客户端现在爽翻了！</span></span><br><span class="line">    <span class="comment">// 只需要知道 TopologyOptimizer 这一单个类，以及一个暗号 &quot;OC&quot; 或 &quot;MMA&quot;。</span></span><br><span class="line">    <span class="comment">// 什么 IUpdateStrategy、OcStrategy，根本不需要知道，也不需要 include！</span></span><br><span class="line"></span><br><span class="line">    <span class="function">TopologyOptimizer <span class="title">optimizer1</span><span class="params">(<span class="string">&quot;悬臂梁&quot;</span>, <span class="string">&quot;OC&quot;</span>)</span></span>;</span><br><span class="line">    optimizer1.<span class="built_in">runIteration</span>();</span><br><span class="line"></span><br><span class="line">    <span class="function">TopologyOptimizer <span class="title">optimizer2</span><span class="params">(<span class="string">&quot;桥梁结构&quot;</span>, <span class="string">&quot;MMA&quot;</span>)</span></span>;</span><br><span class="line">    optimizer2.<span class="built_in">runIteration</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
 
 <hr>
 <h3 id="3-最终总结对比表格"><a href="#3-最终总结对比表格" class="headerlink" title="3. 最终总结对比表格"></a>3. 最终总结对比表格</h3><p>通过结合，我们将使用者的认知负担降到了最低：</p>
@@ -767,6 +842,64 @@
 <!--  -->
 
 
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    mermaid.initialize({
+      theme: 'default',
+      startOnLoad: true,
+      themeVariables: {
+        primaryColor: '#e1f5fe',
+        primaryTextColor: '#01579b',
+        primaryBorderColor: '#0288d1',
+        lineColor: '#0288d1',
+        secondaryColor: '#fff3e0',
+        tertiaryColor: '#e8f5e9'
+      },
+      flowchart: {
+        useMaxWidth: true,
+        htmlLabels: true
+      }
+    });
+  });
+</script>
+<style>
+  .mermaid {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px 0;
+  }
+  .mermaid svg {
+    max-width: 100%;
+    height: auto;
+  }
+  /* 去除文字重影/阴影效果 */
+  .mermaid .node rect,
+  .mermaid .node circle,
+  .mermaid .node ellipse,
+  .mermaid .node polygon,
+  .mermaid .node path {
+    stroke-width: 1.5px;
+  }
+  .mermaid .node .label {
+    text-shadow: none !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+  }
+  .mermaid .edgeLabel {
+    text-shadow: none !important;
+    background-color: #f5f5f5 !important;
+  }
+  .mermaid text {
+    text-shadow: none !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+</style>
+
     
 <div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
   <div class="tools-nav header-menu">
@@ -815,6 +948,10 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">book</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
@@ -827,7 +964,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">book</a>
+                <a href="javascript:void(0)" class="js-tag color5">朝花夕拾</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">assert</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">断言</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -847,22 +996,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">朝花夕拾</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">assert</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">断言</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">浅拷贝</a>
               </li>
              
@@ -875,31 +1008,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">编程技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">UML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">类图</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">VMware</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">编程技术</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -923,19 +1044,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdf</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -951,6 +1064,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
@@ -963,11 +1080,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color4">pdf</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -983,31 +1104,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">top</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ubuntu</a>
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vim</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">浮生六记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">const</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">指针</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1016,6 +1121,50 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Ubuntu</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">const</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">UML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">类图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">浮生六记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文件操作</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">指针</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">简单工厂模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">策略模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1044,22 +1193,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">简单工厂模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">策略模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件操作</a>
               </li>
              
               <li class="article-tag-list-item">

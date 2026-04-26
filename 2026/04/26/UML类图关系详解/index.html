@@ -242,7 +242,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">11.5k字</span>
+      <span class="post-count">7.5k字</span>
     </span>
   </span>
 
@@ -251,7 +251,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">44分</span>
+      <span class="post-count">29分</span>
     </span>
   </span>
 </div>
@@ -335,7 +335,21 @@
 <li>同理，如果这辆摩托车报废了，主角依然活着，他还可以去换一辆新车（摩托车灭亡，主角不灭亡）。</li>
 <li>通常情况下，是人去操控摩托车，而摩托车不需要知道”是谁在骑我”，所以这往往是一个<strong>单向关联</strong>。</li>
 </ul>
-<h4 id="UML-类图："><a href="#UML-类图：" class="headerlink" title="UML 类图："></a>UML 类图：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">    class Person &#123;</span><br><span class="line">        - name: String</span><br><span class="line">        - myBike: Motorcycle*</span><br><span class="line">        + Person(n: String)</span><br><span class="line">        + getOnBike(bike: Motorcycle*)</span><br><span class="line">        + getOffBike()</span><br><span class="line">        + ride()</span><br><span class="line">    &#125;</span><br><span class="line">    class Motorcycle &#123;</span><br><span class="line">        - model: String</span><br><span class="line">        + Motorcycle(m: String)</span><br><span class="line">        + roar()</span><br><span class="line">    &#125;</span><br><span class="line">    Person --&gt; Motorcycle : 单向关联</span><br></pre></td></tr></table></figure>
+<h4 id="UML-类图："><a href="#UML-类图：" class="headerlink" title="UML 类图："></a>UML 类图：</h4><pre class="mermaid">classDiagram
+    class Person {
+        - name: String
+        - myBike: Motorcycle*
+        + Person(n: String)
+        + getOnBike(bike: Motorcycle*)
+        + getOffBike()
+        + ride()
+    }
+    class Motorcycle {
+        - model: String
+        + Motorcycle(m: String)
+        + roar()
+    }
+    Person --> Motorcycle : 单向关联</pre>
 
 <h4 id="C-代码实现："><a href="#C-代码实现：" class="headerlink" title="C++ 代码实现："></a>C++ 代码实现：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 摩托车类 (独立的类)</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Motorcycle</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::string model;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Motorcycle</span>(std::string m) : <span class="built_in">model</span>(m) &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">roar</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;这辆 &quot;</span> &lt;&lt; model &lt;&lt; <span class="string">&quot; 发出了震耳欲聋的引擎轰鸣声！&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 人类 (独立的类)</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Person</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::string name;</span><br><span class="line">    <span class="comment">// 【关键】：这里就是关联关系在 C++ 中的体现！</span></span><br><span class="line">    <span class="comment">// 使用指针，说明 Person &quot;知道&quot; 某辆摩托车的存在，但不强行绑定它的生死，就只申明，不分配内存。</span></span><br><span class="line">    Motorcycle* myBike; </span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 构造时，人可能没有车 (nullptr)</span></span><br><span class="line">    <span class="built_in">Person</span>(std::string n) : <span class="built_in">name</span>(n), <span class="built_in">myBike</span>(<span class="literal">nullptr</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 建立关联的方法 (男主角跨上摩托车)</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">getOnBike</span><span class="params">(Motorcycle* bike)</span> </span>&#123;</span><br><span class="line">        myBike = bike;</span><br><span class="line">        std::cout &lt;&lt; name &lt;&lt; <span class="string">&quot; 跨上了摩托车。&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 解除关联的方法 (男主角下车)</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">getOffBike</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        myBike = <span class="literal">nullptr</span>;</span><br><span class="line">        std::cout &lt;&lt; name &lt;&lt; <span class="string">&quot; 停下并离开了摩托车。&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 使用关联对象的功能</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">ride</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (myBike != <span class="literal">nullptr</span>) &#123;</span><br><span class="line">            std::cout &lt;&lt; name &lt;&lt; <span class="string">&quot; 拧下油门...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">            myBike-&gt;<span class="built_in">roar</span>(); <span class="comment">// 调用被关联对象的方法</span></span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            std::cout &lt;&lt; name &lt;&lt; <span class="string">&quot; 只能靠双腿走路了。&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 1. 创建两个独立的对象</span></span><br><span class="line">    <span class="function">Motorcycle <span class="title">suzukiRG500</span><span class="params">(<span class="string">&quot;Suzuki RG500&quot;</span>)</span></span>;</span><br><span class="line">    <span class="function">Person <span class="title">andy</span><span class="params">(<span class="string">&quot;华弟&quot;</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. 此时它们还没有关联</span></span><br><span class="line">    andy.<span class="built_in">ride</span>(); <span class="comment">// 输出: 华弟 只能靠双腿走路了。</span></span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;--- 建立关联 ---&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 3. 建立关联关系 (把指针传进去)</span></span><br><span class="line">    andy.<span class="built_in">getOnBike</span>(&amp;suzukiRG500); </span><br><span class="line">    andy.<span class="built_in">ride</span>(); <span class="comment">// 输出: 华弟 拧下油门... 这辆 Suzuki RG500 发出了震耳欲聋的引擎轰鸣声！</span></span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;--- 解除关联 ---&quot;</span> &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 4. 解除关联关系</span></span><br><span class="line">    andy.<span class="built_in">getOffBike</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 5. 证明生命周期独立：摩托车依然存在，男主角也依然存在</span></span><br><span class="line">    <span class="comment">// 苏木吉摩托车对象依然在 main 函数的作用域里好好的。</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -387,7 +401,20 @@
 <li>项目组”拥有（Has-a）”这些工程师，它们之间是<strong>整体与部分</strong>的关系。</li>
 <li><strong>弱拥有体现：</strong> 如果某天底层的 小米工业算法框架开发完毕顺利交付，这个特定的拓扑优化项目组被撤销或解散了（整体消亡）。但是，这些 C++ 工程师并不会随之”人间蒸发”，他们依然是公司的员工，会被调配去写其他的代码（部分依然存活）。</li>
 </ul>
-<h4 id="UML-类图：-1"><a href="#UML-类图：-1" class="headerlink" title="UML 类图："></a>UML 类图：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">    class OptimizationTeam &#123;</span><br><span class="line">        - teamName: String</span><br><span class="line">        - members: vector&lt;Engineer*&gt;</span><br><span class="line">        + OptimizationTeam(name: String)</span><br><span class="line">        + addEngineer(eng: Engineer*)</span><br><span class="line">        + startDailyMeeting()</span><br><span class="line">    &#125;</span><br><span class="line">    class Engineer &#123;</span><br><span class="line">        + name: String</span><br><span class="line">        + Engineer(n: String)</span><br><span class="line">        + code()</span><br><span class="line">    &#125;</span><br><span class="line">    OptimizationTeam o-- Engineer : 聚合关系</span><br></pre></td></tr></table></figure>
+<h4 id="UML-类图：-1"><a href="#UML-类图：-1" class="headerlink" title="UML 类图："></a>UML 类图：</h4><pre class="mermaid">classDiagram
+    class OptimizationTeam {
+        - teamName: String
+        - members: vector<Engineer*>
+        + OptimizationTeam(name: String)
+        + addEngineer(eng: Engineer*)
+        + startDailyMeeting()
+    }
+    class Engineer {
+        + name: String
+        + Engineer(n: String)
+        + code()
+    }
+    OptimizationTeam o-- Engineer : 聚合关系</pre>
 
 <h4 id="C-代码实现：-1"><a href="#C-代码实现：-1" class="headerlink" title="C++ 代码实现："></a>C++ 代码实现：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// C++ 工程师类 (部分)</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Engineer</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    std::string name;</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">Engineer</span>(std::string n) : <span class="built_in">name</span>(n) &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;工程师 [&quot;</span> &lt;&lt; name &lt;&lt; <span class="string">&quot;] 入职了。&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">code</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; name &lt;&lt; <span class="string">&quot; 正在专注地编写底层的 小米工业架构代码...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    ~<span class="built_in">Engineer</span>() &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;工程师 [&quot;</span> &lt;&lt; name &lt;&lt; <span class="string">&quot;] 离职了。&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 拓扑优化项目组类 (整体)</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OptimizationTeam</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::string teamName;</span><br><span class="line">    <span class="comment">// 【关键】：这里是聚合关系的核心体现</span></span><br><span class="line">    <span class="comment">// 使用指针的集合，表明团队 &quot;拥有&quot; 这些工程师，但不掌控他们的生死</span></span><br><span class="line">    std::vector&lt;Engineer*&gt; members; </span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">OptimizationTeam</span>(std::string name) : <span class="built_in">teamName</span>(name) &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;&gt;&gt;&gt; 成立了项目组: &quot;</span> &lt;&lt; teamName &lt;&lt; <span class="string">&quot; &lt;&lt;&lt;&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 将部分聚合到整体中</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">addEngineer</span><span class="params">(Engineer* eng)</span> </span>&#123;</span><br><span class="line">        members.<span class="built_in">push_back</span>(eng);</span><br><span class="line">        std::cout &lt;&lt; eng-&gt;name &lt;&lt; <span class="string">&quot; 被拉进了 &quot;</span> &lt;&lt; teamName &lt;&lt; <span class="string">&quot; 的微信群。&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">startDailyMeeting</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;--- &quot;</span> &lt;&lt; teamName &lt;&lt; <span class="string">&quot; 开启每日站会 ---&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span>* eng : members) &#123;</span><br><span class="line">            std::cout &lt;&lt; eng-&gt;name &lt;&lt; <span class="string">&quot; 汇报了昨天的代码进度。&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ~<span class="built_in">OptimizationTeam</span>() &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;&gt;&gt;&gt; 项目圆满结束，&quot;</span> &lt;&lt; teamName &lt;&lt; <span class="string">&quot; 正式解散 (对象被销毁) &lt;&lt;&lt;&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        <span class="comment">// 【注意】：在析构函数中，绝不去 delete members 里的指针！</span></span><br><span class="line">        <span class="comment">// 因为团队没有权力销毁工程师对象。</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 1. 先有工程师个体（生命周期独立）</span></span><br><span class="line">    <span class="function">Engineer <span class="title">dev1</span><span class="params">(<span class="string">&quot;小张&quot;</span>)</span></span>;</span><br><span class="line">    <span class="function">Engineer <span class="title">dev2</span><span class="params">(<span class="string">&quot;老李&quot;</span>)</span></span>;</span><br><span class="line">    std::cout &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. 利用一个局部作用域 &#123; &#125; 来模拟项目组的生命周期</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 创建整体</span></span><br><span class="line">        <span class="function">OptimizationTeam <span class="title">topoOffice</span><span class="params">(<span class="string">&quot;小米科技拓扑优化办公室&quot;</span>)</span></span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 建立聚合关系 (把现有的指针放进去)</span></span><br><span class="line">        topoOffice.<span class="built_in">addEngineer</span>(&amp;dev1);</span><br><span class="line">        topoOffice.<span class="built_in">addEngineer</span>(&amp;dev2);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 整体带着部分一起工作</span></span><br><span class="line">        topoOffice.<span class="built_in">startDailyMeeting</span>();</span><br><span class="line">        </span><br><span class="line">    &#125; <span class="comment">// &lt;-- 离开这个大括号时，topoOffice 会调用析构函数被销毁（团队解散）</span></span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;\n--- 验证生命周期 ---&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    <span class="comment">// 3. 团队已经不在了，但是工程师依然可以调用自己的方法，证明他们独立存活</span></span><br><span class="line">    dev1.<span class="built_in">code</span>();</span><br><span class="line">    dev2.<span class="built_in">code</span>();</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>; <span class="comment">// main 函数结束时，dev1 和 dev2 才会被正常销毁</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -458,7 +485,18 @@
 <li>机器内部内置了一个不可或缺的引擎——<strong>有限元求解器（部分）</strong>。</li>
 <li>这个求解器是专门为这次优化任务定制和创建的。如果优化任务结束，或者优化器对象被销毁了，这个专用的求解器也就失去了存在的意义，必须跟着一起被销毁，释放庞大的矩阵内存。</li>
 </ul>
-<h4 id="UML-类图：-2"><a href="#UML-类图：-2" class="headerlink" title="UML 类图："></a>UML 类图：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">    class TopologyOptimizer &#123;</span><br><span class="line">        - taskName: String</span><br><span class="line">        - internalSolver: unique_ptr&lt;FEASolver&gt;</span><br><span class="line">        + TopologyOptimizer(name: String)</span><br><span class="line">        + runOptimizationIteration()</span><br><span class="line">    &#125;</span><br><span class="line">    class FEASolver &#123;</span><br><span class="line">        + FEASolver()</span><br><span class="line">        + solve()</span><br><span class="line">    &#125;</span><br><span class="line">    TopologyOptimizer *-- FEASolver : 组合关系</span><br></pre></td></tr></table></figure>
+<h4 id="UML-类图：-2"><a href="#UML-类图：-2" class="headerlink" title="UML 类图："></a>UML 类图：</h4><pre class="mermaid">classDiagram
+    class TopologyOptimizer {
+        - taskName: String
+        - internalSolver: unique_ptr<FEASolver>
+        + TopologyOptimizer(name: String)
+        + runOptimizationIteration()
+    }
+    class FEASolver {
+        + FEASolver()
+        + solve()
+    }
+    TopologyOptimizer *-- FEASolver : 组合关系</pre>
 
 <h4 id="C-代码实现（使用现代-C-的-std-unique-ptr）："><a href="#C-代码实现（使用现代-C-的-std-unique-ptr）：" class="headerlink" title="C++ 代码实现（使用现代 C++ 的 std::unique_ptr）："></a>C++ 代码实现（使用现代 C++ 的 <code>std::unique_ptr</code>）：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;memory&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 有限元求解器 (部分 - 不能独立于优化器存在)</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FEASolver</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">FEASolver</span>() &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [系统底层] 分配矩阵内存，有限元求解器(FEASolver) 初始化完毕。&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [系统底层] 正在求解大型稀疏矩阵，计算位移场...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    ~<span class="built_in">FEASolver</span>() &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [系统底层] 释放矩阵内存，有限元求解器(FEASolver) 彻底销毁。&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 拓扑优化器 (整体)</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TopologyOptimizer</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::string taskName;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 【关键】：这里是组合关系的核心体现！</span></span><br><span class="line">    <span class="comment">// 使用 std::unique_ptr 表达&quot;强拥有&quot;和&quot;同生共死&quot;。</span></span><br><span class="line">    <span class="comment">// 求解器属于且仅属于这个优化器。</span></span><br><span class="line">    std::unique_ptr&lt;FEASolver&gt; internalSolver; </span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 整体在诞生的时候，负责把部分也一起创造出来</span></span><br><span class="line">    <span class="built_in">TopologyOptimizer</span>(std::string name) : <span class="built_in">taskName</span>(name) &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;&gt;&gt;&gt; 开启拓扑优化任务: &quot;</span> &lt;&lt; taskName &lt;&lt; <span class="string">&quot; &lt;&lt;&lt;&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 整体负责分配部分的内存</span></span><br><span class="line">        internalSolver = std::<span class="built_in">make_unique</span>&lt;FEASolver&gt;(); </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">runOptimizationIteration</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;--- 正在执行 [&quot;</span> &lt;&lt; taskName &lt;&lt; <span class="string">&quot;] 的拓扑更新迭代 ---&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        <span class="comment">// 整体调用部分的功能</span></span><br><span class="line">        internalSolver-&gt;<span class="built_in">solve</span>();</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;--- 迭代完成，更新材料密度 ---&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 现代 C++ 中，unique_ptr 会在 TopologyOptimizer 析构时自动销毁 FEASolver</span></span><br><span class="line">    <span class="comment">// 如果是裸指针，这里必须写： delete internalSolver;</span></span><br><span class="line">    ~<span class="built_in">TopologyOptimizer</span>() &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;&gt;&gt;&gt; 拓扑优化任务 [&quot;</span> &lt;&lt; taskName &lt;&lt; <span class="string">&quot;] 结束，优化器即将销毁。 &lt;&lt;&lt;&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;=== 软件开始运行 ===&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 利用局部作用域模拟一个完整的生命周期</span></span><br><span class="line">    &#123;</span><br><span class="line">        <span class="comment">// 1. 创建整体。在这个瞬间，整体内部会触发部分的创建 (Composition)</span></span><br><span class="line">        <span class="function">TopologyOptimizer <span class="title">optimizer</span><span class="params">(<span class="string">&quot;悬臂梁轻量化设计&quot;</span>)</span></span>;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 2. 执行业务逻辑</span></span><br><span class="line">        optimizer.<span class="built_in">runOptimizationIteration</span>();</span><br><span class="line">        </span><br><span class="line">    &#125; <span class="comment">// &lt;-- 离开作用域，optimizer 被销毁。</span></span><br><span class="line">      <span class="comment">// 注意控制台输出：伴随着 optimizer 的销毁，FEASolver 也会被严格销毁！</span></span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;=== 软件结束运行 ===&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 此时，不仅优化器没了，求解器也绝对找不到了。它们生死与共。</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -526,7 +564,19 @@
 <li>为此，你写了一个专门的工具类叫 <code>MeshParser</code>（网格解析器）。</li>
 <li><strong>依赖的体现：</strong> <code>OptimizationModel</code> 只需要在”导入数据”的那一瞬间使用 <code>MeshParser</code>。解析器把节点和单元数据提取出来交给模型后，解析器的任务就结束了，可以被销毁了。模型不需要在自己的生命周期里一直保存一个 <code>MeshParser</code> 成员变量。这就好比**“你请了个水管工来修水管，修完付钱他就走了，你不需要把他养在家里”**。</li>
 </ul>
-<h4 id="UML-类图：-3"><a href="#UML-类图：-3" class="headerlink" title="UML 类图："></a>UML 类图：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">    class FITK_Model &#123;</span><br><span class="line">        - modelName: String</span><br><span class="line">        - nodes: vector&lt;int&gt;</span><br><span class="line">        + FITK_Model(name: String)</span><br><span class="line">        + importMeshLocally(filePath: String)</span><br><span class="line">        + updateMeshFromParser(parser: MeshParser&amp;, filePath: String)</span><br><span class="line">    &#125;</span><br><span class="line">    class MeshParser &#123;</span><br><span class="line">        + MeshParser()</span><br><span class="line">        + parseGmshFile(filePath: String): vector&lt;int&gt;</span><br><span class="line">    &#125;</span><br><span class="line">    FITK_Model ..&gt; MeshParser : 依赖关系</span><br></pre></td></tr></table></figure>
+<h4 id="UML-类图：-3"><a href="#UML-类图：-3" class="headerlink" title="UML 类图："></a>UML 类图：</h4><pre class="mermaid">classDiagram
+    class FITK_Model {
+        - modelName: String
+        - nodes: vector<int>
+        + FITK_Model(name: String)
+        + importMeshLocally(filePath: String)
+        + updateMeshFromParser(parser: MeshParser&, filePath: String)
+    }
+    class MeshParser {
+        + MeshParser()
+        + parseGmshFile(filePath: String): vector<int>
+    }
+    FITK_Model ..> MeshParser : 依赖关系</pre>
 
 <h4 id="C-代码实现：-2"><a href="#C-代码实现：-2" class="headerlink" title="C++ 代码实现："></a>C++ 代码实现：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 被依赖的类：网格解析器 (相当于工具人)</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MeshParser</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">MeshParser</span>() &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [工具] MeshParser 被创建了。&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 解析外部网格文件，返回包含节点数据的集合</span></span><br><span class="line">    <span class="function">std::vector&lt;<span class="type">int</span>&gt; <span class="title">parseGmshFile</span><span class="params">(<span class="type">const</span> std::string&amp; filePath)</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [工具] 正在读取并解析 Gmsh 文件: &quot;</span> &lt;&lt; filePath &lt;&lt; std::endl;</span><br><span class="line">        <span class="comment">// 模拟解析过程...</span></span><br><span class="line">        <span class="keyword">return</span> &#123;<span class="number">101</span>, <span class="number">102</span>, <span class="number">103</span>, <span class="number">104</span>&#125;; <span class="comment">// 返回解析出的节点 ID</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    ~<span class="built_in">MeshParser</span>() &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [工具] MeshParser 用完被销毁了。&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 依赖类：小米工业优化模型</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FITK_Model</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::string modelName;</span><br><span class="line">    std::vector&lt;<span class="type">int</span>&gt; nodes; <span class="comment">// 模型拥有的是数据本身，而不是解析器对象</span></span><br><span class="line">    <span class="comment">// 【注意】：这里绝对没有 MeshParser 的成员变量！</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">FITK_Model</span>(std::string name) : <span class="built_in">modelName</span>(name) &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;&gt;&gt;&gt; 初始化 小米工业模型: &quot;</span> &lt;&lt; modelName &lt;&lt; <span class="string">&quot; &lt;&lt;&lt;&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 【关键】：这里是依赖关系的核心体现！</span></span><br><span class="line">    <span class="comment">// 依赖形式 1：作为函数的局部变量</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">importMeshLocally</span><span class="params">(<span class="type">const</span> std::string&amp; filePath)</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;\n--- 开始局部导入网格 ---&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 实例化局部对象，产生依赖</span></span><br><span class="line">        MeshParser parser; </span><br><span class="line">        nodes = parser.<span class="built_in">parseGmshFile</span>(filePath); <span class="comment">// 使用它的功能</span></span><br><span class="line">        </span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;--- 网格导入完成，获取了 &quot;</span> &lt;&lt; nodes.<span class="built_in">size</span>() &lt;&lt; <span class="string">&quot; 个节点 ---&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        <span class="comment">// 函数结束时，parser 这个局部变量就自动灰飞烟灭了。</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 【关键】：另一种常见的依赖形式</span></span><br><span class="line">    <span class="comment">// 依赖形式 2：作为函数参数传入 (按引用传递，避免拷贝)</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">updateMeshFromParser</span><span class="params">(MeshParser&amp; externalParser, <span class="type">const</span> std::string&amp; filePath)</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;\n--- 开始通过外部传入的解析器更新网格 ---&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 我只用你这一次，不保存你的指针或引用到我的成员变量里</span></span><br><span class="line">        nodes = externalParser.<span class="built_in">parseGmshFile</span>(filePath); </span><br><span class="line">        </span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;--- 网格更新完成 ---&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 1. 创建模型对象</span></span><br><span class="line">    <span class="function">FITK_Model <span class="title">myModel</span><span class="params">(<span class="string">&quot;悬臂梁_V1&quot;</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. 演示依赖形式 1 (局部变量)</span></span><br><span class="line">    <span class="comment">// 在这个函数调用的瞬间，FITK_Model 临时依赖了 MeshParser</span></span><br><span class="line">    myModel.<span class="built_in">importMeshLocally</span>(<span class="string">&quot;beam_mesh.msh&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3. 演示依赖形式 2 (函数参数)</span></span><br><span class="line">    <span class="comment">// 外部有一个解析器，临时传进去用一下</span></span><br><span class="line">    MeshParser globalParser;</span><br><span class="line">    myModel.<span class="built_in">updateMeshFromParser</span>(globalParser, <span class="string">&quot;beam_refined.msh&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -600,7 +650,24 @@
 <li>比如：<strong>六面体单元（Hexahedron Element，比如 Hex8）</strong> 和 <strong>四面体单元（Tetrahedron Element，比如 Tet4）</strong>。</li>
 <li><strong>泛化的体现：</strong> 六面体单元 <strong>“是一个”</strong> 有限元单元；四面体单元也 <strong>“是一个”</strong> 有限元单元。它们继承了通用的 ID 属性，但各自重写了刚度矩阵的计算方法。</li>
 </ul>
-<h4 id="UML-类图：-4"><a href="#UML-类图：-4" class="headerlink" title="UML 类图："></a>UML 类图：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">    class FiniteElement &#123;</span><br><span class="line">        # elementId: int</span><br><span class="line">        # elementType: String</span><br><span class="line">        + FiniteElement(id: int, type: String)</span><br><span class="line">        + getId(): int</span><br><span class="line">        + computeStiffnessMatrix() virtual</span><br><span class="line">    &#125;</span><br><span class="line">    class HexahedronElement &#123;</span><br><span class="line">        + HexahedronElement(id: int)</span><br><span class="line">        + computeStiffnessMatrix() override</span><br><span class="line">    &#125;</span><br><span class="line">    class TetrahedronElement &#123;</span><br><span class="line">        + TetrahedronElement(id: int)</span><br><span class="line">        + computeStiffnessMatrix() override</span><br><span class="line">    &#125;</span><br><span class="line">    FiniteElement &lt;|-- HexahedronElement : 泛化关系</span><br><span class="line">    FiniteElement &lt;|-- TetrahedronElement : 泛化关系</span><br></pre></td></tr></table></figure>
+<h4 id="UML-类图：-4"><a href="#UML-类图：-4" class="headerlink" title="UML 类图："></a>UML 类图：</h4><pre class="mermaid">classDiagram
+    class FiniteElement {
+        # elementId: int
+        # elementType: String
+        + FiniteElement(id: int, type: String)
+        + getId(): int
+        + computeStiffnessMatrix() virtual
+    }
+    class HexahedronElement {
+        + HexahedronElement(id: int)
+        + computeStiffnessMatrix() override
+    }
+    class TetrahedronElement {
+        + TetrahedronElement(id: int)
+        + computeStiffnessMatrix() override
+    }
+    FiniteElement <|-- HexahedronElement : 泛化关系
+    FiniteElement <|-- TetrahedronElement : 泛化关系</pre>
 
 <h4 id="C-代码实现：-3"><a href="#C-代码实现：-3" class="headerlink" title="C++ 代码实现："></a>C++ 代码实现：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 父类：通用有限元单元 (Generalization 的目标)</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FiniteElement</span> &#123;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="comment">// 保护成员：子类可以直接访问（继承老子的财产）</span></span><br><span class="line">    <span class="type">int</span> elementId;</span><br><span class="line">    std::string elementType;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">FiniteElement</span>(<span class="type">int</span> id, std::string type) : <span class="built_in">elementId</span>(id), <span class="built_in">elementType</span>(type) &#123;</span><br><span class="line">        <span class="comment">// 父类负责初始化通用的属性</span></span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 虚析构函数：在 C++ 中，有泛化关系时基类必须有虚析构，防止内存泄漏！</span></span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">FiniteElement</span>() = <span class="keyword">default</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 通用方法：所有子类都不用重写，直接拿来用</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getId</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> elementId;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 【关键】：虚函数 (Virtual Function)</span></span><br><span class="line">    <span class="comment">// 允许子类根据自己的几何特性去&quot;重写&quot;具体的计算逻辑</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">computeStiffnessMatrix</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [系统警告] 调用了基类的刚度计算方法，这通常是不对的！&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 子类 A：六面体单元 (继承自 FiniteElement)</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">HexahedronElement</span> : <span class="keyword">public</span> FiniteElement &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 调用父类构造函数，完成基础属性的初始化</span></span><br><span class="line">    <span class="built_in">HexahedronElement</span>(<span class="type">int</span> id) : <span class="built_in">FiniteElement</span>(id, <span class="string">&quot;六面体 (Hex8)&quot;</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 【关键】：重写 (Override) 父类的虚函数</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">computeStiffnessMatrix</span><span class="params">()</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  单元 [&quot;</span> &lt;&lt; elementId &lt;&lt; <span class="string">&quot;] (&quot;</span> &lt;&lt; elementType </span><br><span class="line">                  &lt;&lt; <span class="string">&quot;) -&gt; 正在使用 8 节点高斯积分计算局部刚度矩阵...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        <span class="comment">// 里面是复杂的雅可比矩阵、形函数求导等底层 C++ 数学运算...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 子类 B：四面体单元 (继承自 FiniteElement)</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TetrahedronElement</span> : <span class="keyword">public</span> FiniteElement &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">TetrahedronElement</span>(<span class="type">int</span> id) : <span class="built_in">FiniteElement</span>(id, <span class="string">&quot;四面体 (Tet4)&quot;</span>) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">computeStiffnessMatrix</span><span class="params">()</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  单元 [&quot;</span> &lt;&lt; elementId &lt;&lt; <span class="string">&quot;] (&quot;</span> &lt;&lt; elementType </span><br><span class="line">                  &lt;&lt; <span class="string">&quot;) -&gt; 正在使用体积坐标精确解析法计算局部刚度矩阵...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        <span class="comment">// 里面是完全不同的四面体刚度计算逻辑...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 业务调用端：体验&quot;泛化&quot;带来的多态威力</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;=== 小米科技拓扑优化办公室 - 刚度组装模块启动 ===&quot;</span> &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1. 我们创建具体的子类对象</span></span><br><span class="line">    <span class="function">HexahedronElement <span class="title">hex1</span><span class="params">(<span class="number">1001</span>)</span></span>;</span><br><span class="line">    <span class="function">TetrahedronElement <span class="title">tet1</span><span class="params">(<span class="number">1002</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2. 【多态的魔法】：我们可以用&quot;父类的指针&quot;来统一管理所有的&quot;子类对象&quot;！</span></span><br><span class="line">    std::vector&lt;FiniteElement*&gt; meshElements;</span><br><span class="line">    meshElements.<span class="built_in">push_back</span>(&amp;hex1); <span class="comment">// 子类对象的地址可以直接赋给父类指针</span></span><br><span class="line">    meshElements.<span class="built_in">push_back</span>(&amp;tet1);</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;\n--- 开始遍历网格，组装全局刚度矩阵 ---&quot;</span> &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3. 统一调用</span></span><br><span class="line">    <span class="keyword">for</span> (FiniteElement* elem : meshElements) &#123;</span><br><span class="line">        <span class="comment">// 我们不需要知道指针指向的具体是六面体还是四面体</span></span><br><span class="line">        <span class="comment">// 只要调用 computeStiffnessMatrix()，C++ 会在运行时自动找到对应的正确方法！</span></span><br><span class="line">        elem-&gt;<span class="built_in">computeStiffnessMatrix</span>(); </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;--- 组装完成 ---&quot;</span> &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -659,7 +726,19 @@
 <li>这里的需求是多变的：有时候我们需要导出为专业的 <strong>VTK 格式</strong>（供 ParaView 查看），有时候为了方便调试，我们只需要导出简单的 <strong>Text 文本格式</strong>。</li>
 <li><strong>实现的体现：</strong> 我们定义一个纯粹的契约——**”结果导出器接口 (<code>IResultExporter</code>)”**。它规定”你必须能导出密度数据”。然后，<code>VtkExporter</code> 和 <code>TextExporter</code> 两个具体的类去**实现（Realization）**这个接口，各自写出自己格式的生成代码。</li>
 </ul>
-<h4 id="UML-类图：-5"><a href="#UML-类图：-5" class="headerlink" title="UML 类图："></a>UML 类图：</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">classDiagram</span><br><span class="line">    class IResultExporter &#123;</span><br><span class="line">        &lt;&lt;interface&gt;&gt;</span><br><span class="line">        + exportDensityData(fileName: String, densities: vector&lt;double&gt;) pure virtual</span><br><span class="line">    &#125;</span><br><span class="line">    class VtkExporter &#123;</span><br><span class="line">        + exportDensityData(fileName: String, densities: vector&lt;double&gt;) override</span><br><span class="line">    &#125;</span><br><span class="line">    class TextExporter &#123;</span><br><span class="line">        + exportDensityData(fileName: String, densities: vector&lt;double&gt;) override</span><br><span class="line">    &#125;</span><br><span class="line">    IResultExporter &lt;|.. VtkExporter : 实现关系</span><br><span class="line">    IResultExporter &lt;|.. TextExporter : 实现关系</span><br></pre></td></tr></table></figure>
+<h4 id="UML-类图：-5"><a href="#UML-类图：-5" class="headerlink" title="UML 类图："></a>UML 类图：</h4><pre class="mermaid">classDiagram
+    class IResultExporter {
+        <<interface>>
+        + exportDensityData(fileName: String, densities: vector<double>) pure virtual
+    }
+    class VtkExporter {
+        + exportDensityData(fileName: String, densities: vector<double>) override
+    }
+    class TextExporter {
+        + exportDensityData(fileName: String, densities: vector<double>) override
+    }
+    IResultExporter <|.. VtkExporter : 实现关系
+    IResultExporter <|.. TextExporter : 实现关系</pre>
 
 <h4 id="C-代码实现：-4"><a href="#C-代码实现：-4" class="headerlink" title="C++ 代码实现："></a>C++ 代码实现：</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 接口 (Contract)：规定了行为，不包含任何实现</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IResultExporter</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">IResultExporter</span>() = <span class="keyword">default</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 纯虚函数 (标志就是后面的 = 0)</span></span><br><span class="line">    <span class="comment">// 这是一份必须遵守的契约：实现我的类，必须提供这个方法的具体代码！</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">exportDensityData</span><span class="params">(<span class="type">const</span> std::string&amp; fileName, <span class="type">const</span> std::vector&lt;<span class="type">double</span>&gt;&amp; densities)</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 实现类 A：VTK 格式导出器</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">VtkExporter</span> : <span class="keyword">public</span> IResultExporter &#123; <span class="comment">// 语法上也是 public 继承</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 强制重写 (Override) 接口中的方法，履行契约</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">exportDensityData</span><span class="params">(<span class="type">const</span> std::string&amp; fileName, <span class="type">const</span> std::vector&lt;<span class="type">double</span>&gt;&amp; densities)</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;\n  [VTK 导出器] 正在生成 VTK 格式文件: &quot;</span> &lt;&lt; fileName &lt;&lt; <span class="string">&quot;.vtu&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [VTK 导出器] 正在写入 &quot;</span> &lt;&lt; densities.<span class="built_in">size</span>() &lt;&lt; <span class="string">&quot; 个单元的密度数据...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 渲染规范设定</span></span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [VTK 导出器] 配置渲染颜色表 (Lookup Table)：&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;               -&gt; 颜色映射已校准：高 density 是红色的，低 density 是蓝色的。&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [VTK 导出器] 导出成功，可使用 ParaView 开启后处理。&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 实现类 B：简单文本格式导出器</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TextExporter</span> : <span class="keyword">public</span> IResultExporter &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">exportDensityData</span><span class="params">(<span class="type">const</span> std::string&amp; fileName, <span class="type">const</span> std::vector&lt;<span class="type">double</span>&gt;&amp; densities)</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;\n  [Text 导出器] 正在生成纯文本文件: &quot;</span> &lt;&lt; fileName &lt;&lt; <span class="string">&quot;.txt&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [Text 导出器] 遍历数组，按逗号分隔写入纯数据...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [Text 导出器] 导出成功，可使用 Notepad 或 Excel 打开。&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 业务调用端：面向接口编程的巨大威力</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;=== 拓扑优化计算完成，准备输出结果 ===&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 模拟计算生成的密度数据</span></span><br><span class="line">    std::vector&lt;<span class="type">double</span>&gt; finalDensities = &#123;<span class="number">0.1</span>, <span class="number">0.9</span>, <span class="number">0.95</span>, <span class="number">0.05</span>, <span class="number">0.5</span>&#125;;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 我们可以根据用户的配置，动态决定实例化哪一个具体的导出器</span></span><br><span class="line">    <span class="comment">// 但在整个主干逻辑中，我们只认&quot;接口 (IResultExporter)&quot;！</span></span><br><span class="line">    </span><br><span class="line">    IResultExporter* exporter1 = <span class="keyword">new</span> <span class="built_in">VtkExporter</span>();</span><br><span class="line">    exporter1-&gt;<span class="built_in">exportDensityData</span>(<span class="string">&quot;bracket_optimized&quot;</span>, finalDensities);</span><br><span class="line"></span><br><span class="line">    IResultExporter* exporter2 = <span class="keyword">new</span> <span class="built_in">TextExporter</span>();</span><br><span class="line">    exporter2-&gt;<span class="built_in">exportDensityData</span>(<span class="string">&quot;bracket_debug_data&quot;</span>, finalDensities);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">delete</span> exporter1;</span><br><span class="line">    <span class="keyword">delete</span> exporter2;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
@@ -1061,6 +1140,64 @@
 <!--  -->
 
 
+
+
+
+<script src="https://cdn.jsdelivr.net/npm/mermaid@10.6.1/dist/mermaid.min.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    mermaid.initialize({
+      theme: 'default',
+      startOnLoad: true,
+      themeVariables: {
+        primaryColor: '#e1f5fe',
+        primaryTextColor: '#01579b',
+        primaryBorderColor: '#0288d1',
+        lineColor: '#0288d1',
+        secondaryColor: '#fff3e0',
+        tertiaryColor: '#e8f5e9'
+      },
+      flowchart: {
+        useMaxWidth: true,
+        htmlLabels: true
+      }
+    });
+  });
+</script>
+<style>
+  .mermaid {
+    background-color: #f5f5f5;
+    border-radius: 8px;
+    padding: 16px;
+    margin: 16px 0;
+  }
+  .mermaid svg {
+    max-width: 100%;
+    height: auto;
+  }
+  /* 去除文字重影/阴影效果 */
+  .mermaid .node rect,
+  .mermaid .node circle,
+  .mermaid .node ellipse,
+  .mermaid .node polygon,
+  .mermaid .node path {
+    stroke-width: 1.5px;
+  }
+  .mermaid .node .label {
+    text-shadow: none !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+    font-weight: 400;
+  }
+  .mermaid .edgeLabel {
+    text-shadow: none !important;
+    background-color: #f5f5f5 !important;
+  }
+  .mermaid text {
+    text-shadow: none !important;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  }
+</style>
+
     
 <div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
   <div class="tools-nav header-menu">
@@ -1109,6 +1246,10 @@
           <ul class="article-tag-list" q-show="showTags">
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">book</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">C++</a>
               </li>
              
@@ -1121,7 +1262,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">book</a>
+                <a href="javascript:void(0)" class="js-tag color5">朝花夕拾</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">assert</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">断言</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1141,22 +1294,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">朝花夕拾</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">assert</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">断言</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">浅拷贝</a>
               </li>
              
@@ -1169,31 +1306,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">编程技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">UML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">类图</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">VMware</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">编程技术</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1217,19 +1342,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
+                <a href="javascript:void(0)" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdf</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1245,6 +1362,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">node</a>
               </li>
              
@@ -1257,11 +1378,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shell</a>
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+                <a href="javascript:void(0)" class="js-tag color4">pdf</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1277,31 +1402,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">top</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ubuntu</a>
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vim</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">浮生六记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">const</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">指针</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1310,6 +1419,50 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">Ubuntu</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">const</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">UML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">类图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">浮生六记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文件操作</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">指针</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">简单工厂模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">策略模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1338,22 +1491,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">简单工厂模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">策略模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件操作</a>
               </li>
              
               <li class="article-tag-list-item">
