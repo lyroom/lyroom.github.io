@@ -48,6 +48,101 @@
     #container.show {
       background: linear-gradient(200deg,#a0cfe4,#e8c37e);
     }
+    
+    
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    
+    
+    .left-col {
+      background: rgba(255, 255, 255, 0.75) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      border-right: 1px solid rgba(255, 255, 255, 0.3) !important;
+    }
+    #container,
+    #container.show,
+    .mid-col,
+    .tools-col {
+      background: transparent !important;
+      background-image: none !important;
+    }
+    .article {
+      background: rgba(255, 255, 255, 0.75) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+      border-radius: 16px !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+      overflow: hidden;
+    }
+    .archives-wrap {
+      background: rgba(255, 255, 255, 0.75) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+      border-radius: 16px !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+      overflow: hidden;
+    }
+    * {
+      text-shadow: none !important;
+    }
+    #footer {
+      color: #eee !important;
+      opacity: 1 !important;
+    }
+    #footer a {
+      color: #ddd !important;
+    }
+    
+  </style>
+  <style type="text/css">
+    .article .article-inner {
+      padding: 0 40px !important;
+    }
+    .article .article-inner .article-header {
+      border: none !important;
+      padding: 15px 0 !important;
+    }
+    .article .article-inner .article-entry {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    .article-info,
+    .article-info-index.article-info,
+    .article-info-post.article-info {
+      margin: 15px 0 0 0 !important;
+      padding: 10px 0 !important;
+      border-top: 1px solid rgba(200,200,200,0.5) !important;
+      border-left: none !important;
+    }
+    .article .article-inner .article-title,
+    .archives-wrap .archive-article-title {
+      margin-left: 0 !important;
+      padding-left: 0 !important;
+    }
+    @media screen and (max-width: 768px) {
+      .article {
+        margin: 10px 15px !important;
+      }
+      .article .article-inner {
+        padding: 0 15px !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    .left-col .overlay {
+      background-image: none !important;
+      background: rgba(255,255,255,0.3) !important;
+    }
   </style>
   
 
@@ -62,6 +157,11 @@
 </head>
 
 <body>
+  
+  <video id="bg-video" autoplay muted loop playsinline>
+    <source src="/video/%E5%A5%B3%E5%AD%A9.mp4" type="video/mp4">
+  </video>
+  
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
@@ -708,6 +808,28 @@
   }
 </style>
 
+
+<script>
+(function(){
+  function fixStyles() {
+    var allPre = document.querySelectorAll('pre, pre code, .highlight, .highlight code');
+    for (var i = 0; i < allPre.length; i++) {
+      allPre[i].style.textShadow = 'none';
+    }
+    var footer = document.querySelectorAll('.footer, .footer a, .footer span');
+    for (var f = 0; f < footer.length; f++) {
+      footer[f].style.textShadow = 'none';
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function(){
+      setTimeout(fixStyles, 200);
+    });
+  } else {
+    setTimeout(fixStyles, 200);
+  }
+})();
+</script>
     
 <div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
   <div class="tools-nav header-menu">
@@ -788,10 +910,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">朝花夕拾</a>
               </li>
              
@@ -804,6 +922,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">浅拷贝</a>
               </li>
              
@@ -812,15 +934,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">内存</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">VMware</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内存</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -844,14 +966,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">编程技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
@@ -860,11 +974,31 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">编程技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">clashverge</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">UML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">类图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -885,18 +1019,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">bug解决日记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">UML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">类图</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -932,11 +1054,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color2">Ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ubuntu</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -972,6 +1094,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">指针</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">c/c++</a>
               </li>
              
@@ -996,14 +1126,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">指针</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">简单工厂模式</a>
               </li>
              
@@ -1020,15 +1142,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">unique_ptr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">原则</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SOLID</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">unique_ptr</a>
               </li>
             
             <div class="clearfix"></div>

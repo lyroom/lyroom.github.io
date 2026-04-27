@@ -39,6 +39,101 @@
     #container.show {
       background: linear-gradient(200deg,#a0cfe4,#e8c37e);
     }
+    
+    
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    
+    
+    .left-col {
+      background: rgba(255, 255, 255, 0.75) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      border-right: 1px solid rgba(255, 255, 255, 0.3) !important;
+    }
+    #container,
+    #container.show,
+    .mid-col,
+    .tools-col {
+      background: transparent !important;
+      background-image: none !important;
+    }
+    .article {
+      background: rgba(255, 255, 255, 0.75) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+      border-radius: 16px !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+      overflow: hidden;
+    }
+    .archives-wrap {
+      background: rgba(255, 255, 255, 0.75) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+      border-radius: 16px !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+      overflow: hidden;
+    }
+    * {
+      text-shadow: none !important;
+    }
+    #footer {
+      color: #eee !important;
+      opacity: 1 !important;
+    }
+    #footer a {
+      color: #ddd !important;
+    }
+    
+  </style>
+  <style type="text/css">
+    .article .article-inner {
+      padding: 0 40px !important;
+    }
+    .article .article-inner .article-header {
+      border: none !important;
+      padding: 15px 0 !important;
+    }
+    .article .article-inner .article-entry {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    .article-info,
+    .article-info-index.article-info,
+    .article-info-post.article-info {
+      margin: 15px 0 0 0 !important;
+      padding: 10px 0 !important;
+      border-top: 1px solid rgba(200,200,200,0.5) !important;
+      border-left: none !important;
+    }
+    .article .article-inner .article-title,
+    .archives-wrap .archive-article-title {
+      margin-left: 0 !important;
+      padding-left: 0 !important;
+    }
+    @media screen and (max-width: 768px) {
+      .article {
+        margin: 10px 15px !important;
+      }
+      .article .article-inner {
+        padding: 0 15px !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    .left-col .overlay {
+      background-image: none !important;
+      background: rgba(255,255,255,0.3) !important;
+    }
   </style>
   
 
@@ -53,6 +148,11 @@
 </head>
 
 <body>
+  
+  <video id="bg-video" autoplay muted loop playsinline>
+    <source src="/video/%E5%A5%B3%E5%AD%A9.mp4" type="video/mp4">
+  </video>
+  
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
@@ -242,7 +342,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">638字</span>
+      <span class="post-count">1.4k字</span>
     </span>
   </span>
 
@@ -251,7 +351,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">2分</span>
+      <span class="post-count">5分</span>
     </span>
   </span>
 </div>
@@ -268,7 +368,8 @@
 <span id="more"></span>
 
 <hr>
-<h1 id="🎭-1-什么是代理模式？"><a href="#🎭-1-什么是代理模式？" class="headerlink" title="🎭 1. 什么是代理模式？"></a>🎭 1. 什么是代理模式？</h1><p><strong>代理模式（Proxy Pattern）</strong> 的核心思想：</p>
+<h1 id="🎭-1-什么是代理模式？"><a href="#🎭-1-什么是代理模式？" class="headerlink" title="🎭 1. 什么是代理模式？"></a>🎭 1. 什么是代理模式？</h1><p><strong>代理模式（Proxy Pattern）</strong> 是一个非常实用、而且在底层开发中随处可见的结构型设计模式。</p>
+<p>它的核心思想用一句大白话来说就是：</p>
 <blockquote>
 <p><strong>“不要直接碰那个真实的对象，找个替身（中介）来帮你办事。”</strong></p>
 </blockquote>
@@ -298,15 +399,27 @@
 </tr>
 </tbody></table>
 <hr>
-<h1 id="🧩-2-客户端需要知道哪些类？"><a href="#🧩-2-客户端需要知道哪些类？" class="headerlink" title="🧩 2. 客户端需要知道哪些类？"></a>🧩 2. 客户端需要知道哪些类？</h1><p><strong>你需要知道 2 个类：</strong></p>
-<ol>
-<li>🎯 <strong>抽象接口（Subject Interface）</strong> —— 用它来定义变量、调用方法</li>
-<li>🎭 <strong>代理类（Proxy Class）</strong> —— <code>new</code> 出这个代理对象来帮你办事</li>
+<h1 id="�-2-生动的实战场景：小米的”虚假”网格模型"><a href="#�-2-生动的实战场景：小米的”虚假”网格模型" class="headerlink" title="� 2. 生动的实战场景：小米的”虚假”网格模型"></a>� 2. 生动的实战场景：小米的”虚假”网格模型</h1><p>在开发复杂的工业软件（例如 小米 这样的拓扑优化系统）时，我们经常要解析外部的 CAD 模型或网格文件（比如 Gmsh 生成的 <code>.msh</code> 文件）。</p>
+<h2 id="❌-痛点（没有代理模式）"><a href="#❌-痛点（没有代理模式）" class="headerlink" title="❌ 痛点（没有代理模式）"></a>❌ 痛点（没有代理模式）</h2><p>假设用户导入了一个 <strong>5GB</strong> 大小的超精细 Gmsh 网格文件。如果系统在创建 <code>MeshModel</code> 对象的那一瞬间，就直接去硬盘里把这 5GB 数据全部读进内存，那软件界面会直接卡死好几分钟！</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">用户拖拽文件 → 系统立即读取 5GB → 界面卡死 120 秒 → 用户崩溃 💥</span><br></pre></td></tr></table></figure>
+
+<p><strong>问题</strong>：很多时候，用户导入模型只是想先看看项目结构，暂时并不想立即渲染或进行有限元求解！</p>
+<h2 id="✅-解法（虚拟代理模式-Virtual-Proxy）"><a href="#✅-解法（虚拟代理模式-Virtual-Proxy）" class="headerlink" title="✅ 解法（虚拟代理模式 - Virtual Proxy）"></a>✅ 解法（虚拟代理模式 - Virtual Proxy）</h2><p>我们给真实的网格模型找一个<strong>替身（Proxy）</strong>：</p>
+<p>替身非常轻量级，几乎不占内存。当用户导入文件时，我们立刻塞给用户这个”替身”。只有当用户真正点击了”开启 3D 渲染”或者”开始求解”，调用了核心计算方法时，替身才会在内部偷偷地去把那 5GB 的真实网格加载进来。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">用户拖拽文件 → 创建轻量级替身（瞬间完成）→ 界面秒开 ✅</span><br><span class="line">                              ↓</span><br><span class="line">                    用户点击【3D渲染】</span><br><span class="line">                              ↓</span><br><span class="line">                    替身偷偷加载 5GB 真实数据</span><br></pre></td></tr></table></figure>
+
+<p>这就叫<strong>延迟加载（Lazy Loading）</strong>！</p>
+<hr>
+<h1 id="🧩-3-客户端需要知道哪些类？"><a href="#🧩-3-客户端需要知道哪些类？" class="headerlink" title="🧩 3. 客户端需要知道哪些类？"></a>🧩 3. 客户端需要知道哪些类？</h1><p>在你提出这个极其专业的拷问后，我们直接把核心答案放在最前面。在使用代理模式时，作为在 <code>main</code> 函数里写代码的客户端程序员：</p>
+<h2 id="✅-你需要知道-2-个类："><a href="#✅-你需要知道-2-个类：" class="headerlink" title="✅ 你需要知道 2 个类："></a>✅ 你需要知道 2 个类：</h2><ol>
+<li>🎯 <strong>抽象接口（Subject Interface）</strong> —— 因为你要用它来定义变量、调用方法</li>
+<li>🎭 <strong>代理类（Proxy Class）</strong> —— 因为你需要 <code>new</code> 出这个代理对象来帮你办事</li>
 </ol>
-<p><strong>你不需要&#x2F;不应该知道的类：</strong></p>
-<ul>
-<li>🔒 <strong>真实目标类（Real Subject）</strong> —— 客户端完全被蒙在鼓里，它以为自己在使用真实对象，但其实一直在和代理打交道</li>
+<h2 id="❌-你不需要-x2F-不应该知道的类："><a href="#❌-你不需要-x2F-不应该知道的类：" class="headerlink" title="❌ 你不需要&#x2F;不应该知道的类："></a>❌ 你不需要&#x2F;不应该知道的类：</h2><ul>
+<li>🔒 <strong>真实目标类（Real Subject）</strong> —— 客户端完全被蒙在鼓里，它以为自己在使用真实对象，但其实一直在和代理打交道。真实的类被代理类死死地隐藏和保护了起来。</li>
 </ul>
+<hr>
+<h1 id="📊-4-UML-类图详解"><a href="#📊-4-UML-类图详解" class="headerlink" title="📊 4. UML 类图详解"></a>📊 4. UML 类图详解</h1><p>看完场景故事，我们来看看代理模式的结构：</p>
 <pre class="mermaid">classDiagram
     class Client {
         + main()
@@ -336,43 +449,6 @@
     GmshProxy ..> RealGmshModel : 延迟创建
     IGmshModel <|.. GmshProxy : 实现
     IGmshModel <|.. RealGmshModel : 实现</pre>
-
-<hr>
-<h1 id="🎬-3-生动的实战场景：小米的”虚假”网格模型"><a href="#🎬-3-生动的实战场景：小米的”虚假”网格模型" class="headerlink" title="🎬 3. 生动的实战场景：小米的”虚假”网格模型"></a>🎬 3. 生动的实战场景：小米的”虚假”网格模型</h1><p>在开发复杂的工业软件（例如 小米 这样的拓扑优化系统）时，我们经常要解析外部的 CAD 模型或网格文件（比如 Gmsh 生成的 <code>.msh</code> 文件）。</p>
-<h2 id="❌-痛点（没有代理模式）"><a href="#❌-痛点（没有代理模式）" class="headerlink" title="❌ 痛点（没有代理模式）"></a>❌ 痛点（没有代理模式）</h2><p>假设用户导入了一个 <strong>5GB</strong> 大小的超精细 Gmsh 网格文件：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">用户拖拽文件 → 系统立即读取 5GB → 界面卡死 120 秒 → 用户崩溃 💥</span><br></pre></td></tr></table></figure>
-
-<p><strong>问题</strong>：用户只是想先看看项目结构，暂时并不想立即渲染或求解！</p>
-<h2 id="✅-解法（虚拟代理模式-Virtual-Proxy）"><a href="#✅-解法（虚拟代理模式-Virtual-Proxy）" class="headerlink" title="✅ 解法（虚拟代理模式 - Virtual Proxy）"></a>✅ 解法（虚拟代理模式 - Virtual Proxy）</h2><p>我们给真实的网格模型找一个<strong>替身（Proxy）</strong>：</p>
-<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">用户拖拽文件 → 创建轻量级替身（瞬间完成）→ 界面秒开 ✅</span><br><span class="line">                              ↓</span><br><span class="line">                    用户点击【3D渲染】</span><br><span class="line">                              ↓</span><br><span class="line">                    替身偷偷加载 5GB 真实数据</span><br></pre></td></tr></table></figure>
-
-<p><strong>延迟加载（Lazy Loading）</strong>：只有当用户真正需要时，才加载真实数据！</p>
-<hr>
-<h1 id="📊-4-UML-类图详解"><a href="#📊-4-UML-类图详解" class="headerlink" title="📊 4. UML 类图详解"></a>📊 4. UML 类图详解</h1><pre class="mermaid">classDiagram
-    class IGmshModel {
-        + render3D()
-        + getNodeCount()
-    }
-    
-    class RealGmshModel {
-        - filePath
-        + RealGmshModel(path)
-        + render3D()
-        + getNodeCount()
-    }
-    
-    class GmshProxy {
-        - filePath
-        - realModel
-        + GmshProxy(path)
-        + render3D()
-        + getNodeCount()
-        - lazyLoad()
-    }
-    
-    IGmshModel <|.. RealGmshModel : 实现
-    IGmshModel <|.. GmshProxy : 实现
-    GmshProxy o-- RealGmshModel : 组合(延迟创建)</pre>
 
 <h2 id="🔑-三大核心角色"><a href="#🔑-三大核心角色" class="headerlink" title="🔑 三大核心角色"></a>🔑 三大核心角色</h2><table>
 <thead>
@@ -457,8 +533,6 @@
 <hr>
 <h1 id="🎯-8-代理模式-vs-装饰模式"><a href="#🎯-8-代理模式-vs-装饰模式" class="headerlink" title="🎯 8. 代理模式 vs 装饰模式"></a>🎯 8. 代理模式 vs 装饰模式</h1><p>很多初学者觉得代理模式和装饰模式长得一模一样（都是一个类包着另一个同类型的类），但它们的<strong>意图</strong>完全不同：</p>
 <pre class="mermaid">classDiagram
-    title 代理模式 vs 装饰模式
-    
     class Client {
         + main()
     }
@@ -684,7 +758,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%8E%AD-1-%E4%BB%80%E4%B9%88%E6%98%AF%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">🎭 1. 什么是代理模式？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%A7%A9-2-%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E5%93%AA%E4%BA%9B%E7%B1%BB%EF%BC%9F"><span class="toc-number">2.</span> <span class="toc-text">🧩 2. 客户端需要知道哪些类？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%8E%AC-3-%E7%94%9F%E5%8A%A8%E7%9A%84%E5%AE%9E%E6%88%98%E5%9C%BA%E6%99%AF%EF%BC%9A%E5%B0%8F%E7%B1%B3%E7%9A%84%E2%80%9D%E8%99%9A%E5%81%87%E2%80%9D%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B"><span class="toc-number">3.</span> <span class="toc-text">🎬 3. 生动的实战场景：小米的”虚假”网格模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9D%8C-%E7%97%9B%E7%82%B9%EF%BC%88%E6%B2%A1%E6%9C%89%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">❌ 痛点（没有代理模式）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9C%85-%E8%A7%A3%E6%B3%95%EF%BC%88%E8%99%9A%E6%8B%9F%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F-Virtual-Proxy%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">✅ 解法（虚拟代理模式 - Virtual Proxy）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%93%8A-4-UML-%E7%B1%BB%E5%9B%BE%E8%AF%A6%E8%A7%A3"><span class="toc-number">4.</span> <span class="toc-text">📊 4. UML 类图详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%91-%E4%B8%89%E5%A4%A7%E6%A0%B8%E5%BF%83%E8%A7%92%E8%89%B2"><span class="toc-number">4.1.</span> <span class="toc-text">🔑 三大核心角色</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%92%BB-5-C-%E7%8E%B0%E4%BB%A3%E4%BB%A3%E7%A0%81%E7%94%9F%E5%8A%A8%E6%BC%94%E7%BB%8E"><span class="toc-number">5.</span> <span class="toc-text">💻 5. C++ 现代代码生动演绎</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E7%89%88%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="toc-number">5.1.</span> <span class="toc-text">🎯 智能指针版（推荐）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%A4-%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%9C"><span class="toc-number">5.1.1.</span> <span class="toc-text">📤 输出结果</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%8E%A8-6-%E5%AF%B9%E8%B1%A1%E7%BB%93%E6%9E%84%E5%9B%BE%E8%A7%A3"><span class="toc-number">6.</span> <span class="toc-text">🎨 6. 对象结构图解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%93%8B-7-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8F%98%E7%A7%8D%E4%B8%8E%E5%B7%A5%E4%B8%9A%E7%94%A8%E9%80%94"><span class="toc-number">7.</span> <span class="toc-text">📋 7. 代理模式的变种与工业用途</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%F0%9F%9B%A1%EF%B8%8F-%E4%BF%9D%E6%8A%A4%E4%BB%A3%E7%90%86%EF%BC%88Protection-Proxy%EF%BC%89"><span class="toc-number">7.1.</span> <span class="toc-text">1. 🛡️ 保护代理（Protection Proxy）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%F0%9F%8C%90-%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%90%86%EF%BC%88Remote-Proxy%EF%BC%89"><span class="toc-number">7.2.</span> <span class="toc-text">2. 🌐 远程代理（Remote Proxy）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%F0%9F%92%BE-%E7%BC%93%E5%AD%98%E4%BB%A3%E7%90%86%EF%BC%88Cache-Proxy%EF%BC%89"><span class="toc-number">7.3.</span> <span class="toc-text">3. 💾 缓存代理（Cache Proxy）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%8E%AF-8-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F-vs-%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F"><span class="toc-number">8.</span> <span class="toc-text">🎯 8. 代理模式 vs 装饰模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%8E%93-%E6%80%BB%E7%BB%93"><span class="toc-number">9.</span> <span class="toc-text">🎓 总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%9D-%E8%AE%B0%E5%BF%86%E5%8F%A3%E8%AF%80"><span class="toc-number">9.1.</span> <span class="toc-text">📝 记忆口诀</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%8E%AD-1-%E4%BB%80%E4%B9%88%E6%98%AF%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">🎭 1. 什么是代理模式？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%EF%BF%BD-2-%E7%94%9F%E5%8A%A8%E7%9A%84%E5%AE%9E%E6%88%98%E5%9C%BA%E6%99%AF%EF%BC%9A%E5%B0%8F%E7%B1%B3%E7%9A%84%E2%80%9D%E8%99%9A%E5%81%87%E2%80%9D%E7%BD%91%E6%A0%BC%E6%A8%A1%E5%9E%8B"><span class="toc-number">2.</span> <span class="toc-text">� 2. 生动的实战场景：小米的”虚假”网格模型</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9D%8C-%E7%97%9B%E7%82%B9%EF%BC%88%E6%B2%A1%E6%9C%89%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%EF%BC%89"><span class="toc-number">2.1.</span> <span class="toc-text">❌ 痛点（没有代理模式）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9C%85-%E8%A7%A3%E6%B3%95%EF%BC%88%E8%99%9A%E6%8B%9F%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F-Virtual-Proxy%EF%BC%89"><span class="toc-number">2.2.</span> <span class="toc-text">✅ 解法（虚拟代理模式 - Virtual Proxy）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%A7%A9-3-%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E5%93%AA%E4%BA%9B%E7%B1%BB%EF%BC%9F"><span class="toc-number">3.</span> <span class="toc-text">🧩 3. 客户端需要知道哪些类？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9C%85-%E4%BD%A0%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93-2-%E4%B8%AA%E7%B1%BB%EF%BC%9A"><span class="toc-number">3.1.</span> <span class="toc-text">✅ 你需要知道 2 个类：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9D%8C-%E4%BD%A0%E4%B8%8D%E9%9C%80%E8%A6%81-x2F-%E4%B8%8D%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84%E7%B1%BB%EF%BC%9A"><span class="toc-number">3.2.</span> <span class="toc-text">❌ 你不需要&#x2F;不应该知道的类：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%93%8A-4-UML-%E7%B1%BB%E5%9B%BE%E8%AF%A6%E8%A7%A3"><span class="toc-number">4.</span> <span class="toc-text">📊 4. UML 类图详解</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%91-%E4%B8%89%E5%A4%A7%E6%A0%B8%E5%BF%83%E8%A7%92%E8%89%B2"><span class="toc-number">4.1.</span> <span class="toc-text">🔑 三大核心角色</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%92%BB-5-C-%E7%8E%B0%E4%BB%A3%E4%BB%A3%E7%A0%81%E7%94%9F%E5%8A%A8%E6%BC%94%E7%BB%8E"><span class="toc-number">5.</span> <span class="toc-text">💻 5. C++ 现代代码生动演绎</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E7%89%88%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="toc-number">5.1.</span> <span class="toc-text">🎯 智能指针版（推荐）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%A4-%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%9C"><span class="toc-number">5.1.1.</span> <span class="toc-text">📤 输出结果</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%8E%A8-6-%E5%AF%B9%E8%B1%A1%E7%BB%93%E6%9E%84%E5%9B%BE%E8%A7%A3"><span class="toc-number">6.</span> <span class="toc-text">🎨 6. 对象结构图解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%93%8B-7-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%8F%98%E7%A7%8D%E4%B8%8E%E5%B7%A5%E4%B8%9A%E7%94%A8%E9%80%94"><span class="toc-number">7.</span> <span class="toc-text">📋 7. 代理模式的变种与工业用途</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%F0%9F%9B%A1%EF%B8%8F-%E4%BF%9D%E6%8A%A4%E4%BB%A3%E7%90%86%EF%BC%88Protection-Proxy%EF%BC%89"><span class="toc-number">7.1.</span> <span class="toc-text">1. 🛡️ 保护代理（Protection Proxy）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%F0%9F%8C%90-%E8%BF%9C%E7%A8%8B%E4%BB%A3%E7%90%86%EF%BC%88Remote-Proxy%EF%BC%89"><span class="toc-number">7.2.</span> <span class="toc-text">2. 🌐 远程代理（Remote Proxy）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%F0%9F%92%BE-%E7%BC%93%E5%AD%98%E4%BB%A3%E7%90%86%EF%BC%88Cache-Proxy%EF%BC%89"><span class="toc-number">7.3.</span> <span class="toc-text">3. 💾 缓存代理（Cache Proxy）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%8E%AF-8-%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F-vs-%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F"><span class="toc-number">8.</span> <span class="toc-text">🎯 8. 代理模式 vs 装饰模式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%8E%93-%E6%80%BB%E7%BB%93"><span class="toc-number">9.</span> <span class="toc-text">🎓 总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%9D-%E8%AE%B0%E5%BF%86%E5%8F%A3%E8%AF%80"><span class="toc-number">9.1.</span> <span class="toc-text">📝 记忆口诀</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -844,6 +918,28 @@
   }
 </style>
 
+
+<script>
+(function(){
+  function fixStyles() {
+    var allPre = document.querySelectorAll('pre, pre code, .highlight, .highlight code');
+    for (var i = 0; i < allPre.length; i++) {
+      allPre[i].style.textShadow = 'none';
+    }
+    var footer = document.querySelectorAll('.footer, .footer a, .footer span');
+    for (var f = 0; f < footer.length; f++) {
+      footer[f].style.textShadow = 'none';
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function(){
+      setTimeout(fixStyles, 200);
+    });
+  } else {
+    setTimeout(fixStyles, 200);
+  }
+})();
+</script>
     
 <div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
   <div class="tools-nav header-menu">
@@ -924,10 +1020,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">朝花夕拾</a>
               </li>
              
@@ -940,6 +1032,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">浅拷贝</a>
               </li>
              
@@ -948,15 +1044,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">内存</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">VMware</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内存</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -980,14 +1076,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">编程技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
@@ -996,11 +1084,31 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">编程技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">clashverge</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">UML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">类图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1021,18 +1129,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">bug解决日记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">UML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">类图</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1068,11 +1164,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color2">Ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ubuntu</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1108,6 +1204,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">指针</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">c/c++</a>
               </li>
              
@@ -1132,14 +1236,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">指针</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">简单工厂模式</a>
               </li>
              
@@ -1156,15 +1252,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">unique_ptr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">原则</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SOLID</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">unique_ptr</a>
               </li>
             
             <div class="clearfix"></div>

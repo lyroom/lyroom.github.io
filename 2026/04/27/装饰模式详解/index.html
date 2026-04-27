@@ -40,6 +40,101 @@
     #container.show {
       background: linear-gradient(200deg,#a0cfe4,#e8c37e);
     }
+    
+    
+    #bg-video {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: -1;
+    }
+    
+    
+    .left-col {
+      background: rgba(255, 255, 255, 0.75) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      border-right: 1px solid rgba(255, 255, 255, 0.3) !important;
+    }
+    #container,
+    #container.show,
+    .mid-col,
+    .tools-col {
+      background: transparent !important;
+      background-image: none !important;
+    }
+    .article {
+      background: rgba(255, 255, 255, 0.75) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+      border-radius: 16px !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+      overflow: hidden;
+    }
+    .archives-wrap {
+      background: rgba(255, 255, 255, 0.75) !important;
+      backdrop-filter: blur(12px) !important;
+      -webkit-backdrop-filter: blur(12px) !important;
+      border: 1px solid rgba(255, 255, 255, 0.3) !important;
+      border-radius: 16px !important;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1) !important;
+      overflow: hidden;
+    }
+    * {
+      text-shadow: none !important;
+    }
+    #footer {
+      color: #eee !important;
+      opacity: 1 !important;
+    }
+    #footer a {
+      color: #ddd !important;
+    }
+    
+  </style>
+  <style type="text/css">
+    .article .article-inner {
+      padding: 0 40px !important;
+    }
+    .article .article-inner .article-header {
+      border: none !important;
+      padding: 15px 0 !important;
+    }
+    .article .article-inner .article-entry {
+      padding-left: 0 !important;
+      padding-right: 0 !important;
+    }
+    .article-info,
+    .article-info-index.article-info,
+    .article-info-post.article-info {
+      margin: 15px 0 0 0 !important;
+      padding: 10px 0 !important;
+      border-top: 1px solid rgba(200,200,200,0.5) !important;
+      border-left: none !important;
+    }
+    .article .article-inner .article-title,
+    .archives-wrap .archive-article-title {
+      margin-left: 0 !important;
+      padding-left: 0 !important;
+    }
+    @media screen and (max-width: 768px) {
+      .article {
+        margin: 10px 15px !important;
+      }
+      .article .article-inner {
+        padding: 0 15px !important;
+      }
+    }
+  </style>
+  <style type="text/css">
+    .left-col .overlay {
+      background-image: none !important;
+      background: rgba(255,255,255,0.3) !important;
+    }
   </style>
   
 
@@ -54,6 +149,11 @@
 </head>
 
 <body>
+  
+  <video id="bg-video" autoplay muted loop playsinline>
+    <source src="/video/%E5%A5%B3%E5%AD%A9.mp4" type="video/mp4">
+  </video>
+  
   <div id="container" q-class="show:isCtnShow">
     <canvas id="anm-canvas" class="anm-canvas"></canvas>
     <div class="left-col" q-class="show:isShow">
@@ -378,7 +478,44 @@
 <p>💡 <strong>魔法解析</strong>：<code>CondimentDecorator</code> 既继承了 <code>IPancake</code>（是一个煎饼），又组合了 <code>IPancake</code>（内部包着一个煎饼）。这使得它可以把自己伪装成普通组件，去替换被它包装的组件！</p>
 </blockquote>
 <hr>
-<h1 id="💻-3-C-现代代码生动演绎"><a href="#💻-3-C-现代代码生动演绎" class="headerlink" title="💻 3. C++ 现代代码生动演绎"></a>💻 3. C++ 现代代码生动演绎</h1><h2 id="🎯-智能指针版（推荐）"><a href="#🎯-智能指针版（推荐）" class="headerlink" title="🎯 智能指针版（推荐）"></a>🎯 智能指针版（推荐）</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;memory&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 1. 抽象构件：煎饼的统一接口</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IPancake</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">IPancake</span>() = <span class="keyword">default</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> std::string <span class="title">getDescription</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">double</span> <span class="title">cost</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 2. 具体构件：原味基础煎饼 (被包装的核心)</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BasePancake</span> : <span class="keyword">public</span> IPancake &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">std::string <span class="title">getDescription</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;原味煎饼&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">double</span> <span class="title">cost</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">5.0</span>; <span class="comment">// 基础价 5 元</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 3. 抽象装饰类：配料包装盒 (魔法核心)</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 注意：它既继承了 IPancake (是一个煎饼)，又组合了 IPancake (内部包着一个煎饼)</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CondimentDecorator</span> : <span class="keyword">public</span> IPancake &#123;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="comment">// 使用独占智能指针，代表这个包装盒严丝合缝地包裹住了内部的煎饼</span></span><br><span class="line">    std::unique_ptr&lt;IPancake&gt; wrappedPancake;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 构造时，把里面的煎饼塞进包装盒</span></span><br><span class="line">    <span class="built_in">CondimentDecorator</span>(std::unique_ptr&lt;IPancake&gt; pancake) </span><br><span class="line">        : <span class="built_in">wrappedPancake</span>(std::<span class="built_in">move</span>(pancake)) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 默认行为：直接把任务委托给内部的煎饼去执行</span></span><br><span class="line">    <span class="function">std::string <span class="title">getDescription</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> wrappedPancake-&gt;<span class="built_in">getDescription</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">double</span> <span class="title">cost</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> wrappedPancake-&gt;<span class="built_in">cost</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 4. 具体装饰类：加鸡蛋</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">EggDecorator</span> : <span class="keyword">public</span> CondimentDecorator &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 继承父类的构造</span></span><br><span class="line">    <span class="built_in">EggDecorator</span>(std::unique_ptr&lt;IPancake&gt; pancake) : <span class="built_in">CondimentDecorator</span>(std::<span class="built_in">move</span>(pancake)) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">std::string <span class="title">getDescription</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 先调用内部煎饼的描述，然后加上自己的特色</span></span><br><span class="line">        <span class="keyword">return</span> wrappedPancake-&gt;<span class="built_in">getDescription</span>() + <span class="string">&quot; + 鸡蛋&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">double</span> <span class="title">cost</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 先获取内部煎饼的价格，然后加上自己的价格</span></span><br><span class="line">        <span class="keyword">return</span> wrappedPancake-&gt;<span class="built_in">cost</span>() + <span class="number">1.5</span>; <span class="comment">// 加个蛋 1.5 元</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 4. 具体装饰类：加火腿</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SausageDecorator</span> : <span class="keyword">public</span> CondimentDecorator &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">SausageDecorator</span>(std::unique_ptr&lt;IPancake&gt; pancake) : <span class="built_in">CondimentDecorator</span>(std::<span class="built_in">move</span>(pancake)) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">std::string <span class="title">getDescription</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> wrappedPancake-&gt;<span class="built_in">getDescription</span>() + <span class="string">&quot; + 火腿肠&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">double</span> <span class="title">cost</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> wrappedPancake-&gt;<span class="built_in">cost</span>() + <span class="number">2.0</span>; <span class="comment">// 加根火腿 2 元</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 业务调用端：老板，来个豪华煎饼！</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;=== 顾客 A：老板，来个原味煎饼。 ===&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    std::unique_ptr&lt;IPancake&gt; myBreakfast = std::<span class="built_in">make_unique</span>&lt;BasePancake&gt;();</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;描述: &quot;</span> &lt;&lt; myBreakfast-&gt;<span class="built_in">getDescription</span>() &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;价格: &quot;</span> &lt;&lt; myBreakfast-&gt;<span class="built_in">cost</span>() &lt;&lt; <span class="string">&quot; 元\n&quot;</span> &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;=== 顾客 B：老板，来个双蛋一肠豪华版！ ===&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    <span class="comment">// 1. 先摊个基础煎饼</span></span><br><span class="line">    std::unique_ptr&lt;IPancake&gt; luxuryBreakfast = std::<span class="built_in">make_unique</span>&lt;BasePancake&gt;();</span><br><span class="line">    <span class="comment">// 2. 动态套上一层鸡蛋外衣</span></span><br><span class="line">    luxuryBreakfast = std::<span class="built_in">make_unique</span>&lt;EggDecorator&gt;(std::<span class="built_in">move</span>(luxuryBreakfast));</span><br><span class="line">    <span class="comment">// 3. 再动态套上一层鸡蛋外衣 (双蛋)</span></span><br><span class="line">    luxuryBreakfast = std::<span class="built_in">make_unique</span>&lt;EggDecorator&gt;(std::<span class="built_in">move</span>(luxuryBreakfast));</span><br><span class="line">    <span class="comment">// 4. 最后套上一层火腿外衣</span></span><br><span class="line">    luxuryBreakfast = std::<span class="built_in">make_unique</span>&lt;SausageDecorator&gt;(std::<span class="built_in">move</span>(luxuryBreakfast));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 此时调用，它会像剥洋葱一样，一层一层往里传导，再一层一层计算出来！</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;描述: &quot;</span> &lt;&lt; luxuryBreakfast-&gt;<span class="built_in">getDescription</span>() &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;价格: &quot;</span> &lt;&lt; luxuryBreakfast-&gt;<span class="built_in">cost</span>() &lt;&lt; <span class="string">&quot; 元&quot;</span> &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="🧩-3-客户端需要知道哪些类？"><a href="#🧩-3-客户端需要知道哪些类？" class="headerlink" title="🧩 3. 客户端需要知道哪些类？"></a>🧩 3. 客户端需要知道哪些类？</h1><p>在你提出这个极其专业的拷问后，我们直接把核心答案放在最前面。在使用装饰模式时，作为在 <code>main</code> 函数里写代码的客户端程序员：</p>
+<h2 id="✅-你需要知道-3-个类："><a href="#✅-你需要知道-3-个类：" class="headerlink" title="✅ 你需要知道 3 个类："></a>✅ 你需要知道 3 个类：</h2><ol>
+<li>🎯 <strong>抽象构件（Component Interface）</strong> —— 因为你要用它来定义变量、调用方法</li>
+<li>🥞 <strong>具体构件（Concrete Component）</strong> —— 因为你需要 <code>new</code> 出基础对象（原味煎饼）</li>
+<li>🥚🌭 <strong>具体装饰类（Concrete Decorators）</strong> —— 因为你需要 <code>new</code> 出各种配料来包装基础对象</li>
+</ol>
+<h2 id="⚠️-你也需要知道的类："><a href="#⚠️-你也需要知道的类：" class="headerlink" title="⚠️ 你也需要知道的类："></a>⚠️ 你也需要知道的类：</h2><ul>
+<li>🎁 <strong>抽象装饰类（Decorator）</strong> —— 虽然通常不直接实例化，但如果你想自己扩展新的配料，需要继承它</li>
+</ul>
+<h2 id="❌-与代理模式的关键区别："><a href="#❌-与代理模式的关键区别：" class="headerlink" title="❌ 与代理模式的关键区别："></a>❌ 与代理模式的关键区别：</h2><table>
+<thead>
+<tr>
+<th>对比项</th>
+<th>装饰模式</th>
+<th>代理模式</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>🔍 <strong>客户端是否知道真实对象</strong></td>
+<td>✅ <strong>知道！</strong> 客户端自己创建基础对象，再一层层包装</td>
+<td>❌ 不知道，被代理隐藏</td>
+</tr>
+<tr>
+<td>🎯 <strong>目的</strong></td>
+<td><strong>增强功能</strong> —— 给对象加料</td>
+<td><strong>控制访问</strong> —— 保护真实对象</td>
+</tr>
+<tr>
+<td>📝 <strong>典型代码</strong></td>
+<td><code>new EggDecorator(new BasePancake())</code></td>
+<td><code>new Proxy()</code>（真实对象由代理内部创建）</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>💡 <strong>记忆要点</strong>：装饰模式是<strong>客户端主动包装</strong>，代理模式是<strong>代理内部隐藏</strong>！</p>
+</blockquote>
+<hr>
+<h1 id="💻-4-C-现代代码生动演绎"><a href="#💻-4-C-现代代码生动演绎" class="headerlink" title="💻 4. C++ 现代代码生动演绎"></a>💻 4. C++ 现代代码生动演绎</h1><h2 id="🎯-智能指针版（推荐）"><a href="#🎯-智能指针版（推荐）" class="headerlink" title="🎯 智能指针版（推荐）"></a>🎯 智能指针版（推荐）</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;memory&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 1. 抽象构件：煎饼的统一接口</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IPancake</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">IPancake</span>() = <span class="keyword">default</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> std::string <span class="title">getDescription</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">double</span> <span class="title">cost</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 2. 具体构件：原味基础煎饼 (被包装的核心)</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">BasePancake</span> : <span class="keyword">public</span> IPancake &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">std::string <span class="title">getDescription</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;原味煎饼&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">double</span> <span class="title">cost</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">5.0</span>; <span class="comment">// 基础价 5 元</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 3. 抽象装饰类：配料包装盒 (魔法核心)</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 注意：它既继承了 IPancake (是一个煎饼)，又组合了 IPancake (内部包着一个煎饼)</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CondimentDecorator</span> : <span class="keyword">public</span> IPancake &#123;</span><br><span class="line"><span class="keyword">protected</span>:</span><br><span class="line">    <span class="comment">// 使用独占智能指针，代表这个包装盒严丝合缝地包裹住了内部的煎饼</span></span><br><span class="line">    std::unique_ptr&lt;IPancake&gt; wrappedPancake;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 构造时，把里面的煎饼塞进包装盒</span></span><br><span class="line">    <span class="built_in">CondimentDecorator</span>(std::unique_ptr&lt;IPancake&gt; pancake) </span><br><span class="line">        : <span class="built_in">wrappedPancake</span>(std::<span class="built_in">move</span>(pancake)) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 默认行为：直接把任务委托给内部的煎饼去执行</span></span><br><span class="line">    <span class="function">std::string <span class="title">getDescription</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> wrappedPancake-&gt;<span class="built_in">getDescription</span>();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">double</span> <span class="title">cost</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> wrappedPancake-&gt;<span class="built_in">cost</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 4. 具体装饰类：加鸡蛋</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">EggDecorator</span> : <span class="keyword">public</span> CondimentDecorator &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 继承父类的构造</span></span><br><span class="line">    <span class="built_in">EggDecorator</span>(std::unique_ptr&lt;IPancake&gt; pancake) : <span class="built_in">CondimentDecorator</span>(std::<span class="built_in">move</span>(pancake)) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">std::string <span class="title">getDescription</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 先调用内部煎饼的描述，然后加上自己的特色</span></span><br><span class="line">        <span class="keyword">return</span> wrappedPancake-&gt;<span class="built_in">getDescription</span>() + <span class="string">&quot; + 鸡蛋&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">double</span> <span class="title">cost</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="comment">// 先获取内部煎饼的价格，然后加上自己的价格</span></span><br><span class="line">        <span class="keyword">return</span> wrappedPancake-&gt;<span class="built_in">cost</span>() + <span class="number">1.5</span>; <span class="comment">// 加个蛋 1.5 元</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 4. 具体装饰类：加火腿</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">SausageDecorator</span> : <span class="keyword">public</span> CondimentDecorator &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">SausageDecorator</span>(std::unique_ptr&lt;IPancake&gt; pancake) : <span class="built_in">CondimentDecorator</span>(std::<span class="built_in">move</span>(pancake)) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">std::string <span class="title">getDescription</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> wrappedPancake-&gt;<span class="built_in">getDescription</span>() + <span class="string">&quot; + 火腿肠&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="type">double</span> <span class="title">cost</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> wrappedPancake-&gt;<span class="built_in">cost</span>() + <span class="number">2.0</span>; <span class="comment">// 加根火腿 2 元</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 业务调用端：老板，来个豪华煎饼！</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;=== 顾客 A：老板，来个原味煎饼。 ===&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    std::unique_ptr&lt;IPancake&gt; myBreakfast = std::<span class="built_in">make_unique</span>&lt;BasePancake&gt;();</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;描述: &quot;</span> &lt;&lt; myBreakfast-&gt;<span class="built_in">getDescription</span>() &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;价格: &quot;</span> &lt;&lt; myBreakfast-&gt;<span class="built_in">cost</span>() &lt;&lt; <span class="string">&quot; 元\n&quot;</span> &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;=== 顾客 B：老板，来个双蛋一肠豪华版！ ===&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    <span class="comment">// 1. 先摊个基础煎饼</span></span><br><span class="line">    std::unique_ptr&lt;IPancake&gt; luxuryBreakfast = std::<span class="built_in">make_unique</span>&lt;BasePancake&gt;();</span><br><span class="line">    <span class="comment">// 2. 动态套上一层鸡蛋外衣</span></span><br><span class="line">    luxuryBreakfast = std::<span class="built_in">make_unique</span>&lt;EggDecorator&gt;(std::<span class="built_in">move</span>(luxuryBreakfast));</span><br><span class="line">    <span class="comment">// 3. 再动态套上一层鸡蛋外衣 (双蛋)</span></span><br><span class="line">    luxuryBreakfast = std::<span class="built_in">make_unique</span>&lt;EggDecorator&gt;(std::<span class="built_in">move</span>(luxuryBreakfast));</span><br><span class="line">    <span class="comment">// 4. 最后套上一层火腿外衣</span></span><br><span class="line">    luxuryBreakfast = std::<span class="built_in">make_unique</span>&lt;SausageDecorator&gt;(std::<span class="built_in">move</span>(luxuryBreakfast));</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 此时调用，它会像剥洋葱一样，一层一层往里传导，再一层一层计算出来！</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;描述: &quot;</span> &lt;&lt; luxuryBreakfast-&gt;<span class="built_in">getDescription</span>() &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;价格: &quot;</span> &lt;&lt; luxuryBreakfast-&gt;<span class="built_in">cost</span>() &lt;&lt; <span class="string">&quot; 元&quot;</span> &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="📤-输出结果"><a href="#📤-输出结果" class="headerlink" title="📤 输出结果"></a>📤 输出结果</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">=== 顾客 A：老板，来个原味煎饼。 ===</span><br><span class="line">描述: 原味煎饼</span><br><span class="line">价格: 5 元</span><br><span class="line"></span><br><span class="line">=== 顾客 B：老板，来个双蛋一肠豪华版！ ===</span><br><span class="line">描述: 原味煎饼 + 鸡蛋 + 鸡蛋 + 火腿肠</span><br><span class="line">价格: 10 元</span><br></pre></td></tr></table></figure>
 
@@ -786,7 +923,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%8E%AD-1-%E7%94%9F%E5%8A%A8%E7%9A%84%E6%AF%94%E5%96%BB%EF%BC%9A%E6%A5%BC%E4%B8%8B%E7%9A%84%E7%85%8E%E9%A5%BC%E6%9E%9C%E5%AD%90%E6%91%8A"><span class="toc-number">1.</span> <span class="toc-text">🎭 1. 生动的比喻：楼下的煎饼果子摊</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9D%8C-%E6%B2%A1%E6%9C%89%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F%EF%BC%88%E6%BB%A5%E7%94%A8%E7%BB%A7%E6%89%BF%E7%9A%84%E5%99%A9%E6%A2%A6%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">❌ 没有装饰模式（滥用继承的噩梦）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9C%85-%E4%BD%BF%E7%94%A8%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F%EF%BC%88%E5%8A%A8%E6%80%81%E5%A5%97%E5%A8%83%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">✅ 使用装饰模式（动态套娃）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%93%8A-2-UML-%E7%B1%BB%E5%9B%BE%E4%B8%8E%E6%A0%B8%E5%BF%83%E8%A7%92%E8%89%B2"><span class="toc-number">2.</span> <span class="toc-text">📊 2. UML 类图与核心角色</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%91-%E5%9B%9B%E5%A4%A7%E6%A0%B8%E5%BF%83%E8%A7%92%E8%89%B2"><span class="toc-number">2.1.</span> <span class="toc-text">🔑 四大核心角色</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%92%BB-3-C-%E7%8E%B0%E4%BB%A3%E4%BB%A3%E7%A0%81%E7%94%9F%E5%8A%A8%E6%BC%94%E7%BB%8E"><span class="toc-number">3.</span> <span class="toc-text">💻 3. C++ 现代代码生动演绎</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E7%89%88%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="toc-number">3.1.</span> <span class="toc-text">🎯 智能指针版（推荐）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%A4-%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%9C"><span class="toc-number">3.1.1.</span> <span class="toc-text">📤 输出结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%A7-%E6%99%AE%E9%80%9A%E6%8C%87%E9%92%88%E7%89%88%EF%BC%88%E5%85%BC%E5%AE%B9%E6%97%A7%E4%BB%A3%E7%A0%81%EF%BC%89"><span class="toc-number">3.2.</span> <span class="toc-text">🔧 普通指针版（兼容旧代码）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%94%8D-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%EF%BC%9A%E6%8C%87%E9%92%88%E4%BC%A0%E9%80%92%E4%B8%8E%E5%86%85%E5%AD%98%E9%87%8A%E6%94%BE%E5%85%A8%E8%BF%87%E7%A8%8B"><span class="toc-number">4.</span> <span class="toc-text">🔍 深入理解：指针传递与内存释放全过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%EF%BC%9A%E6%9E%84%E9%80%A0%E8%BF%87%E7%A8%8B%EF%BC%88%E4%BB%8E%E5%86%85%E5%90%91%E5%A4%96%E5%8C%85%EF%BC%89"><span class="toc-number">4.1.</span> <span class="toc-text">第一阶段：构造过程（从内向外包）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-1-%E6%AD%A5%EF%BC%9A%E6%91%8A%E5%9F%BA%E7%A1%80%E7%85%8E%E9%A5%BC"><span class="toc-number">4.1.1.</span> <span class="toc-text">第 1 步：摊基础煎饼</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-2-%E6%AD%A5%EF%BC%9A%E5%8A%A0%E9%B8%A1%E8%9B%8B"><span class="toc-number">4.1.2.</span> <span class="toc-text">第 2 步：加鸡蛋</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-3-%E6%AD%A5%EF%BC%9A%E5%8A%A0%E7%81%AB%E8%85%BF"><span class="toc-number">4.1.3.</span> <span class="toc-text">第 3 步：加火腿</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%EF%BC%9A%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B%EF%BC%88%E4%BB%8E%E5%A4%96%E5%90%91%E5%86%85%EF%BC%8C%E5%86%8D%E5%90%91%E5%A4%96%E8%BF%94%E5%9B%9E%EF%BC%89"><span class="toc-number">4.2.</span> <span class="toc-text">第二阶段：调用方法的过程（从外向内，再向外返回）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5%EF%BC%9A%E6%9E%90%E6%9E%84%EF%BC%88%E9%87%8A%E6%94%BE%E5%86%85%E5%AD%98%EF%BC%89%E7%9A%84%E8%BF%87%E7%A8%8B%EF%BC%88%E9%93%BE%E5%BC%8F%E5%8F%8D%E5%BA%94%EF%BC%89"><span class="toc-number">4.3.</span> <span class="toc-text">第三阶段：析构（释放内存）的过程（链式反应）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%80%E6%AF%81%E7%81%AB%E8%85%BF%E5%B1%82-%E5%AF%B9%E8%B1%A1C"><span class="toc-number">4.3.1.</span> <span class="toc-text">销毁火腿层 (对象C)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%80%E6%AF%81%E9%B8%A1%E8%9B%8B%E5%B1%82-%E5%AF%B9%E8%B1%A1B"><span class="toc-number">4.3.2.</span> <span class="toc-text">销毁鸡蛋层 (对象B)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%80%E6%AF%81%E6%A0%B8%E5%BF%83%E5%B1%82-%E5%AF%B9%E8%B1%A1A"><span class="toc-number">4.3.3.</span> <span class="toc-text">销毁核心层 (对象A)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%BD%BB%E5%BA%95%E6%B8%85%E7%A9%BA"><span class="toc-number">4.3.4.</span> <span class="toc-text">内存彻底清空</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%8E%A8-4-%E5%AF%B9%E8%B1%A1%E7%BB%93%E6%9E%84%E5%9B%BE%E8%A7%A3"><span class="toc-number">5.</span> <span class="toc-text">🎨 4. 对象结构图解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%93%8B-5-%E4%BC%98%E7%BC%BA%E7%82%B9%E4%B8%8E%E7%9C%9F%E5%AE%9E%E5%B7%A5%E4%B8%9A%E5%9C%BA%E6%99%AF"><span class="toc-number">6.</span> <span class="toc-text">📋 5. 优缺点与真实工业场景</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9C%85-%E4%BC%98%E7%82%B9"><span class="toc-number">6.1.</span> <span class="toc-text">✅ 优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9D%8C-%E7%BC%BA%E7%82%B9"><span class="toc-number">6.2.</span> <span class="toc-text">❌ 缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8F%AD-%E7%9C%9F%E5%AE%9E%E5%B7%A5%E4%B8%9A%E5%9C%BA%E6%99%AF"><span class="toc-number">6.3.</span> <span class="toc-text">🏭 真实工业场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#C-I-x2F-O-%E6%B5%81%E7%B3%BB%E7%BB%9F"><span class="toc-number">6.3.1.</span> <span class="toc-text">C++ I&#x2F;O 流系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%95%B0%E6%8D%AE%E5%8F%91%E9%80%81"><span class="toc-number">6.3.2.</span> <span class="toc-text">网络数据发送</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%8E%AF-6-%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F-vs-%E7%BB%A7%E6%89%BF"><span class="toc-number">7.</span> <span class="toc-text">🎯 6. 装饰模式 vs 继承</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF%E6%96%B9%E5%BC%8F%EF%BC%88%E7%B1%BB%E7%88%86%E7%82%B8%EF%BC%89"><span class="toc-number">7.1.</span> <span class="toc-text">继承方式（类爆炸）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F%E6%96%B9%E5%BC%8F%EF%BC%88%E7%81%B5%E6%B4%BB%E7%BB%84%E5%90%88%EF%BC%89"><span class="toc-number">7.2.</span> <span class="toc-text">装饰模式方式（灵活组合）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%8E%93-%E6%80%BB%E7%BB%93"><span class="toc-number">8.</span> <span class="toc-text">🎓 总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%9D-%E8%AE%B0%E5%BF%86%E5%8F%A3%E8%AF%80"><span class="toc-number">8.1.</span> <span class="toc-text">📝 记忆口诀</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%8E%AD-1-%E7%94%9F%E5%8A%A8%E7%9A%84%E6%AF%94%E5%96%BB%EF%BC%9A%E6%A5%BC%E4%B8%8B%E7%9A%84%E7%85%8E%E9%A5%BC%E6%9E%9C%E5%AD%90%E6%91%8A"><span class="toc-number">1.</span> <span class="toc-text">🎭 1. 生动的比喻：楼下的煎饼果子摊</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9D%8C-%E6%B2%A1%E6%9C%89%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F%EF%BC%88%E6%BB%A5%E7%94%A8%E7%BB%A7%E6%89%BF%E7%9A%84%E5%99%A9%E6%A2%A6%EF%BC%89"><span class="toc-number">1.1.</span> <span class="toc-text">❌ 没有装饰模式（滥用继承的噩梦）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9C%85-%E4%BD%BF%E7%94%A8%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F%EF%BC%88%E5%8A%A8%E6%80%81%E5%A5%97%E5%A8%83%EF%BC%89"><span class="toc-number">1.2.</span> <span class="toc-text">✅ 使用装饰模式（动态套娃）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%93%8A-2-UML-%E7%B1%BB%E5%9B%BE%E4%B8%8E%E6%A0%B8%E5%BF%83%E8%A7%92%E8%89%B2"><span class="toc-number">2.</span> <span class="toc-text">📊 2. UML 类图与核心角色</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%91-%E5%9B%9B%E5%A4%A7%E6%A0%B8%E5%BF%83%E8%A7%92%E8%89%B2"><span class="toc-number">2.1.</span> <span class="toc-text">🔑 四大核心角色</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%A7%A9-3-%E5%AE%A2%E6%88%B7%E7%AB%AF%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E5%93%AA%E4%BA%9B%E7%B1%BB%EF%BC%9F"><span class="toc-number">3.</span> <span class="toc-text">🧩 3. 客户端需要知道哪些类？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9C%85-%E4%BD%A0%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93-3-%E4%B8%AA%E7%B1%BB%EF%BC%9A"><span class="toc-number">3.1.</span> <span class="toc-text">✅ 你需要知道 3 个类：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9A%A0%EF%B8%8F-%E4%BD%A0%E4%B9%9F%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E7%9A%84%E7%B1%BB%EF%BC%9A"><span class="toc-number">3.2.</span> <span class="toc-text">⚠️ 你也需要知道的类：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9D%8C-%E4%B8%8E%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%85%B3%E9%94%AE%E5%8C%BA%E5%88%AB%EF%BC%9A"><span class="toc-number">3.3.</span> <span class="toc-text">❌ 与代理模式的关键区别：</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%92%BB-4-C-%E7%8E%B0%E4%BB%A3%E4%BB%A3%E7%A0%81%E7%94%9F%E5%8A%A8%E6%BC%94%E7%BB%8E"><span class="toc-number">4.</span> <span class="toc-text">💻 4. C++ 现代代码生动演绎</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E7%89%88%EF%BC%88%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="toc-number">4.1.</span> <span class="toc-text">🎯 智能指针版（推荐）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%A4-%E8%BE%93%E5%87%BA%E7%BB%93%E6%9E%9C"><span class="toc-number">4.1.1.</span> <span class="toc-text">📤 输出结果</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%A7-%E6%99%AE%E9%80%9A%E6%8C%87%E9%92%88%E7%89%88%EF%BC%88%E5%85%BC%E5%AE%B9%E6%97%A7%E4%BB%A3%E7%A0%81%EF%BC%89"><span class="toc-number">4.2.</span> <span class="toc-text">🔧 普通指针版（兼容旧代码）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%94%8D-%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%EF%BC%9A%E6%8C%87%E9%92%88%E4%BC%A0%E9%80%92%E4%B8%8E%E5%86%85%E5%AD%98%E9%87%8A%E6%94%BE%E5%85%A8%E8%BF%87%E7%A8%8B"><span class="toc-number">5.</span> <span class="toc-text">🔍 深入理解：指针传递与内存释放全过程</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%98%B6%E6%AE%B5%EF%BC%9A%E6%9E%84%E9%80%A0%E8%BF%87%E7%A8%8B%EF%BC%88%E4%BB%8E%E5%86%85%E5%90%91%E5%A4%96%E5%8C%85%EF%BC%89"><span class="toc-number">5.1.</span> <span class="toc-text">第一阶段：构造过程（从内向外包）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-1-%E6%AD%A5%EF%BC%9A%E6%91%8A%E5%9F%BA%E7%A1%80%E7%85%8E%E9%A5%BC"><span class="toc-number">5.1.1.</span> <span class="toc-text">第 1 步：摊基础煎饼</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-2-%E6%AD%A5%EF%BC%9A%E5%8A%A0%E9%B8%A1%E8%9B%8B"><span class="toc-number">5.1.2.</span> <span class="toc-text">第 2 步：加鸡蛋</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC-3-%E6%AD%A5%EF%BC%9A%E5%8A%A0%E7%81%AB%E8%85%BF"><span class="toc-number">5.1.3.</span> <span class="toc-text">第 3 步：加火腿</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%98%B6%E6%AE%B5%EF%BC%9A%E8%B0%83%E7%94%A8%E6%96%B9%E6%B3%95%E7%9A%84%E8%BF%87%E7%A8%8B%EF%BC%88%E4%BB%8E%E5%A4%96%E5%90%91%E5%86%85%EF%BC%8C%E5%86%8D%E5%90%91%E5%A4%96%E8%BF%94%E5%9B%9E%EF%BC%89"><span class="toc-number">5.2.</span> <span class="toc-text">第二阶段：调用方法的过程（从外向内，再向外返回）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%98%B6%E6%AE%B5%EF%BC%9A%E6%9E%90%E6%9E%84%EF%BC%88%E9%87%8A%E6%94%BE%E5%86%85%E5%AD%98%EF%BC%89%E7%9A%84%E8%BF%87%E7%A8%8B%EF%BC%88%E9%93%BE%E5%BC%8F%E5%8F%8D%E5%BA%94%EF%BC%89"><span class="toc-number">5.3.</span> <span class="toc-text">第三阶段：析构（释放内存）的过程（链式反应）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%80%E6%AF%81%E7%81%AB%E8%85%BF%E5%B1%82-%E5%AF%B9%E8%B1%A1C"><span class="toc-number">5.3.1.</span> <span class="toc-text">销毁火腿层 (对象C)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%80%E6%AF%81%E9%B8%A1%E8%9B%8B%E5%B1%82-%E5%AF%B9%E8%B1%A1B"><span class="toc-number">5.3.2.</span> <span class="toc-text">销毁鸡蛋层 (对象B)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%94%80%E6%AF%81%E6%A0%B8%E5%BF%83%E5%B1%82-%E5%AF%B9%E8%B1%A1A"><span class="toc-number">5.3.3.</span> <span class="toc-text">销毁核心层 (对象A)</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E5%AD%98%E5%BD%BB%E5%BA%95%E6%B8%85%E7%A9%BA"><span class="toc-number">5.3.4.</span> <span class="toc-text">内存彻底清空</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%8E%A8-4-%E5%AF%B9%E8%B1%A1%E7%BB%93%E6%9E%84%E5%9B%BE%E8%A7%A3"><span class="toc-number">6.</span> <span class="toc-text">🎨 4. 对象结构图解</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%93%8B-5-%E4%BC%98%E7%BC%BA%E7%82%B9%E4%B8%8E%E7%9C%9F%E5%AE%9E%E5%B7%A5%E4%B8%9A%E5%9C%BA%E6%99%AF"><span class="toc-number">7.</span> <span class="toc-text">📋 5. 优缺点与真实工业场景</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9C%85-%E4%BC%98%E7%82%B9"><span class="toc-number">7.1.</span> <span class="toc-text">✅ 优点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9D%8C-%E7%BC%BA%E7%82%B9"><span class="toc-number">7.2.</span> <span class="toc-text">❌ 缺点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8F%AD-%E7%9C%9F%E5%AE%9E%E5%B7%A5%E4%B8%9A%E5%9C%BA%E6%99%AF"><span class="toc-number">7.3.</span> <span class="toc-text">🏭 真实工业场景</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#C-I-x2F-O-%E6%B5%81%E7%B3%BB%E7%BB%9F"><span class="toc-number">7.3.1.</span> <span class="toc-text">C++ I&#x2F;O 流系统</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%BD%91%E7%BB%9C%E6%95%B0%E6%8D%AE%E5%8F%91%E9%80%81"><span class="toc-number">7.3.2.</span> <span class="toc-text">网络数据发送</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%8E%AF-6-%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F-vs-%E7%BB%A7%E6%89%BF"><span class="toc-number">8.</span> <span class="toc-text">🎯 6. 装饰模式 vs 继承</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%BB%A7%E6%89%BF%E6%96%B9%E5%BC%8F%EF%BC%88%E7%B1%BB%E7%88%86%E7%82%B8%EF%BC%89"><span class="toc-number">8.1.</span> <span class="toc-text">继承方式（类爆炸）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F%E6%96%B9%E5%BC%8F%EF%BC%88%E7%81%B5%E6%B4%BB%E7%BB%84%E5%90%88%EF%BC%89"><span class="toc-number">8.2.</span> <span class="toc-text">装饰模式方式（灵活组合）</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%8E%93-%E6%80%BB%E7%BB%93"><span class="toc-number">9.</span> <span class="toc-text">🎓 总结</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%9D-%E8%AE%B0%E5%BF%86%E5%8F%A3%E8%AF%80"><span class="toc-number">9.1.</span> <span class="toc-text">📝 记忆口诀</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -946,6 +1083,28 @@
   }
 </style>
 
+
+<script>
+(function(){
+  function fixStyles() {
+    var allPre = document.querySelectorAll('pre, pre code, .highlight, .highlight code');
+    for (var i = 0; i < allPre.length; i++) {
+      allPre[i].style.textShadow = 'none';
+    }
+    var footer = document.querySelectorAll('.footer, .footer a, .footer span');
+    for (var f = 0; f < footer.length; f++) {
+      footer[f].style.textShadow = 'none';
+    }
+  }
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', function(){
+      setTimeout(fixStyles, 200);
+    });
+  } else {
+    setTimeout(fixStyles, 200);
+  }
+})();
+</script>
     
 <div class="tools-col" q-class="show:isShow,hide:isShow|isFalse" q-on="click:stop(e)">
   <div class="tools-nav header-menu">
@@ -1026,10 +1185,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">朝花夕拾</a>
               </li>
              
@@ -1042,6 +1197,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">浅拷贝</a>
               </li>
              
@@ -1050,15 +1209,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">内存</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">VMware</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内存</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1082,14 +1241,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">编程技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">git</a>
               </li>
              
@@ -1098,11 +1249,31 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">编程技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">clashverge</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">UML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">类图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1123,18 +1294,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">bug解决日记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">UML</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">类图</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1170,11 +1329,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+                <a href="javascript:void(0)" class="js-tag color2">Ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ubuntu</a>
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1210,6 +1369,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">指针</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">c/c++</a>
               </li>
              
@@ -1234,14 +1401,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">指针</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">简单工厂模式</a>
               </li>
              
@@ -1258,15 +1417,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">unique_ptr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">原则</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SOLID</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">unique_ptr</a>
               </li>
             
             <div class="clearfix"></div>
