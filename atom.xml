@@ -244,12 +244,6 @@
     
     
     
-    <category term="🖥️ C++" scheme="https://lyroom.github.io/tags/%F0%9F%96%A5%EF%B8%8F-C/"/>
-    
-    <category term="📐 模板" scheme="https://lyroom.github.io/tags/%F0%9F%93%90-%E6%A8%A1%E6%9D%BF/"/>
-    
-    <category term="🔧 泛型编程" scheme="https://lyroom.github.io/tags/%F0%9F%94%A7-%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B/"/>
-    
   </entry>
   
   <entry>
@@ -458,9 +452,9 @@
     
     
     
-    <category term="智能指针" scheme="https://lyroom.github.io/tags/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/"/>
-    
     <category term="朝花夕拾" scheme="https://lyroom.github.io/tags/%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE/"/>
+    
+    <category term="智能指针" scheme="https://lyroom.github.io/tags/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/"/>
     
     <category term="c++" scheme="https://lyroom.github.io/tags/c/"/>
     
