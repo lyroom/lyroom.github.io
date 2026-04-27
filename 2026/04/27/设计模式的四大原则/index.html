@@ -6,19 +6,23 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://lyroom.github.io">
-  <title>Archives: 2024/10 | Henry&#39;Blog</title>
+  <title>🎨 设计模式的四大原则 | Henry&#39;Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="博客">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Henry&#39;Blog">
-<meta property="og:url" content="https://lyroom.github.io/archives/2024/10/index.html">
+  <meta name="description" content="🎯 导读：本文将用生动有趣的方式，带你深入理解面向对象设计的四大核心原则。每个原则都配有 🎭 生活比喻、💻 完整代码案例 和 📊 UML类图，让你轻松掌握这些看似高深的设计思想！   🏛️ 前言：为什么需要设计原则？想象一下，你正在搭建一座大厦：  ❌ 没有原则：就像用泥巴和树枝随意堆砌，风一吹就倒 ✅ 遵循原则：就像使用钢筋混凝土的标准结构，稳固且可扩展  设计原则就是软件世界的”建">
+<meta property="og:type" content="article">
+<meta property="og:title" content="🎨 设计模式的四大原则">
+<meta property="og:url" content="https://lyroom.github.io/2026/04/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%9B%9B%E5%A4%A7%E5%8E%9F%E5%88%99/index.html">
 <meta property="og:site_name" content="Henry&#39;Blog">
-<meta property="og:description" content="博客">
+<meta property="og:description" content="🎯 导读：本文将用生动有趣的方式，带你深入理解面向对象设计的四大核心原则。每个原则都配有 🎭 生活比喻、💻 完整代码案例 和 📊 UML类图，让你轻松掌握这些看似高深的设计思想！   🏛️ 前言：为什么需要设计原则？想象一下，你正在搭建一座大厦：  ❌ 没有原则：就像用泥巴和树枝随意堆砌，风一吹就倒 ✅ 遵循原则：就像使用钢筋混凝土的标准结构，稳固且可扩展  设计原则就是软件世界的”建">
 <meta property="og:locale">
+<meta property="article:published_time" content="2026-04-27T02:38:43.000Z">
+<meta property="article:modified_time" content="2026-04-27T02:38:43.000Z">
 <meta property="article:author" content="迪丽惹Bug">
-<meta property="article:tag" content="Henry,博客">
+<meta property="article:tag" content="设计模式">
+<meta property="article:tag" content="原则">
+<meta property="article:tag" content="SOLID">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Henry&#39;Blog" type="application/atom+xml">
@@ -205,282 +209,645 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            
-              
-                
-                  
-                    
-                      
-                          
-                            <section class="archives-wrap">
-                              <div class="archive-year-wrap">
-                                <a href="/archives/2024" class="archive-year">
-                                  2024
-                                </a>
-                              </div>
-                              <div class="archives">
-                                
-                                  <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/10/23/c-%E7%BB%A7%E6%89%BF%E4%B8%AD%E7%9A%84%E7%88%B6%E5%AD%90%E7%BA%A0%E8%91%9B/" class="archive-article-date">
-        <time datetime="2024-10-23T14:42:31.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-10-23</time>
-</a>
-
-        </div>
-    	 
+            <article id="post-设计模式的四大原则" class="article article-type-post " itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
   
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/10/23/c-%E7%BB%A7%E6%89%BF%E4%B8%AD%E7%9A%84%E7%88%B6%E5%AD%90%E7%BA%A0%E8%91%9B/" target="_blank">c++继承中的父子纠葛</a>
   
+    <h1 class="article-title" itemprop="name">
+      🎨 设计模式的四大原则
     </h1>
   
 
 
-        <div class="article-info info-on-right">
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2026/04/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%9B%9B%E5%A4%A7%E5%8E%9F%E5%88%99/" class="archive-article-date">
+        <time datetime="2026-04-27T02:38:43.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2026-04-27</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">3.9k字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">16分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
+  <div class="article-entry" itemprop="articleBody">
+    
+    <blockquote>
+<p>🎯 <strong>导读</strong>：本文将用生动有趣的方式，带你深入理解面向对象设计的四大核心原则。每个原则都配有 🎭 生活比喻、💻 完整代码案例 和 📊 UML类图，让你轻松掌握这些看似高深的设计思想！</p>
+</blockquote>
+<hr>
+<h1 id="🏛️-前言：为什么需要设计原则？"><a href="#🏛️-前言：为什么需要设计原则？" class="headerlink" title="🏛️ 前言：为什么需要设计原则？"></a>🏛️ 前言：为什么需要设计原则？</h1><p>想象一下，你正在搭建一座大厦：</p>
+<ul>
+<li>❌ <strong>没有原则</strong>：就像用泥巴和树枝随意堆砌，风一吹就倒</li>
+<li>✅ <strong>遵循原则</strong>：就像使用钢筋混凝土的标准结构，稳固且可扩展</li>
+</ul>
+<p>设计原则就是软件世界的”建筑规范”，它们让我们的代码：</p>
+<ul>
+<li>🧩 <strong>易于维护</strong> —— 修改一处，不影响全局</li>
+<li>🚀 <strong>易于扩展</strong> —— 新增功能，不用改老代码</li>
+<li>🤝 <strong>易于协作</strong> —— 团队成员都能快速理解</li>
+</ul>
+<hr>
+<h1 id="📐-原则一：单一职责原则-SRP"><a href="#📐-原则一：单一职责原则-SRP" class="headerlink" title="📐 原则一：单一职责原则 (SRP)"></a>📐 原则一：单一职责原则 (SRP)</h1><blockquote>
+<p><strong>“一个类应该只有一个引起它变化的原因”</strong></p>
+</blockquote>
+<h2 id="🎭-生动比喻：瑞士军刀-vs-专业厨房"><a href="#🎭-生动比喻：瑞士军刀-vs-专业厨房" class="headerlink" title="🎭 生动比喻：瑞士军刀 vs 专业厨房"></a>🎭 生动比喻：瑞士军刀 vs 专业厨房</h2><table>
+<thead>
+<tr>
+<th>场景</th>
+<th>形象</th>
+<th>问题</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>❌ <strong>违反SRP</strong></td>
+<td>🔪 <strong>瑞士军刀</strong></td>
+<td>既能切菜、开红酒、拧螺丝、剪指甲… 看似全能，但哪个功能都不专业！剪刀坏了，可能影响到拔塞器</td>
+</tr>
+<tr>
+<td>✅ <strong>遵守SRP</strong></td>
+<td>👨‍🍳 <strong>专业厨房</strong></td>
+<td>切肉有斩骨刀，削皮有削皮刀，开红酒有海马刀。各司其职，哪把钝了磨哪把</td>
+</tr>
+</tbody></table>
+<h2 id="📊-UML-对比"><a href="#📊-UML-对比" class="headerlink" title="📊 UML 对比"></a>📊 UML 对比</h2><h3 id="❌-违反-SRP-——-“上帝类”-设计"><a href="#❌-违反-SRP-——-“上帝类”-设计" class="headerlink" title="❌ 违反 SRP —— “上帝类” 设计"></a>❌ 违反 SRP —— “上帝类” 设计</h3><pre class="mermaid">classDiagram
+    class OptimizationReport {
+        - string reportData
+        + processData()
+        + formatToHTML()
+        + saveToFile()
+    }</pre>
+
+<p>🔥 <strong>问题</strong>：一个类干了3个人的活！任何需求变更都要修改这个类，高耦合、高风险</p>
+<h3 id="✅-遵守-SRP-——-各司其职"><a href="#✅-遵守-SRP-——-各司其职" class="headerlink" title="✅ 遵守 SRP —— 各司其职"></a>✅ 遵守 SRP —— 各司其职</h3><pre class="mermaid">classDiagram
+    class OptimizationData {
+        - double maxStress
+        - double minDensity
+        + getRawData()
+    }
+    
+    class ReportFormatter {
+        + formatAsHTML()
+        + formatAsMarkdown()
+    }
+    
+    class DataSaver {
+        + saveToDisk()
+        + saveToCloud()
+    }
+    
+    OptimizationData ..> ReportFormatter
+    ReportFormatter ..> DataSaver</pre>
+
+<p>✅ 单一职责：每个类只负责一件事</p>
+<h2 id="💻-代码实战"><a href="#💻-代码实战" class="headerlink" title="💻 代码实战"></a>💻 代码实战</h2><h3 id="❌-反面教材：大包大揽的”上帝类”"><a href="#❌-反面教材：大包大揽的”上帝类”" class="headerlink" title="❌ 反面教材：大包大揽的”上帝类”"></a>❌ 反面教材：大包大揽的”上帝类”</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 🔥 【反面教材】：这个类承担了太多的职责！</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OptimizationReport</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::string reportData;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 🔄 职责 1：负责业务逻辑处理（处理计算数据）</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">processData</span><span class="params">(<span class="type">double</span> maxStress, <span class="type">double</span> minDensity)</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;📊 正在处理应力和密度数据...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        reportData = <span class="string">&quot;最大应力: &quot;</span> + std::<span class="built_in">to_string</span>(maxStress) </span><br><span class="line">                    + <span class="string">&quot;, 最小密度: &quot;</span> + std::<span class="built_in">to_string</span>(minDensity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 🎨 职责 2：负责格式化输出（排版）</span></span><br><span class="line">    <span class="function">std::string <span class="title">formatToHTML</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;🎨 正在将数据排版为 HTML 格式...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&lt;html&gt;&lt;body&gt;&lt;h1&gt;优化报告&lt;/h1&gt;&lt;p&gt;&quot;</span> </span><br><span class="line">               + reportData + <span class="string">&quot;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 💾 职责 3：负责文件存储（持久化）</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">saveToFile</span><span class="params">(<span class="type">const</span> std::string&amp; fileName, </span></span></span><br><span class="line"><span class="params"><span class="function">                    <span class="type">const</span> std::string&amp; content)</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;💾 正在将结果写入磁盘文件: &quot;</span> &lt;&lt; fileName &lt;&lt; std::endl;</span><br><span class="line">        <span class="comment">// 假装这里有写文件的底层代码</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>⚠️ <strong>为什么说这个设计很糟糕？</strong> 因为它有 **3个”引起它变化的原因”**：</p>
+<ol>
+<li>📊 改变数据处理逻辑（增加应变数据）→ 要改这个类</li>
+<li>🎨 报告格式从 HTML 改成 PDF → 要改这个类</li>
+<li>💾 存储从本地改成云端 → 还要改这个类</li>
+</ol>
+<p>🔥 <strong>一个类被修改的理由太多 &#x3D; 高耦合 &#x3D; 牵一发而动全身！</strong></p>
+</blockquote>
+<hr>
+<h3 id="✅-正面教材：拆分解耦，各司其职"><a href="#✅-正面教材：拆分解耦，各司其职" class="headerlink" title="✅ 正面教材：拆分解耦，各司其职"></a>✅ 正面教材：拆分解耦，各司其职</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🧩 类 1：只负责数据处理（数据模型）</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OptimizationData</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">double</span> maxStress;</span><br><span class="line">    <span class="type">double</span> minDensity;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">OptimizationData</span>(<span class="type">double</span> stress, <span class="type">double</span> density) </span><br><span class="line">        : <span class="built_in">maxStress</span>(stress), <span class="built_in">minDensity</span>(density) &#123;&#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function">std::string <span class="title">getRawData</span><span class="params">()</span> <span class="type">const</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;最大应力: &quot;</span> + std::<span class="built_in">to_string</span>(maxStress) </span><br><span class="line">             + <span class="string">&quot;, 最小密度: &quot;</span> + std::<span class="built_in">to_string</span>(minDensity);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🎨 类 2：只负责格式化排版（视图展示）</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ReportFormatter</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 📝 如果以后要加 Markdown 格式，修改这个类即可</span></span><br><span class="line">    <span class="function">std::string <span class="title">formatAsHTML</span><span class="params">(<span class="type">const</span> OptimizationData&amp; data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&lt;html&gt;&lt;body&gt;&lt;h1&gt;优化报告&lt;/h1&gt;&lt;p&gt;&quot;</span> </span><br><span class="line">               + data.<span class="built_in">getRawData</span>() + <span class="string">&quot;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 🆕 新增 Markdown 格式，不影响其他类</span></span><br><span class="line">    <span class="function">std::string <span class="title">formatAsMarkdown</span><span class="params">(<span class="type">const</span> OptimizationData&amp; data)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;# 优化报告\n\n&quot;</span> + data.<span class="built_in">getRawData</span>();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 💾 类 3：只负责存储（持久化）</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DataSaver</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 💿 存本地</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">saveToDisk</span><span class="params">(<span class="type">const</span> std::string&amp; fileName, </span></span></span><br><span class="line"><span class="params"><span class="function">                    <span class="type">const</span> std::string&amp; content)</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;💿 [本地存储] 成功写入: &quot;</span> &lt;&lt; fileName &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ☁️ 如果要存数据库，新增方法即可</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">saveToCloud</span><span class="params">(<span class="type">const</span> std::string&amp; content)</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;☁️ [云端存储] 正在上传数据...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🎯 业务调用端：像搭积木一样组合它们</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;🚀 === 开始生成报告 ===&quot;</span> &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 1️⃣ 数据组：处理数据</span></span><br><span class="line">    <span class="function">OptimizationData <span class="title">myData</span><span class="params">(<span class="number">250.5</span>, <span class="number">0.05</span>)</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 2️⃣ 排版组：渲染数据</span></span><br><span class="line">    ReportFormatter formatter;</span><br><span class="line">    std::string htmlReport = formatter.formatAsHTML(myData);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 3️⃣ 存储组：保存文件</span></span><br><span class="line">    DataSaver saver;</span><br><span class="line">    saver.<span class="built_in">saveToDisk</span>(<span class="string">&quot;result.html&quot;</span>, htmlReport);</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;✅ 报告生成完成！&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="🎯-SRP-核心总结"><a href="#🎯-SRP-核心总结" class="headerlink" title="🎯 SRP 核心总结"></a>🎯 SRP 核心总结</h2><table>
+<thead>
+<tr>
+<th>好处</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>🧩 <strong>代码像积木</strong></td>
+<td><code>ReportFormatter</code> 可被系统任何地方复用</td>
+</tr>
+<tr>
+<td>🛡️ <strong>修改不胆战心惊</strong></td>
+<td><code>DataSaver</code> 出 BUG 不会影响数据计算逻辑</td>
+</tr>
+<tr>
+<td>👥 <strong>团队协作顺畅</strong></td>
+<td>三个程序员可同时开发，无代码冲突</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>💡 <strong>判断技巧</strong>：试着用一句话描述类的功能。如果用到”<strong>和</strong>“、”<strong>并且</strong>“、”<strong>此外</strong>“，大概率违反了 SRP！</p>
+</blockquote>
+<hr>
+<h1 id="🔓-原则二：开放封闭原则-OCP"><a href="#🔓-原则二：开放封闭原则-OCP" class="headerlink" title="🔓 原则二：开放封闭原则 (OCP)"></a>🔓 原则二：开放封闭原则 (OCP)</h1><blockquote>
+<p><strong>“对扩展开放，对修改封闭”</strong></p>
+<ul>
+<li>✅ <strong>对扩展开放</strong>：需求变化时，能够方便地增加新功能</li>
+<li>🔒 <strong>对修改封闭</strong>：增加新功能时，不修改已测试通过的老代码</li>
+</ul>
+</blockquote>
+<h2 id="🎭-生动比喻：电脑的-USB-接口-🖥️🔌"><a href="#🎭-生动比喻：电脑的-USB-接口-🖥️🔌" class="headerlink" title="🎭 生动比喻：电脑的 USB 接口 🖥️🔌"></a>🎭 生动比喻：电脑的 USB 接口 🖥️🔌</h2><table>
+<thead>
+<tr>
+<th>特性</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>✅ <strong>对扩展开放</strong></td>
+<td>买新鼠标、键盘、USB风扇，都能直接插上使用</td>
+</tr>
+<tr>
+<td>🔒 <strong>对修改封闭</strong></td>
+<td>不需要拆开机箱，把鼠标线焊接到主板上！</td>
+</tr>
+</tbody></table>
+<p><strong>核心思想</strong>：通过预留标准接口，让新功能像插件一样”插”进系统！</p>
+<h2 id="📊-UML-对比-1"><a href="#📊-UML-对比-1" class="headerlink" title="📊 UML 对比"></a>📊 UML 对比</h2><h3 id="❌-违反-OCP-——-被-if-else-支配的恐惧"><a href="#❌-违反-OCP-——-被-if-else-支配的恐惧" class="headerlink" title="❌ 违反 OCP —— 被 if-else 支配的恐惧"></a>❌ 违反 OCP —— 被 <code>if-else</code> 支配的恐惧</h3><pre class="mermaid">classDiagram
+    class PaymentProcessor {
+        + processPayment()
+    }</pre>
+
+<p>❌ <strong>问题</strong>：新增支付方式必须修改核心类，容易引入 BUG，违反”对修改封闭”</p>
+<p>代码示例：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">if (payType == &#x27;Alipay&#x27;) &#123; ... &#125;</span><br><span class="line">else if (payType == &#x27;WeChat&#x27;) &#123; ... &#125;</span><br><span class="line">else if (payType == &#x27;ApplePay&#x27;) &#123; ... &#125; 🔥</span><br><span class="line">else if (payType == &#x27;UnionPay&#x27;) &#123; ... &#125; 🔥</span><br></pre></td></tr></table></figure>
+
+<h3 id="✅-遵守-OCP-——-面向接口，热插拔"><a href="#✅-遵守-OCP-——-面向接口，热插拔" class="headerlink" title="✅ 遵守 OCP —— 面向接口，热插拔"></a>✅ 遵守 OCP —— 面向接口，热插拔</h3><pre class="mermaid">classDiagram
+    class IPaymentMethod {
+        <<interface>>
+        + pay()
+    }
+    
+    class PaymentProcessor {
+        + processPayment()
+    }
+    
+    class AliPay {
+        + pay()
+    }
+    
+    class WeChatPay {
+        + pay()
+    }
+    
+    class ApplePay {
+        + pay()
+    }
+    
+    class UnionPay {
+        + pay()
+    }
+    
+    PaymentProcessor ..> IPaymentMethod
+    AliPay ..|> IPaymentMethod
+    WeChatPay ..|> IPaymentMethod
+    ApplePay ..|> IPaymentMethod
+    UnionPay ..|> IPaymentMethod</pre>
+
+<p>✅ <strong>完美遵守 OCP</strong>：这个方法永远不需要再修改！只依赖抽象接口，不依赖具体实现</p>
+<p>🆕 <strong>新增支付方式</strong>：只需添加新类，无需修改原有代码</p>
+<h2 id="💻-代码实战-1"><a href="#💻-代码实战-1" class="headerlink" title="💻 代码实战"></a>💻 代码实战</h2><h3 id="❌-反面教材：if-else-地狱"><a href="#❌-反面教材：if-else-地狱" class="headerlink" title="❌ 反面教材：if-else 地狱"></a>❌ 反面教材：<code>if-else</code> 地狱</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 🔥 【反面教材】：严重违反开闭原则</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PaymentProcessor</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 💣 核心支付逻辑 - 每次新增支付方式都要改这里！</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">processPayment</span><span class="params">(<span class="type">const</span> std::string&amp; payType, <span class="type">double</span> amount)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (payType == <span class="string">&quot;Alipay&quot;</span>) &#123;</span><br><span class="line">            std::cout &lt;&lt; <span class="string">&quot;💰 正在调用支付宝 API，扣款: &quot;</span> </span><br><span class="line">                      &lt;&lt; amount &lt;&lt; <span class="string">&quot; 元。&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        &#125; </span><br><span class="line">        <span class="keyword">else</span> <span class="keyword">if</span> (payType == <span class="string">&quot;WeChat&quot;</span>) &#123;</span><br><span class="line">            std::cout &lt;&lt; <span class="string">&quot;💬 正在调用微信支付 API，扣款: &quot;</span> </span><br><span class="line">                      &lt;&lt; amount &lt;&lt; <span class="string">&quot; 元。&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// 🔥 噩梦：每加一种支付方式都要来这里加 else if！</span></span><br><span class="line">        <span class="comment">// else if (payType == &quot;ApplePay&quot;) &#123; ... &#125;</span></span><br><span class="line">        <span class="comment">// else if (payType == &quot;UnionPay&quot;) &#123; ... &#125;</span></span><br><span class="line">        <span class="keyword">else</span> &#123;</span><br><span class="line">            std::cout &lt;&lt; <span class="string">&quot;❌ 不支持的支付方式！&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>⚠️ <strong>噩梦场景</strong>：公司业务拓展，要求接入 <strong>Apple Pay</strong> 和 <strong>银联支付</strong>。</p>
+<p>你<strong>被迫</strong>打开 <code>PaymentProcessor</code> 核心类，继续增加 <code>else if</code>。</p>
+<p>🔥 <strong>风险</strong>：加 Apple Pay 时不小心删了支付宝的逻辑 → 整个支付系统崩溃！</p>
+</blockquote>
+<hr>
+<h3 id="✅-正面教材：策略模式-多态"><a href="#✅-正面教材：策略模式-多态" class="headerlink" title="✅ 正面教材：策略模式 + 多态"></a>✅ 正面教材：策略模式 + 多态</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;memory&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🔌 1. 制定标准接口（相当于电脑的 USB 接口）</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IPaymentMethod</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">IPaymentMethod</span>() = <span class="keyword">default</span>;</span><br><span class="line">    <span class="comment">// 纯虚函数，要求子类必须实现</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">pay</span><span class="params">(<span class="type">double</span> amount)</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🔌 2. 具体的支付方式（相当于各种 USB 设备）</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">AliPay</span> : <span class="keyword">public</span> IPaymentMethod &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">pay</span><span class="params">(<span class="type">double</span> amount)</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  💰 支付宝：成功支付 &quot;</span> &lt;&lt; amount &lt;&lt; <span class="string">&quot; 元。&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">WeChatPay</span> : <span class="keyword">public</span> IPaymentMethod &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">pay</span><span class="params">(<span class="type">double</span> amount)</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  💬 微信：成功扫码支付 &quot;</span> &lt;&lt; amount &lt;&lt; <span class="string">&quot; 元。&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🖥️ 3. 核心处理类（相当于电脑主板）</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">PaymentProcessor</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// ✅ 【完美遵守 OCP】：这个方法永远不需要再修改！</span></span><br><span class="line">    <span class="comment">// 它只依赖抽象的接口，不依赖具体的实现</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">processPayment</span><span class="params">(IPaymentMethod* method, <span class="type">double</span> amount)</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;🛒 系统开始处理订单...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        method-&gt;<span class="built_in">pay</span>(amount);  <span class="comment">// 🎯 多态调用</span></span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;✅ 订单处理完成。\n&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<h3 id="🆕-见证奇迹：扩展新功能无需修改老代码！"><a href="#🆕-见证奇迹：扩展新功能无需修改老代码！" class="headerlink" title="🆕 见证奇迹：扩展新功能无需修改老代码！"></a>🆕 见证奇迹：扩展新功能无需修改老代码！</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 🎉 只需要新增代码，绝不修改老代码！（对扩展开放）</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">ApplePay</span> : <span class="keyword">public</span> IPaymentMethod &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">pay</span><span class="params">(<span class="type">double</span> amount)</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  🍎 Apple Pay：FaceID 认证成功，支付 &quot;</span> </span><br><span class="line">                  &lt;&lt; amount &lt;&lt; <span class="string">&quot; 元。&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">UnionPay</span> : <span class="keyword">public</span> IPaymentMethod &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">pay</span><span class="params">(<span class="type">double</span> amount)</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  🏦 银联：银行卡支付 &quot;</span> </span><br><span class="line">                  &lt;&lt; amount &lt;&lt; <span class="string">&quot; 元。&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🎯 业务调用</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    PaymentProcessor processor;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 💰 支付宝支付</span></span><br><span class="line">    AliPay alipay;</span><br><span class="line">    processor.<span class="built_in">processPayment</span>(&amp;alipay, <span class="number">100.0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 💬 微信支付</span></span><br><span class="line">    WeChatPay wechat;</span><br><span class="line">    processor.<span class="built_in">processPayment</span>(&amp;wechat, <span class="number">200.0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 🍎 Apple Pay - 新增功能，像插 USB 一样简单！</span></span><br><span class="line">    ApplePay applePay;</span><br><span class="line">    processor.<span class="built_in">processPayment</span>(&amp;applePay, <span class="number">599.0</span>);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 🏦 银联支付 - 再新增一个！</span></span><br><span class="line">    UnionPay unionPay;</span><br><span class="line">    processor.<span class="built_in">processPayment</span>(&amp;unionPay, <span class="number">1000.0</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="🎯-OCP-核心总结"><a href="#🎯-OCP-核心总结" class="headerlink" title="🎯 OCP 核心总结"></a>🎯 OCP 核心总结</h2><table>
+<thead>
+<tr>
+<th>问题</th>
+<th>解决方案</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>🤔 为什么需要 OCP？</td>
+<td>软件需求变化是绝对的。如果每次变动都要修改底层核心代码，系统会越来越脆弱（代码腐化）</td>
+</tr>
+<tr>
+<td>🛠️ 怎么实现 OCP？</td>
+<td>秘诀是 **”抽象”**（接口&#x2F;抽象类）+ **”多态”**。把易变部分抽象成接口，调用方只依赖接口</td>
+</tr>
+<tr>
+<td>🎨 和设计模式的关系</td>
+<td><strong>策略模式</strong>就是 OCP 最完美的践行者！OCP 是思想，策略模式是具体战术</td>
+</tr>
+</tbody></table>
+<hr>
+<h1 id="🔄-原则三：依赖倒置原则-DIP"><a href="#🔄-原则三：依赖倒置原则-DIP" class="headerlink" title="🔄 原则三：依赖倒置原则 (DIP)"></a>🔄 原则三：依赖倒置原则 (DIP)</h1><blockquote>
+<p><strong>“高层模块不应该依赖低层模块，两者都应该依赖抽象”</strong></p>
+</blockquote>
+<h2 id="🎭-生动比喻：墙壁插座与家用电器-🔌"><a href="#🎭-生动比喻：墙壁插座与家用电器-🔌" class="headerlink" title="🎭 生动比喻：墙壁插座与家用电器 🔌"></a>🎭 生动比喻：墙壁插座与家用电器 🔌</h2><table>
+<thead>
+<tr>
+<th>角色</th>
+<th>类比</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>🏠 <strong>高层模块</strong></td>
+<td>你家房子的供电系统</td>
+</tr>
+<tr>
+<td>📺 <strong>低层模块</strong></td>
+<td>电视机、电冰箱、电灯泡</td>
+</tr>
+</tbody></table>
+<h3 id="❌-违反-DIP（硬连接）"><a href="#❌-违反-DIP（硬连接）" class="headerlink" title="❌ 违反 DIP（硬连接）"></a>❌ 违反 DIP（硬连接）</h3><p>装修工人把供电系统的电线，<strong>直接焊死</strong>在电视机内部。</p>
+<ul>
+<li>🔥 <strong>后果</strong>：电视机坏了想换电冰箱？得把墙砸了，重新焊接！</li>
+</ul>
+<h3 id="✅-遵守-DIP（引入插座）"><a href="#✅-遵守-DIP（引入插座）" class="headerlink" title="✅ 遵守 DIP（引入插座）"></a>✅ 遵守 DIP（引入插座）</h3><p>国家规定 <strong>“三孔插座标准”（抽象接口）</strong>：</p>
+<ul>
+<li>🔌 <strong>供电系统（高层）</strong>：只负责把电送到插座，不关心外面接什么</li>
+<li>🔌 <strong>电视机（低层）</strong>：只负责设计能插进插座的插头</li>
+<li>✅ <strong>结果</strong>：想插什么电器就插什么，墙壁永远不需要改动！</li>
+</ul>
+<h2 id="📊-UML-对比-2"><a href="#📊-UML-对比-2" class="headerlink" title="📊 UML 对比"></a>📊 UML 对比</h2><h3 id="❌-违反-DIP-——-高层直接依赖低层"><a href="#❌-违反-DIP-——-高层直接依赖低层" class="headerlink" title="❌ 违反 DIP —— 高层直接依赖低层"></a>❌ 违反 DIP —— 高层直接依赖低层</h3><pre class="mermaid">classDiagram
+    class TopologyProject {
+        - LocalDiskWriter diskWriter
+        + saveResult()
+    }
+    
+    class LocalDiskWriter {
+        + writeToDisk()
+    }
+    
+    TopologyProject --> LocalDiskWriter</pre>
+
+<p>❌ <strong>致命错误</strong>：高层模块直接绑定低层模块，想换云端存储？必须剖开核心代码！</p>
+<h3 id="✅-遵守-DIP-——-依赖注入"><a href="#✅-遵守-DIP-——-依赖注入" class="headerlink" title="✅ 遵守 DIP —— 依赖注入"></a>✅ 遵守 DIP —— 依赖注入</h3><pre class="mermaid">classDiagram
+    class IStorage {
+        <<interface>>
+        + saveData()
+    }
+    
+    class TopologyProject {
+        - IStorage storage
+        + TopologyProject()
+        + saveResult()
+    }
+    
+    class LocalDiskWriter {
+        + saveData()
+    }
+    
+    class CloudStorageWriter {
+        + saveData()
+    }
+    
+    TopologyProject ..> IStorage
+    LocalDiskWriter ..|> IStorage
+    CloudStorageWriter ..|> IStorage</pre>
+
+<p>✅ <strong>依赖注入</strong>：通过构造函数传入具体实现，高层只认接口，不认具体类</p>
+<p>🆕 <strong>新增云端存储</strong>：无需修改 TopologyProject 一行代码！</p>
+<h2 id="💻-代码实战-2"><a href="#💻-代码实战-2" class="headerlink" title="💻 代码实战"></a>💻 代码实战</h2><h3 id="❌-反面教材：高层直接依赖低层"><a href="#❌-反面教材：高层直接依赖低层" class="headerlink" title="❌ 反面教材：高层直接依赖低层"></a>❌ 反面教材：高层直接依赖低层</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 💾 【低层模块】：专门负责写本地硬盘</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LocalDiskWriter</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">writeToDisk</span><span class="params">(<span class="type">const</span> std::string&amp; data)</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  💾 [低层] 正在将数据写入本地 C 盘： &quot;</span> </span><br><span class="line">                  &lt;&lt; data &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🏗️ 【高层模块】：核心优化项目类</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TopologyProject</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">// 🔥 致命错误：高层模块直接绑定了低层模块的实体类！</span></span><br><span class="line">    LocalDiskWriter diskWriter; </span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">saveResult</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        std::string resultData = <span class="string">&quot;单元密度矩阵: [0.9, 0.1, ...]&quot;</span>;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;&gt;&gt;&gt; 拓扑优化计算完毕，准备保存结果 &lt;&lt;&lt;&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 🔥 高层直接调用低层的方法</span></span><br><span class="line">        diskWriter.<span class="built_in">writeToDisk</span>(resultData); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>⚠️ <strong>痛点</strong>：公司要求软件支持”保存到阿里云数据库”。</p>
+<p>你必须把 <code>TopologyProject</code>（核心高层代码）剖开，把 <code>LocalDiskWriter</code> 删掉换成 <code>CloudWriter</code>。</p>
+<p>🔥 <strong>极易引入 BUG！</strong></p>
+</blockquote>
+<hr>
+<h3 id="✅-正面教材：依赖注入大法"><a href="#✅-正面教材：依赖注入大法" class="headerlink" title="✅ 正面教材：依赖注入大法"></a>✅ 正面教材：依赖注入大法</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;memory&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🔌 1. 抽象接口（插座标准）- 属于高层定义</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IStorage</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">IStorage</span>() = <span class="keyword">default</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">saveData</span><span class="params">(<span class="type">const</span> std::string&amp; data)</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🏗️ 2. 高层模块（墙里的电线，只认插座）</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">TopologyProject</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">// ✅ 高层模块只依赖抽象接口！</span></span><br><span class="line">    <span class="comment">// 完全不知道硬盘、云端的存在</span></span><br><span class="line">    std::shared_ptr&lt;IStorage&gt; storageMethod;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 🎯 【核心战术：依赖注入】</span></span><br><span class="line">    <span class="comment">// 在创建项目时，从外部把具体的&quot;插头&quot;插进来</span></span><br><span class="line">    <span class="built_in">TopologyProject</span>(std::shared_ptr&lt;IStorage&gt; method) </span><br><span class="line">        : <span class="built_in">storageMethod</span>(method) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">saveResult</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        std::string resultData = <span class="string">&quot;单元密度矩阵: [0.9, 0.1, ...]&quot;</span>;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;&gt;&gt;&gt; 拓扑优化计算完毕，准备保存结果 &lt;&lt;&lt;&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// 🎯 盲调用接口方法</span></span><br><span class="line">        storageMethod-&gt;<span class="built_in">saveData</span>(resultData); </span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 💾 3. 低层模块（具体的电器，负责实现插头）</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">LocalDiskWriter</span> : <span class="keyword">public</span> IStorage &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">saveData</span><span class="params">(<span class="type">const</span> std::string&amp; data)</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  💿 [本地驱动] 转动磁盘，写入本地硬盘。&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">CloudStorageWriter</span> : <span class="keyword">public</span> IStorage &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">saveData</span><span class="params">(<span class="type">const</span> std::string&amp; data)</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  ☁️ [云端驱动] 建立 TCP 连接，上传至云服务器。&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">DatabaseWriter</span> : <span class="keyword">public</span> IStorage &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">saveData</span><span class="params">(<span class="type">const</span> std::string&amp; data)</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  🗄️ [数据库驱动] 执行 SQL 插入语句。&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🎯 业务调用端：组装系统</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 🏠 场景 1：用户在没有网络的环境下使用</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;=== 场景 1：本地存储 ===&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    std::shared_ptr&lt;IStorage&gt; localMethod = </span><br><span class="line">        std::<span class="built_in">make_shared</span>&lt;LocalDiskWriter&gt;();</span><br><span class="line">    <span class="function">TopologyProject <span class="title">projectA</span><span class="params">(localMethod)</span></span>;  <span class="comment">// 把本地插头插进项目</span></span><br><span class="line">    projectA.<span class="built_in">saveResult</span>();</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;\n-------------------\n&quot;</span> &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ☁️ 场景 2：用户在公司内网，要求数据上云</span></span><br><span class="line">    <span class="comment">// 🎉 注意：TopologyProject 核心类的一行代码都不用改！</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;=== 场景 2：云端存储 ===&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    std::shared_ptr&lt;IStorage&gt; cloudMethod = </span><br><span class="line">        std::<span class="built_in">make_shared</span>&lt;CloudStorageWriter&gt;();</span><br><span class="line">    <span class="function">TopologyProject <span class="title">projectB</span><span class="params">(cloudMethod)</span></span>;  <span class="comment">// 把云端插头插进项目</span></span><br><span class="line">    projectB.<span class="built_in">saveResult</span>();</span><br><span class="line">    </span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;\n-------------------\n&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 🗄️ 场景 3：保存到数据库</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;=== 场景 3：数据库存储 ===&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    std::shared_ptr&lt;IStorage&gt; dbMethod = </span><br><span class="line">        std::<span class="built_in">make_shared</span>&lt;DatabaseWriter&gt;();</span><br><span class="line">    <span class="function">TopologyProject <span class="title">projectC</span><span class="params">(dbMethod)</span></span>;</span><br><span class="line">    projectC.<span class="built_in">saveResult</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="🎯-DIP-核心总结"><a href="#🎯-DIP-核心总结" class="headerlink" title="🎯 DIP 核心总结"></a>🎯 DIP 核心总结</h2><h3 id="为什么叫”倒置”-Inversion-？"><a href="#为什么叫”倒置”-Inversion-？" class="headerlink" title="为什么叫”倒置”(Inversion)？"></a>为什么叫”倒置”(Inversion)？</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">传统思维（自顶向下）：</span><br><span class="line">🏗️ 高层模块 ──(依赖)──&gt; 💾 低层模块</span><br><span class="line"></span><br><span class="line">DIP 思维（倒置依赖）：</span><br><span class="line">🏗️ 高层模块 ──(依赖)──&gt; 🔌 抽象接口 &lt;──(实现)── 💾 低层模块</span><br></pre></td></tr></table></figure>
+
+<h3 id="四大原则的关系"><a href="#四大原则的关系" class="headerlink" title="四大原则的关系"></a>四大原则的关系</h3><table>
+<thead>
+<tr>
+<th>原则</th>
+<th>作用</th>
+<th>关系</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>📐 <strong>SRP</strong></td>
+<td>让类保持小巧和纯洁</td>
+<td>基础：扎马步</td>
+</tr>
+<tr>
+<td>🔓 <strong>OCP</strong></td>
+<td>最终目标：不改老代码，只加新代码</td>
+<td>目标：武功大成</td>
+</tr>
+<tr>
+<td>🔄 <strong>DIP</strong></td>
+<td>实现 OCP 的最核心手段</td>
+<td>心法：内功</td>
+</tr>
+<tr>
+<td>🎨 <strong>策略&#x2F;工厂模式</strong></td>
+<td>落地到代码的具体招式</td>
+<td>招式：降龙十八掌</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>💡 <strong>一句话总结</strong>：DIP 就是通过<strong>面向接口编程</strong>，让高层和低层都依赖于抽象，而不是相互直接依赖！</p>
+</blockquote>
+<hr>
+<h1 id="🧬-原则四：里氏替换原则-LSP"><a href="#🧬-原则四：里氏替换原则-LSP" class="headerlink" title="🧬 原则四：里氏替换原则 (LSP)"></a>🧬 原则四：里氏替换原则 (LSP)</h1><blockquote>
+<p><strong>“所有引用基类的地方必须能透明地使用其子类的对象”</strong></p>
+</blockquote>
+<p>由计算机科学家 <strong>芭芭拉·里斯科夫（Barbara Liskov）</strong> 提出，专门约束<strong>继承关系</strong>。</p>
+<h2 id="🎭-生动比喻：老爹的炸鸡店-🍗"><a href="#🎭-生动比喻：老爹的炸鸡店-🍗" class="headerlink" title="🎭 生动比喻：老爹的炸鸡店 🍗"></a>🎭 生动比喻：老爹的炸鸡店 🍗</h2><p>你老爹开了一家”老爹炸鸡店”（父类），契约是：”<strong>本店提供美味的炸鸡</strong>“。</p>
+<h3 id="❌-违反-LSP-——-坑爹的儿子"><a href="#❌-违反-LSP-——-坑爹的儿子" class="headerlink" title="❌ 违反 LSP —— 坑爹的儿子"></a>❌ 违反 LSP —— 坑爹的儿子</h3><p>你（子类）继承了店，但为了省钱，把炸鸡换成了<strong>炸馒头</strong>，还说：”都是炸的，差不多！”</p>
+<p>🔥 <strong>后果</strong>：老顾客（客户端代码）来点餐，发现味道完全不对，程序崩溃！</p>
+<h3 id="✅-遵守-LSP-——-合格的继承者"><a href="#✅-遵守-LSP-——-合格的继承者" class="headerlink" title="✅ 遵守 LSP —— 合格的继承者"></a>✅ 遵守 LSP —— 合格的继承者</h3><p>你（子类）继承了店，提供了<strong>更美味的炸鸡</strong>（优化实现），但契约不变。</p>
+<p>✅ <strong>结果</strong>：老顾客完全无感知，甚至觉得更好吃了！</p>
+<h2 id="📊-UML-对比-3"><a href="#📊-UML-对比-3" class="headerlink" title="📊 UML 对比"></a>📊 UML 对比</h2><h3 id="❌-违反-LSP-——-子类破坏父类契约"><a href="#❌-违反-LSP-——-子类破坏父类契约" class="headerlink" title="❌ 违反 LSP —— 子类破坏父类契约"></a>❌ 违反 LSP —— 子类破坏父类契约</h3><pre class="mermaid">classDiagram
+    class Bird {
+        + fly()
+    }
+    
+    class Sparrow {
+        + fly()
+    }
+    
+    class Ostrich {
+        + fly()
+    }
+    
+    Bird <|-- Sparrow
+    Bird <|-- Ostrich</pre>
+
+<p>❌ <strong>违反 LSP</strong>：鸵鸟重写了 fly() 方法，但里面写着 throw Exception(“不会飞”) 或空的 {} 来掩盖错误。用 Bird 的地方替换为 Ostrich 会崩溃！</p>
+<h3 id="✅-遵守-LSP-——-正确的继承层次"><a href="#✅-遵守-LSP-——-正确的继承层次" class="headerlink" title="✅ 遵守 LSP —— 正确的继承层次"></a>✅ 遵守 LSP —— 正确的继承层次</h3><pre class="mermaid">classDiagram
+    class Animal {
+        <<abstract>>
+        + move()
+    }
+    
+    class Bird {
+        + fly()
+    }
+    
+    class Sparrow {
+        + fly()
+    }
+    
+    class Ostrich {
+        + run()
+    }
+    
+    Animal <|-- Bird
+    Animal <|-- Ostrich
+    Bird <|-- Sparrow</pre>
+
+<p>✅ <strong>遵守 LSP</strong>：鸵鸟不继承 Bird，而是直接继承 Animal，实现自己的 move()。不会飞的鸟就不应该继承会飞的鸟！</p>
+<h2 id="💻-代码实战-3"><a href="#💻-代码实战-3" class="headerlink" title="💻 代码实战"></a>💻 代码实战</h2><h3 id="❌-反面教材：鸵鸟继承鸟（经典错误）"><a href="#❌-反面教材：鸵鸟继承鸟（经典错误）" class="headerlink" title="❌ 反面教材：鸵鸟继承鸟（经典错误）"></a>❌ 反面教材：鸵鸟继承鸟（经典错误）</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdexcept&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🐦 父类：鸟（会飞）</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Bird</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">fly</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;🐦 鸟儿展翅高飞！&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">Bird</span>() = <span class="keyword">default</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🐦 子类：麻雀（会飞，正常）</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Sparrow</span> : <span class="keyword">public</span> Bird &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">fly</span><span class="params">()</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;🐦 麻雀轻盈地飞过树梢！&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🦩 子类：鸵鸟（不会飞，问题大了！）</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Ostrich</span> : <span class="keyword">public</span> Bird &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 🔥 致命错误：鸵鸟不会飞，但被迫实现 fly()！</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">fly</span><span class="params">()</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="comment">// ❌ 方案 1：抛出异常</span></span><br><span class="line">        <span class="keyword">throw</span> std::<span class="built_in">runtime_error</span>(<span class="string">&quot;🦩 鸵鸟不会飞！这是设计错误！&quot;</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// ❌ 方案 2：空实现（掩盖错误）</span></span><br><span class="line">        <span class="comment">// std::cout &lt;&lt; &quot;🦩 鸵鸟：我假装会飞...&quot; &lt;&lt; std::endl;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🎯 客户端代码：让鸟飞起来</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">makeBirdFly</span><span class="params">(Bird* bird)</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;准备让鸟儿起飞...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    bird-&gt;<span class="built_in">fly</span>();  <span class="comment">// 🎯 多态调用</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;飞行结束。\n&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🧪 测试代码</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ✅ 麻雀能飞，没问题</span></span><br><span class="line">    Sparrow sparrow;</span><br><span class="line">    <span class="built_in">makeBirdFly</span>(&amp;sparrow);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 🔥 鸵鸟不会飞，但程序崩溃了！</span></span><br><span class="line">    Ostrich ostrich;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="built_in">makeBirdFly</span>(&amp;ostrich);  <span class="comment">// 💥 抛出异常！</span></span><br><span class="line">    &#125; <span class="built_in">catch</span> (<span class="type">const</span> std::exception&amp; e) &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;❌ 错误：&quot;</span> &lt;&lt; e.<span class="built_in">what</span>() &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>⚠️ <strong>问题分析</strong>：</p>
+<ul>
+<li>🦩 鸵鸟是鸟，但不会飞</li>
+<li>🔥 强迫鸵鸟继承 <code>Bird</code> 类，违反了自然属性</li>
+<li>💥 用 <code>Bird*</code> 的地方替换为 <code>Ostrich*</code>，程序行为异常！</li>
+</ul>
+</blockquote>
+<hr>
+<h3 id="✅-正面教材：正确的继承层次设计"><a href="#✅-正面教材：正确的继承层次设计" class="headerlink" title="✅ 正面教材：正确的继承层次设计"></a>✅ 正面教材：正确的继承层次设计</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;memory&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🐾 顶层抽象：动物（都会移动）</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Animal</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">move</span><span class="params">()</span> </span>= <span class="number">0</span>;  <span class="comment">// 纯虚函数</span></span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">Animal</span>() = <span class="keyword">default</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🐦 中间层：会飞的鸟</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FlyableBird</span> : <span class="keyword">public</span> Animal &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">move</span><span class="params">()</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="built_in">fly</span>();  <span class="comment">// 移动方式就是飞</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">fly</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;🐦 鸟儿展翅高飞！&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🐦 具体鸟类：麻雀</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Sparrow</span> : <span class="keyword">public</span> FlyableBird &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">fly</span><span class="params">()</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;🐦 麻雀轻盈地飞过树梢！&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🦅 具体鸟类：老鹰</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Eagle</span> : <span class="keyword">public</span> FlyableBird &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">fly</span><span class="params">()</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;🦅 老鹰在高空翱翔！&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🦩 不会飞的鸟：直接继承 Animal</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">FlightlessBird</span> : <span class="keyword">public</span> Animal &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">move</span><span class="params">()</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="built_in">run</span>();  <span class="comment">// 移动方式是跑</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;🏃 鸟儿在奔跑！&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🦩 具体鸟类：鸵鸟</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Ostrich</span> : <span class="keyword">public</span> FlightlessBird &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">run</span><span class="params">()</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;🦩 鸵鸟迈开大长腿飞奔！时速 70 公里！&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🐧 具体鸟类：企鹅</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Penguin</span> : <span class="keyword">public</span> FlightlessBird &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">run</span><span class="params">()</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;🐧 企鹅摇摇摆摆地走路，偶尔滑个冰~&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🎯 客户端代码：让动物移动</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">makeAnimalMove</span><span class="params">(Animal* animal)</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;准备让动物移动...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    animal-&gt;<span class="built_in">move</span>();  <span class="comment">// 🎯 多态调用</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;移动结束。\n&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🧪 测试代码：所有替换都正常工作！</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;=== 🧪 LSP 测试：所有子类都能透明替换父类 ===\n&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ✅ 会飞的鸟</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;【会飞的鸟类】&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    Sparrow sparrow;</span><br><span class="line">    <span class="built_in">makeAnimalMove</span>(&amp;sparrow);  <span class="comment">// 🐦 麻雀飞</span></span><br><span class="line">    </span><br><span class="line">    Eagle eagle;</span><br><span class="line">    <span class="built_in">makeAnimalMove</span>(&amp;eagle);    <span class="comment">// 🦅 老鹰飞</span></span><br><span class="line">    </span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;-------------------\n&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// ✅ 不会飞的鸟 - 也能正常工作！</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;【不会飞的鸟类】&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    Ostrich ostrich;</span><br><span class="line">    <span class="built_in">makeAnimalMove</span>(&amp;ostrich);  <span class="comment">// 🦩 鸵鸟跑</span></span><br><span class="line">    </span><br><span class="line">    Penguin penguin;</span><br><span class="line">    <span class="built_in">makeAnimalMove</span>(&amp;penguin);  <span class="comment">// 🐧 企鹅走</span></span><br><span class="line">    </span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;✅ 所有测试通过！每个子类都能完美替换父类！&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="🎯-LSP-核心总结"><a href="#🎯-LSP-核心总结" class="headerlink" title="🎯 LSP 核心总结"></a>🎯 LSP 核心总结</h2><h3 id="判断标准"><a href="#判断标准" class="headerlink" title="判断标准"></a>判断标准</h3><table>
+<thead>
+<tr>
+<th>检查项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>✅ <strong>行为一致</strong></td>
+<td>子类替换父类后，程序行为不变</td>
+</tr>
+<tr>
+<td>✅ <strong>契约遵守</strong></td>
+<td>子类不破坏父类的前置条件、后置条件</td>
+</tr>
+<tr>
+<td>❌ <strong>反模式</strong></td>
+<td>子类重写方法时抛出异常或空实现来掩盖错误</td>
+</tr>
+</tbody></table>
+<h3 id="常见违反场景"><a href="#常见违反场景" class="headerlink" title="常见违反场景"></a>常见违反场景</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// ❌ 危险信号：这些写法 100% 违反 LSP！</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">SomeMethod</span><span class="params">()</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">    <span class="keyword">throw</span> <span class="built_in">NotSupportedException</span>(<span class="string">&quot;不支持此操作&quot;</span>);  <span class="comment">// 🔥 违反！</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">SomeMethod</span><span class="params">()</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 空的 &#123;&#125;  // 🔥 违反！掩盖错误</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">SomeMethod</span><span class="params">()</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 做了和父类完全不同的事情  // 🔥 违反！</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h3><p>如果发现子类需要”破坏”父类的行为，说明继承关系设计错误：</p>
+<ol>
+<li>🔄 <strong>抽离更细的接口</strong> —— 如 <code>Flyable</code> 和 <code>Runnable</code> 分开</li>
+<li>🔀 <strong>改为组合关系</strong> —— 用”有一个”代替”是一个”</li>
+</ol>
+<blockquote>
+<p>💡 <strong>一句话总结</strong>：<strong>子类必须能够 100% 替代父类，而不改变程序的正确性！</strong></p>
+</blockquote>
+<hr>
+<h1 id="🎓-总结：四大原则的关系"><a href="#🎓-总结：四大原则的关系" class="headerlink" title="🎓 总结：四大原则的关系"></a>🎓 总结：四大原则的关系</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">┌─────────────────────────────────────────────────────────────┐</span><br><span class="line">│                    🏛️ SOLID 设计原则                         │</span><br><span class="line">├─────────────────────────────────────────────────────────────┤</span><br><span class="line">│                                                             │</span><br><span class="line">│   📐 SRP (单一职责)                                          │</span><br><span class="line">│   └── 基础：让每个类只干一件事，保持小巧纯洁                    │</span><br><span class="line">│           ↓                                                 │</span><br><span class="line">│   🔄 DIP (依赖倒置)                                          │</span><br><span class="line">│   └── 手段：通过接口解耦，高层低层都依赖抽象                    │</span><br><span class="line">│           ↓                                                 │</span><br><span class="line">│   🔓 OCP (开放封闭)                                          │</span><br><span class="line">│   └── 目标：不改老代码，只加新代码，系统稳定可扩展               │</span><br><span class="line">│           ↓                                                 │</span><br><span class="line">│   🧬 LSP (里氏替换)                                          │</span><br><span class="line">│   └── 约束：继承必须正确，子类要能透明替换父类                   │</span><br><span class="line">│                                                             │</span><br><span class="line">├─────────────────────────────────────────────────────────────┤</span><br><span class="line">│  🎨 设计模式（策略模式、工厂模式等）是这些原则的具体实现招式      │</span><br><span class="line">└─────────────────────────────────────────────────────────────┘</span><br></pre></td></tr></table></figure>
+
+<h2 id="🎯-记忆口诀"><a href="#🎯-记忆口诀" class="headerlink" title="🎯 记忆口诀"></a>🎯 记忆口诀</h2><blockquote>
+<p><strong>“单开依里”</strong> —— 单（SRP）开（OCP）依（DIP）里（LSP）</p>
+<p>记住：<strong>单身开放，依然美丽</strong> 😄</p>
+</blockquote>
+<hr>
+<p><em>📝 本文通过 🎭 生活比喻、📊 UML类图、💻 完整代码案例，帮助你深入理解设计模式四大原则。希望对你有所帮助！</em></p>
+
+    
+
+    
+
+    
+    <div class="declare"> 
+      <ul class="post-copyright">
+        <li>
+          <strong>本文作者：</strong>
+          迪丽惹Bug
+        </li>
+        <li>
+          <strong>本文链接：</strong>
+          <a href="https://lyroom.github.io/2026/04/27/设计模式的四大原则/" title="🎨 设计模式的四大原则" target="_blank">https://lyroom.github.io/2026/04/27/设计模式的四大原则/</a>
+        </li>
+        
+        <li>
+          <strong>版权声明： </strong>
           
+          本博客所有文章除特别声明外，均采用 <a href="https://github.com/JoeyBling/hexo-theme-yilia-plus/blob/master/LICENSE" rel="external nofollow" target="_blank">MIT</a> 许可协议。转载请注明出处！
+        </li>
+        
+      </ul>
+    </div>
+    
+
+  </div>
+  <div class="article-info article-info-index">
+    
+    
 	<div class="article-tag tagcloud">
 		<i class="icon-price-tags icon"></i>
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">继承</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">原则</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">多态</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">虚函数</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">虚函数表</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">虚函数指针</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">SOLID</a>
         		</li>
       		
 		</ul>
 	</div>
 
-          
+    
 
+    
+
+    
+    
+<div class="share-btn share-icons tooltip-left">
+  <div class="tooltip tooltip-east">
+    <span class="tooltip-item">
+      <a href="javascript:;" class="share-sns share-outer">
+        <i class="icon icon-share"></i>
+      </a>
+    </span>
+    <span class="tooltip-content">
+      <div class="share-wrap">
+        <div class="share-icons">
+          <a class="weibo share-sns" href="javascript:;" data-type="weibo">
+            <i class="icon icon-weibo"></i>
+          </a>
+          <!-- <a class="weixin share-sns wxFab" href="javascript:;" data-type="weixin">
+            <i class="icon icon-weixin"></i>
+          </a> -->
+          <a class="qq share-sns" href="javascript:;" data-type="qq">
+            <i class="icon icon-qq"></i>
+          </a>
+          <a class="douban share-sns" href="javascript:;" data-type="douban">
+            <i class="icon icon-douban"></i>
+          </a>
+          <a class="qzone share-sns" href="javascript:;" data-type="qzone">
+            <i class="icon icon-qzone"></i>
+          </a>
+          <a class="facebook share-sns" href="javascript:;" data-type="facebook">
+            <i class="icon icon-facebook"></i>
+          </a>
+          <a class="twitter share-sns" href="javascript:;" data-type="twitter">
+            <i class="icon icon-twitter"></i>
+          </a>
+          <a class="google share-sns" href="javascript:;" data-type="google">
+            <i class="icon icon-google"></i>
+          </a>
         </div>
-        <div class="clearfix"></div>
-    </header>
+      </div>
+    </span>
+  </div>
+</div>
+
+<div class="page-modal wx-share js-wx-box">
+    <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <div class="wx-qrcode">
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://lyroom.github.io/2026/04/27/%E8%AE%BE%E8%AE%A1%E6%A8%A1%E5%BC%8F%E7%9A%84%E5%9B%9B%E5%A4%A7%E5%8E%9F%E5%88%99/" alt="微信分享二维码"> -->
+    </div>
+</div>
+
+<div class="mask js-mask"></div>
+
+    
+    <div class="clearfix"></div>
+  </div>
   </div>
 </article>
-                                    
-                  
-                    
-                                  <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/10/16/C-%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/" class="archive-article-date">
-        <time datetime="2024-10-16T03:56:40.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-10-16</time>
-</a>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2026/04/27/%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">简单工厂模式和策略模式详解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+<aside class="wrap-side-operation">
+    <div class="mod-side-operation">
+        
+        <div class="jump-container" id="js-jump-container" style="display:none;">
+            <a href="javascript:void(0)" class="mod-side-operation__jump-to-top">
+                <i class="icon-font icon-back"></i>
+            </a>
+            <div id="js-jump-plan-container" class="jump-plan-container" style="top: -11px;">
+                <i class="icon-font icon-plane jump-plane"></i>
+            </div>
         </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/10/16/C-%E6%A0%B8%E5%BF%83%E7%BC%96%E7%A8%8B/" target="_blank">C++核心编程</a>
-  
-    </h1>
-  
-
-
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">面向对象</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">编程技术</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
+        
+        
+        <div class="toc-container tooltip-left">
+            <i class="icon-font icon-category"></i>
+            <div class="tooltip tooltip-east">
+                <span class="tooltip-item">
+                </span>
+                <span class="tooltip-content">
+                    <div class="toc-article">
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%8F%9B%EF%B8%8F-%E5%89%8D%E8%A8%80%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E9%9C%80%E8%A6%81%E8%AE%BE%E8%AE%A1%E5%8E%9F%E5%88%99%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">🏛️ 前言：为什么需要设计原则？</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%93%90-%E5%8E%9F%E5%88%99%E4%B8%80%EF%BC%9A%E5%8D%95%E4%B8%80%E8%81%8C%E8%B4%A3%E5%8E%9F%E5%88%99-SRP"><span class="toc-number">2.</span> <span class="toc-text">📐 原则一：单一职责原则 (SRP)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AD-%E7%94%9F%E5%8A%A8%E6%AF%94%E5%96%BB%EF%BC%9A%E7%91%9E%E5%A3%AB%E5%86%9B%E5%88%80-vs-%E4%B8%93%E4%B8%9A%E5%8E%A8%E6%88%BF"><span class="toc-number">2.1.</span> <span class="toc-text">🎭 生动比喻：瑞士军刀 vs 专业厨房</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8A-UML-%E5%AF%B9%E6%AF%94"><span class="toc-number">2.2.</span> <span class="toc-text">📊 UML 对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9D%8C-%E8%BF%9D%E5%8F%8D-SRP-%E2%80%94%E2%80%94-%E2%80%9C%E4%B8%8A%E5%B8%9D%E7%B1%BB%E2%80%9D-%E8%AE%BE%E8%AE%A1"><span class="toc-number">2.2.1.</span> <span class="toc-text">❌ 违反 SRP —— “上帝类” 设计</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-%E9%81%B5%E5%AE%88-SRP-%E2%80%94%E2%80%94-%E5%90%84%E5%8F%B8%E5%85%B6%E8%81%8C"><span class="toc-number">2.2.2.</span> <span class="toc-text">✅ 遵守 SRP —— 各司其职</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%92%BB-%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98"><span class="toc-number">2.3.</span> <span class="toc-text">💻 代码实战</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9D%8C-%E5%8F%8D%E9%9D%A2%E6%95%99%E6%9D%90%EF%BC%9A%E5%A4%A7%E5%8C%85%E5%A4%A7%E6%8F%BD%E7%9A%84%E2%80%9D%E4%B8%8A%E5%B8%9D%E7%B1%BB%E2%80%9D"><span class="toc-number">2.3.1.</span> <span class="toc-text">❌ 反面教材：大包大揽的”上帝类”</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-%E6%AD%A3%E9%9D%A2%E6%95%99%E6%9D%90%EF%BC%9A%E6%8B%86%E5%88%86%E8%A7%A3%E8%80%A6%EF%BC%8C%E5%90%84%E5%8F%B8%E5%85%B6%E8%81%8C"><span class="toc-number">2.3.2.</span> <span class="toc-text">✅ 正面教材：拆分解耦，各司其职</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-SRP-%E6%A0%B8%E5%BF%83%E6%80%BB%E7%BB%93"><span class="toc-number">2.4.</span> <span class="toc-text">🎯 SRP 核心总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%94%93-%E5%8E%9F%E5%88%99%E4%BA%8C%EF%BC%9A%E5%BC%80%E6%94%BE%E5%B0%81%E9%97%AD%E5%8E%9F%E5%88%99-OCP"><span class="toc-number">3.</span> <span class="toc-text">🔓 原则二：开放封闭原则 (OCP)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AD-%E7%94%9F%E5%8A%A8%E6%AF%94%E5%96%BB%EF%BC%9A%E7%94%B5%E8%84%91%E7%9A%84-USB-%E6%8E%A5%E5%8F%A3-%F0%9F%96%A5%EF%B8%8F%F0%9F%94%8C"><span class="toc-number">3.1.</span> <span class="toc-text">🎭 生动比喻：电脑的 USB 接口 🖥️🔌</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8A-UML-%E5%AF%B9%E6%AF%94-1"><span class="toc-number">3.2.</span> <span class="toc-text">📊 UML 对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9D%8C-%E8%BF%9D%E5%8F%8D-OCP-%E2%80%94%E2%80%94-%E8%A2%AB-if-else-%E6%94%AF%E9%85%8D%E7%9A%84%E6%81%90%E6%83%A7"><span class="toc-number">3.2.1.</span> <span class="toc-text">❌ 违反 OCP —— 被 if-else 支配的恐惧</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-%E9%81%B5%E5%AE%88-OCP-%E2%80%94%E2%80%94-%E9%9D%A2%E5%90%91%E6%8E%A5%E5%8F%A3%EF%BC%8C%E7%83%AD%E6%8F%92%E6%8B%94"><span class="toc-number">3.2.2.</span> <span class="toc-text">✅ 遵守 OCP —— 面向接口，热插拔</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%92%BB-%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98-1"><span class="toc-number">3.3.</span> <span class="toc-text">💻 代码实战</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9D%8C-%E5%8F%8D%E9%9D%A2%E6%95%99%E6%9D%90%EF%BC%9Aif-else-%E5%9C%B0%E7%8B%B1"><span class="toc-number">3.3.1.</span> <span class="toc-text">❌ 反面教材：if-else 地狱</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-%E6%AD%A3%E9%9D%A2%E6%95%99%E6%9D%90%EF%BC%9A%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F-%E5%A4%9A%E6%80%81"><span class="toc-number">3.3.2.</span> <span class="toc-text">✅ 正面教材：策略模式 + 多态</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%86%95-%E8%A7%81%E8%AF%81%E5%A5%87%E8%BF%B9%EF%BC%9A%E6%89%A9%E5%B1%95%E6%96%B0%E5%8A%9F%E8%83%BD%E6%97%A0%E9%9C%80%E4%BF%AE%E6%94%B9%E8%80%81%E4%BB%A3%E7%A0%81%EF%BC%81"><span class="toc-number">3.3.3.</span> <span class="toc-text">🆕 见证奇迹：扩展新功能无需修改老代码！</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-OCP-%E6%A0%B8%E5%BF%83%E6%80%BB%E7%BB%93"><span class="toc-number">3.4.</span> <span class="toc-text">🎯 OCP 核心总结</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%94%84-%E5%8E%9F%E5%88%99%E4%B8%89%EF%BC%9A%E4%BE%9D%E8%B5%96%E5%80%92%E7%BD%AE%E5%8E%9F%E5%88%99-DIP"><span class="toc-number">4.</span> <span class="toc-text">🔄 原则三：依赖倒置原则 (DIP)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AD-%E7%94%9F%E5%8A%A8%E6%AF%94%E5%96%BB%EF%BC%9A%E5%A2%99%E5%A3%81%E6%8F%92%E5%BA%A7%E4%B8%8E%E5%AE%B6%E7%94%A8%E7%94%B5%E5%99%A8-%F0%9F%94%8C"><span class="toc-number">4.1.</span> <span class="toc-text">🎭 生动比喻：墙壁插座与家用电器 🔌</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9D%8C-%E8%BF%9D%E5%8F%8D-DIP%EF%BC%88%E7%A1%AC%E8%BF%9E%E6%8E%A5%EF%BC%89"><span class="toc-number">4.1.1.</span> <span class="toc-text">❌ 违反 DIP（硬连接）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-%E9%81%B5%E5%AE%88-DIP%EF%BC%88%E5%BC%95%E5%85%A5%E6%8F%92%E5%BA%A7%EF%BC%89"><span class="toc-number">4.1.2.</span> <span class="toc-text">✅ 遵守 DIP（引入插座）</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8A-UML-%E5%AF%B9%E6%AF%94-2"><span class="toc-number">4.2.</span> <span class="toc-text">📊 UML 对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9D%8C-%E8%BF%9D%E5%8F%8D-DIP-%E2%80%94%E2%80%94-%E9%AB%98%E5%B1%82%E7%9B%B4%E6%8E%A5%E4%BE%9D%E8%B5%96%E4%BD%8E%E5%B1%82"><span class="toc-number">4.2.1.</span> <span class="toc-text">❌ 违反 DIP —— 高层直接依赖低层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-%E9%81%B5%E5%AE%88-DIP-%E2%80%94%E2%80%94-%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5"><span class="toc-number">4.2.2.</span> <span class="toc-text">✅ 遵守 DIP —— 依赖注入</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%92%BB-%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98-2"><span class="toc-number">4.3.</span> <span class="toc-text">💻 代码实战</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9D%8C-%E5%8F%8D%E9%9D%A2%E6%95%99%E6%9D%90%EF%BC%9A%E9%AB%98%E5%B1%82%E7%9B%B4%E6%8E%A5%E4%BE%9D%E8%B5%96%E4%BD%8E%E5%B1%82"><span class="toc-number">4.3.1.</span> <span class="toc-text">❌ 反面教材：高层直接依赖低层</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-%E6%AD%A3%E9%9D%A2%E6%95%99%E6%9D%90%EF%BC%9A%E4%BE%9D%E8%B5%96%E6%B3%A8%E5%85%A5%E5%A4%A7%E6%B3%95"><span class="toc-number">4.3.2.</span> <span class="toc-text">✅ 正面教材：依赖注入大法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-DIP-%E6%A0%B8%E5%BF%83%E6%80%BB%E7%BB%93"><span class="toc-number">4.4.</span> <span class="toc-text">🎯 DIP 核心总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E5%8F%AB%E2%80%9D%E5%80%92%E7%BD%AE%E2%80%9D-Inversion-%EF%BC%9F"><span class="toc-number">4.4.1.</span> <span class="toc-text">为什么叫”倒置”(Inversion)？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%9B%E5%A4%A7%E5%8E%9F%E5%88%99%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">4.4.2.</span> <span class="toc-text">四大原则的关系</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%A7%AC-%E5%8E%9F%E5%88%99%E5%9B%9B%EF%BC%9A%E9%87%8C%E6%B0%8F%E6%9B%BF%E6%8D%A2%E5%8E%9F%E5%88%99-LSP"><span class="toc-number">5.</span> <span class="toc-text">🧬 原则四：里氏替换原则 (LSP)</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AD-%E7%94%9F%E5%8A%A8%E6%AF%94%E5%96%BB%EF%BC%9A%E8%80%81%E7%88%B9%E7%9A%84%E7%82%B8%E9%B8%A1%E5%BA%97-%F0%9F%8D%97"><span class="toc-number">5.1.</span> <span class="toc-text">🎭 生动比喻：老爹的炸鸡店 🍗</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9D%8C-%E8%BF%9D%E5%8F%8D-LSP-%E2%80%94%E2%80%94-%E5%9D%91%E7%88%B9%E7%9A%84%E5%84%BF%E5%AD%90"><span class="toc-number">5.1.1.</span> <span class="toc-text">❌ 违反 LSP —— 坑爹的儿子</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-%E9%81%B5%E5%AE%88-LSP-%E2%80%94%E2%80%94-%E5%90%88%E6%A0%BC%E7%9A%84%E7%BB%A7%E6%89%BF%E8%80%85"><span class="toc-number">5.1.2.</span> <span class="toc-text">✅ 遵守 LSP —— 合格的继承者</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8A-UML-%E5%AF%B9%E6%AF%94-3"><span class="toc-number">5.2.</span> <span class="toc-text">📊 UML 对比</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9D%8C-%E8%BF%9D%E5%8F%8D-LSP-%E2%80%94%E2%80%94-%E5%AD%90%E7%B1%BB%E7%A0%B4%E5%9D%8F%E7%88%B6%E7%B1%BB%E5%A5%91%E7%BA%A6"><span class="toc-number">5.2.1.</span> <span class="toc-text">❌ 违反 LSP —— 子类破坏父类契约</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-%E9%81%B5%E5%AE%88-LSP-%E2%80%94%E2%80%94-%E6%AD%A3%E7%A1%AE%E7%9A%84%E7%BB%A7%E6%89%BF%E5%B1%82%E6%AC%A1"><span class="toc-number">5.2.2.</span> <span class="toc-text">✅ 遵守 LSP —— 正确的继承层次</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%92%BB-%E4%BB%A3%E7%A0%81%E5%AE%9E%E6%88%98-3"><span class="toc-number">5.3.</span> <span class="toc-text">💻 代码实战</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9D%8C-%E5%8F%8D%E9%9D%A2%E6%95%99%E6%9D%90%EF%BC%9A%E9%B8%B5%E9%B8%9F%E7%BB%A7%E6%89%BF%E9%B8%9F%EF%BC%88%E7%BB%8F%E5%85%B8%E9%94%99%E8%AF%AF%EF%BC%89"><span class="toc-number">5.3.1.</span> <span class="toc-text">❌ 反面教材：鸵鸟继承鸟（经典错误）</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-%E6%AD%A3%E9%9D%A2%E6%95%99%E6%9D%90%EF%BC%9A%E6%AD%A3%E7%A1%AE%E7%9A%84%E7%BB%A7%E6%89%BF%E5%B1%82%E6%AC%A1%E8%AE%BE%E8%AE%A1"><span class="toc-number">5.3.2.</span> <span class="toc-text">✅ 正面教材：正确的继承层次设计</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-LSP-%E6%A0%B8%E5%BF%83%E6%80%BB%E7%BB%93"><span class="toc-number">5.4.</span> <span class="toc-text">🎯 LSP 核心总结</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E6%96%AD%E6%A0%87%E5%87%86"><span class="toc-number">5.4.1.</span> <span class="toc-text">判断标准</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81%E8%BF%9D%E5%8F%8D%E5%9C%BA%E6%99%AF"><span class="toc-number">5.4.2.</span> <span class="toc-text">常见违反场景</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">5.4.3.</span> <span class="toc-text">解决方案</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%8E%93-%E6%80%BB%E7%BB%93%EF%BC%9A%E5%9B%9B%E5%A4%A7%E5%8E%9F%E5%88%99%E7%9A%84%E5%85%B3%E7%B3%BB"><span class="toc-number">6.</span> <span class="toc-text">🎓 总结：四大原则的关系</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-%E8%AE%B0%E5%BF%86%E5%8F%A3%E8%AF%80"><span class="toc-number">6.1.</span> <span class="toc-text">🎯 记忆口诀</span></a></li></ol></li></ol>
+                    </div>
+                </span>
+            </div>
         </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-                                    
-                  
-                    
-                                  <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/10/14/shell%E5%B0%8F%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90%E2%80%94%E2%80%94tldr/" class="archive-article-date">
-        <time datetime="2024-10-14T06:27:55.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-10-14</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/10/14/shell%E5%B0%8F%E5%B7%A5%E5%85%B7%E6%8E%A8%E8%8D%90%E2%80%94%E2%80%94tldr/" target="_blank">shell小工具推荐——tldr</a>
-  
-    </h1>
-  
+        
+    </div>
+</aside>
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">linux</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shell</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">shell工具推荐</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-                                    
-                  
-                    
-                                  <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/10/11/github%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-        <time datetime="2024-10-11T09:05:12.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-10-11</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/10/11/github%E5%AD%A6%E4%B9%A0/" target="_blank">github学习</a>
-  
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">git</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">github</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-          
-
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-                                    
-                  
-                    
-                                  <article class="archive-article archive-type-post">
-  <div class="archive-article-inner">
-    <header class="archive-article-header">
-      	<div class="article-meta">
-	      	
-<a href="/2024/10/11/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0/" class="archive-article-date">
-        <time datetime="2024-10-11T05:37:38.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2024-10-11</time>
-</a>
-
-        </div>
-    	 
-  
-    <h1 itemprop="name">
-	
-	  <a class="archive-article-title" href="/2024/10/11/%E6%AD%A3%E5%88%99%E8%A1%A8%E8%BE%BE%E5%BC%8F%E5%AD%A6%E4%B9%A0/" target="_blank">正则表达式学习</a>
-  
-    </h1>
-  
 
 
-        <div class="article-info info-on-right">
-          
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">正则表达式</a>
-        		</li>
-      		
-		</ul>
-	</div>
 
-          
 
-        </div>
-        <div class="clearfix"></div>
-    </header>
-  </div>
-</article>
-                                    
-                                      
-                              </div>
-                            </section>
-                            
 
-                              
 
-                                  
+
+
+
+
           </div>
         </div>
       </div>
@@ -519,8 +886,8 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
-		isArchive: true,
+		isPost: true,
+		isArchive: false,
 		isTag: false,
 		isCategory: false,
 		open_in_new: true,
