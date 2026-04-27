@@ -242,7 +242,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">3.9k字</span>
+      <span class="post-count">4k字</span>
     </span>
   </span>
 
@@ -278,6 +278,8 @@
 <li>🤝 <strong>易于协作</strong> —— 团队成员都能快速理解</li>
 </ul>
 <hr>
+<span id="more"></span>
+
 <h1 id="📐-原则一：单一职责原则-SRP"><a href="#📐-原则一：单一职责原则-SRP" class="headerlink" title="📐 原则一：单一职责原则 (SRP)"></a>📐 原则一：单一职责原则 (SRP)</h1><blockquote>
 <p><strong>“一个类应该只有一个引起它变化的原因”</strong></p>
 </blockquote>
@@ -326,8 +328,8 @@
         + saveToCloud()
     }
     
-    OptimizationData ..> ReportFormatter
-    ReportFormatter ..> DataSaver</pre>
+    OptimizationData ..> ReportFormatter : 被格式化
+    ReportFormatter ..> DataSaver : 被保存</pre>
 
 <p>✅ 单一职责：每个类只负责一件事</p>
 <h2 id="💻-代码实战"><a href="#💻-代码实战" class="headerlink" title="💻 代码实战"></a>💻 代码实战</h2><h3 id="❌-反面教材：大包大揽的”上帝类”"><a href="#❌-反面教材：大包大揽的”上帝类”" class="headerlink" title="❌ 反面教材：大包大揽的”上帝类”"></a>❌ 反面教材：大包大揽的”上帝类”</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 🔥 【反面教材】：这个类承担了太多的职责！</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">OptimizationReport</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::string reportData;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 🔄 职责 1：负责业务逻辑处理（处理计算数据）</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">processData</span><span class="params">(<span class="type">double</span> maxStress, <span class="type">double</span> minDensity)</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;📊 正在处理应力和密度数据...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        reportData = <span class="string">&quot;最大应力: &quot;</span> + std::<span class="built_in">to_string</span>(maxStress) </span><br><span class="line">                    + <span class="string">&quot;, 最小密度: &quot;</span> + std::<span class="built_in">to_string</span>(minDensity);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 🎨 职责 2：负责格式化输出（排版）</span></span><br><span class="line">    <span class="function">std::string <span class="title">formatToHTML</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;🎨 正在将数据排版为 HTML 格式...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">&quot;&lt;html&gt;&lt;body&gt;&lt;h1&gt;优化报告&lt;/h1&gt;&lt;p&gt;&quot;</span> </span><br><span class="line">               + reportData + <span class="string">&quot;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 💾 职责 3：负责文件存储（持久化）</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">saveToFile</span><span class="params">(<span class="type">const</span> std::string&amp; fileName, </span></span></span><br><span class="line"><span class="params"><span class="function">                    <span class="type">const</span> std::string&amp; content)</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;💾 正在将结果写入磁盘文件: &quot;</span> &lt;&lt; fileName &lt;&lt; std::endl;</span><br><span class="line">        <span class="comment">// 假装这里有写文件的底层代码</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
@@ -403,7 +405,6 @@
 
 <h3 id="✅-遵守-OCP-——-面向接口，热插拔"><a href="#✅-遵守-OCP-——-面向接口，热插拔" class="headerlink" title="✅ 遵守 OCP —— 面向接口，热插拔"></a>✅ 遵守 OCP —— 面向接口，热插拔</h3><pre class="mermaid">classDiagram
     class IPaymentMethod {
-        <<interface>>
         + pay()
     }
     
@@ -427,11 +428,11 @@
         + pay()
     }
     
-    PaymentProcessor ..> IPaymentMethod
-    AliPay ..|> IPaymentMethod
-    WeChatPay ..|> IPaymentMethod
-    ApplePay ..|> IPaymentMethod
-    UnionPay ..|> IPaymentMethod</pre>
+    PaymentProcessor ..> IPaymentMethod : 依赖接口
+    AliPay ..|> IPaymentMethod : 实现
+    WeChatPay ..|> IPaymentMethod : 实现
+    ApplePay ..|> IPaymentMethod : 实现
+    UnionPay ..|> IPaymentMethod : 实现</pre>
 
 <p>✅ <strong>完美遵守 OCP</strong>：这个方法永远不需要再修改！只依赖抽象接口，不依赖具体实现</p>
 <p>🆕 <strong>新增支付方式</strong>：只需添加新类，无需修改原有代码</p>
@@ -512,7 +513,6 @@
 <p>❌ <strong>致命错误</strong>：高层模块直接绑定低层模块，想换云端存储？必须剖开核心代码！</p>
 <h3 id="✅-遵守-DIP-——-依赖注入"><a href="#✅-遵守-DIP-——-依赖注入" class="headerlink" title="✅ 遵守 DIP —— 依赖注入"></a>✅ 遵守 DIP —— 依赖注入</h3><pre class="mermaid">classDiagram
     class IStorage {
-        <<interface>>
         + saveData()
     }
     
@@ -530,9 +530,9 @@
         + saveData()
     }
     
-    TopologyProject ..> IStorage
-    LocalDiskWriter ..|> IStorage
-    CloudStorageWriter ..|> IStorage</pre>
+    TopologyProject ..> IStorage : 依赖抽象
+    LocalDiskWriter ..|> IStorage : 实现
+    CloudStorageWriter ..|> IStorage : 实现</pre>
 
 <p>✅ <strong>依赖注入</strong>：通过构造函数传入具体实现，高层只认接口，不认具体类</p>
 <p>🆕 <strong>新增云端存储</strong>：无需修改 TopologyProject 一行代码！</p>
@@ -603,13 +603,12 @@
         + fly()
     }
     
-    Bird <|-- Sparrow
-    Bird <|-- Ostrich</pre>
+    Bird <|-- Sparrow : 继承
+    Bird <|-- Ostrich : 继承</pre>
 
 <p>❌ <strong>违反 LSP</strong>：鸵鸟重写了 fly() 方法，但里面写着 throw Exception(“不会飞”) 或空的 {} 来掩盖错误。用 Bird 的地方替换为 Ostrich 会崩溃！</p>
 <h3 id="✅-遵守-LSP-——-正确的继承层次"><a href="#✅-遵守-LSP-——-正确的继承层次" class="headerlink" title="✅ 遵守 LSP —— 正确的继承层次"></a>✅ 遵守 LSP —— 正确的继承层次</h3><pre class="mermaid">classDiagram
     class Animal {
-        <<abstract>>
         + move()
     }
     
@@ -625,9 +624,9 @@
         + run()
     }
     
-    Animal <|-- Bird
-    Animal <|-- Ostrich
-    Bird <|-- Sparrow</pre>
+    Animal <|-- Bird : 继承
+    Animal <|-- Ostrich : 继承
+    Bird <|-- Sparrow : 继承</pre>
 
 <p>✅ <strong>遵守 LSP</strong>：鸵鸟不继承 Bird，而是直接继承 Animal，实现自己的 move()。不会飞的鸟就不应该继承会飞的鸟！</p>
 <h2 id="💻-代码实战-3"><a href="#💻-代码实战-3" class="headerlink" title="💻 代码实战"></a>💻 代码实战</h2><h3 id="❌-反面教材：鸵鸟继承鸟（经典错误）"><a href="#❌-反面教材：鸵鸟继承鸟（经典错误）" class="headerlink" title="❌ 反面教材：鸵鸟继承鸟（经典错误）"></a>❌ 反面教材：鸵鸟继承鸟（经典错误）</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;stdexcept&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🐦 父类：鸟（会飞）</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Bird</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">fly</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;🐦 鸟儿展翅高飞！&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">Bird</span>() = <span class="keyword">default</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🐦 子类：麻雀（会飞，正常）</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Sparrow</span> : <span class="keyword">public</span> Bird &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">fly</span><span class="params">()</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;🐦 麻雀轻盈地飞过树梢！&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🦩 子类：鸵鸟（不会飞，问题大了！）</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Ostrich</span> : <span class="keyword">public</span> Bird &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 🔥 致命错误：鸵鸟不会飞，但被迫实现 fly()！</span></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">fly</span><span class="params">()</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="comment">// ❌ 方案 1：抛出异常</span></span><br><span class="line">        <span class="keyword">throw</span> std::<span class="built_in">runtime_error</span>(<span class="string">&quot;🦩 鸵鸟不会飞！这是设计错误！&quot;</span>);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">// ❌ 方案 2：空实现（掩盖错误）</span></span><br><span class="line">        <span class="comment">// std::cout &lt;&lt; &quot;🦩 鸵鸟：我假装会飞...&quot; &lt;&lt; std::endl;</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🎯 客户端代码：让鸟飞起来</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">makeBirdFly</span><span class="params">(Bird* bird)</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;准备让鸟儿起飞...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    bird-&gt;<span class="built_in">fly</span>();  <span class="comment">// 🎯 多态调用</span></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;飞行结束。\n&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 🧪 测试代码</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// ✅ 麻雀能飞，没问题</span></span><br><span class="line">    Sparrow sparrow;</span><br><span class="line">    <span class="built_in">makeBirdFly</span>(&amp;sparrow);</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 🔥 鸵鸟不会飞，但程序崩溃了！</span></span><br><span class="line">    Ostrich ostrich;</span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        <span class="built_in">makeBirdFly</span>(&amp;ostrich);  <span class="comment">// 💥 抛出异常！</span></span><br><span class="line">    &#125; <span class="built_in">catch</span> (<span class="type">const</span> std::exception&amp; e) &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;❌ 错误：&quot;</span> &lt;&lt; e.<span class="built_in">what</span>() &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -796,6 +795,15 @@
 
 
 <nav id="article-nav">
+  
+    <a href="/2026/04/27/%E8%A3%85%E9%A5%B0%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          装饰模式详解
+        
+      </div>
+    </a>
   
   
     <a href="/2026/04/27/%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E6%A8%A1%E5%BC%8F%E5%92%8C%E7%AD%96%E7%95%A5%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
@@ -1050,6 +1058,10 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">c++</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">朝花夕拾</a>
               </li>
              
@@ -1078,10 +1090,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">c++</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
               </li>
              
@@ -1090,11 +1098,23 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">内存</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">浅拷贝</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1107,18 +1127,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内存</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1202,11 +1210,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">top</a>
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+                <a href="javascript:void(0)" class="js-tag color4">top</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1214,23 +1222,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">浮生六记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">浮生六记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">const</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件操作</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1242,7 +1242,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文件操作</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">指针</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1267,10 +1279,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">CMakeLists</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
               </li>
              
               <li class="article-tag-list-item">
