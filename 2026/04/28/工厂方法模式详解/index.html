@@ -6,24 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://lyroom.github.io">
-  <title>Henry&#39;Blog</title>
+  <title>🏭 工厂方法模式详解 | Henry&#39;Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="礼物 - 3.8 	 	 	 	   	 	 		3.8节礼物，来了… 		 		 			 				 					首先，你要输入我的生日 					 					接着，摇一摇… 					 					最后，这就是见证奇迹的时刻… 				 				 					3.8节快乐！ 					祝身体健康,平安长乐 					请打开音量收听…">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Henry&#39;Blog">
-<meta property="og:url" content="https://lyroom.github.io/assets/demo/gift/index.html">
+  <meta name="description" content="🎯 导读：本文深入讲解工厂方法模式，带你告别简单工厂的”上帝类”噩梦，学会用”专厂专用”的方式优雅地创建对象！">
+<meta property="og:type" content="article">
+<meta property="og:title" content="🏭 工厂方法模式详解">
+<meta property="og:url" content="https://lyroom.github.io/2026/04/28/%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/index.html">
 <meta property="og:site_name" content="Henry&#39;Blog">
-<meta property="og:description" content="礼物 - 3.8 	 	 	 	   	 	 		3.8节礼物，来了… 		 		 			 				 					首先，你要输入我的生日 					 					接着，摇一摇… 					 					最后，这就是见证奇迹的时刻… 				 				 					3.8节快乐！ 					祝身体健康,平安长乐 					请打开音量收听…">
+<meta property="og:description" content="🎯 导读：本文深入讲解工厂方法模式，带你告别简单工厂的”上帝类”噩梦，学会用”专厂专用”的方式优雅地创建对象！">
 <meta property="og:locale">
-<meta property="og:image" content="https://lyroom.github.io/assets/demo/gift/index.htmlshake.png">
-<meta property="article:published_time" content="2026-04-28T06:52:59.197Z">
-<meta property="article:modified_time" content="2026-04-28T06:52:59.197Z">
+<meta property="article:published_time" content="2026-04-28T09:43:42.000Z">
+<meta property="article:modified_time" content="2026-04-28T09:43:42.000Z">
 <meta property="article:author" content="迪丽惹Bug">
-<meta property="article:tag" content="Henry,博客">
+<meta property="article:tag" content="C++">
+<meta property="article:tag" content="设计模式">
+<meta property="article:tag" content="工厂方法模式">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://lyroom.github.io/assets/demo/gift/index.htmlshake.png">
   
     <link rel="alternative" href="/atom.xml" title="Henry&#39;Blog" type="application/atom+xml">
   
@@ -399,93 +399,218 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="page-" class="article article-type-page " itemscope itemprop="blogPost">
+            <article id="post-工厂方法模式详解" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
+      <header class="article-header">
+  
+    <div class="article-page-title" itemprop="headline">🏭 工厂方法模式详解</div>
+  
+  
+  
+    <h1 class="article-title" itemprop="name">
+      🏭 工厂方法模式详解
+    </h1>
+  
+
+
+  
+  
+        
+        <span id="busuanzi_container_page_pv" style='display:none' class="archive-article-date">
+              <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
+        </span>
+
+<a href="/2026/04/28/%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
+        <time datetime="2026-04-28T09:43:42.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2026-04-28</time>
+</a>
+
+  
+  
+    
+<div style="margin-top:10px;">
+  <span class="post-time">
+    <span class="post-meta-item-icon">
+      <!-- fonts.scss -->
+      <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
+      <i class="icon-statistics"></i>
+      <span class="post-meta-item-text"> 字数统计:</span>
+      <span class="post-count">660字</span>
+    </span>
+  </span>
+
+  <span class="post-time">
+    &nbsp; | &nbsp;
+    <span class="post-meta-item-icon">
+      <i class="icon-book icon"></i>
+      <span class="post-meta-item-text"> 阅读时长≈</span>
+      <span class="post-count">2分</span>
+    </span>
+  </span>
+</div>
+
+
+  
+  </header>
+  
   <div class="article-entry" itemprop="articleBody">
     
-    <!doctype html>
-<html lang="en">
-<head>
-	<meta charset="utf-8">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
-    <meta name="format-detection" content="telephone=no">
-    <meta name="viewport" content="width=device-width,initial-scale=1.0, user-scalable=no">
-	<title>礼物 - 3.8</title>
-	<link rel="stylesheet" href="css/reset.css">
-	<link rel="stylesheet" href="css/index.css">
-	<script src="js/zepto.min.js"></script>
-	<script src="js/shake.js"></script>
-</head>
-<body>
-	<!-- <div id="my_player"></div> -->
-	<header>
-		<p>3.8节礼物，来了…</p>
-		<div class="paper-t"></div>
-		<div class="main">
-			<div class="main-top top2">
-				<section id="se1">
-					<p>首先，你要输入我的生日</p>
-					<input id="myBir" type="text" placeholder="4位数，格式为:mmdd"/>
-					<p>接着，摇一摇…</p>
-					<img src="/assets/demo/gift/index.htmlshake.png" />
-					<p>最后，这就是见证奇迹的时刻…</p>
-				</section>
-				<section id="se2" class="hide">
-					<p>3.8节快乐！</p>
-					<p>祝身体健康,平安长乐</p>
-					<p>请打开音量收听…</p>
-				</section>
-			</div>
-		</div>
-		<div class="paper-b"></div>
-	</header>
-</body>
-	<script>
-		var Main = (function() {
-			function playAudio(src) {
-			    if (typeof Audio != "undefined") { 
-			        new Audio(src).play() ;
-			    } else if (typeof device != "undefined") {
-			        if (device.platform == 'Android') {
-			            console.log(src);
-			        }
-			        var mediaRes = new Media(src,
-			            function onSuccess() {
-			                mediaRes.release();
-			            },
-			            function onError(e){
-			                console.log("error playing sound: " + JSON.stringify(e));
-			            });
-			        mediaRes.play();
+    <blockquote>
+<p>🎯 <strong>导读</strong>：本文深入讲解工厂方法模式，带你告别简单工厂的”上帝类”噩梦，学会用”专厂专用”的方式优雅地创建对象！</p>
+</blockquote>
+<span id="more"></span>
 
-			    } else {
-			        alert("no sound API to play: " + src);
-			    }
-			}
-			window.addEventListener('shake', autoRun, false);
-			function autoRun(){
-				if($("#myBir").val() == "0425"){
-					$("#se1").hide();
-					$("#se2").show();
-					playAudio("media/gift.ogg");
-				}else{
-					alert("生日错误");
-				}
-				
-			}
-			var init = function() {
-				
-			}
-			return {
-				init: init
-			}
-		})();
+<p><strong>🏭 工厂方法模式（Factory Method Pattern）</strong> 是我们之前讨论的”简单工厂模式”的究极进化版。</p>
+<p>回想一下简单工厂的致命弱点：<strong>它严重违反了”开闭原则”（OCP）</strong> 🔒。如果工厂里要增加一种新产品，程序员就必须硬着头皮打开工厂类的源代码，在里面强行塞进一段 <code>else if</code>。当产品种类达到几十种时，那个工厂类就会变成一个难以维护的”上帝类” 👹。</p>
+<p>工厂方法模式就是为了彻底消灭这个 <code>if-else</code> 噩梦 😈 而诞生的。</p>
+<p>它的核心思想是：<strong>不再由一个万能的”总工厂”来生产所有东西，而是制定一个”工厂的标准契约” 📜，让每一种产品都拥有自己专属的”分工厂” 🏭。</strong></p>
+<h2 id="📚-1-客户端（使用者）需要知道哪些类？"><a href="#📚-1-客户端（使用者）需要知道哪些类？" class="headerlink" title="📚 1. 客户端（使用者）需要知道哪些类？"></a>📚 1. 客户端（使用者）需要知道哪些类？</h2><p>在使用工厂方法模式时，作为写业务代码的客户端：</p>
+<h3 id="✅-你需要知道-3-个类："><a href="#✅-你需要知道-3-个类：" class="headerlink" title="✅ 你需要知道 3 个类："></a>✅ 你需要知道 3 个类：</h3><table>
+<thead>
+<tr>
+<th align="center">序号</th>
+<th align="left">类名</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">1️⃣</td>
+<td align="left"><strong>抽象产品接口</strong><br><code>Abstract Product</code></td>
+<td align="left">因为你要用它来接收对象并调用方法</td>
+</tr>
+<tr>
+<td align="center">2️⃣</td>
+<td align="left"><strong>抽象工厂接口</strong><br><code>Abstract Factory</code></td>
+<td align="left">系统的核心骨架 🦴</td>
+</tr>
+<tr>
+<td align="center">3️⃣</td>
+<td align="left"><strong>具体工厂类</strong><br><code>Concrete Factory</code></td>
+<td align="left">你需要实例化一个具体的工厂来为你干活 🏭</td>
+</tr>
+</tbody></table>
+<h3 id="❌-你不需要-x2F-绝不应该知道的类："><a href="#❌-你不需要-x2F-绝不应该知道的类：" class="headerlink" title="❌ 你不需要&#x2F;绝不应该知道的类："></a>❌ 你不需要&#x2F;绝不应该知道的类：</h3><ul>
+<li><strong>具体的产品类（Concrete Product）：</strong> 客户端被完全隔离了！你拿到了具体的工厂，工厂产出什么就是什么，你根本不需要 <code>include</code> 具体产品的头文件 🔒</li>
+</ul>
+<hr>
+<h2 id="🎬-2-生动的实战场景：网格处理工作流的解析器"><a href="#🎬-2-生动的实战场景：网格处理工作流的解析器" class="headerlink" title="🎬 2. 生动的实战场景：网格处理工作流的解析器"></a>🎬 2. 生动的实战场景：网格处理工作流的解析器</h2><p>在构建结构优化底层的网格处理工作流时，系统需要解析不同格式的底层网格文件。最典型的比如 <strong>Gmsh</strong> 导出的 <code>.msh</code> 文件，以及包含了物理组等更丰富信息的 <code>.med</code> 文件。</p>
+<h3 id="❌-如果用简单工厂"><a href="#❌-如果用简单工厂" class="headerlink" title="❌ 如果用简单工厂"></a>❌ 如果用简单工厂</h3><p>你会写一个 <code>MeshParserFactory</code>，里面写满：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (type == <span class="string">&quot;msh&quot;</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">MshParser</span>();</span><br><span class="line"><span class="keyword">else</span> <span class="keyword">if</span> (type == <span class="string">&quot;med&quot;</span>) <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">MedParser</span>();</span><br><span class="line"><span class="comment">// 🔥 以后想支持 .vtu 格式？还得改这个工厂！</span></span><br></pre></td></tr></table></figure>
 
-		$(Main.init());
-	</script>
-</html>
+<h3 id="✅-如果用工厂方法"><a href="#✅-如果用工厂方法" class="headerlink" title="✅ 如果用工厂方法"></a>✅ 如果用工厂方法</h3><p>我们在架构层面规定一个 <strong>“网格解析器工厂的接口 (<code>IParserFactory</code>)”</strong> 📜</p>
+<table>
+<thead>
+<tr>
+<th align="left">文件格式</th>
+<th align="left">专属工厂</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left"><code>.msh</code></td>
+<td align="left"><code>MshFactory</code> 🏭</td>
+</tr>
+<tr>
+<td align="left"><code>.med</code></td>
+<td align="left"><code>MedFactory</code> 🏭</td>
+</tr>
+<tr>
+<td align="left"><code>.vtu</code> (新增)</td>
+<td align="left"><code>VtuFactory</code> 🏭 ➕</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>💡 <strong>要增加新格式？完全不动老代码，直接新建一个专属工厂即可！</strong></p>
+</blockquote>
+<hr>
+<h2 id="📊-UML-类图"><a href="#📊-UML-类图" class="headerlink" title="📊 UML 类图"></a>📊 UML 类图</h2><pre class="mermaid">classDiagram
+    class IMeshParser {
+        <<interface>>
+        +parseFile(filePath)
+    }
+    
+    class IParserFactory {
+        <<interface>>
+        +createParser()
+    }
+    
+    class MshParser {
+        +parseFile(filePath)
+    }
+    
+    class MedParser {
+        +parseFile(filePath)
+    }
+    
+    class MshFactory {
+        +createParser()
+    }
+    
+    class MedFactory {
+        +createParser()
+    }
+    
+    IMeshParser <|-- MshParser : 实现
+    IMeshParser <|-- MedParser : 实现
+    IParserFactory <|-- MshFactory : 实现
+    IParserFactory <|-- MedParser : 实现
+    MshFactory ..> MshParser : 创建
+    MedFactory ..> MedParser : 创建</pre>
+
+<hr>
+<h2 id="💻-3-C-现代代码生动演绎"><a href="#💻-3-C-现代代码生动演绎" class="headerlink" title="💻 3. C++ 现代代码生动演绎"></a>💻 3. C++ 现代代码生动演绎</h2><p>让我们用现代 C++ 代码来看看这种设计到底有多优雅：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;memory&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 1. 抽象产品：网格解析器接口</span></span><br><span class="line"><span class="comment">// 客户端必须知道这个接口，用来操作最终拿到的对象</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IMeshParser</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">IMeshParser</span>() = <span class="keyword">default</span>;</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">parseFile</span><span class="params">(<span class="type">const</span> std::string&amp; filePath)</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 2. 具体产品 (客户端完全不知道它们的存在！)</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MshParser</span> : <span class="keyword">public</span> IMeshParser &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">parseFile</span><span class="params">(<span class="type">const</span> std::string&amp; filePath)</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [底层驱动] 使用标准的 Gmsh 解析逻辑读取文件: &quot;</span> &lt;&lt; filePath &lt;&lt; std::endl;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [底层驱动] 提取节点和单元拓扑信息完毕。&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MedParser</span> : <span class="keyword">public</span> IMeshParser &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">parseFile</span><span class="params">(<span class="type">const</span> std::string&amp; filePath)</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [底层驱动] 使用基于 HDF5 的 MED 库读取文件: &quot;</span> &lt;&lt; filePath &lt;&lt; std::endl;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [底层驱动] 提取物理组 (Physical Groups) 信息完毕。&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 3. 抽象工厂：定义创建产品的标准契约</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IParserFactory</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">IParserFactory</span>() = <span class="keyword">default</span>;</span><br><span class="line">    <span class="comment">// 核心工厂方法！把创建对象的权力推迟到了子类</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> std::unique_ptr&lt;IMeshParser&gt; <span class="title">createParser</span><span class="params">()</span> </span>= <span class="number">0</span>; </span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 4. 具体工厂：专厂专用</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// MSH 专属解析器工厂</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MshFactory</span> : <span class="keyword">public</span> IParserFactory &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">std::unique_ptr&lt;IMeshParser&gt; <span class="title">createParser</span><span class="params">()</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;-&gt; MshFactory: 正在为您实例化一个专业的 MSH 解析器...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        <span class="keyword">return</span> std::<span class="built_in">make_unique</span>&lt;MshParser&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// MED 专属解析器工厂</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MedFactory</span> : <span class="keyword">public</span> IParserFactory &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">std::unique_ptr&lt;IMeshParser&gt; <span class="title">createParser</span><span class="params">()</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;-&gt; MedFactory: 正在为您实例化一个专业的 MED 解析器...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">        <span class="keyword">return</span> std::<span class="built_in">make_unique</span>&lt;MedParser&gt;();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 业务调用端：网格工作流控制器</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 这是一个高层组件，它只依赖抽象工厂，完全实现了依赖倒置原则！</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">executeWorkflow</span><span class="params">(IParserFactory* factory, <span class="type">const</span> std::string&amp; file)</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 1. 让工厂去造产品</span></span><br><span class="line">    std::unique_ptr&lt;IMeshParser&gt; parser = factory-&gt;<span class="built_in">createParser</span>();</span><br><span class="line">    <span class="comment">// 2. 使用产品干活</span></span><br><span class="line">    parser-&gt;<span class="built_in">parseFile</span>(file);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;=== 网格处理工作流启动 ===&quot;</span> &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 场景 A：当前配置要求处理 MSH 文件</span></span><br><span class="line">    std::unique_ptr&lt;IParserFactory&gt; mshFac = std::<span class="built_in">make_unique</span>&lt;MshFactory&gt;();</span><br><span class="line">    <span class="built_in">executeWorkflow</span>(mshFac.<span class="built_in">get</span>(), <span class="string">&quot;mesh.msh&quot;</span>);</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;\n----------------------------------\n&quot;</span> &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 场景 B：双网格流程的第二步，需要处理带物理组的 MED 文件</span></span><br><span class="line">    std::unique_ptr&lt;IParserFactory&gt; medFac = std::<span class="built_in">make_unique</span>&lt;MedFactory&gt;();</span><br><span class="line">    <span class="built_in">executeWorkflow</span>(medFac.<span class="built_in">get</span>(), <span class="string">&quot;mesh.med&quot;</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="⚖️-4-工厂方法模式的优缺点"><a href="#⚖️-4-工厂方法模式的优缺点" class="headerlink" title="⚖️ 4. 工厂方法模式的优缺点"></a>⚖️ 4. 工厂方法模式的优缺点</h2><h3 id="✅-优点："><a href="#✅-优点：" class="headerlink" title="✅ 优点："></a>✅ 优点：</h3><table>
+<thead>
+<tr>
+<th align="left">优点</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">🔓 <strong>彻底遵守 OCP</strong></td>
+<td align="left">假设明天你需要引入 OpenCASCADE (OCC) 相关的边界解析，你只需要增加一个 <code>OccParser</code> 类和一个 <code>OccFactory</code> 类。原有代码一行都不用改！</td>
+</tr>
+<tr>
+<td align="left">📐 <strong>遵守 SRP</strong></td>
+<td align="left">每个工厂只负责生产自己那一种特定的产品，逻辑极度纯粹</td>
+</tr>
+<tr>
+<td align="left">🔗 <strong>完美解耦</strong></td>
+<td align="left">客户端代码（如上面的 <code>executeWorkflow</code>）被固定死了，不管未来的网格解析底层怎么翻天覆地，核心的控制流程永远不需要重构</td>
+</tr>
+</tbody></table>
+<h3 id="❌-缺点："><a href="#❌-缺点：" class="headerlink" title="❌ 缺点："></a>❌ 缺点：</h3><table>
+<thead>
+<tr>
+<th align="left">缺点</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">💥 <strong>类爆炸</strong></td>
+<td align="left">简单工厂只有一个工厂类，而工厂方法模式中，每增加一个产品，你就得成对地增加两个类（一个具体产品类 + 一个具体工厂类）</td>
+</tr>
+<tr>
+<td align="left">😵 <strong>抽象复杂性</strong></td>
+<td align="left">初级程序员看到满屏幕的 <code>IThisFactory</code>、<code>IThatFactory</code> 很容易头晕</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🎯-总结：我该选”简单工厂”还是”工厂方法”？"><a href="#🎯-总结：我该选”简单工厂”还是”工厂方法”？" class="headerlink" title="🎯 总结：我该选”简单工厂”还是”工厂方法”？"></a>🎯 总结：我该选”简单工厂”还是”工厂方法”？</h2><h3 id="🟢-用简单工厂，如果："><a href="#🟢-用简单工厂，如果：" class="headerlink" title="🟢 用简单工厂，如果："></a>🟢 用简单工厂，如果：</h3><ul>
+<li>产品种类很少（2~3 种）</li>
+<li>以后几乎<strong>绝对不会</strong>再增加了</li>
+<li>想要代码看着清爽 ✨</li>
+</ul>
+<h3 id="🔵-用工厂方法模式，如果："><a href="#🔵-用工厂方法模式，如果：" class="headerlink" title="🔵 用工厂方法模式，如果："></a>🔵 用工厂方法模式，如果：</h3><ul>
+<li>写一个<strong>会被很多人使用、不断迭代的底层框架库</strong> 🏗️</li>
+<li>知道未来一定会源源不断地接入新的算法、新的文件格式、新的求解器</li>
+<li>想要保你在未来几年不至于被改需求逼疯 🛡️</li>
+</ul>
+<blockquote>
+<p>💡 <strong>一句话：简单工厂是”小而美”，工厂方法是”大而稳”！</strong></p>
+</blockquote>
+
     
 
     
@@ -499,7 +624,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://lyroom.github.io/assets/demo/gift/index.html" title="" target="_blank">https://lyroom.github.io/assets/demo/gift/index.html</a>
+          <a href="https://lyroom.github.io/2026/04/28/工厂方法模式详解/" title="🏭 工厂方法模式详解" target="_blank">https://lyroom.github.io/2026/04/28/工厂方法模式详解/</a>
         </li>
         
         <li>
@@ -516,6 +641,25 @@
   <div class="article-info article-info-index">
     
     
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">设计模式</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">工厂方法模式</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
     
 
     
@@ -566,7 +710,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://lyroom.github.io/assets/demo/gift/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://lyroom.github.io/2026/04/28/%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -578,6 +722,16 @@
   </div>
 </article>
 
+
+<nav id="article-nav">
+  
+  
+    <a href="/2026/04/27/%E4%BB%A3%E7%90%86%E6%A8%A1%E5%BC%8F%E8%AF%A6%E8%A7%A3/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">🎭 代理模式详解</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
 
 
 <aside class="wrap-side-operation">
@@ -600,7 +754,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    目录，不存在的…
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%9A-1-%E5%AE%A2%E6%88%B7%E7%AB%AF%EF%BC%88%E4%BD%BF%E7%94%A8%E8%80%85%EF%BC%89%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93%E5%93%AA%E4%BA%9B%E7%B1%BB%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">📚 1. 客户端（使用者）需要知道哪些类？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-%E4%BD%A0%E9%9C%80%E8%A6%81%E7%9F%A5%E9%81%93-3-%E4%B8%AA%E7%B1%BB%EF%BC%9A"><span class="toc-number">1.1.</span> <span class="toc-text">✅ 你需要知道 3 个类：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9D%8C-%E4%BD%A0%E4%B8%8D%E9%9C%80%E8%A6%81-x2F-%E7%BB%9D%E4%B8%8D%E5%BA%94%E8%AF%A5%E7%9F%A5%E9%81%93%E7%9A%84%E7%B1%BB%EF%BC%9A"><span class="toc-number">1.2.</span> <span class="toc-text">❌ 你不需要&#x2F;绝不应该知道的类：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AC-2-%E7%94%9F%E5%8A%A8%E7%9A%84%E5%AE%9E%E6%88%98%E5%9C%BA%E6%99%AF%EF%BC%9A%E7%BD%91%E6%A0%BC%E5%A4%84%E7%90%86%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%9A%84%E8%A7%A3%E6%9E%90%E5%99%A8"><span class="toc-number">2.</span> <span class="toc-text">🎬 2. 生动的实战场景：网格处理工作流的解析器</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9D%8C-%E5%A6%82%E6%9E%9C%E7%94%A8%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82"><span class="toc-number">2.1.</span> <span class="toc-text">❌ 如果用简单工厂</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-%E5%A6%82%E6%9E%9C%E7%94%A8%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95"><span class="toc-number">2.2.</span> <span class="toc-text">✅ 如果用工厂方法</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8A-UML-%E7%B1%BB%E5%9B%BE"><span class="toc-number">3.</span> <span class="toc-text">📊 UML 类图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%92%BB-3-C-%E7%8E%B0%E4%BB%A3%E4%BB%A3%E7%A0%81%E7%94%9F%E5%8A%A8%E6%BC%94%E7%BB%8E"><span class="toc-number">4.</span> <span class="toc-text">💻 3. C++ 现代代码生动演绎</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9A%96%EF%B8%8F-4-%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9"><span class="toc-number">5.</span> <span class="toc-text">⚖️ 4. 工厂方法模式的优缺点</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-%E4%BC%98%E7%82%B9%EF%BC%9A"><span class="toc-number">5.1.</span> <span class="toc-text">✅ 优点：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9D%8C-%E7%BC%BA%E7%82%B9%EF%BC%9A"><span class="toc-number">5.2.</span> <span class="toc-text">❌ 缺点：</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-%E6%80%BB%E7%BB%93%EF%BC%9A%E6%88%91%E8%AF%A5%E9%80%89%E2%80%9D%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%E2%80%9D%E8%BF%98%E6%98%AF%E2%80%9D%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E2%80%9D%EF%BC%9F"><span class="toc-number">6.</span> <span class="toc-text">🎯 总结：我该选”简单工厂”还是”工厂方法”？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%9F%A2-%E7%94%A8%E7%AE%80%E5%8D%95%E5%B7%A5%E5%8E%82%EF%BC%8C%E5%A6%82%E6%9E%9C%EF%BC%9A"><span class="toc-number">6.1.</span> <span class="toc-text">🟢 用简单工厂，如果：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%B5-%E7%94%A8%E5%B7%A5%E5%8E%82%E6%96%B9%E6%B3%95%E6%A8%A1%E5%BC%8F%EF%BC%8C%E5%A6%82%E6%9E%9C%EF%BC%9A"><span class="toc-number">6.2.</span> <span class="toc-text">🔵 用工厂方法模式，如果：</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -660,7 +814,7 @@
 	var yiliaConfig = {
 		mathjax: true,
 		isHome: false,
-		isPost: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
