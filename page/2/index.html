@@ -120,6 +120,42 @@
       margin-left: 0 !important;
       padding-left: 0 !important;
     }
+    .article .article-inner .article-header > h1.article-title {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      height: auto !important;
+      overflow: visible !important;
+      color: #1a1a1a !important;
+      font-size: 32px !important;
+      line-height: 1.35 !important;
+      font-weight: 700 !important;
+      margin: 0 0 12px 0 !important;
+    }
+    .article .article-inner .article-header .post-time {
+      color: #1a1a1a !important;
+    }
+    .article .article-inner .article-header > .article-page-title {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      position: static !important;
+      height: auto !important;
+      width: auto !important;
+      max-width: 100% !important;
+      overflow: visible !important;
+      color: #1a1a1a !important;
+      font-size: 32px !important;
+      line-height: 1.35 !important;
+      font-weight: 700 !important;
+      margin: 0 0 12px 0 !important;
+      padding: 0 !important;
+      white-space: normal !important;
+      word-break: break-word !important;
+    }
+    .article .article-inner .article-header > .article-page-title + h1.article-title {
+      display: none !important;
+    }
     @media screen and (max-width: 768px) {
       .article {
         margin: 10px 15px !important;
@@ -141,6 +177,10 @@
         line-height: 1.4 !important;
         overflow: visible !important;
       }
+      .article .article-inner .article-header > .article-page-title {
+        font-size: 22px !important;
+        line-height: 1.35 !important;
+      }
     }
   </style>
   <style type="text/css">
@@ -161,7 +201,9 @@
 
 </head>
 
+
 <body>
+  <script>if(history.scrollRestoration)history.scrollRestoration='manual';</script>
   
   <video id="bg-video" autoplay muted loop playsinline>
     <source src="/video/%E5%A5%B3%E5%AD%A9.mp4" type="video/mp4">
@@ -332,6 +374,7 @@
       <header class="article-header">
   
   
+  
     <h1 itemprop="name">
 	
 	  <a class="article-title" href="/2025/09/23/%E8%AF%A6%E8%A7%A3-C-unique-ptr%EF%BC%9A%E7%8B%AC%E5%8D%A0%E5%BC%8F%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/" target="_blank">详解 C++ unique_ptr：独占式智能指针</a>
@@ -357,7 +400,7 @@
     
     <h1 id="详解-C-unique-ptr：独占式智能指针"><a href="#详解-C-unique-ptr：独占式智能指针" class="headerlink" title="详解 C++ unique_ptr：独占式智能指针"></a>详解 C++ unique_ptr：独占式智能指针</h1><h2 id="1-unique-ptr-的核心概念与定义"><a href="#1-unique-ptr-的核心概念与定义" class="headerlink" title="1. unique_ptr 的核心概念与定义"></a>1. unique_ptr 的核心概念与定义</h2><h3 id="1-1-什么是-unique-ptr"><a href="#1-1-什么是-unique-ptr" class="headerlink" title="1.1 什么是 unique_ptr"></a>1.1 什么是 unique_ptr</h3><p><code>std::unique_ptr</code> 是 C++11 标准库中引入的一种智能指针，其核心设计目标是提供一种对动态分配对象的<strong>独占所有权（Exclusive Ownership）</strong> 管理机制。</p>
     
-    <a class="article-more-a" href="/2025/09/23/%E8%AF%A6%E8%A7%A3-C-unique-ptr%EF%BC%9A%E7%8B%AC%E5%8D%A0%E5%BC%8F%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/#more">more >></a>
+    <a class="article-more-a" href="/2025/09/23/%E8%AF%A6%E8%A7%A3-C-unique-ptr%EF%BC%9A%E7%8B%AC%E5%8D%A0%E5%BC%8F%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/">more >></a>
     
     
 
@@ -428,6 +471,7 @@
       <header class="article-header">
   
   
+  
     <h1 itemprop="name">
 	
 	  <a class="article-title" href="/2025/09/22/C-%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE-assert%E5%AE%8F%E7%94%A8%E6%B3%95/" target="_blank">C++朝花夕拾-assert宏用法</a>
@@ -454,7 +498,7 @@
     <p>刚学了 C++ 的 <strong>异常机制（<code>throw</code> &#x2F; <code>try</code> &#x2F; <code>catch</code>）</strong>，现在问到 <code>assert</code> —— 它和异常看似都是“报错”，但<strong>用途、时机、行为完全不同</strong>！</p>
 <h1 id="🧩-C-中的-assert-——-通俗易懂-详细对比异常机制"><a href="#🧩-C-中的-assert-——-通俗易懂-详细对比异常机制" class="headerlink" title="🧩 C++ 中的 assert —— 通俗易懂 + 详细对比异常机制"></a>🧩 C++ 中的 <code>assert</code> —— 通俗易懂 + 详细对比异常机制</h1>
     
-    <a class="article-more-a" href="/2025/09/22/C-%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE-assert%E5%AE%8F%E7%94%A8%E6%B3%95/#more">more >></a>
+    <a class="article-more-a" href="/2025/09/22/C-%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE-assert%E5%AE%8F%E7%94%A8%E6%B3%95/">more >></a>
     
     
 
@@ -529,6 +573,7 @@
       <header class="article-header">
   
   
+  
     <h1 itemprop="name">
 	
 	  <a class="article-title" href="/2025/09/22/C-%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE-%E5%BC%82%E5%B8%B8%E6%9C%BA%E5%88%B6/" target="_blank">C++朝花夕拾-异常机制</a>
@@ -556,7 +601,7 @@
 <p>💡 一句话总结：<br><strong>“异常 &#x3D; 程序运行时发生的‘意外情况’，C++ 用 <code>throw</code>, <code>try</code>, <code>catch</code> 三剑客来处理它，让程序不崩溃、能恢复、有尊严地报错。”</strong></p>
 </blockquote>
     
-    <a class="article-more-a" href="/2025/09/22/C-%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE-%E5%BC%82%E5%B8%B8%E6%9C%BA%E5%88%B6/#more">more >></a>
+    <a class="article-more-a" href="/2025/09/22/C-%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE-%E5%BC%82%E5%B8%B8%E6%9C%BA%E5%88%B6/">more >></a>
     
     
 
@@ -623,6 +668,7 @@
       <header class="article-header">
   
   
+  
     <h1 itemprop="name">
 	
 	  <a class="article-title" href="/2025/09/22/C-%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE-%F0%9F%8C%8A-%E6%B5%85%E6%8B%B7%E8%B4%9D-vs-%F0%9F%8F%97%EF%B8%8F-%E6%B7%B1%E6%8B%B7%E8%B4%9D/" target="_blank">C++朝花夕拾-🌊 浅拷贝 vs 🏗️ 深拷贝</a>
@@ -649,7 +695,7 @@
     <h1 id="🌊-浅拷贝-vs-🏗️-深拷贝-——-一文看懂！"><a href="#🌊-浅拷贝-vs-🏗️-深拷贝-——-一文看懂！" class="headerlink" title="🌊 浅拷贝 vs 🏗️ 深拷贝 —— 一文看懂！"></a>🌊 浅拷贝 vs 🏗️ 深拷贝 —— 一文看懂！</h1><hr>
 <h2 id="🧍‍♂️-举个生活例子：复印钥匙"><a href="#🧍‍♂️-举个生活例子：复印钥匙" class="headerlink" title="🧍‍♂️ 举个生活例子：复印钥匙"></a>🧍‍♂️ 举个生活例子：复印钥匙</h2><p>想象你有一把<strong>家门钥匙🔑</strong>，你把它“拷贝”给朋友：</p>
     
-    <a class="article-more-a" href="/2025/09/22/C-%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE-%F0%9F%8C%8A-%E6%B5%85%E6%8B%B7%E8%B4%9D-vs-%F0%9F%8F%97%EF%B8%8F-%E6%B7%B1%E6%8B%B7%E8%B4%9D/#more">more >></a>
+    <a class="article-more-a" href="/2025/09/22/C-%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE-%F0%9F%8C%8A-%E6%B5%85%E6%8B%B7%E8%B4%9D-vs-%F0%9F%8F%97%EF%B8%8F-%E6%B7%B1%E6%8B%B7%E8%B4%9D/">more >></a>
     
     
 
@@ -724,6 +770,7 @@
       <header class="article-header">
   
   
+  
     <h1 itemprop="name">
 	
 	  <a class="article-title" href="/2025/09/22/C-%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE-using%E5%85%B3%E9%94%AE%E5%AD%97/" target="_blank">C++朝花夕拾-using关键字</a>
@@ -749,7 +796,7 @@
     
     <h1 id="📘-C-中-using-关键字的用法详解"><a href="#📘-C-中-using-关键字的用法详解" class="headerlink" title="📘 C++ 中 using 关键字的用法详解"></a>📘 C++ 中 <code>using</code> 关键字的用法详解</h1><p>在 C++ 中，<code>using</code> 关键字功能强大且用途多样，从 C++11 开始更是得到了显著增强。它主要用于简化代码、提高可读性、解决继承中的函数隐藏问题等。以下是 <code>using</code> 在 C++ 中的<strong>主要用法详解</strong>：</p>
     
-    <a class="article-more-a" href="/2025/09/22/C-%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE-using%E5%85%B3%E9%94%AE%E5%AD%97/#more">more >></a>
+    <a class="article-more-a" href="/2025/09/22/C-%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE-using%E5%85%B3%E9%94%AE%E5%AD%97/">more >></a>
     
     
 
@@ -816,6 +863,7 @@
       <header class="article-header">
   
   
+  
     <h1 itemprop="name">
 	
 	  <a class="article-title" href="/2025/09/19/C-%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE-%E7%BC%BA%E7%9C%81/" target="_blank">C++朝花夕拾-缺省</a>
@@ -841,7 +889,7 @@
     
     <h1 id="📘-c-朝花夕拾-缺省"><a href="#📘-c-朝花夕拾-缺省" class="headerlink" title="📘 c++朝花夕拾-缺省"></a>📘 c++朝花夕拾-缺省</h1><p> 在C++中，“缺省”（Default）是一个核心概念，主要指<strong>系统、编译器或程序员预先设定的默认值或行为</strong>，当用户未显式提供具体值或指令时，程序将自动采用这些预设值。以下从多个维度系统解析“缺省”的含义、应用场景及注意事项：<br>
     
-    <a class="article-more-a" href="/2025/09/19/C-%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE-%E7%BC%BA%E7%9C%81/#more">more >></a>
+    <a class="article-more-a" href="/2025/09/19/C-%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE-%E7%BC%BA%E7%9C%81/">more >></a>
     
     
 
@@ -908,6 +956,7 @@
       <header class="article-header">
   
   
+  
     <h1 itemprop="name">
 	
 	  <a class="article-title" href="/2025/09/19/C-%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE-%E5%BD%A2%E5%8F%82VS%E5%AE%9E%E5%8F%82/" target="_blank">C++朝花夕拾-形参VS实参</a>
@@ -933,7 +982,7 @@
     
     <h1 id="📘-c-朝花夕拾-形参VS实参"><a href="#📘-c-朝花夕拾-形参VS实参" class="headerlink" title="📘 c++朝花夕拾-形参VS实参"></a>📘 c++朝花夕拾-形参VS实参</h1><p>在C++中，<strong>形参（形式参数）</strong>和<strong>实参（实际参数）</strong>是函数调用机制的核心概念，二者的区别及使用场景需结合C++的语法特性（如值传递、引用传递、指针传递等）深入理解。以下从定义、区别、使用场景及特殊案例四方面系统解析：</p>
     
-    <a class="article-more-a" href="/2025/09/19/C-%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE-%E5%BD%A2%E5%8F%82VS%E5%AE%9E%E5%8F%82/#more">more >></a>
+    <a class="article-more-a" href="/2025/09/19/C-%E6%9C%9D%E8%8A%B1%E5%A4%95%E6%8B%BE-%E5%BD%A2%E5%8F%82VS%E5%AE%9E%E5%8F%82/">more >></a>
     
     
 
@@ -1000,6 +1049,7 @@
       <header class="article-header">
   
   
+  
     <h1 itemprop="name">
 	
 	  <a class="article-title" href="/2025/09/19/%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88/" target="_blank">智能指针</a>
@@ -1040,15 +1090,15 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">智能指针</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">朝花夕拾</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">c++</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">智能指针</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
@@ -1098,6 +1148,7 @@
       <header class="article-header">
   
   
+  
     <h1 itemprop="name">
 	
 	  <a class="article-title" href="/2025/09/19/C-%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E6%97%B6%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80/" target="_blank">C++ 程序运行时内存布局</a>
@@ -1126,7 +1177,7 @@
 </blockquote>
 <p>本文我们主要介绍 C++ 程序运行时内存布局，以及变量存储位置，包括栈、堆、静态存储区等，并附上 ASCII 图解。</p>
     
-    <a class="article-more-a" href="/2025/09/19/C-%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E6%97%B6%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80/#more">more >></a>
+    <a class="article-more-a" href="/2025/09/19/C-%E7%A8%8B%E5%BA%8F%E8%BF%90%E8%A1%8C%E6%97%B6%E5%86%85%E5%AD%98%E5%B8%83%E5%B1%80/">more >></a>
     
     
 
@@ -1193,6 +1244,7 @@
       <header class="article-header">
   
   
+  
     <h1 itemprop="name">
 	
 	  <a class="article-title" href="/2025/09/16/top%E5%91%BD%E4%BB%A4%E8%A7%A3%E6%9E%90/" target="_blank">top命令解析</a>
@@ -1222,7 +1274,7 @@
 </blockquote>
 <hr>
     
-    <a class="article-more-a" href="/2025/09/16/top%E5%91%BD%E4%BB%A4%E8%A7%A3%E6%9E%90/#more">more >></a>
+    <a class="article-more-a" href="/2025/09/16/top%E5%91%BD%E4%BB%A4%E8%A7%A3%E6%9E%90/">more >></a>
     
     
 
@@ -1514,22 +1566,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">智能指针</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shared_ptr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">auto_ptr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">weak_ptr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">朝花夕拾</a>
               </li>
              
@@ -1546,23 +1582,27 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">智能指针</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">shared_ptr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">auto_ptr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">weak_ptr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">浅拷贝</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内存</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">编程技术</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1591,6 +1631,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">虚函数指针</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">编程技术</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1638,23 +1686,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">内存</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">bug解决日记</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">pdf</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">目录</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1666,7 +1706,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">shell工具推荐</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">目录</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">文件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1674,15 +1726,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">浮生六记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">const</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1691,18 +1747,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">结构型模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">const</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1715,6 +1759,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">指针</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1742,10 +1794,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">简单工厂模式</a>
               </li>
              
@@ -1758,7 +1806,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">装饰模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">unique_ptr</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1767,10 +1823,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SOLID</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">unique_ptr</a>
               </li>
             
             <div class="clearfix"></div>
@@ -1961,6 +2013,22 @@
 
   
   
+  <script>
+  (function() {
+    function resetScroll() {
+      var c = document.getElementById('container');
+      if (c) c.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }
+    resetScroll();
+    document.addEventListener('DOMContentLoaded', resetScroll);
+    window.addEventListener('load', resetScroll);
+    window.addEventListener('pageshow', function(e) { if(e.persisted) resetScroll(); });
+    setTimeout(resetScroll, 0);
+    setTimeout(resetScroll, 200);
+  })();
+  </script>
 </body>
 
 </html>

@@ -122,6 +122,42 @@
       margin-left: 0 !important;
       padding-left: 0 !important;
     }
+    .article .article-inner .article-header > h1.article-title {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      height: auto !important;
+      overflow: visible !important;
+      color: #1a1a1a !important;
+      font-size: 32px !important;
+      line-height: 1.35 !important;
+      font-weight: 700 !important;
+      margin: 0 0 12px 0 !important;
+    }
+    .article .article-inner .article-header .post-time {
+      color: #1a1a1a !important;
+    }
+    .article .article-inner .article-header > .article-page-title {
+      display: block !important;
+      visibility: visible !important;
+      opacity: 1 !important;
+      position: static !important;
+      height: auto !important;
+      width: auto !important;
+      max-width: 100% !important;
+      overflow: visible !important;
+      color: #1a1a1a !important;
+      font-size: 32px !important;
+      line-height: 1.35 !important;
+      font-weight: 700 !important;
+      margin: 0 0 12px 0 !important;
+      padding: 0 !important;
+      white-space: normal !important;
+      word-break: break-word !important;
+    }
+    .article .article-inner .article-header > .article-page-title + h1.article-title {
+      display: none !important;
+    }
     @media screen and (max-width: 768px) {
       .article {
         margin: 10px 15px !important;
@@ -143,6 +179,10 @@
         line-height: 1.4 !important;
         overflow: visible !important;
       }
+      .article .article-inner .article-header > .article-page-title {
+        font-size: 22px !important;
+        line-height: 1.35 !important;
+      }
     }
   </style>
   <style type="text/css">
@@ -163,7 +203,9 @@
 
 </head>
 
+
 <body>
+  <script>if(history.scrollRestoration)history.scrollRestoration='manual';</script>
   
   <video id="bg-video" autoplay muted loop playsinline>
     <source src="/video/%E5%A5%B3%E5%AD%A9.mp4" type="video/mp4">
@@ -330,6 +372,9 @@
     
       <header class="article-header">
   
+    <div class="article-page-title" itemprop="headline">C++ 智能指针详解：shared_ptr, auto_ptr 和 weak_ptr</div>
+  
+  
   
     <h1 class="article-title" itemprop="name">
       C++ 智能指针详解：shared_ptr, auto_ptr 和 weak_ptr
@@ -383,7 +428,8 @@
 
 
 
-<p>&#x3D;、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、、<br>当最后一个指向对象的 <code>shared_ptr</code> 被销毁或重置时，对象才会被自动删除。这种机制使得 <code>shared_ptr</code> 在需要共享资源的场景下非常有用。</p>
+<hr>
+<p>当最后一个指向对象的 <code>shared_ptr</code> 被销毁或重置时，对象才会被自动删除。这种机制使得 <code>shared_ptr</code> 在需要共享资源的场景下非常有用。</p>
 <h4 id="1-1-2-共享所有权语义"><a href="#1-1-2-共享所有权语义" class="headerlink" title="1.1.2 共享所有权语义"></a>1.1.2 共享所有权语义</h4><p><code>shared_ptr</code> 的核心是共享所有权模型。多个 <code>shared_ptr</code> 实例可以指向同一个对象，它们通过内部的引用计数器来跟踪有多少个 <code>shared_ptr</code> 正在共享该对象。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">std::shared_ptr&lt;<span class="type">int</span>&gt; <span class="title">ptr1</span><span class="params">(<span class="keyword">new</span> <span class="type">int</span>(<span class="number">42</span>))</span></span>;</span><br><span class="line">std::shared_ptr&lt;<span class="type">int</span>&gt; ptr2 = ptr1; <span class="comment">// 引用计数变为 2</span></span><br><span class="line">std::shared_ptr&lt;<span class="type">int</span>&gt; ptr3 = ptr2; <span class="comment">// 引用计数变为 3</span></span><br><span class="line"><span class="comment">// 当 ptr1, ptr2, ptr3 都被销毁时，对象才会被删除</span></span><br></pre></td></tr></table></figure>
 
@@ -952,22 +998,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">智能指针</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shared_ptr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">auto_ptr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">weak_ptr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">朝花夕拾</a>
               </li>
              
@@ -984,23 +1014,27 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">智能指针</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">shared_ptr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">auto_ptr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">weak_ptr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">浅拷贝</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内存</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">编程技术</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1029,6 +1063,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">虚函数指针</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">编程技术</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1076,23 +1118,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">内存</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">bug解决日记</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">pdf</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">目录</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">文件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1104,7 +1138,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">shell工具推荐</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">目录</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">文件</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1112,15 +1158,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">浮生六记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">const</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1129,18 +1179,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">结构型模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">const</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1153,6 +1191,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">指针</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1180,10 +1226,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">简单工厂模式</a>
               </li>
              
@@ -1196,7 +1238,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">装饰模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">unique_ptr</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1205,10 +1255,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SOLID</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">unique_ptr</a>
               </li>
             
             <div class="clearfix"></div>
@@ -1399,6 +1445,22 @@
 
   
   
+  <script>
+  (function() {
+    function resetScroll() {
+      var c = document.getElementById('container');
+      if (c) c.scrollTop = 0;
+      document.documentElement.scrollTop = 0;
+      document.body.scrollTop = 0;
+    }
+    resetScroll();
+    document.addEventListener('DOMContentLoaded', resetScroll);
+    window.addEventListener('load', resetScroll);
+    window.addEventListener('pageshow', function(e) { if(e.persisted) resetScroll(); });
+    setTimeout(resetScroll, 0);
+    setTimeout(resetScroll, 200);
+  })();
+  </script>
 </body>
 
 </html>
