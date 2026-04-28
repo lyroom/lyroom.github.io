@@ -231,6 +231,20 @@
     
     
     
+    <category term="C++" scheme="https://lyroom.github.io/tags/C/"/>
+    
+    <category term="模板" scheme="https://lyroom.github.io/tags/%E6%A8%A1%E6%9D%BF/"/>
+    
+    <category term="泛型编程" scheme="https://lyroom.github.io/tags/%E6%B3%9B%E5%9E%8B%E7%BC%96%E7%A8%8B/"/>
+    
+    <category term="模板特化" scheme="https://lyroom.github.io/tags/%E6%A8%A1%E6%9D%BF%E7%89%B9%E5%8C%96/"/>
+    
+    <category term="变参模板" scheme="https://lyroom.github.io/tags/%E5%8F%98%E5%8F%82%E6%A8%A1%E6%9D%BF/"/>
+    
+    <category term="折叠表达式" scheme="https://lyroom.github.io/tags/%E6%8A%98%E5%8F%A0%E8%A1%A8%E8%BE%BE%E5%BC%8F/"/>
+    
+    <category term="SFINAE" scheme="https://lyroom.github.io/tags/SFINAE/"/>
+    
   </entry>
   
   <entry>
