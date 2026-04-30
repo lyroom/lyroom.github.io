@@ -460,7 +460,7 @@
 <span id="more"></span>
 
 <p><strong>🖨️ 原型模式（Prototype Pattern）</strong> 是创建型设计模式中最特别、也最符合人类日常直觉的一个。</p>
-<p>如果说”工厂模式”是按图纸在流水线上从零开始制造产品 🏭，那么”原型模式”就是**”复印机”** 📠 或**”细胞分裂”** 🧬。它的核心思想极其简单：<strong>不要用 <code>new</code> 从头构建一个复杂的对象，而是拿一个已经存在的、配置好的对象作为”原型（Prototype）”，直接把它”克隆（Clone）”一份出来。</strong></p>
+<p>如果说”工厂模式”是按图纸在流水线上从零开始制造产品 🏭，那么”原型模式”就是 <strong>复印机</strong> 📠 或 <strong>细胞分裂</strong> 🧬。它的核心思想极其简单：<strong>不要用 <code>new</code> 从头构建一个复杂的对象，而是拿一个已经存在的、配置好的对象作为”原型（Prototype）”，直接把它”克隆（Clone）”一份出来。</strong></p>
 <h2 id="📚-1-客户端（使用者）需要知道哪些类？"><a href="#📚-1-客户端（使用者）需要知道哪些类？" class="headerlink" title="📚 1. 客户端（使用者）需要知道哪些类？"></a>📚 1. 客户端（使用者）需要知道哪些类？</h2><p>在这个模式下，客户端程序员的负担被降到了极低：</p>
 <h3 id="✅-你需要知道的类："><a href="#✅-你需要知道的类：" class="headerlink" title="✅ 你需要知道的类："></a>✅ 你需要知道的类：</h3><table>
 <thead>
@@ -490,7 +490,7 @@
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Goblin</span>();  <span class="comment">// 创建对象</span></span><br><span class="line"><span class="comment">// 然后费劲地初始化属性：</span></span><br><span class="line"><span class="comment">// ❤️ 血量 = 100</span></span><br><span class="line"><span class="comment">// 🛡️ 护甲 = 50  </span></span><br><span class="line"><span class="comment">// ⚔️ 武器 = &quot;生锈的铁剑&quot;</span></span><br><span class="line"><span class="comment">// 🚶 AI 巡逻路线 = ...</span></span><br></pre></td></tr></table></figure>
 <p>刷 100 只哥布林，这段初始化代码就要跑 100 遍，<strong>极其消耗 CPU 性能和时间</strong> ⏱️💸</p>
 <h3 id="✅-解法（原型模式）"><a href="#✅-解法（原型模式）" class="headerlink" title="✅ 解法（原型模式）"></a>✅ 解法（原型模式）</h3><p>在游戏加载关卡时，我们只精心捏出<strong>一只</strong>完美的”持盾哥布林”对象，把它作为<strong>原型（种子）</strong> 🌱 放进注册表里。</p>
-<p>当游戏开始，需要刷怪时，我们直接对着这只原型哥布林按下 <strong>“Ctrl+C”</strong> 和 **”Ctrl+V”**（调用 <code>clone()</code>）。</p>
+<p>当游戏开始，需要刷怪时，我们直接对着这只原型哥布林按下 <strong>Ctrl+C</strong> 和 <strong>Ctrl+V</strong>（调用 <code>clone()</code>）。</p>
 <blockquote>
 <p>🚀 <strong>瞬间，100 只一模一样、属性全满的哥布林就被复制出来了，性能极高！</strong></p>
 </blockquote>
@@ -525,7 +525,7 @@
     MonsterRegistry ..> IMonster : 克隆</pre>
 
 <hr>
-<h2 id="💻-3-C-现代代码生动演绎"><a href="#💻-3-C-现代代码生动演绎" class="headerlink" title="💻 3. C++ 现代代码生动演绎"></a>💻 3. C++ 现代代码生动演绎</h2><p>在 C++ 中，原型模式的本质其实就是**”多态封装下的拷贝构造函数”** 🧬。我们来看代码：</p>
+<h2 id="💻-3-C-现代代码生动演绎"><a href="#💻-3-C-现代代码生动演绎" class="headerlink" title="💻 3. C++ 现代代码生动演绎"></a>💻 3. C++ 现代代码生动演绎</h2><p>在 C++ 中，原型模式的本质其实就是 <strong>多态封装下的拷贝构造函数</strong> 🧬。我们来看代码：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;string&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;unordered_map&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;memory&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 1. 抽象原型接口：所有能被克隆的怪物都必须遵守</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">IMonster</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">virtual</span> ~<span class="built_in">IMonster</span>() = <span class="keyword">default</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="comment">// 【核心契约】：必须提供一个返回自身克隆体的纯虚函数</span></span><br><span class="line">    <span class="comment">// 在现代 C++ 中，返回 unique_ptr 极其安全，表达了所有权的转移</span></span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> std::unique_ptr&lt;IMonster&gt; <span class="title">clone</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>; </span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">printInfo</span><span class="params">()</span> <span class="type">const</span> </span>= <span class="number">0</span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 2. 具体原型 A：哥布林</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Goblin</span> : <span class="keyword">public</span> IMonster &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> health;</span><br><span class="line">    std::string weapon;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// 假设这个构造过程极其复杂、耗时</span></span><br><span class="line">    <span class="built_in">Goblin</span>(<span class="type">int</span> h, std::string w) : <span class="built_in">health</span>(h), <span class="built_in">weapon</span>(w) &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [系统加载] 正在从硬盘读取哥布林模型和材质，耗时很久...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 【魔法核心】：实现 clone 方法，直接调用 C++ 自带的拷贝构造函数！</span></span><br><span class="line">    <span class="function">std::unique_ptr&lt;IMonster&gt; <span class="title">clone</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="comment">// *this 代表当前对象本身，这里触发了 Goblin(const Goblin&amp;) 拷贝构造</span></span><br><span class="line">        <span class="keyword">return</span> std::<span class="built_in">make_unique</span>&lt;Goblin&gt;(*<span class="keyword">this</span>); </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">printInfo</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;我是哥布林，血量: &quot;</span> &lt;&lt; health &lt;&lt; <span class="string">&quot;，武器: &quot;</span> &lt;&lt; weapon &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 2. 具体原型 B：飞龙</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Dragon</span> : <span class="keyword">public</span> IMonster &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> fireDamage;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Dragon</span>(<span class="type">int</span> dmg) : <span class="built_in">fireDamage</span>(dmg) &#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;  [系统加载] 正在生成巨大的飞龙骨骼动画，耗时很久...&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function">std::unique_ptr&lt;IMonster&gt; <span class="title">clone</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> std::<span class="built_in">make_unique</span>&lt;Dragon&gt;(*<span class="keyword">this</span>);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">printInfo</span><span class="params">()</span> <span class="type">const</span> <span class="keyword">override</span> </span>&#123;</span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;我是火焰飞龙！喷火伤害: &quot;</span> &lt;&lt; fireDamage &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 3. 原型管理器 (Spawner)：客户端只需要和它打交道</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">MonsterSpawner</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="comment">// 预先存好所有怪物的“原型种子”</span></span><br><span class="line">    std::unordered_map&lt;std::string, std::unique_ptr&lt;IMonster&gt;&gt; prototypes;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">registerPrototype</span><span class="params">(<span class="type">const</span> std::string&amp; name, std::unique_ptr&lt;IMonster&gt; prototype)</span> </span>&#123;</span><br><span class="line">        prototypes[name] = std::<span class="built_in">move</span>(prototype);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 客户端调用的刷怪接口</span></span><br><span class="line">    <span class="function">std::unique_ptr&lt;IMonster&gt; <span class="title">spawnMonster</span><span class="params">(<span class="type">const</span> std::string&amp; name)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">if</span> (prototypes.<span class="built_in">find</span>(name) != prototypes.<span class="built_in">end</span>()) &#123;</span><br><span class="line">            <span class="comment">// 直接调用原型的 clone() 方法！不走原本耗时的构造函数！</span></span><br><span class="line">            <span class="keyword">return</span> prototypes[name]-&gt;<span class="built_in">clone</span>(); </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="comment">// 业务调用端：体验瞬间刷怪的快感</span></span><br><span class="line"><span class="comment">// ==========================================</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    MonsterSpawner spawner;</span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;=== 游戏加载阶段：精心配置原型 ===&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    <span class="comment">// 耗时操作在这里发生，且只发生一次</span></span><br><span class="line">    spawner.<span class="built_in">registerPrototype</span>(<span class="string">&quot;EliteGoblin&quot;</span>, std::<span class="built_in">make_unique</span>&lt;Goblin&gt;(<span class="number">100</span>, <span class="string">&quot;精钢大剑&quot;</span>));</span><br><span class="line">    spawner.<span class="built_in">registerPrototype</span>(<span class="string">&quot;BossDragon&quot;</span>, std::<span class="built_in">make_unique</span>&lt;Dragon&gt;(<span class="number">9999</span>));</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;\n=== 游戏正式开始 ===&quot;</span> &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 客户端只需要传字符串，完全不需要 include Goblin 或 Dragon 的头文件！</span></span><br><span class="line">    <span class="comment">// 也不需要重新去读取硬盘材质，直接内存拷贝，瞬间完成！</span></span><br><span class="line">    std::unique_ptr&lt;IMonster&gt; m1 = spawner.<span class="built_in">spawnMonster</span>(<span class="string">&quot;EliteGoblin&quot;</span>);</span><br><span class="line">    std::unique_ptr&lt;IMonster&gt; m2 = spawner.<span class="built_in">spawnMonster</span>(<span class="string">&quot;EliteGoblin&quot;</span>); <span class="comment">// 第二只</span></span><br><span class="line">    std::unique_ptr&lt;IMonster&gt; boss = spawner.<span class="built_in">spawnMonster</span>(<span class="string">&quot;BossDragon&quot;</span>);</span><br><span class="line"></span><br><span class="line">    m1-&gt;<span class="built_in">printInfo</span>();</span><br><span class="line">    m2-&gt;<span class="built_in">printInfo</span>();</span><br><span class="line">    boss-&gt;<span class="built_in">printInfo</span>();</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h2 id="⚠️-4-C-程序员必须面对的”深渊”：深拷贝与浅拷贝"><a href="#⚠️-4-C-程序员必须面对的”深渊”：深拷贝与浅拷贝" class="headerlink" title="⚠️ 4. C++ 程序员必须面对的”深渊”：深拷贝与浅拷贝"></a>⚠️ 4. C++ 程序员必须面对的”深渊”：深拷贝与浅拷贝</h2><p>原型模式在 C++ 中有一个极其致命的坑，也就是面试必考题：<strong>深拷贝（Deep Copy）vs. 浅拷贝（Shallow Copy）</strong> 🕳️</p>
@@ -1027,22 +1027,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">编程技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">继承</a>
               </li>
              
@@ -1060,6 +1044,22 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">虚函数指针</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">编程技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">Linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">VMware</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1111,10 +1111,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdf</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
               </li>
              
@@ -1124,6 +1120,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">文件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">pdf</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1139,11 +1139,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">Ubuntu</a>
+                <a href="javascript:void(0)" class="js-tag color4">top</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">top</a>
+                <a href="javascript:void(0)" class="js-tag color2">Ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1152,14 +1152,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">浮生六记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">代理模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">结构型模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1175,10 +1167,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">const</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">工厂方法模式</a>
               </li>
              
@@ -1188,6 +1176,10 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">文件操作</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">const</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1219,6 +1211,14 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">代理模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">结构型模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">正则表达式</a>
               </li>
              
@@ -1239,15 +1239,15 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">unique_ptr</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">原则</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">SOLID</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">unique_ptr</a>
               </li>
             
             <div class="clearfix"></div>
