@@ -6,25 +6,25 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://lyroom.github.io">
-  <title>C++ 智能指针详解：shared_ptr, auto_ptr 和 weak_ptr | Henry&#39;Blog</title>
+  <title>🧠 C++ 智能指针详解：shared_ptr, auto_ptr 和 weak_ptr | Henry&#39;Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="C++ 智能指针详解：shared_ptr, auto_ptr 和 weak_ptr1. shared_ptr：共享所有权智能指针1.1 核心概念与定义1.1.1 什么是 shared_ptrstd::shared_ptr 是 C++11 引入的共享所有权智能指针，它通过引用计数（Reference Counting） 机制实现多个智能指针共享同一个对象的所有权。与 unique_ptr 的独占所">
+  <meta name="description" content="🎯 导读：本文深入讲解 C++ 三种智能指针的特点与使用场景，通过对比表格和代码示例，帮你彻底搞懂内存管理的利器！">
 <meta property="og:type" content="article">
-<meta property="og:title" content="C++ 智能指针详解：shared_ptr, auto_ptr 和 weak_ptr">
+<meta property="og:title" content="🧠 C++ 智能指针详解：shared_ptr, auto_ptr 和 weak_ptr">
 <meta property="og:url" content="https://lyroom.github.io/2025/09/23/C-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E8%AF%A6%E8%A7%A3%EF%BC%9Ashared-ptr-auto-ptr-%E5%92%8C-weak-ptr/index.html">
 <meta property="og:site_name" content="Henry&#39;Blog">
-<meta property="og:description" content="C++ 智能指针详解：shared_ptr, auto_ptr 和 weak_ptr1. shared_ptr：共享所有权智能指针1.1 核心概念与定义1.1.1 什么是 shared_ptrstd::shared_ptr 是 C++11 引入的共享所有权智能指针，它通过引用计数（Reference Counting） 机制实现多个智能指针共享同一个对象的所有权。与 unique_ptr 的独占所">
+<meta property="og:description" content="🎯 导读：本文深入讲解 C++ 三种智能指针的特点与使用场景，通过对比表格和代码示例，帮你彻底搞懂内存管理的利器！">
 <meta property="og:locale">
 <meta property="article:published_time" content="2025-09-23T02:44:23.000Z">
 <meta property="article:modified_time" content="2025-09-23T02:44:23.000Z">
 <meta property="article:author" content="迪丽惹Bug">
-<meta property="article:tag" content="C++">
-<meta property="article:tag" content="智能指针">
-<meta property="article:tag" content="shared_ptr">
-<meta property="article:tag" content="auto_ptr">
-<meta property="article:tag" content="weak_ptr">
+<meta property="article:tag" content="💻 C++">
+<meta property="article:tag" content="🧠 智能指针">
+<meta property="article:tag" content="🔗 shared_ptr">
+<meta property="article:tag" content="⚠️ auto_ptr">
+<meta property="article:tag" content="🔓 weak_ptr">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Henry&#39;Blog" type="application/atom+xml">
@@ -406,12 +406,12 @@
     
       <header class="article-header">
   
-    <div class="article-page-title" itemprop="headline">C++ 智能指针详解：shared_ptr, auto_ptr 和 weak_ptr</div>
+    <div class="article-page-title" itemprop="headline">🧠 C++ 智能指针详解：shared_ptr, auto_ptr 和 weak_ptr</div>
   
   
   
     <h1 class="article-title" itemprop="name">
-      C++ 智能指针详解：shared_ptr, auto_ptr 和 weak_ptr
+      🧠 C++ 智能指针详解：shared_ptr, auto_ptr 和 weak_ptr
     </h1>
   
 
@@ -437,7 +437,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">3.2k字</span>
+      <span class="post-count">3.8k字</span>
     </span>
   </span>
 
@@ -446,7 +446,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">14分</span>
+      <span class="post-count">16分</span>
     </span>
   </span>
 </div>
@@ -457,11 +457,63 @@
   
   <div class="article-entry" itemprop="articleBody">
     
-    <h1 id="C-智能指针详解：shared-ptr-auto-ptr-和-weak-ptr"><a href="#C-智能指针详解：shared-ptr-auto-ptr-和-weak-ptr" class="headerlink" title="C++ 智能指针详解：shared_ptr, auto_ptr 和 weak_ptr"></a>C++ 智能指针详解：shared_ptr, auto_ptr 和 weak_ptr</h1><h2 id="1-shared-ptr：共享所有权智能指针"><a href="#1-shared-ptr：共享所有权智能指针" class="headerlink" title="1. shared_ptr：共享所有权智能指针"></a>1. shared_ptr：共享所有权智能指针</h2><h3 id="1-1-核心概念与定义"><a href="#1-1-核心概念与定义" class="headerlink" title="1.1 核心概念与定义"></a>1.1 核心概念与定义</h3><h4 id="1-1-1-什么是-shared-ptr"><a href="#1-1-1-什么是-shared-ptr" class="headerlink" title="1.1.1 什么是 shared_ptr"></a>1.1.1 什么是 shared_ptr</h4><p><code>std::shared_ptr</code> 是 C++11 引入的共享所有权智能指针，它通过<strong>引用计数（Reference Counting）</strong> 机制实现多个智能指针共享同一个对象的所有权。与 <code>unique_ptr</code> 的独占所有权不同，<code>shared_ptr</code> 允许多个指针实例共同管理同一个动态分配的对象。</p>
-<span id="more"></span>                           
+    <blockquote>
+<p>🎯 <strong>导读</strong>：本文深入讲解 C++ 三种智能指针的特点与使用场景，通过对比表格和代码示例，帮你彻底搞懂内存管理的利器！</p>
+</blockquote>
+<span id="more"></span>
 
-
-
+<h1 id="🧠-C-智能指针详解：shared-ptr-auto-ptr-和-weak-ptr"><a href="#🧠-C-智能指针详解：shared-ptr-auto-ptr-和-weak-ptr" class="headerlink" title="🧠 C++ 智能指针详解：shared_ptr, auto_ptr 和 weak_ptr"></a>🧠 C++ 智能指针详解：shared_ptr, auto_ptr 和 weak_ptr</h1><h2 id="📊-三种智能指针快速对比"><a href="#📊-三种智能指针快速对比" class="headerlink" title="📊 三种智能指针快速对比"></a>📊 三种智能指针快速对比</h2><table>
+<thead>
+<tr>
+<th align="center">智能指针</th>
+<th align="left">所有权模型</th>
+<th align="center">线程安全</th>
+<th align="left">使用场景</th>
+<th align="center">C++标准</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">🔗 <strong>shared_ptr</strong></td>
+<td align="left">共享所有权</td>
+<td align="center">引用计数安全 ✅</td>
+<td align="left">多个对象共享同一资源</td>
+<td align="center">C++11</td>
+</tr>
+<tr>
+<td align="center">🔒 <strong>unique_ptr</strong></td>
+<td align="left">独占所有权</td>
+<td align="center">不涉及</td>
+<td align="left">唯一拥有资源</td>
+<td align="center">C++11</td>
+</tr>
+<tr>
+<td align="center">🔓 <strong>weak_ptr</strong></td>
+<td align="left">无所有权</td>
+<td align="center">不涉及</td>
+<td align="left">解决循环引用</td>
+<td align="center">C++11</td>
+</tr>
+<tr>
+<td align="center">⚠️ <strong>auto_ptr</strong></td>
+<td align="left">独占所有权</td>
+<td align="center">不涉及</td>
+<td align="left"><strong>已废弃</strong> ❌</td>
+<td align="center">C++98</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>💡 <strong>一句话总结</strong>：</p>
+<ul>
+<li><code>shared_ptr</code> &#x3D; <strong>共享单车</strong> 🚲（多人可用，最后一个锁车）</li>
+<li><code>unique_ptr</code> &#x3D; <strong>私家车</strong> 🚗（专属，不能共用）</li>
+<li><code>weak_ptr</code> &#x3D; <strong>备用钥匙</strong> 🔑（能开门，但不拥有车）</li>
+<li><code>auto_ptr</code> &#x3D; <strong>报废车</strong> 🚫（千万别用！）</li>
+</ul>
+</blockquote>
+<h2 id="🔗-1-shared-ptr：共享所有权智能指针"><a href="#🔗-1-shared-ptr：共享所有权智能指针" class="headerlink" title="🔗 1. shared_ptr：共享所有权智能指针"></a>🔗 1. shared_ptr：共享所有权智能指针</h2><h3 id="📖-1-1-核心概念与定义"><a href="#📖-1-1-核心概念与定义" class="headerlink" title="📖 1.1 核心概念与定义"></a>📖 1.1 核心概念与定义</h3><h4 id="💡-1-1-1-什么是-shared-ptr"><a href="#💡-1-1-1-什么是-shared-ptr" class="headerlink" title="💡 1.1.1 什么是 shared_ptr"></a>💡 1.1.1 什么是 shared_ptr</h4><p><code>std::shared_ptr</code> 是 C++11 引入的共享所有权智能指针，它通过 <strong>引用计数（Reference Counting）</strong> 🔢 机制实现多个智能指针共享同一个对象的所有权。与 <code>unique_ptr</code> 的独占所有权不同，<code>shared_ptr</code> 允许多个指针实例共同管理同一个动态分配的对象。</p>
+<blockquote>
+<p>🚲 <strong>生活比喻</strong>：就像共享单车，谁都可以用，但最后一个用完锁车的人负责把车放回（释放内存）。                           </p>
+</blockquote>
 <hr>
 <p>当最后一个指向对象的 <code>shared_ptr</code> 被销毁或重置时，对象才会被自动删除。这种机制使得 <code>shared_ptr</code> 在需要共享资源的场景下非常有用。</p>
 <h4 id="1-1-2-共享所有权语义"><a href="#1-1-2-共享所有权语义" class="headerlink" title="1.1.2 共享所有权语义"></a>1.1.2 共享所有权语义</h4><p><code>shared_ptr</code> 的核心是共享所有权模型。多个 <code>shared_ptr</code> 实例可以指向同一个对象，它们通过内部的引用计数器来跟踪有多少个 <code>shared_ptr</code> 正在共享该对象。</p>
@@ -507,12 +559,83 @@
 </ul>
 <h4 id="1-4-3-make-shared-的优势"><a href="#1-4-3-make-shared-的优势" class="headerlink" title="1.4.3 make_shared 的优势"></a>1.4.3 make_shared 的优势</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 传统方式：两次内存分配（对象 + 控制块）</span></span><br><span class="line"><span class="function">std::shared_ptr&lt;MyClass&gt; <span class="title">p1</span><span class="params">(<span class="keyword">new</span> MyClass())</span></span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// make_shared：一次内存分配（对象和控制块在一起）</span></span><br><span class="line">std::shared_ptr&lt;MyClass&gt; p2 = std::<span class="built_in">make_shared</span>&lt;MyClass&gt;();</span><br></pre></td></tr></table></figure>
 <p><code>make_shared</code> 将对象和控制块分配在连续内存中，提高了缓存局部性并减少了一次内存分配。</p>
+<h3 id="⚖️-shared-ptr-vs-unique-ptr-对比"><a href="#⚖️-shared-ptr-vs-unique-ptr-对比" class="headerlink" title="⚖️ shared_ptr vs unique_ptr 对比"></a>⚖️ shared_ptr vs unique_ptr 对比</h3><table>
+<thead>
+<tr>
+<th align="center">特性</th>
+<th align="left">🔗 shared_ptr</th>
+<th align="left">🔒 unique_ptr</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>所有权</strong></td>
+<td align="left">共享所有权 👥</td>
+<td align="left">独占所有权 🔐</td>
+</tr>
+<tr>
+<td align="center"><strong>内存开销</strong></td>
+<td align="left">较高（控制块 + 引用计数）💾</td>
+<td align="left">零开销（同原始指针）✅</td>
+</tr>
+<tr>
+<td align="center"><strong>性能</strong></td>
+<td align="left">原子操作有开销 ⚡</td>
+<td align="left">无额外开销 🚀</td>
+</tr>
+<tr>
+<td align="center"><strong>线程安全</strong></td>
+<td align="left">引用计数原子操作 ✅</td>
+<td align="left">不涉及（用户负责）⚠️</td>
+</tr>
+<tr>
+<td align="center"><strong>使用场景</strong></td>
+<td align="left">多对象共享资源</td>
+<td align="left">唯一拥有资源</td>
+</tr>
+</tbody></table>
 <h3 id="1-5-实际应用场景"><a href="#1-5-实际应用场景" class="headerlink" title="1.5 实际应用场景"></a>1.5 实际应用场景</h3><h4 id="1-5-1-共享资源管理"><a href="#1-5-1-共享资源管理" class="headerlink" title="1.5.1 共享资源管理"></a>1.5.1 共享资源管理</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Resource</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">use</span><span class="params">()</span> </span>&#123; std::cout &lt;&lt; <span class="string">&quot;Using resource\n&quot;</span>; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">User</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::shared_ptr&lt;Resource&gt; resource_;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">User</span>(std::shared_ptr&lt;Resource&gt; res) : <span class="built_in">resource_</span>(res) &#123;&#125;</span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">doWork</span><span class="params">()</span> </span>&#123; resource_-&gt;<span class="built_in">use</span>(); &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 多个用户共享同一资源</span></span><br><span class="line"><span class="keyword">auto</span> resource = std::<span class="built_in">make_shared</span>&lt;Resource&gt;();</span><br><span class="line"><span class="function">User <span class="title">user1</span><span class="params">(resource)</span></span>;</span><br><span class="line"><span class="function">User <span class="title">user2</span><span class="params">(resource)</span></span>; <span class="comment">// 共享同一资源</span></span><br></pre></td></tr></table></figure>
 
 <h4 id="1-5-2-缓存系统"><a href="#1-5-2-缓存系统" class="headerlink" title="1.5.2 缓存系统"></a>1.5.2 缓存系统</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Cache</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::unordered_map&lt;std::string, std::shared_ptr&lt;Data&gt;&gt; cache_;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">std::shared_ptr&lt;Data&gt; <span class="title">get</span><span class="params">(<span class="type">const</span> std::string&amp; key)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">auto</span> it = cache_.<span class="built_in">find</span>(key);</span><br><span class="line">        <span class="keyword">if</span> (it != cache_.<span class="built_in">end</span>()) &#123;</span><br><span class="line">            <span class="keyword">return</span> it-&gt;second; <span class="comment">// 返回共享指针，延长生命周期</span></span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="type">void</span> <span class="title">put</span><span class="params">(<span class="type">const</span> std::string&amp; key, std::shared_ptr&lt;Data&gt; data)</span> </span>&#123;</span><br><span class="line">        cache_[key] = data;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h2 id="2-weak-ptr：弱引用智能指针"><a href="#2-weak-ptr：弱引用智能指针" class="headerlink" title="2. weak_ptr：弱引用智能指针"></a>2. weak_ptr：弱引用智能指针</h2><h3 id="2-1-核心概念与定义"><a href="#2-1-核心概念与定义" class="headerlink" title="2.1 核心概念与定义"></a>2.1 核心概念与定义</h3><h4 id="2-1-1-什么是-weak-ptr"><a href="#2-1-1-什么是-weak-ptr" class="headerlink" title="2.1.1 什么是 weak_ptr"></a>2.1.1 什么是 weak_ptr</h4><p><code>std::weak_ptr</code> 是一种不控制对象生命周期的智能指针，它是对由 <code>shared_ptr</code> 管理的对象的<strong>弱引用</strong>。<code>weak_ptr</code> 不会增加对象的引用计数，因此不会阻止对象的销毁。</p>
-<h4 id="2-1-2-弱引用语义"><a href="#2-1-2-弱引用语义" class="headerlink" title="2.1.2 弱引用语义"></a>2.1.2 弱引用语义</h4><p><code>weak_ptr</code> 的主要用途是打破 <code>shared_ptr</code> 的循环引用问题。它允许观察一个对象而不影响其生命周期。</p>
+<h2 id="🔓-2-weak-ptr：弱引用智能指针"><a href="#🔓-2-weak-ptr：弱引用智能指针" class="headerlink" title="🔓 2. weak_ptr：弱引用智能指针"></a>🔓 2. weak_ptr：弱引用智能指针</h2><h3 id="📖-2-1-核心概念与定义"><a href="#📖-2-1-核心概念与定义" class="headerlink" title="📖 2.1 核心概念与定义"></a>📖 2.1 核心概念与定义</h3><h4 id="💡-2-1-1-什么是-weak-ptr"><a href="#💡-2-1-1-什么是-weak-ptr" class="headerlink" title="💡 2.1.1 什么是 weak_ptr"></a>💡 2.1.1 什么是 weak_ptr</h4><p><code>std::weak_ptr</code> 是一种不控制对象生命周期的智能指针，它是对由 <code>shared_ptr</code> 管理的对象的 <strong>弱引用</strong>。<code>weak_ptr</code> <strong>不会增加引用计数</strong>，因此不会阻止对象的销毁。</p>
+<blockquote>
+<p>🔑 <strong>生活比喻</strong>：就像备用钥匙，你能开门查看，但不拥有这辆车，也不影响车的报废。</p>
+</blockquote>
+<h4 id="🔄-2-1-2-弱引用语义"><a href="#🔄-2-1-2-弱引用语义" class="headerlink" title="🔄 2.1.2 弱引用语义"></a>🔄 2.1.2 弱引用语义</h4><p><code>weak_ptr</code> 的主要用途是 <strong>打破 <code>shared_ptr</code> 的循环引用问题</strong>。它允许观察一个对象而不影响其生命周期。</p>
+<h3 id="⚖️-shared-ptr-vs-weak-ptr-对比"><a href="#⚖️-shared-ptr-vs-weak-ptr-对比" class="headerlink" title="⚖️ shared_ptr vs weak_ptr 对比"></a>⚖️ shared_ptr vs weak_ptr 对比</h3><table>
+<thead>
+<tr>
+<th align="center">特性</th>
+<th align="left">🔗 shared_ptr</th>
+<th align="left">🔓 weak_ptr</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>所有权</strong></td>
+<td align="left">拥有对象 ✅</td>
+<td align="left">不拥有对象 ❌</td>
+</tr>
+<tr>
+<td align="center"><strong>引用计数</strong></td>
+<td align="left">增加 use_count 🔢</td>
+<td align="left">增加 weak_count 📊</td>
+</tr>
+<tr>
+<td align="center"><strong>对象销毁</strong></td>
+<td align="left">阻止销毁 🛡️</td>
+<td align="left">不阻止销毁 👻</td>
+</tr>
+<tr>
+<td align="center"><strong>使用方式</strong></td>
+<td align="left">直接使用 ✅</td>
+<td align="left">需 lock() 转换 🔐</td>
+</tr>
+<tr>
+<td align="center"><strong>主要用途</strong></td>
+<td align="left">共享资源</td>
+<td align="left">打破循环引用 🔄</td>
+</tr>
+</tbody></table>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">std::shared_ptr&lt;MyClass&gt; shared = std::<span class="built_in">make_shared</span>&lt;MyClass&gt;();</span><br><span class="line">std::weak_ptr&lt;MyClass&gt; weak = shared; <span class="comment">// 不增加引用计数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 对象可能已被销毁，需要检查</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">auto</span> locked = weak.<span class="built_in">lock</span>()) &#123;</span><br><span class="line">    <span class="comment">// 对象还存在，可以安全使用</span></span><br><span class="line">    locked-&gt;<span class="built_in">doSomething</span>();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h3 id="2-2-内部实现机制"><a href="#2-2-内部实现机制" class="headerlink" title="2.2 内部实现机制"></a>2.2 内部实现机制</h3><h4 id="2-2-1-与控制块的交互"><a href="#2-2-1-与控制块的交互" class="headerlink" title="2.2.1 与控制块的交互"></a>2.2.1 与控制块的交互</h4><p><code>weak_ptr</code> 内部也包含指向控制块的指针，但它只操作弱引用计数：</p>
@@ -526,12 +649,68 @@
 
 <h4 id="2-4-2-缓存系统优化"><a href="#2-4-2-缓存系统优化" class="headerlink" title="2.4.2 缓存系统优化"></a>2.4.2 缓存系统优化</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">CacheWithWeakPtr</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    std::unordered_map&lt;std::string, std::weak_ptr&lt;Data&gt;&gt; cache_;</span><br><span class="line">    <span class="keyword">mutable</span> std::mutex mutex_;</span><br><span class="line">    </span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">std::shared_ptr&lt;Data&gt; <span class="title">get</span><span class="params">(<span class="type">const</span> std::string&amp; key)</span> </span>&#123;</span><br><span class="line">        <span class="function">std::lock_guard&lt;std::mutex&gt; <span class="title">lock</span><span class="params">(mutex_)</span></span>;</span><br><span class="line">        <span class="keyword">auto</span> it = cache_.<span class="built_in">find</span>(key);</span><br><span class="line">        <span class="keyword">if</span> (it != cache_.<span class="built_in">end</span>()) &#123;</span><br><span class="line">            <span class="keyword">if</span> (<span class="keyword">auto</span> data = it-&gt;second.<span class="built_in">lock</span>()) &#123;</span><br><span class="line">                <span class="keyword">return</span> data; <span class="comment">// 对象还存在</span></span><br><span class="line">            &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">                cache_.<span class="built_in">erase</span>(it); <span class="comment">// 对象已被销毁，清理缓存</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">nullptr</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
-<h2 id="3-auto-ptr：已废弃的智能指针"><a href="#3-auto-ptr：已废弃的智能指针" class="headerlink" title="3. auto_ptr：已废弃的智能指针"></a>3. auto_ptr：已废弃的智能指针</h2><h3 id="3-1-历史背景与设计缺陷"><a href="#3-1-历史背景与设计缺陷" class="headerlink" title="3.1 历史背景与设计缺陷"></a>3.1 历史背景与设计缺陷</h3><h4 id="3-1-1-auto-ptr-的起源"><a href="#3-1-1-auto-ptr-的起源" class="headerlink" title="3.1.1 auto_ptr 的起源"></a>3.1.1 auto_ptr 的起源</h4><p><code>std::auto_ptr</code> 是 C++98 标准中引入的第一个智能指针，旨在提供基本的自动内存管理功能。它在当时是一个重要的创新，但后来被发现存在严重的设计缺陷。</p>
-<h4 id="3-1-2-主要设计缺陷"><a href="#3-1-2-主要设计缺陷" class="headerlink" title="3.1.2 主要设计缺陷"></a>3.1.2 主要设计缺陷</h4><ol>
-<li><strong>有问题的拷贝语义</strong>：<code>auto_ptr</code> 的拷贝操作会转移所有权</li>
-<li><strong>不适用于标准库容器</strong>：由于非常规的拷贝语义，不能安全地在 STL 容器中使用</li>
-<li><strong>缺乏移动语义支持</strong>：在 C++11 之前，没有移动语义，导致 awkward 的所有权转移</li>
-</ol>
+<h2 id="⚠️-3-auto-ptr：已废弃的智能指针（千万别用！）"><a href="#⚠️-3-auto-ptr：已废弃的智能指针（千万别用！）" class="headerlink" title="⚠️ 3. auto_ptr：已废弃的智能指针（千万别用！）"></a>⚠️ 3. auto_ptr：已废弃的智能指针（千万别用！）</h2><h3 id="📖-3-1-历史背景与设计缺陷"><a href="#📖-3-1-历史背景与设计缺陷" class="headerlink" title="📖 3.1 历史背景与设计缺陷"></a>📖 3.1 历史背景与设计缺陷</h3><h4 id="📜-3-1-1-auto-ptr-的起源"><a href="#📜-3-1-1-auto-ptr-的起源" class="headerlink" title="📜 3.1.1 auto_ptr 的起源"></a>📜 3.1.1 auto_ptr 的起源</h4><p><code>std::auto_ptr</code> 是 C++98 标准中引入的第一个智能指针，旨在提供基本的自动内存管理功能。它在当时是一个重要的创新，但后来被发现存在 <strong>严重的设计缺陷</strong> 💥。</p>
+<blockquote>
+<p>🚫 <strong>重要提示</strong>：C++11 起 <code>auto_ptr</code> 已被标记为废弃，C++17 起被彻底移除！</p>
+</blockquote>
+<h4 id="❌-3-1-2-主要设计缺陷"><a href="#❌-3-1-2-主要设计缺陷" class="headerlink" title="❌ 3.1.2 主要设计缺陷"></a>❌ 3.1.2 主要设计缺陷</h4><table>
+<thead>
+<tr>
+<th align="center">缺陷</th>
+<th align="left">说明</th>
+<th align="left">后果</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">🔄 <strong>诡异拷贝语义</strong></td>
+<td align="left">拷贝时转移所有权</td>
+<td align="left">原指针变为空，导致意外崩溃 💥</td>
+</tr>
+<tr>
+<td align="center">📦 <strong>不兼容 STL</strong></td>
+<td align="left">不能放入容器</td>
+<td align="left">编译错误或运行时崩溃</td>
+</tr>
+<tr>
+<td align="center">🚫 <strong>无移动语义</strong></td>
+<td align="left">C++11 前没有 <code>move</code></td>
+<td align="left">所有权转移 awkward</td>
+</tr>
+</tbody></table>
+<h3 id="⚖️-auto-ptr-vs-unique-ptr-对比"><a href="#⚖️-auto-ptr-vs-unique-ptr-对比" class="headerlink" title="⚖️ auto_ptr vs unique_ptr 对比"></a>⚖️ auto_ptr vs unique_ptr 对比</h3><table>
+<thead>
+<tr>
+<th align="center">特性</th>
+<th align="left">⚠️ auto_ptr (废弃)</th>
+<th align="left">🔒 unique_ptr</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center"><strong>拷贝语义</strong></td>
+<td align="left">转移所有权（危险）🔄</td>
+<td align="left">禁止拷贝 ✅</td>
+</tr>
+<tr>
+<td align="center"><strong>移动语义</strong></td>
+<td align="left">不支持 ❌</td>
+<td align="left">支持 ✅</td>
+</tr>
+<tr>
+<td align="center"><strong>STL 兼容</strong></td>
+<td align="left">不兼容 ❌</td>
+<td align="left">兼容（需移动）✅</td>
+</tr>
+<tr>
+<td align="center"><strong>安全性</strong></td>
+<td align="left">低（易出错）⚠️</td>
+<td align="left">高（编译期检查）✅</td>
+</tr>
+<tr>
+<td align="center"><strong>推荐使用</strong></td>
+<td align="left">🚫 <strong>绝不使用</strong></td>
+<td align="left">✅ <strong>强烈推荐</strong></td>
+</tr>
+</tbody></table>
 <h3 id="3-2-问题示例与缺陷分析"><a href="#3-2-问题示例与缺陷分析" class="headerlink" title="3.2 问题示例与缺陷分析"></a>3.2 问题示例与缺陷分析</h3><h4 id="3-2-1-危险的所有权转移"><a href="#3-2-1-危险的所有权转移" class="headerlink" title="3.2.1 危险的所有权转移"></a>3.2.1 危险的所有权转移</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// C++98/03 中的 auto_ptr（已废弃）</span></span><br><span class="line"><span class="function">std::auto_ptr&lt;<span class="type">int</span>&gt; <span class="title">p1</span><span class="params">(<span class="keyword">new</span> <span class="type">int</span>(<span class="number">42</span>))</span></span>;</span><br><span class="line">std::auto_ptr&lt;<span class="type">int</span>&gt; p2 = p1; <span class="comment">// p1 变为空，所有权转移到 p2</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 意外行为：p1 现在为空，但代码可能继续使用它</span></span><br><span class="line"><span class="keyword">if</span> (p1.<span class="built_in">get</span>()) &#123; <span class="comment">// 这个条件为 false</span></span><br><span class="line">    *p1 = <span class="number">100</span>; <span class="comment">// 未定义行为！</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
 <h4 id="3-2-2-与-STL-容器的不兼容"><a href="#3-2-2-与-STL-容器的不兼容" class="headerlink" title="3.2.2 与 STL 容器的不兼容"></a>3.2.2 与 STL 容器的不兼容</h4><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">std::vector&lt;std::auto_ptr&lt;<span class="type">int</span>&gt;&gt; vec; <span class="comment">// 危险的用法！</span></span><br><span class="line"></span><br><span class="line"><span class="function">std::auto_ptr&lt;<span class="type">int</span>&gt; <span class="title">p</span><span class="params">(<span class="keyword">new</span> <span class="type">int</span>(<span class="number">42</span>))</span></span>;</span><br><span class="line">vec.<span class="built_in">push_back</span>(p); <span class="comment">// p 的所有权转移到 vector 中</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 现在 p 为空，但代码可能不知道</span></span><br><span class="line"><span class="keyword">if</span> (p.<span class="built_in">get</span>()) &#123; <span class="comment">// false</span></span><br><span class="line">    <span class="comment">// 永远不会执行</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
@@ -639,7 +818,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://lyroom.github.io/2025/09/23/C-智能指针详解：shared-ptr-auto-ptr-和-weak-ptr/" title="C++ 智能指针详解：shared_ptr, auto_ptr 和 weak_ptr" target="_blank">https://lyroom.github.io/2025/09/23/C-智能指针详解：shared-ptr-auto-ptr-和-weak-ptr/</a>
+          <a href="https://lyroom.github.io/2025/09/23/C-智能指针详解：shared-ptr-auto-ptr-和-weak-ptr/" title="🧠 C++ 智能指针详解：shared_ptr, auto_ptr 和 weak_ptr" target="_blank">https://lyroom.github.io/2025/09/23/C-智能指针详解：shared-ptr-auto-ptr-和-weak-ptr/</a>
         </li>
         
         <li>
@@ -661,23 +840,23 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">C++</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">💻 C++</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">智能指针</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">🧠 智能指针</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color1">shared_ptr</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">🔗 shared_ptr</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">auto_ptr</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">⚠️ auto_ptr</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">weak_ptr</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">🔓 weak_ptr</a>
         		</li>
       		
 		</ul>
@@ -786,7 +965,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#C-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E8%AF%A6%E8%A7%A3%EF%BC%9Ashared-ptr-auto-ptr-%E5%92%8C-weak-ptr"><span class="toc-number">1.</span> <span class="toc-text">C++ 智能指针详解：shared_ptr, auto_ptr 和 weak_ptr</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-shared-ptr%EF%BC%9A%E5%85%B1%E4%BA%AB%E6%89%80%E6%9C%89%E6%9D%83%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="toc-number">1.1.</span> <span class="toc-text">1. shared_ptr：共享所有权智能指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%AE%9A%E4%B9%89"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1 核心概念与定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-1-%E4%BB%80%E4%B9%88%E6%98%AF-shared-ptr"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">1.1.1 什么是 shared_ptr</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-2-%E5%85%B1%E4%BA%AB%E6%89%80%E6%9C%89%E6%9D%83%E8%AF%AD%E4%B9%89"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">1.1.2 共享所有权语义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-3-%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0%E6%9C%BA%E5%88%B6"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">1.1.3 引用计数机制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%86%85%E9%83%A8%E5%AE%9E%E7%8E%B0%E4%B8%8E%E6%8E%A7%E5%88%B6%E5%9D%97"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2 内部实现与控制块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-%E6%8E%A7%E5%88%B6%E5%9D%97%EF%BC%88Control-Block%EF%BC%89%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.2.1.</span> <span class="toc-text">1.2.1 控制块（Control Block）结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0%E7%9A%84%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C"><span class="toc-number">1.1.2.2.</span> <span class="toc-text">1.2.2 引用计数的原子操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E5%B8%B8%E7%94%A8%E6%8E%A5%E5%8F%A3%E4%B8%8E%E7%94%A8%E6%B3%95"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3 常用接口与用法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-1-%E6%9E%84%E9%80%A0%E4%B8%8E%E6%9E%90%E6%9E%84"><span class="toc-number">1.1.3.1.</span> <span class="toc-text">1.3.1 构造与析构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-2-%E6%89%80%E6%9C%89%E6%9D%83%E7%AE%A1%E7%90%86%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.1.3.2.</span> <span class="toc-text">1.3.2 所有权管理接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-3-%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-number">1.1.3.3.</span> <span class="toc-text">1.3.3 操作符重载</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E6%80%A7%E8%83%BD%E7%89%B9%E7%82%B9%E4%B8%8E%E5%BC%80%E9%94%80"><span class="toc-number">1.1.4.</span> <span class="toc-text">1.4 性能特点与开销</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-1-%E5%86%85%E5%AD%98%E5%BC%80%E9%94%80"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">1.4.1 内存开销</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-2-%E8%BF%90%E8%A1%8C%E6%97%B6%E5%BC%80%E9%94%80"><span class="toc-number">1.1.4.2.</span> <span class="toc-text">1.4.2 运行时开销</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-3-make-shared-%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-number">1.1.4.3.</span> <span class="toc-text">1.4.3 make_shared 的优势</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.1.5.</span> <span class="toc-text">1.5 实际应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-1-%E5%85%B1%E4%BA%AB%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86"><span class="toc-number">1.1.5.1.</span> <span class="toc-text">1.5.1 共享资源管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-2-%E7%BC%93%E5%AD%98%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.1.5.2.</span> <span class="toc-text">1.5.2 缓存系统</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-weak-ptr%EF%BC%9A%E5%BC%B1%E5%BC%95%E7%94%A8%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="toc-number">1.2.</span> <span class="toc-text">2. weak_ptr：弱引用智能指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%AE%9A%E4%B9%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1 核心概念与定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-1-%E4%BB%80%E4%B9%88%E6%98%AF-weak-ptr"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">2.1.1 什么是 weak_ptr</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-1-2-%E5%BC%B1%E5%BC%95%E7%94%A8%E8%AF%AD%E4%B9%89"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">2.1.2 弱引用语义</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%86%85%E9%83%A8%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2 内部实现机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-%E4%B8%8E%E6%8E%A7%E5%88%B6%E5%9D%97%E7%9A%84%E4%BA%A4%E4%BA%92"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">2.2.1 与控制块的交互</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%B8%B8%E7%94%A8%E6%8E%A5%E5%8F%A3%E4%B8%8E%E7%94%A8%E6%B3%95"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3 常用接口与用法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">2.3.1 基本操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-%E8%A7%A3%E5%86%B3%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8%E9%97%AE%E9%A2%98"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">2.3.2 解决循环引用问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.2.4.</span> <span class="toc-text">2.4 实际应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-1-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">2.4.1 观察者模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-2-%E7%BC%93%E5%AD%98%E7%B3%BB%E7%BB%9F%E4%BC%98%E5%8C%96"><span class="toc-number">1.2.4.2.</span> <span class="toc-text">2.4.2 缓存系统优化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-auto-ptr%EF%BC%9A%E5%B7%B2%E5%BA%9F%E5%BC%83%E7%9A%84%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="toc-number">1.3.</span> <span class="toc-text">3. auto_ptr：已废弃的智能指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-%E5%8E%86%E5%8F%B2%E8%83%8C%E6%99%AF%E4%B8%8E%E8%AE%BE%E8%AE%A1%E7%BC%BA%E9%99%B7"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1 历史背景与设计缺陷</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-1-auto-ptr-%E7%9A%84%E8%B5%B7%E6%BA%90"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">3.1.1 auto_ptr 的起源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-1-2-%E4%B8%BB%E8%A6%81%E8%AE%BE%E8%AE%A1%E7%BC%BA%E9%99%B7"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">3.1.2 主要设计缺陷</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E9%97%AE%E9%A2%98%E7%A4%BA%E4%BE%8B%E4%B8%8E%E7%BC%BA%E9%99%B7%E5%88%86%E6%9E%90"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2 问题示例与缺陷分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1-%E5%8D%B1%E9%99%A9%E7%9A%84%E6%89%80%E6%9C%89%E6%9D%83%E8%BD%AC%E7%A7%BB"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">3.2.1 危险的所有权转移</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-2-%E4%B8%8E-STL-%E5%AE%B9%E5%99%A8%E7%9A%84%E4%B8%8D%E5%85%BC%E5%AE%B9"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">3.2.2 与 STL 容器的不兼容</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E4%BB%8E-auto-ptr-%E5%88%B0-unique-ptr-%E7%9A%84%E6%BC%94%E8%BF%9B"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3 从 auto_ptr 到 unique_ptr 的演进</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-1-%E4%B8%BA%E4%BB%80%E4%B9%88-unique-ptr-%E6%9B%B4%E5%A5%BD"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">3.3.1 为什么 unique_ptr 更好</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-2-%E8%BF%81%E7%A7%BB%E6%8C%87%E5%8D%97"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">3.3.2 迁移指南</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E7%8E%B0%E4%BB%A3%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88%E6%80%BB%E7%BB%93"><span class="toc-number">1.3.4.</span> <span class="toc-text">3.4 现代替代方案总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E4%B8%8E%E9%99%B7%E9%98%B1"><span class="toc-number">1.4.</span> <span class="toc-text">4. 智能指针的最佳实践与陷阱</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E9%80%89%E6%8B%A9%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1 选择正确的智能指针</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-1-%E5%86%B3%E7%AD%96%E6%B5%81%E7%A8%8B"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">4.1.1 决策流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-2-%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E6%80%BB%E7%BB%93"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">4.1.2 使用场景总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%B8%B8%E8%A7%81%E9%99%B7%E9%98%B1%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2 常见陷阱与解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-1-%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8%E9%97%AE%E9%A2%98"><span class="toc-number">1.4.2.1.</span> <span class="toc-text">4.2.1 循环引用问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-2-%E9%81%BF%E5%85%8D%E5%8E%9F%E5%A7%8B%E6%8C%87%E9%92%88%E4%B8%8E%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E6%B7%B7%E7%94%A8"><span class="toc-number">1.4.2.2.</span> <span class="toc-text">4.2.2 避免原始指针与智能指针混用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-3-this-%E6%8C%87%E9%92%88%E9%97%AE%E9%A2%98"><span class="toc-number">1.4.2.3.</span> <span class="toc-text">4.2.3 this 指针问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE"><span class="toc-number">1.4.3.</span> <span class="toc-text">4.3 性能优化建议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-1-%E4%BC%98%E5%85%88%E4%BD%BF%E7%94%A8-make-shared-%E5%92%8C-make-unique"><span class="toc-number">1.4.3.1.</span> <span class="toc-text">4.3.1 优先使用 make_shared 和 make_unique</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-2-%E9%81%BF%E5%85%8D%E4%B8%8D%E5%BF%85%E8%A6%81%E7%9A%84-shared-ptr-%E6%8B%B7%E8%B4%9D"><span class="toc-number">1.4.3.2.</span> <span class="toc-text">4.3.2 避免不必要的 shared_ptr 拷贝</span></a></li></ol></li></ol></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%A7%A0-C-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E8%AF%A6%E8%A7%A3%EF%BC%9Ashared-ptr-auto-ptr-%E5%92%8C-weak-ptr"><span class="toc-number">1.</span> <span class="toc-text">🧠 C++ 智能指针详解：shared_ptr, auto_ptr 和 weak_ptr</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8A-%E4%B8%89%E7%A7%8D%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E5%BF%AB%E9%80%9F%E5%AF%B9%E6%AF%94"><span class="toc-number">1.1.</span> <span class="toc-text">📊 三种智能指针快速对比</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%97-1-shared-ptr%EF%BC%9A%E5%85%B1%E4%BA%AB%E6%89%80%E6%9C%89%E6%9D%83%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="toc-number">1.2.</span> <span class="toc-text">🔗 1. shared_ptr：共享所有权智能指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%96-1-1-%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%AE%9A%E4%B9%89"><span class="toc-number">1.2.1.</span> <span class="toc-text">📖 1.1 核心概念与定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%92%A1-1-1-1-%E4%BB%80%E4%B9%88%E6%98%AF-shared-ptr"><span class="toc-number">1.2.1.1.</span> <span class="toc-text">💡 1.1.1 什么是 shared_ptr</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-2-%E5%85%B1%E4%BA%AB%E6%89%80%E6%9C%89%E6%9D%83%E8%AF%AD%E4%B9%89"><span class="toc-number">1.2.1.2.</span> <span class="toc-text">1.1.2 共享所有权语义</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-1-3-%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0%E6%9C%BA%E5%88%B6"><span class="toc-number">1.2.1.3.</span> <span class="toc-text">1.1.3 引用计数机制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-%E5%86%85%E9%83%A8%E5%AE%9E%E7%8E%B0%E4%B8%8E%E6%8E%A7%E5%88%B6%E5%9D%97"><span class="toc-number">1.2.2.</span> <span class="toc-text">1.2 内部实现与控制块</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-1-%E6%8E%A7%E5%88%B6%E5%9D%97%EF%BC%88Control-Block%EF%BC%89%E7%BB%93%E6%9E%84"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">1.2.1 控制块（Control Block）结构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-2-2-%E5%BC%95%E7%94%A8%E8%AE%A1%E6%95%B0%E7%9A%84%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">1.2.2 引用计数的原子操作</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-%E5%B8%B8%E7%94%A8%E6%8E%A5%E5%8F%A3%E4%B8%8E%E7%94%A8%E6%B3%95"><span class="toc-number">1.2.3.</span> <span class="toc-text">1.3 常用接口与用法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-1-%E6%9E%84%E9%80%A0%E4%B8%8E%E6%9E%90%E6%9E%84"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">1.3.1 构造与析构</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-2-%E6%89%80%E6%9C%89%E6%9D%83%E7%AE%A1%E7%90%86%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">1.3.2 所有权管理接口</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-3-3-%E6%93%8D%E4%BD%9C%E7%AC%A6%E9%87%8D%E8%BD%BD"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">1.3.3 操作符重载</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-%E6%80%A7%E8%83%BD%E7%89%B9%E7%82%B9%E4%B8%8E%E5%BC%80%E9%94%80"><span class="toc-number">1.2.4.</span> <span class="toc-text">1.4 性能特点与开销</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-1-%E5%86%85%E5%AD%98%E5%BC%80%E9%94%80"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">1.4.1 内存开销</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-2-%E8%BF%90%E8%A1%8C%E6%97%B6%E5%BC%80%E9%94%80"><span class="toc-number">1.2.4.2.</span> <span class="toc-text">1.4.2 运行时开销</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-4-3-make-shared-%E7%9A%84%E4%BC%98%E5%8A%BF"><span class="toc-number">1.2.4.3.</span> <span class="toc-text">1.4.3 make_shared 的优势</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9A%96%EF%B8%8F-shared-ptr-vs-unique-ptr-%E5%AF%B9%E6%AF%94"><span class="toc-number">1.2.5.</span> <span class="toc-text">⚖️ shared_ptr vs unique_ptr 对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-5-%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.2.6.</span> <span class="toc-text">1.5 实际应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-1-%E5%85%B1%E4%BA%AB%E8%B5%84%E6%BA%90%E7%AE%A1%E7%90%86"><span class="toc-number">1.2.6.1.</span> <span class="toc-text">1.5.1 共享资源管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#1-5-2-%E7%BC%93%E5%AD%98%E7%B3%BB%E7%BB%9F"><span class="toc-number">1.2.6.2.</span> <span class="toc-text">1.5.2 缓存系统</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%94%93-2-weak-ptr%EF%BC%9A%E5%BC%B1%E5%BC%95%E7%94%A8%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="toc-number">1.3.</span> <span class="toc-text">🔓 2. weak_ptr：弱引用智能指针</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%96-2-1-%E6%A0%B8%E5%BF%83%E6%A6%82%E5%BF%B5%E4%B8%8E%E5%AE%9A%E4%B9%89"><span class="toc-number">1.3.1.</span> <span class="toc-text">📖 2.1 核心概念与定义</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%92%A1-2-1-1-%E4%BB%80%E4%B9%88%E6%98%AF-weak-ptr"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">💡 2.1.1 什么是 weak_ptr</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%94%84-2-1-2-%E5%BC%B1%E5%BC%95%E7%94%A8%E8%AF%AD%E4%B9%89"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">🔄 2.1.2 弱引用语义</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9A%96%EF%B8%8F-shared-ptr-vs-weak-ptr-%E5%AF%B9%E6%AF%94"><span class="toc-number">1.3.2.</span> <span class="toc-text">⚖️ shared_ptr vs weak_ptr 对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E5%86%85%E9%83%A8%E5%AE%9E%E7%8E%B0%E6%9C%BA%E5%88%B6"><span class="toc-number">1.3.3.</span> <span class="toc-text">2.2 内部实现机制</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-%E4%B8%8E%E6%8E%A7%E5%88%B6%E5%9D%97%E7%9A%84%E4%BA%A4%E4%BA%92"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">2.2.1 与控制块的交互</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%B8%B8%E7%94%A8%E6%8E%A5%E5%8F%A3%E4%B8%8E%E7%94%A8%E6%B3%95"><span class="toc-number">1.3.4.</span> <span class="toc-text">2.3 常用接口与用法</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-%E5%9F%BA%E6%9C%AC%E6%93%8D%E4%BD%9C"><span class="toc-number">1.3.4.1.</span> <span class="toc-text">2.3.1 基本操作</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-%E8%A7%A3%E5%86%B3%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8%E9%97%AE%E9%A2%98"><span class="toc-number">1.3.4.2.</span> <span class="toc-text">2.3.2 解决循环引用问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-4-%E5%AE%9E%E9%99%85%E5%BA%94%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">1.3.5.</span> <span class="toc-text">2.4 实际应用场景</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-1-%E8%A7%82%E5%AF%9F%E8%80%85%E6%A8%A1%E5%BC%8F"><span class="toc-number">1.3.5.1.</span> <span class="toc-text">2.4.1 观察者模式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-4-2-%E7%BC%93%E5%AD%98%E7%B3%BB%E7%BB%9F%E4%BC%98%E5%8C%96"><span class="toc-number">1.3.5.2.</span> <span class="toc-text">2.4.2 缓存系统优化</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9A%A0%EF%B8%8F-3-auto-ptr%EF%BC%9A%E5%B7%B2%E5%BA%9F%E5%BC%83%E7%9A%84%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%EF%BC%88%E5%8D%83%E4%B8%87%E5%88%AB%E7%94%A8%EF%BC%81%EF%BC%89"><span class="toc-number">1.4.</span> <span class="toc-text">⚠️ 3. auto_ptr：已废弃的智能指针（千万别用！）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%96-3-1-%E5%8E%86%E5%8F%B2%E8%83%8C%E6%99%AF%E4%B8%8E%E8%AE%BE%E8%AE%A1%E7%BC%BA%E9%99%B7"><span class="toc-number">1.4.1.</span> <span class="toc-text">📖 3.1 历史背景与设计缺陷</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%F0%9F%93%9C-3-1-1-auto-ptr-%E7%9A%84%E8%B5%B7%E6%BA%90"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">📜 3.1.1 auto_ptr 的起源</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E2%9D%8C-3-1-2-%E4%B8%BB%E8%A6%81%E8%AE%BE%E8%AE%A1%E7%BC%BA%E9%99%B7"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">❌ 3.1.2 主要设计缺陷</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9A%96%EF%B8%8F-auto-ptr-vs-unique-ptr-%E5%AF%B9%E6%AF%94"><span class="toc-number">1.4.2.</span> <span class="toc-text">⚖️ auto_ptr vs unique_ptr 对比</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E9%97%AE%E9%A2%98%E7%A4%BA%E4%BE%8B%E4%B8%8E%E7%BC%BA%E9%99%B7%E5%88%86%E6%9E%90"><span class="toc-number">1.4.3.</span> <span class="toc-text">3.2 问题示例与缺陷分析</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1-%E5%8D%B1%E9%99%A9%E7%9A%84%E6%89%80%E6%9C%89%E6%9D%83%E8%BD%AC%E7%A7%BB"><span class="toc-number">1.4.3.1.</span> <span class="toc-text">3.2.1 危险的所有权转移</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-2-%E4%B8%8E-STL-%E5%AE%B9%E5%99%A8%E7%9A%84%E4%B8%8D%E5%85%BC%E5%AE%B9"><span class="toc-number">1.4.3.2.</span> <span class="toc-text">3.2.2 与 STL 容器的不兼容</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E4%BB%8E-auto-ptr-%E5%88%B0-unique-ptr-%E7%9A%84%E6%BC%94%E8%BF%9B"><span class="toc-number">1.4.4.</span> <span class="toc-text">3.3 从 auto_ptr 到 unique_ptr 的演进</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-1-%E4%B8%BA%E4%BB%80%E4%B9%88-unique-ptr-%E6%9B%B4%E5%A5%BD"><span class="toc-number">1.4.4.1.</span> <span class="toc-text">3.3.1 为什么 unique_ptr 更好</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-2-%E8%BF%81%E7%A7%BB%E6%8C%87%E5%8D%97"><span class="toc-number">1.4.4.2.</span> <span class="toc-text">3.3.2 迁移指南</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-4-%E7%8E%B0%E4%BB%A3%E6%9B%BF%E4%BB%A3%E6%96%B9%E6%A1%88%E6%80%BB%E7%BB%93"><span class="toc-number">1.4.5.</span> <span class="toc-text">3.4 现代替代方案总结</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E7%9A%84%E6%9C%80%E4%BD%B3%E5%AE%9E%E8%B7%B5%E4%B8%8E%E9%99%B7%E9%98%B1"><span class="toc-number">1.5.</span> <span class="toc-text">4. 智能指针的最佳实践与陷阱</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-%E9%80%89%E6%8B%A9%E6%AD%A3%E7%A1%AE%E7%9A%84%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88"><span class="toc-number">1.5.1.</span> <span class="toc-text">4.1 选择正确的智能指针</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-1-%E5%86%B3%E7%AD%96%E6%B5%81%E7%A8%8B"><span class="toc-number">1.5.1.1.</span> <span class="toc-text">4.1.1 决策流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-2-%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF%E6%80%BB%E7%BB%93"><span class="toc-number">1.5.1.2.</span> <span class="toc-text">4.1.2 使用场景总结</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-%E5%B8%B8%E8%A7%81%E9%99%B7%E9%98%B1%E4%B8%8E%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88"><span class="toc-number">1.5.2.</span> <span class="toc-text">4.2 常见陷阱与解决方案</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-1-%E5%BE%AA%E7%8E%AF%E5%BC%95%E7%94%A8%E9%97%AE%E9%A2%98"><span class="toc-number">1.5.2.1.</span> <span class="toc-text">4.2.1 循环引用问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-2-%E9%81%BF%E5%85%8D%E5%8E%9F%E5%A7%8B%E6%8C%87%E9%92%88%E4%B8%8E%E6%99%BA%E8%83%BD%E6%8C%87%E9%92%88%E6%B7%B7%E7%94%A8"><span class="toc-number">1.5.2.2.</span> <span class="toc-text">4.2.2 避免原始指针与智能指针混用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-2-3-this-%E6%8C%87%E9%92%88%E9%97%AE%E9%A2%98"><span class="toc-number">1.5.2.3.</span> <span class="toc-text">4.2.3 this 指针问题</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-%E6%80%A7%E8%83%BD%E4%BC%98%E5%8C%96%E5%BB%BA%E8%AE%AE"><span class="toc-number">1.5.3.</span> <span class="toc-text">4.3 性能优化建议</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-1-%E4%BC%98%E5%85%88%E4%BD%BF%E7%94%A8-make-shared-%E5%92%8C-make-unique"><span class="toc-number">1.5.3.1.</span> <span class="toc-text">4.3.1 优先使用 make_shared 和 make_unique</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-2-%E9%81%BF%E5%85%8D%E4%B8%8D%E5%BF%85%E8%A6%81%E7%9A%84-shared-ptr-%E6%8B%B7%E8%B4%9D"><span class="toc-number">1.5.3.2.</span> <span class="toc-text">4.3.2 避免不必要的 shared_ptr 拷贝</span></a></li></ol></li></ol></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -1032,19 +1211,23 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">智能指针</a>
+                <a href="javascript:void(0)" class="js-tag color2">💻 C++</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">shared_ptr</a>
+                <a href="javascript:void(0)" class="js-tag color3">🧠 智能指针</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">auto_ptr</a>
+                <a href="javascript:void(0)" class="js-tag color4">🔗 shared_ptr</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">weak_ptr</a>
+                <a href="javascript:void(0)" class="js-tag color2">⚠️ auto_ptr</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">🔓 weak_ptr</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1108,14 +1291,6 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">编程技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">继承</a>
               </li>
              
@@ -1144,15 +1319,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">UML</a>
+                <a href="javascript:void(0)" class="js-tag color4">bug</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">类图</a>
+                <a href="javascript:void(0)" class="js-tag color1">clashverge</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">编程技术</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1176,15 +1355,19 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">UML</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">类图</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color4">pdf</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">clashverge</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1204,19 +1387,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">top</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">shell</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">shell工具推荐</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">top</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">浮生六记</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1228,11 +1407,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
+                <a href="javascript:void(0)" class="js-tag color5">浮生六记</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1244,11 +1419,23 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">java</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">排序算法</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">原型模式</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">工厂方法模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">const</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1260,7 +1447,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">const</a>
+                <a href="javascript:void(0)" class="js-tag color5">智能指针</a>
               </li>
              
               <li class="article-tag-list-item">
