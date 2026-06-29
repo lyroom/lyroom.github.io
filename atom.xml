@@ -17,7 +17,7 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>🔄 C++ 中的类型转换（新手友好版）</title>
+    <title>🔄 C++ 中的类型转换</title>
     <link href="https://lyroom.github.io/2026/06/30/C-%E4%B8%AD%E7%9A%84%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/"/>
     <id>https://lyroom.github.io/2026/06/30/C-%E4%B8%AD%E7%9A%84%E7%B1%BB%E5%9E%8B%E8%BD%AC%E6%8D%A2/</id>
     <published>2026-06-29T18:25:34.000Z</published>
@@ -62,11 +62,11 @@
     
     <category term="C++" scheme="https://lyroom.github.io/tags/C/"/>
     
+    <category term="Qt" scheme="https://lyroom.github.io/tags/Qt/"/>
+    
     <category term="动态库" scheme="https://lyroom.github.io/tags/%E5%8A%A8%E6%80%81%E5%BA%93/"/>
     
     <category term="静态库" scheme="https://lyroom.github.io/tags/%E9%9D%99%E6%80%81%E5%BA%93/"/>
-    
-    <category term="Qt" scheme="https://lyroom.github.io/tags/Qt/"/>
     
     <category term="CMake" scheme="https://lyroom.github.io/tags/CMake/"/>
     
