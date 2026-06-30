@@ -6,24 +6,24 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="https://lyroom.github.io">
-  <title>⚡ C++ 中的内联函数 | Henry&#39;Blog</title>
+  <title>⚡ C++ 内联函数（inline）详解 | Henry&#39;Blog</title>
   <meta name="generator" content="hexo-theme-yilia-plus">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   
-  <meta name="description" content="🎯 导读：写 C++ 时，你可能听说过「内联函数能提高性能」——但到底什么是内联？为什么有时候加了 inline 反而更慢？本文用 🎭 生活比喻 + 💻 完整代码，带新手彻底搞懂 C++ 内联函数的原理、用法和陷阱！">
+  <meta name="description" content="🎯 导读：很多初学者以为 inline 的意思是「把函数调用替换成代码展开」。这是历史遗留的误解！本文将从 ODR（单一定义规则） 的角度，彻底讲透 inline 的真实含义、正确用法和常见陷阱。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="⚡ C++ 中的内联函数">
-<meta property="og:url" content="https://lyroom.github.io/2026/06/30/C-%E4%B8%AD%E7%9A%84%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0/index.html">
+<meta property="og:title" content="⚡ C++ 内联函数（inline）详解">
+<meta property="og:url" content="https://lyroom.github.io/2026/06/30/C++%E4%B8%AD%E7%9A%84%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0inline%E8%AF%A6%E8%A7%A3/index.html">
 <meta property="og:site_name" content="Henry&#39;Blog">
-<meta property="og:description" content="🎯 导读：写 C++ 时，你可能听说过「内联函数能提高性能」——但到底什么是内联？为什么有时候加了 inline 反而更慢？本文用 🎭 生活比喻 + 💻 完整代码，带新手彻底搞懂 C++ 内联函数的原理、用法和陷阱！">
+<meta property="og:description" content="🎯 导读：很多初学者以为 inline 的意思是「把函数调用替换成代码展开」。这是历史遗留的误解！本文将从 ODR（单一定义规则） 的角度，彻底讲透 inline 的真实含义、正确用法和常见陷阱。">
 <meta property="og:locale">
 <meta property="article:published_time" content="2026-06-30T04:00:00.000Z">
 <meta property="article:modified_time" content="2026-06-30T04:00:00.000Z">
 <meta property="article:author" content="迪丽惹Bug">
 <meta property="article:tag" content="C++">
-<meta property="article:tag" content="内联函数">
 <meta property="article:tag" content="inline">
-<meta property="article:tag" content="新手入门">
+<meta property="article:tag" content="ODR">
+<meta property="article:tag" content="头文件">
 <meta name="twitter:card" content="summary">
   
     <link rel="alternative" href="/atom.xml" title="Henry&#39;Blog" type="application/atom+xml">
@@ -400,17 +400,17 @@
               class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-C-中的内联函数" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-C++中的内联函数inline详解" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
   
-    <div class="article-page-title" itemprop="headline">⚡ C++ 中的内联函数</div>
+    <div class="article-page-title" itemprop="headline">⚡ C++ 内联函数（inline）详解</div>
   
   
   
     <h1 class="article-title" itemprop="name">
-      ⚡ C++ 中的内联函数
+      ⚡ C++ 内联函数（inline）详解
     </h1>
   
 
@@ -422,7 +422,7 @@
               <i class="icon-smile icon"></i> 阅读数：<span id="busuanzi_value_page_pv"></span>次
         </span>
 
-<a href="/2026/06/30/C-%E4%B8%AD%E7%9A%84%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0/" class="archive-article-date">
+<a href="/2026/06/30/C++%E4%B8%AD%E7%9A%84%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0inline%E8%AF%A6%E8%A7%A3/" class="archive-article-date">
         <time datetime="2026-06-30T04:00:00.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2026-06-30</time>
 </a>
 
@@ -436,7 +436,7 @@
       <!-- 百度字体平台:http://fontstore.baidu.com/static/editor/index.html -->
       <i class="icon-statistics"></i>
       <span class="post-meta-item-text"> 字数统计:</span>
-      <span class="post-count">2.4k字</span>
+      <span class="post-count">2.7k字</span>
     </span>
   </span>
 
@@ -445,7 +445,7 @@
     <span class="post-meta-item-icon">
       <i class="icon-book icon"></i>
       <span class="post-meta-item-text"> 阅读时长≈</span>
-      <span class="post-count">9分</span>
+      <span class="post-count">11分</span>
     </span>
   </span>
 </div>
@@ -457,275 +457,279 @@
   <div class="article-entry" itemprop="articleBody">
     
     <blockquote>
-<p>🎯 <strong>导读</strong>：写 C++ 时，你可能听说过「内联函数能提高性能」——但到底什么是内联？为什么有时候加了 <code>inline</code> 反而更慢？本文用 🎭 生活比喻 + 💻 完整代码，带新手彻底搞懂 C++ 内联函数的原理、用法和陷阱！</p>
+<p>🎯 <strong>导读</strong>：很多初学者以为 <code>inline</code> 的意思是「把函数调用替换成代码展开」。这是历史遗留的误解！本文将从 <strong>ODR（单一定义规则）</strong> 的角度，彻底讲透 <code>inline</code> 的真实含义、正确用法和常见陷阱。</p>
 </blockquote>
 <span id="more"></span>
 
 <hr>
-<h1 id="🧭-前言：什么是「内联函数」？"><a href="#🧭-前言：什么是「内联函数」？" class="headerlink" title="🧭 前言：什么是「内联函数」？"></a>🧭 前言：什么是「内联函数」？</h1><p>在讲内联之前，先看看<strong>普通函数调用</strong>是怎么工作的。</p>
-<h2 id="🎭-生活比喻：叫外卖-vs-自己做-🍜"><a href="#🎭-生活比喻：叫外卖-vs-自己做-🍜" class="headerlink" title="🎭 生活比喻：叫外卖 vs 自己做 🍜"></a>🎭 生活比喻：叫外卖 vs 自己做 🍜</h2><p><strong>普通函数调用</strong>就像「叫外卖」：</p>
-<ol>
-<li>你打电话给餐馆（调用函数）</li>
-<li>餐馆接单、做菜（执行函数体）</li>
-<li>骑手送过来（返回结果）</li>
-<li>你付钱（清理现场）</li>
+<h2 id="📑-目录"><a href="#📑-目录" class="headerlink" title="📑 目录"></a>📑 目录</h2><ol>
+<li><a href="#1-inline-%E7%9A%84%E6%9C%AC%E8%B4%A8%E4%B8%8D%E6%98%AF%E4%BC%98%E5%8C%96%E6%98%AF-odr-%E8%A7%84%E5%88%99">inline 的本质：不是优化，是 ODR 规则</a></li>
+<li><a href="#2-%E9%94%99%E8%AF%AF%E6%A1%88%E4%BE%8B%E5%A4%B4%E6%96%87%E4%BB%B6%E6%94%BE%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89%E5%AF%BC%E8%87%B4%E9%87%8D%E5%A4%8D">❌ 错误案例：头文件放普通函数定义导致重复</a></li>
+<li><a href="#3-%E6%AD%A3%E7%A1%AE%E7%94%A8%E6%B3%95%E4%B8%80%E7%B1%BB%E5%86%85%E5%AE%9E%E7%8E%B0%E7%9A%84%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%E9%9A%90%E5%BC%8F-inline">✅ 正确用法一：类内实现的成员函数（隐式 inline）</a></li>
+<li><a href="#4-%E6%AD%A3%E7%A1%AE%E7%94%A8%E6%B3%95%E4%BA%8C%E6%98%BE%E5%BC%8F-inline-%E5%87%BD%E6%95%B0">✅ 正确用法二：显式 inline 函数</a></li>
+<li><a href="#5-%E6%AD%A3%E7%A1%AE%E7%94%A8%E6%B3%95%E4%B8%89%E6%A8%A1%E6%9D%BF%E9%9A%90%E5%BC%8F-inline">✅ 正确用法三：模板（隐式 inline）</a></li>
+<li><a href="#6-%E6%AD%A3%E7%A1%AE%E7%94%A8%E6%B3%95%E5%9B%9Binline--%E7%B1%BB%E5%A4%96%E5%AE%9A%E4%B9%89">✅ 正确用法四：inline + 类外定义</a></li>
+<li><a href="#7-%E6%AD%A3%E7%A1%AE%E7%94%A8%E6%B3%95%E4%BA%94%E5%85%A8%E5%B1%80-constexpr--const-%E5%8F%98%E9%87%8F">✅ 正确用法五：全局 constexpr &#x2F; const 变量</a></li>
+<li><a href="#8-%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E7%94%A8-hpp">📂 什么情况下用 .hpp</a></li>
+<li><a href="#9-inline-%E5%88%B0%E5%BA%95%E4%BC%9A%E4%B8%8D%E4%BC%9A%E5%B1%95%E5%BC%80%E4%BB%A3%E7%A0%81">🔍 inline 到底会不会展开代码？</a></li>
+<li><a href="#10-%E6%80%BB%E7%BB%93%E9%80%9F%E6%9F%A5%E8%A1%A8">🎓 总结速查表</a></li>
 </ol>
-<p>每次叫外卖都有「额外开销」——打电话、等骑手、付钱。如果菜很简单（比如煎个蛋），这些开销可能比做菜本身还大！</p>
-<p><strong>内联函数</strong>就像「自己做」：</p>
-<ul>
-<li>不打电话、不等骑手、不付钱</li>
-<li>直接在你家厨房把菜做好</li>
-<li>一步到位，省去中间环节</li>
-</ul>
 <hr>
-<h1 id="🔍-一、普通函数调用的「隐形成本」"><a href="#🔍-一、普通函数调用的「隐形成本」" class="headerlink" title="🔍 一、普通函数调用的「隐形成本」"></a>🔍 一、普通函数调用的「隐形成本」</h1><p>每次调用一个普通函数，编译器都要做一堆「幕后工作」：</p>
-<h2 id="💻-用代码感受一下"><a href="#💻-用代码感受一下" class="headerlink" title="💻 用代码感受一下"></a>💻 用代码感受一下</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 一个非常简单的函数</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> result = <span class="built_in">add</span>(<span class="number">3</span>, <span class="number">5</span>);   <span class="comment">// 调用函数</span></span><br><span class="line">    std::cout &lt;&lt; result &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="1-🧩-inline-的本质：不是优化，是-ODR-规则"><a href="#1-🧩-inline-的本质：不是优化，是-ODR-规则" class="headerlink" title="1. 🧩 inline 的本质：不是优化，是 ODR 规则"></a>1. 🧩 inline 的本质：不是优化，是 ODR 规则</h2><p>很多初学者以为 <code>inline</code> 的意思是”把函数调用替换成代码展开”。这是历史遗留的误解。</p>
+<p><strong>现代 C++ 中 <code>inline</code> 的真实含义</strong>：</p>
+<blockquote>
+<p>⚡ 允许函数的定义在多个翻译单元（.cpp）中出现多次，而不会引发链接错误。</p>
+</blockquote>
+<p>这个规则叫 <strong>ODR（One Definition Rule，单一定义规则）</strong>：</p>
+<ul>
+<li>🔴 <strong>普通函数</strong>：整个程序中只能有一个定义</li>
+<li>🟢 <strong>inline 函数</strong>：可以在多个 .cpp 中出现相同定义，链接器保留一个，丢弃其余的</li>
+</ul>
+<p>这就是为什么头文件里的函数必须加 <code>inline</code> 或满足某些隐式 inline 条件。</p>
+<hr>
+<h2 id="2-❌-错误案例：头文件放普通函数定义导致重复"><a href="#2-❌-错误案例：头文件放普通函数定义导致重复" class="headerlink" title="2. ❌ 错误案例：头文件放普通函数定义导致重复"></a>2. ❌ 错误案例：头文件放普通函数定义导致重复</h2><h3 id="📁-项目结构"><a href="#📁-项目结构" class="headerlink" title="📁 项目结构"></a>📁 项目结构</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">project/</span><br><span class="line">├── math.h</span><br><span class="line">├── a.cpp</span><br><span class="line">├── b.cpp</span><br><span class="line">└── main.cpp</span><br></pre></td></tr></table></figure>
 
-<p>看起来只是一行 <code>add(3, 5)</code>，但编译器生成的机器码其实要做很多事：</p>
+<h3 id="📄-math-h"><a href="#📄-math-h" class="headerlink" title="📄 math.h"></a>📄 math.h</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> MATH_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MATH_H</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ❌ 错误！普通函数定义放在头文件中</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="📄-a-cpp"><a href="#📄-a-cpp" class="headerlink" title="📄 a.cpp"></a>📄 a.cpp</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;math.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">doSomethingA</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> result = <span class="built_in">add</span>(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">    (<span class="type">void</span>)result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="📄-b-cpp"><a href="#📄-b-cpp" class="headerlink" title="📄 b.cpp"></a>📄 b.cpp</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;math.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">doSomethingB</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> result = <span class="built_in">add</span>(<span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">    (<span class="type">void</span>)result;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="📄-main-cpp"><a href="#📄-main-cpp" class="headerlink" title="📄 main.cpp"></a>📄 main.cpp</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;math.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="built_in">add</span>(<span class="number">5</span>, <span class="number">6</span>) &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="🔧-编译过程"><a href="#🔧-编译过程" class="headerlink" title="🔧 编译过程"></a>🔧 编译过程</h3><p><strong>预处理阶段</strong>：<code>#include &quot;math.h&quot;</code> 把 <code>math.h</code> 内容复制到每个 .cpp</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">a.cpp（预处理后）:</span><br><span class="line">  int add(int a, int b) &#123; return a + b; &#125;   ← 来自 math.h</span><br><span class="line">  void doSomethingA() &#123; ... &#125;</span><br><span class="line"></span><br><span class="line">b.cpp（预处理后）:</span><br><span class="line">  int add(int a, int b) &#123; return a + b; &#125;   ← 来自 math.h</span><br><span class="line">  void doSomethingB() &#123; ... &#125;</span><br><span class="line"></span><br><span class="line">main.cpp（预处理后）:</span><br><span class="line">  int add(int a, int b) &#123; return a + b; &#125;   ← 来自 math.h</span><br><span class="line">  int main() &#123; ... &#125;</span><br></pre></td></tr></table></figure>
+
+<p><strong>编译阶段</strong>：三个 .cpp 各自独立编译，各自产出一个 <code>add</code> 的机器码，<strong>没有错误</strong>。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">a.cpp ──编译──→ a.obj   (含有 add、doSomethingA)</span><br><span class="line">b.cpp ──编译──→ b.obj   (含有 add、doSomethingB)</span><br><span class="line">main.cpp ──编译──→ main.obj (含有 add、main)</span><br></pre></td></tr></table></figure>
+
+<p><strong>链接阶段</strong>：链接器合并三个 .obj 时发现 <code>add</code> 出现了三份定义，<strong>报错</strong>：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">💥 linker error: multiple definition of `add(int, int)&#x27;</span><br><span class="line">    a.obj: first defined here</span><br><span class="line">    b.obj: second defined here</span><br><span class="line">    main.obj: third defined here</span><br></pre></td></tr></table></figure>
+
+<h3 id="🤔-错误原因"><a href="#🤔-错误原因" class="headerlink" title="🤔 错误原因"></a>🤔 错误原因</h3><p>头文件里的 <code>int add(...) &#123; ... &#125;</code> 是<strong>普通函数的定义</strong>，不是 inline，违反 ODR。</p>
+<h3 id="💊-三种修复方案"><a href="#💊-三种修复方案" class="headerlink" title="💊 三种修复方案"></a>💊 三种修复方案</h3><table>
+<thead>
+<tr>
+<th>方案</th>
+<th>做法</th>
+<th>适用场景</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>🟢 方案一</td>
+<td>声明放 .h，定义放 .cpp</td>
+<td>大多数情况，最推荐</td>
+</tr>
+<tr>
+<td>🟡 方案二</td>
+<td>加 <code>inline</code> 关键字</td>
+<td>头文件必须包含定义时</td>
+</tr>
+<tr>
+<td>🔵 方案三</td>
+<td>把 <code>add</code> 写成一个类的静态成员函数</td>
+<td>函数逻辑上属于某个类</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="3-✅-正确用法一：类内实现的成员函数（隐式-inline）"><a href="#3-✅-正确用法一：类内实现的成员函数（隐式-inline）" class="headerlink" title="3. ✅ 正确用法一：类内实现的成员函数（隐式 inline）"></a>3. ✅ 正确用法一：类内实现的成员函数（隐式 inline）</h2><p><strong>类内部直接实现的成员函数，自动获得 inline 属性</strong>，不需要写 <code>inline</code> 关键字。</p>
+<h3 id="📄-math-h-1"><a href="#📄-math-h-1" class="headerlink" title="📄 math.h"></a>📄 math.h</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> MATH_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MATH_H</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Calculator</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="comment">// ✅ 类内实现 → 隐式 inline → 可以放头文件</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a + b;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">multiply</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function">    </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> a * b;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="📄-main-cpp-1"><a href="#📄-main-cpp-1" class="headerlink" title="📄 main.cpp"></a>📄 main.cpp</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;math.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Calculator calc;</span><br><span class="line">    std::cout &lt;&lt; calc.<span class="built_in">add</span>(<span class="number">3</span>, <span class="number">4</span>) &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; calc.<span class="built_in">multiply</span>(<span class="number">3</span>, <span class="number">4</span>) &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="🧠-为什么正确"><a href="#🧠-为什么正确" class="headerlink" title="🧠 为什么正确"></a>🧠 为什么正确</h3><p>等价于每个成员函数前都加了 <code>inline</code>：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Calculator</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123; <span class="keyword">return</span> a + b; &#125;      <span class="comment">// 隐式 inline</span></span><br><span class="line">    <span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">multiply</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123; <span class="keyword">return</span> a * b; &#125; <span class="comment">// 隐式 inline</span></span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+
+<p>链接器知道这些函数是 inline 的，允许重复定义。</p>
+<h3 id="✅-a-cpp-和-b-cpp-同时-include-也不会报错"><a href="#✅-a-cpp-和-b-cpp-同时-include-也不会报错" class="headerlink" title="✅ a.cpp 和 b.cpp 同时 include 也不会报错"></a>✅ a.cpp 和 b.cpp 同时 include 也不会报错</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// a.cpp</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;math.h&quot;</span></span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">calc1</span><span class="params">()</span> </span>&#123; <span class="built_in">Calculator</span>().<span class="built_in">add</span>(<span class="number">1</span>, <span class="number">2</span>); &#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// b.cpp</span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;math.h&quot;</span></span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">calc2</span><span class="params">()</span> </span>&#123; <span class="built_in">Calculator</span>().<span class="built_in">add</span>(<span class="number">3</span>, <span class="number">4</span>); &#125;</span><br></pre></td></tr></table></figure>
+
+<p>都可以正常编译链接，因为 <code>add</code> 是 inline 的 ODR 豁免。</p>
+<hr>
+<h2 id="4-✅-正确用法二：显式-inline-函数"><a href="#4-✅-正确用法二：显式-inline-函数" class="headerlink" title="4. ✅ 正确用法二：显式 inline 函数"></a>4. ✅ 正确用法二：显式 inline 函数</h2><p>如果是一个<strong>自由函数（不属于任何类）</strong>，想在头文件里提供定义，就必须显式加 <code>inline</code>。</p>
+<h3 id="📄-math-h-2"><a href="#📄-math-h-2" class="headerlink" title="📄 math.h"></a>📄 math.h</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> MATH_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MATH_H</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ✅ 显式 inline：允许在多个 .cpp 中出现相同定义</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">multiply</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a * b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="📄-a-cpp-1"><a href="#📄-a-cpp-1" class="headerlink" title="📄 a.cpp"></a>📄 a.cpp</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;math.h&quot;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">doSomethingA</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> r1 = <span class="built_in">add</span>(<span class="number">1</span>, <span class="number">2</span>);</span><br><span class="line">    <span class="type">int</span> r2 = <span class="built_in">multiply</span>(<span class="number">3</span>, <span class="number">4</span>);</span><br><span class="line">    (<span class="type">void</span>)r1;</span><br><span class="line">    (<span class="type">void</span>)r2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="📄-main-cpp-2"><a href="#📄-main-cpp-2" class="headerlink" title="📄 main.cpp"></a>📄 main.cpp</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;math.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::cout &lt;&lt; <span class="built_in">add</span>(<span class="number">5</span>, <span class="number">6</span>) &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>这时全部正常，链接器不会报重复定义。</p>
+<blockquote>
+<p>⚠️ 但还是有个问题——<strong>inline 函数的地址在不同 .cpp 中可能不一样</strong>（链接器把每个 .obj 中的副本独立处理）。极少遇到，但需要知道。</p>
+</blockquote>
+<hr>
+<h2 id="5-✅-正确用法三：模板（隐式-inline）"><a href="#5-✅-正确用法三：模板（隐式-inline）" class="headerlink" title="5. ✅ 正确用法三：模板（隐式 inline）"></a>5. ✅ 正确用法三：模板（隐式 inline）</h2><p>模板函数&#x2F;类在实例化前没有具体代码，所以<strong>不存在 ODR 问题</strong>，天然可以放头文件。</p>
+<h3 id="📄-math-h-3"><a href="#📄-math-h-3" class="headerlink" title="📄 math.h"></a>📄 math.h</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> MATH_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MATH_H</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ✅ 模板函数：隐式 inline，可以放头文件</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="function">T <span class="title">add</span><span class="params">(T a, T b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ✅ 模板类：隐式 inline，可以放头文件</span></span><br><span class="line"><span class="keyword">template</span> &lt;<span class="keyword">typename</span> T&gt;</span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Calculator</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function">T <span class="title">add</span><span class="params">(T a, T b)</span> </span>&#123; <span class="keyword">return</span> a + b; &#125;</span><br><span class="line">    <span class="function">T <span class="title">multiply</span><span class="params">(T a, T b)</span> </span>&#123; <span class="keyword">return</span> a * b; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="📄-main-cpp-3"><a href="#📄-main-cpp-3" class="headerlink" title="📄 main.cpp"></a>📄 main.cpp</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;math.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">// 模板函数</span></span><br><span class="line">    std::cout &lt;&lt; <span class="built_in">add</span>(<span class="number">3</span>, <span class="number">4</span>) &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; <span class="built_in">add</span>(<span class="number">3.14</span>, <span class="number">2.86</span>) &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 模板类</span></span><br><span class="line">    Calculator&lt;<span class="type">int</span>&gt; calcInt;</span><br><span class="line">    Calculator&lt;<span class="type">double</span>&gt; calcDouble;</span><br><span class="line">    std::cout &lt;&lt; calcInt.<span class="built_in">add</span>(<span class="number">5</span>, <span class="number">6</span>) &lt;&lt; std::endl;</span><br><span class="line">    std::cout &lt;&lt; calcDouble.<span class="built_in">add</span>(<span class="number">1.5</span>, <span class="number">2.5</span>) &lt;&lt; std::endl;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="🧠-模板必须在头文件中的原因"><a href="#🧠-模板必须在头文件中的原因" class="headerlink" title="🧠 模板必须在头文件中的原因"></a>🧠 模板必须在头文件中的原因</h3><p>编译器在 <code>main.cpp</code> 里看到 <code>add&lt;int&gt;(3, 4)</code> 时，需要看到 <code>add</code> 的<strong>完整定义</strong>才能实例化出 <code>int</code> 版本的代码。如果定义在单独的 <code>math.cpp</code> 里，编译器就看不见它。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">main.cpp</span><br><span class="line">  └─ add&lt;int&gt;(3, 4) → 需要模板定义 📋</span><br><span class="line">  └─ add&lt;double&gt;(3.14, 2.86) → 需要模板定义 📋</span><br></pre></td></tr></table></figure>
+
+<p>这就是 .hpp 文件的典型用途——放模板代码。</p>
+<hr>
+<h2 id="6-✅-正确用法四：inline-类外定义"><a href="#6-✅-正确用法四：inline-类外定义" class="headerlink" title="6. ✅ 正确用法四：inline + 类外定义"></a>6. ✅ 正确用法四：inline + 类外定义</h2><p>有时你想在头文件里声明类，但把函数实现也放在头文件里（比如 .hpp 风格），就需要显式 <code>inline</code>。</p>
+<h3 id="📄-math-hpp"><a href="#📄-math-hpp" class="headerlink" title="📄 math.hpp"></a>📄 math.hpp</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> MATH_HPP</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MATH_HPP</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Calculator</span></span><br><span class="line">&#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span>;       <span class="comment">// 只在类内声明</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">multiply</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ✅ 类外定义，用 inline 标记</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">Calculator::add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">Calculator::multiply</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a * b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="📄-main-cpp-4"><a href="#📄-main-cpp-4" class="headerlink" title="📄 main.cpp"></a>📄 main.cpp</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;math.hpp&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    Calculator calc;</span><br><span class="line">    std::cout &lt;&lt; calc.<span class="built_in">add</span>(<span class="number">1</span>, <span class="number">2</span>) &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>💡 如果不加 <code>inline</code>，链接器报 <code>multiple definition of &#39;Calculator::add&#39;</code>，跟错误案例一样。</p>
+<p>本项目里的 <code>.hpp</code> 文件用的就是这种模式——把实现直接写在头文件里，利用类内隐式 inline 或显式 inline 来避免 ODR 问题。</p>
+</blockquote>
+<hr>
+<h2 id="7-✅-正确用法五：全局-constexpr-x2F-const-变量"><a href="#7-✅-正确用法五：全局-constexpr-x2F-const-变量" class="headerlink" title="7. ✅ 正确用法五：全局 constexpr &#x2F; const 变量"></a>7. ✅ 正确用法五：全局 constexpr &#x2F; const 变量</h2><h3 id="📄-const-h"><a href="#📄-const-h" class="headerlink" title="📄 const.h"></a>📄 const.h</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> CONST_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> CONST_H</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ✅ const 变量在 C++ 中有内部链接（static linkage），放头文件安全</span></span><br><span class="line"><span class="type">const</span> <span class="type">double</span> PI = <span class="number">3.1415926535</span>;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MAX_SIZE = <span class="number">1024</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ✅ C++17 inline 变量（同样放头文件安全）</span></span><br><span class="line"><span class="keyword">inline</span> <span class="type">int</span> globalCounter = <span class="number">0</span>;</span><br><span class="line"><span class="keyword">inline</span> <span class="keyword">constexpr</span> <span class="type">int</span> VERSION_MAJOR = <span class="number">2</span>;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="📄-a-cpp-2"><a href="#📄-a-cpp-2" class="headerlink" title="📄 a.cpp"></a>📄 a.cpp</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;const.h&quot;</span></span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">usePI</span><span class="params">()</span> </span>&#123; <span class="type">double</span> area = PI * <span class="number">2</span> * <span class="number">2</span>; &#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="📄-main-cpp-5"><a href="#📄-main-cpp-5" class="headerlink" title="📄 main.cpp"></a>📄 main.cpp</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;const.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    std::cout &lt;&lt; PI &lt;&lt; std::endl;</span><br><span class="line">    globalCounter++;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>📌 <code>const</code> 变量默认内部链接，每个 .cpp 都有自己的副本，不违反 ODR。C++17 的 <code>inline</code> 变量则像 inline 函数一样，链接器合并为一份。</p>
+</blockquote>
+<hr>
+<h2 id="8-📂-什么情况下用-hpp"><a href="#8-📂-什么情况下用-hpp" class="headerlink" title="8. 📂 什么情况下用 .hpp"></a>8. 📂 什么情况下用 .hpp</h2><p>回到本项目，<code>.hpp</code> 文件的选取逻辑是：</p>
 <table>
 <thead>
 <tr>
-<th>步骤</th>
-<th>做什么</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>① 压栈保存现场</td>
-<td>把当前执行位置、寄存器等保存起来</td>
-</tr>
-<tr>
-<td>② 传递参数</td>
-<td>把 <code>3</code> 和 <code>5</code> 放到函数能拿到的地方</td>
-</tr>
-<tr>
-<td>③ 跳转到函数</td>
-<td>跳到 <code>add</code> 函数的代码地址</td>
-</tr>
-<tr>
-<td>④ 执行函数体</td>
-<td>计算 <code>a + b</code></td>
-</tr>
-<tr>
-<td>⑤ 保存返回值</td>
-<td>把结果放到约定位置</td>
-</tr>
-<tr>
-<td>⑥ 恢复现场</td>
-<td>把之前保存的东西恢复</td>
-</tr>
-<tr>
-<td>⑦ 跳回调用处</td>
-<td>回到 <code>main</code> 继续执行</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>🤔 <strong>问题来了</strong>：如果函数体只有一行代码（比如 <code>return a + b</code>），这些「准备工作」和「收尾工作」加起来，可能比真正干活还费时间！</p>
-</blockquote>
-<hr>
-<h1 id="⚡-二、内联函数：把代码「粘贴」过来"><a href="#⚡-二、内联函数：把代码「粘贴」过来" class="headerlink" title="⚡ 二、内联函数：把代码「粘贴」过来"></a>⚡ 二、内联函数：把代码「粘贴」过来</h1><p><strong>内联函数</strong>的核心思想很简单：<strong>不调用，直接把代码复制过来</strong>。</p>
-<h2 id="🎭-生活比喻：复制粘贴-vs-跳转链接"><a href="#🎭-生活比喻：复制粘贴-vs-跳转链接" class="headerlink" title="🎭 生活比喻：复制粘贴 vs 跳转链接"></a>🎭 生活比喻：复制粘贴 vs 跳转链接</h2><ul>
-<li><strong>普通函数</strong>：像点击一个网页链接，浏览器跳转到新页面，看完再返回</li>
-<li><strong>内联函数</strong>：像直接把新页面的内容<strong>嵌入</strong>到当前页面，不用跳转</li>
-</ul>
-<h2 id="💻-内联函数的写法"><a href="#💻-内联函数的写法" class="headerlink" title="💻 内联函数的写法"></a>💻 内联函数的写法</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 在函数定义前加 inline 关键字</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> result = <span class="built_in">add</span>(<span class="number">3</span>, <span class="number">5</span>);</span><br><span class="line">    <span class="comment">// 编译后，实际代码变成了：</span></span><br><span class="line">    <span class="comment">// int result = 3 + 5;  // 函数调用被「展开」了！</span></span><br><span class="line"></span><br><span class="line">    std::cout &lt;&lt; result &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<p>编译器会把这个函数调用<strong>直接替换成函数体的代码</strong>：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 编译器展开后（伪代码，帮助理解）</span></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> result = <span class="number">3</span> + <span class="number">5</span>;   <span class="comment">// add 的代码被「粘贴」到了这里</span></span><br><span class="line">    std::cout &lt;&lt; result &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>💡 <strong>一句话</strong>：内联 &#x3D; 把函数调用替换成函数体的代码。</p>
-</blockquote>
-<hr>
-<h1 id="📊-三、内联函数-vs-普通函数"><a href="#📊-三、内联函数-vs-普通函数" class="headerlink" title="📊 三、内联函数 vs 普通函数"></a>📊 三、内联函数 vs 普通函数</h1><table>
-<thead>
-<tr>
-<th>对比项</th>
-<th>普通函数</th>
-<th>内联函数</th>
-</tr>
-</thead>
-<tbody><tr>
-<td>调用方式</td>
-<td>跳转到函数地址</td>
-<td>代码直接嵌入</td>
-</tr>
-<tr>
-<td>调用开销</td>
-<td>有（压栈、跳转、返回）</td>
-<td>无</td>
-</tr>
-<tr>
-<td>代码体积</td>
-<td>小（函数只存一份）</td>
-<td>可能变大（每处调用都复制一份）</td>
-</tr>
-<tr>
-<td>执行速度</td>
-<td>稍慢（有额外开销）</td>
-<td>更快（省去跳转）</td>
-</tr>
-<tr>
-<td>适用场景</td>
-<td>函数体较大 &#x2F; 调用次数多</td>
-<td>函数体小 &#x2F; 调用频繁</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>⚠️ <strong>关键点</strong>：内联是<strong>用空间换时间</strong>——省去了调用开销，但可能导致代码体积膨胀。</p>
-</blockquote>
-<hr>
-<h1 id="🆚-四、内联函数-vs-宏定义"><a href="#🆚-四、内联函数-vs-宏定义" class="headerlink" title="🆚 四、内联函数 vs 宏定义"></a>🆚 四、内联函数 vs 宏定义</h1><p>有些新手会问：「这不就是 <code>#define</code> 宏吗？」</p>
-<p><strong>不一样！</strong> 内联函数比宏安全太多了：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ❌ 宏定义（危险！）</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> SQUARE_MACRO(x) ((x) * (x))</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ✅ 内联函数（安全）</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">square_inline</span><span class="params">(<span class="type">int</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x * x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="type">int</span> a = <span class="number">5</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 宏的问题：参数会被展开多次！</span></span><br><span class="line">    std::cout &lt;&lt; <span class="built_in">SQUARE_MACRO</span>(a++) &lt;&lt; std::endl;  <span class="comment">// 结果：30，a 变成了 7！</span></span><br><span class="line">    <span class="comment">// 展开后是：((a++) * (a++))，a 被加了两次！</span></span><br><span class="line"></span><br><span class="line">    a = <span class="number">5</span>;  <span class="comment">// 重置</span></span><br><span class="line">    std::cout &lt;&lt; <span class="built_in">square_inline</span>(a++) &lt;&lt; std::endl; <span class="comment">// 结果：25，a 变成了 6</span></span><br><span class="line">    <span class="comment">// 内联函数行为正常，参数只求值一次</span></span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<table>
-<thead>
-<tr>
-<th>对比项</th>
-<th>宏定义 <code>#define</code></th>
-<th>内联函数 <code>inline</code></th>
-</tr>
-</thead>
-<tbody><tr>
-<td>类型检查</td>
-<td>❌ 无，不安全</td>
-<td>✅ 有，编译器检查</td>
-</tr>
-<tr>
-<td>参数求值</td>
-<td>⚠️ 可能多次</td>
-<td>✅ 只求值一次</td>
-</tr>
-<tr>
-<td>调试支持</td>
-<td>❌ 难调试</td>
-<td>✅ 可以断点调试</td>
-</tr>
-<tr>
-<td>作用域</td>
-<td>❌ 全局，易冲突</td>
-<td>✅ 遵循作用域规则</td>
-</tr>
-</tbody></table>
-<blockquote>
-<p>📌 <strong>结论</strong>：永远优先用内联函数，别用宏定义来实现「函数」。</p>
-</blockquote>
-<hr>
-<h1 id="✅-五、什么时候该用内联？"><a href="#✅-五、什么时候该用内联？" class="headerlink" title="✅ 五、什么时候该用内联？"></a>✅ 五、什么时候该用内联？</h1><p>内联函数适合这种场景：</p>
-<h2 id="🎯-最佳使用场景"><a href="#🎯-最佳使用场景" class="headerlink" title="🎯 最佳使用场景"></a>🎯 最佳使用场景</h2><ol>
-<li><strong>函数体很小</strong>（1-5 行代码）</li>
-<li><strong>调用非常频繁</strong>（比如在循环里、高频调用的工具函数）</li>
-<li><strong>执行时间极短</strong>（函数体代码比函数调用开销还小）</li>
-</ol>
-<h2 id="💻-经典例子"><a href="#💻-经典例子" class="headerlink" title="💻 经典例子"></a>💻 经典例子</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ✅ 完美的内联候选：代码少、调用频繁</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">max</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (a &gt; b) ? a : b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">double</span> <span class="title">square</span><span class="params">(<span class="type">double</span> x)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> x * x;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">bool</span> <span class="title">isEven</span><span class="params">(<span class="type">int</span> n)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> n % <span class="number">2</span> == <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 这些小函数在循环中调用成千上万次</span></span><br><span class="line">    <span class="comment">// 内联后可以显著提升性能</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; <span class="number">1000000</span>; i++) &#123;</span><br><span class="line">        <span class="type">int</span> m = <span class="built_in">max</span>(i, i + <span class="number">1</span>);</span><br><span class="line">        <span class="type">double</span> sq = <span class="built_in">square</span>(i);</span><br><span class="line">        <span class="type">bool</span> even = <span class="built_in">isEven</span>(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="❌-六、什么时候不该用内联？"><a href="#❌-六、什么时候不该用内联？" class="headerlink" title="❌ 六、什么时候不该用内联？"></a>❌ 六、什么时候不该用内联？</h1><p>内联不是「万能加速药」，用错了反而更糟：</p>
-<h2 id="🚫-不适合内联的情况"><a href="#🚫-不适合内联的情况" class="headerlink" title="🚫 不适合内联的情况"></a>🚫 不适合内联的情况</h2><ol>
-<li><p><strong>函数体很大</strong>（几十行代码）</p>
-<ul>
-<li>内联会让代码体积爆炸</li>
-<li>可能导致指令缓存命中率下降，反而更慢</li>
-</ul>
-</li>
-<li><p><strong>函数里有循环或递归</strong></p>
-<ul>
-<li>循环本身已经够慢了，省那点调用开销没意义</li>
-</ul>
-</li>
-<li><p><strong>调用次数很少</strong></p>
-<ul>
-<li>就算省了调用开销，也感觉不到区别</li>
-</ul>
-</li>
-<li><p><strong>虚函数</strong></p>
-<ul>
-<li>虚函数是运行时多态，编译期无法确定调用哪个函数</li>
-<li>内联是编译期行为，两者冲突</li>
-</ul>
-</li>
-</ol>
-<h2 id="💻-反面例子"><a href="#💻-反面例子" class="headerlink" title="💻 反面例子"></a>💻 反面例子</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;vector&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">// ❌ 别内联！函数体太大</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">processData</span><span class="params">(<span class="type">const</span> std::vector&lt;<span class="type">int</span>&gt;&amp; data)</span> </span>&#123;</span><br><span class="line">    <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">0</span>; i &lt; data.<span class="built_in">size</span>(); i++) &#123;</span><br><span class="line">        <span class="comment">// 一大堆逻辑...</span></span><br><span class="line">        std::cout &lt;&lt; data[i] &lt;&lt; <span class="string">&quot; &quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    std::cout &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// ❌ 别内联！虚函数无法内联</span></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Base</span> &#123;</span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">virtual</span> <span class="type">void</span> <span class="title">show</span><span class="params">()</span> </span>&#123;  <span class="comment">// 虚函数</span></span><br><span class="line">        std::cout &lt;&lt; <span class="string">&quot;Base&quot;</span> &lt;&lt; std::endl;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    std::vector&lt;<span class="type">int</span>&gt; v = &#123;<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>&#125;;</span><br><span class="line">    <span class="built_in">processData</span>(v);  <span class="comment">// 函数体那么大，内联没意义</span></span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="🏠-七、类内定义的函数自动内联"><a href="#🏠-七、类内定义的函数自动内联" class="headerlink" title="🏠 七、类内定义的函数自动内联"></a>🏠 七、类内定义的函数自动内联</h1><p>有一个很方便的规则：</p>
-<blockquote>
-<p><strong>在类定义内部直接写的函数，自动就是内联函数！</strong></p>
-</blockquote>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">class</span> <span class="title class_">Rectangle</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> width, height;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Rectangle</span>(<span class="type">int</span> w, <span class="type">int</span> h) : <span class="built_in">width</span>(w), <span class="built_in">height</span>(h) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ✅ 直接写在类里面，自动内联</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getArea</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> width * height;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// ✅ 简单的 getter，自动内联</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getWidth</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> width; &#125;</span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getHeight</span><span class="params">()</span> </span>&#123; <span class="keyword">return</span> height; &#125;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="function">Rectangle <span class="title">rect</span><span class="params">(<span class="number">5</span>, <span class="number">3</span>)</span></span>;</span><br><span class="line">    std::cout &lt;&lt; <span class="string">&quot;面积：&quot;</span> &lt;&lt; rect.<span class="built_in">getArea</span>() &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<blockquote>
-<p>💡 <strong>注意</strong>：如果想把函数定义写在类外面，但还想让它内联，就要手动加 <code>inline</code>：</p>
-</blockquote>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">Rectangle</span> &#123;</span><br><span class="line"><span class="keyword">private</span>:</span><br><span class="line">    <span class="type">int</span> width, height;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="built_in">Rectangle</span>(<span class="type">int</span> w, <span class="type">int</span> h) : <span class="built_in">width</span>(w), <span class="built_in">height</span>(h) &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 只声明，不定义</span></span><br><span class="line">    <span class="function"><span class="type">int</span> <span class="title">getArea</span><span class="params">()</span></span>;</span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 类外定义，需要加 inline</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">Rectangle::getArea</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> width * height;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<hr>
-<h1 id="⚠️-八、内联的常见误区"><a href="#⚠️-八、内联的常见误区" class="headerlink" title="⚠️ 八、内联的常见误区"></a>⚠️ 八、内联的常见误区</h1><h2 id="❌-误区一：「加了-inline-就一定会内联」"><a href="#❌-误区一：「加了-inline-就一定会内联」" class="headerlink" title="❌ 误区一：「加了 inline 就一定会内联」"></a>❌ 误区一：「加了 inline 就一定会内联」</h2><p><strong>错！</strong> <code>inline</code> 只是对编译器的「建议」，编译器可以选择忽略：</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 编译器可能会忽略内联的情况：</span></span><br><span class="line"><span class="comment">// 1. 函数体太复杂（有循环、递归、很多代码）</span></span><br><span class="line"><span class="comment">// 2. 函数是虚函数</span></span><br><span class="line"><span class="comment">// 3. 函数通过函数指针调用</span></span><br><span class="line"><span class="comment">// 4. 编译器觉得内联后代码体积太大</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="❌-误区二：「内联一定更快」"><a href="#❌-误区二：「内联一定更快」" class="headerlink" title="❌ 误区二：「内联一定更快」"></a>❌ 误区二：「内联一定更快」</h2><p><strong>错！</strong> 如果过度内联导致代码体积膨胀：</p>
-<ul>
-<li>指令缓存（CPU Cache）装不下了</li>
-<li>缓存命中率下降</li>
-<li>反而比普通函数调用更慢！</li>
-</ul>
-<h2 id="❌-误区三：「所有小函数都该内联」"><a href="#❌-误区三：「所有小函数都该内联」" class="headerlink" title="❌ 误区三：「所有小函数都该内联」"></a>❌ 误区三：「所有小函数都该内联」</h2><p><strong>错！</strong> 要考虑：</p>
-<ul>
-<li>调用频率（很少调用的函数，内联没意义）</li>
-<li>代码体积（内联会让可执行文件变大）</li>
-<li>可维护性（到处复制代码不利于修改）</li>
-</ul>
-<hr>
-<h1 id="🎓-总结：内联函数速查表"><a href="#🎓-总结：内联函数速查表" class="headerlink" title="🎓 总结：内联函数速查表"></a>🎓 总结：内联函数速查表</h1><table>
-<thead>
-<tr>
-<th>场景</th>
-<th>是否内联</th>
+<th>文件内容</th>
+<th>用什么后缀</th>
 <th>原因</th>
 </tr>
 </thead>
 <tbody><tr>
-<td>小函数（1-5行）+ 高频调用</td>
-<td>✅ 推荐</td>
-<td>省调用开销，收益大</td>
+<td>普通类声明 + .cpp 实现</td>
+<td><code>.h</code></td>
+<td>标准分离编译</td>
 </tr>
 <tr>
-<td>类内定义的简单函数</td>
-<td>✅ 自动内联</td>
-<td>写法方便，性能好</td>
+<td>📦 <strong>模板类&#x2F;模板函数</strong></td>
+<td><code>.hpp</code></td>
+<td>模板必须全在头文件</td>
 </tr>
 <tr>
-<td>大函数（几十行）</td>
-<td>❌ 不推荐</td>
-<td>代码膨胀</td>
+<td>类内实现的成员函数较多</td>
+<td><code>.hpp</code></td>
+<td>所有实现都放头文件</td>
 </tr>
 <tr>
-<td>包含循环&#x2F;递归</td>
-<td>❌ 不推荐</td>
-<td>函数体本身就慢</td>
-</tr>
-<tr>
-<td>虚函数</td>
-<td>❌ 不可能</td>
-<td>运行时多态，编译期无法确定</td>
-</tr>
-<tr>
-<td>调用很少的函数</td>
-<td>🔸 没必要</td>
-<td>省不了多少时间</td>
+<td>纯宏&#x2F;枚举定义</td>
+<td><code>.hpp</code></td>
+<td>纯文本替换，无 ODR 问题</td>
 </tr>
 </tbody></table>
-<h2 id="🧠-记忆口诀"><a href="#🧠-记忆口诀" class="headerlink" title="🧠 记忆口诀"></a>🧠 记忆口诀</h2><blockquote>
-<p><strong>内联函数像复制粘贴，代码直接嵌入调用处</strong> ⚡<br><strong>小函数高频调用最合适，省时省力效率高</strong> 🚀<br><strong>大函数循环递归别内联，代码膨胀反变慢</strong> 🚫<br><strong>inline 只是建议非命令，编译器有最终决定权</strong> 🤖</p>
+<blockquote>
+<p>💡 <code>.hpp</code> 和 <code>.h</code> 对编译器来说没有区别，只是<strong>人为约定的命名规范</strong>，用来区分”这是一个 header-only 的实现文件”。</p>
 </blockquote>
-<h2 id="✅-新手行动建议"><a href="#✅-新手行动建议" class="headerlink" title="✅ 新手行动建议"></a>✅ 新手行动建议</h2><ol>
-<li>🟢 写小工具函数时，放心定义在类内部（自动内联）</li>
-<li>🟢 <code>getter</code>、<code>setter</code>、简单的计算函数，优先内联</li>
-<li>🟡 函数超过 10 行？别纠结内联了，效果不明显</li>
-<li>🔴 别为了「优化」到处加 <code>inline</code>——让编译器自己决定</li>
-</ol>
 <hr>
-<p><em>📝 本文用 🎭 生活比喻、💻 完整代码、📊 对比表格，帮 C++ 新手彻底搞懂内联函数。记住：内联是工具，不是银弹！加油 🚀</em></p>
+<h2 id="9-🔍-inline-到底会不会展开代码？"><a href="#9-🔍-inline-到底会不会展开代码？" class="headerlink" title="9. 🔍 inline 到底会不会展开代码？"></a>9. 🔍 inline 到底会不会展开代码？</h2><p>这是一个常见的误解来源。来做个实验：</p>
+<h3 id="📄-inline-concept-h"><a href="#📄-inline-concept-h" class="headerlink" title="📄 inline_concept.h"></a>📄 inline_concept.h</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">ifndef</span> INLINE_CONCEPT_H</span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> INLINE_CONCEPT_H</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">add</span><span class="params">(<span class="type">int</span> a, <span class="type">int</span> b)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这个加了 inline，但编译器可能不会真的展开调用</span></span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">complexCalculation</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> y, <span class="type">int</span> z)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> a = x * y;</span><br><span class="line">    <span class="type">int</span> b = y * z;</span><br><span class="line">    <span class="type">int</span> c = z * x;</span><br><span class="line">    <span class="keyword">return</span> (a + b) * c - a / (b + <span class="number">1</span>);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">#<span class="keyword">endif</span></span></span><br></pre></td></tr></table></figure>
+
+<h3 id="📄-main-cpp-6"><a href="#📄-main-cpp-6" class="headerlink" title="📄 main.cpp"></a>📄 main.cpp</h3><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&quot;inline_concept.h&quot;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> r1 = <span class="built_in">add</span>(<span class="number">3</span>, <span class="number">4</span>);        <span class="comment">// ✅ 编译器很可能展开为 mov 7</span></span><br><span class="line">    <span class="type">int</span> r2 = <span class="built_in">complexCalculation</span>(<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>);  <span class="comment">// ⚠️ 编译器可能不展开</span></span><br><span class="line">    std::cout &lt;&lt; r1 &lt;&lt; <span class="string">&quot; &quot;</span> &lt;&lt; r2 &lt;&lt; std::endl;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="🤖-现代编译器的实际行为"><a href="#🤖-现代编译器的实际行为" class="headerlink" title="🤖 现代编译器的实际行为"></a>🤖 现代编译器的实际行为</h3><table>
+<thead>
+<tr>
+<th>情况</th>
+<th>编译器行为</th>
+</tr>
+</thead>
+<tbody><tr>
+<td><code>inline</code> + 短小的函数</td>
+<td>✅ 很可能展开，但这不是 <code>inline</code> 关键字决定的</td>
+</tr>
+<tr>
+<td><code>inline</code> + 大函数（几十行）</td>
+<td>❌ 忽略 <code>inline</code>，作为普通函数处理</td>
+</tr>
+<tr>
+<td><strong>不用 <code>inline</code> + 小函数</strong></td>
+<td>🤔 编译器自己决定是否内联展开</td>
+</tr>
+<tr>
+<td><code>__forceinline</code>（MSVC）</td>
+<td>🔧 强制展开，但不保证</td>
+</tr>
+<tr>
+<td><code>[[gnu::always_inline]]</code></td>
+<td>🔧 强制展开，但不保证</td>
+</tr>
+</tbody></table>
+<blockquote>
+<p>🎯 <strong>结论</strong>：<code>inline</code> 关键字在现代 C++ 中<strong>不是优化提示</strong>，而是<strong>ODR 豁免声明</strong>。编译器是否展开函数体由它自己的优化策略决定，跟 <code>inline</code> 关键字没有直接关系。</p>
+</blockquote>
+<hr>
+<h2 id="10-🎓-总结速查表"><a href="#10-🎓-总结速查表" class="headerlink" title="10. 🎓 总结速查表"></a>10. 🎓 总结速查表</h2><h3 id="✅-什么能放头文件"><a href="#✅-什么能放头文件" class="headerlink" title="✅ 什么能放头文件"></a>✅ 什么能放头文件</h3><table>
+<thead>
+<tr>
+<th>代码</th>
+<th>能否放头文件</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>函数声明 <code>int add(int, int);</code></td>
+<td>✅</td>
+<td>只声明，没有定义</td>
+</tr>
+<tr>
+<td>类定义 <code>class Foo &#123; ... &#125;;</code></td>
+<td>✅</td>
+<td>类定义允许重复</td>
+</tr>
+<tr>
+<td>类内成员函数体</td>
+<td>✅</td>
+<td>隐式 inline</td>
+</tr>
+<tr>
+<td>模板函数&#x2F;类</td>
+<td>✅</td>
+<td>隐式 inline + 必须在头文件</td>
+</tr>
+<tr>
+<td><code>inline</code> 自由函数</td>
+<td>✅</td>
+<td>显式 inline</td>
+</tr>
+<tr>
+<td><code>const</code> &#x2F; <code>constexpr</code> 变量</td>
+<td>✅</td>
+<td>内部链接或隐式 inline</td>
+</tr>
+<tr>
+<td>C++17 <code>inline</code> 变量</td>
+<td>✅</td>
+<td>显式 inline</td>
+</tr>
+</tbody></table>
+<h3 id="❌-什么不能放头文件"><a href="#❌-什么不能放头文件" class="headerlink" title="❌ 什么不能放头文件"></a>❌ 什么不能放头文件</h3><table>
+<thead>
+<tr>
+<th>代码</th>
+<th>能否放头文件</th>
+<th>原因</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>普通自由函数定义 <code>int add()&#123;...&#125;</code></td>
+<td>❌</td>
+<td>违反 ODR</td>
+</tr>
+<tr>
+<td>普通全局变量定义 <code>int g_count;</code></td>
+<td>❌</td>
+<td>违反 ODR</td>
+</tr>
+<tr>
+<td>类外、非 inline 的成员函数定义</td>
+<td>❌</td>
+<td>违反 ODR</td>
+</tr>
+</tbody></table>
+<h3 id="🔧-修正好见错误的步骤"><a href="#🔧-修正好见错误的步骤" class="headerlink" title="🔧 修正好见错误的步骤"></a>🔧 修正好见错误的步骤</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">症状：💥 linker error: multiple definition of `xxx`</span><br><span class="line">         ↓</span><br><span class="line">  📍 找到定义所在头文件</span><br><span class="line">         ↓</span><br><span class="line">  🤔 问自己：这个定义有必要在头文件里吗？</span><br><span class="line">  ├─ 否 → 移到 .cpp，.h 只留声明</span><br><span class="line">  └─ 是 → 加 inline 关键字</span><br><span class="line">         ↓</span><br><span class="line">  ✅ 重新编译，问题解决</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p><em>📝 本文从 ODR 规则的角度彻底讲透了 <code>inline</code> 的本质——不是优化提示，而是允许重复定义的豁免声明。记住这个核心概念，头文件相关的问题都能迎刃而解！🚀</em></p>
 
     
 
@@ -740,7 +744,7 @@
         </li>
         <li>
           <strong>本文链接：</strong>
-          <a href="https://lyroom.github.io/2026/06/30/C-中的内联函数/" title="⚡ C++ 中的内联函数" target="_blank">https://lyroom.github.io/2026/06/30/C-中的内联函数/</a>
+          <a href="https://lyroom.github.io/2026/06/30/C++中的内联函数inline详解/" title="⚡ C++ 内联函数（inline）详解" target="_blank">https://lyroom.github.io/2026/06/30/C++中的内联函数inline详解/</a>
         </li>
         
         <li>
@@ -766,15 +770,15 @@
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">内联函数</a>
-        		</li>
-      		 
-        		<li class="article-tag-list-item">
         			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">inline</a>
         		</li>
       		 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">新手入门</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">ODR</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color4">头文件</a>
         		</li>
       		
 		</ul>
@@ -830,7 +834,7 @@
     <a class="close js-modal-close" href="javascript:;"><i class="icon icon-close"></i></a>
     <p>扫一扫，分享到微信</p>
     <div class="wx-qrcode">
-     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://lyroom.github.io/2026/06/30/C-%E4%B8%AD%E7%9A%84%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0/" alt="微信分享二维码"> -->
+     <!-- <img src="//pan.baidu.com/share/qrcode?url=https://lyroom.github.io/2026/06/30/C++%E4%B8%AD%E7%9A%84%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0inline%E8%AF%A6%E8%A7%A3/" alt="微信分享二维码"> -->
     </div>
 </div>
 
@@ -874,7 +878,7 @@
                 </span>
                 <span class="tooltip-content">
                     <div class="toc-article">
-                    <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%A7%AD-%E5%89%8D%E8%A8%80%EF%BC%9A%E4%BB%80%E4%B9%88%E6%98%AF%E3%80%8C%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0%E3%80%8D%EF%BC%9F"><span class="toc-number">1.</span> <span class="toc-text">🧭 前言：什么是「内联函数」？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AD-%E7%94%9F%E6%B4%BB%E6%AF%94%E5%96%BB%EF%BC%9A%E5%8F%AB%E5%A4%96%E5%8D%96-vs-%E8%87%AA%E5%B7%B1%E5%81%9A-%F0%9F%8D%9C"><span class="toc-number">1.1.</span> <span class="toc-text">🎭 生活比喻：叫外卖 vs 自己做 🍜</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%94%8D-%E4%B8%80%E3%80%81%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E8%B0%83%E7%94%A8%E7%9A%84%E3%80%8C%E9%9A%90%E5%BD%A2%E6%88%90%E6%9C%AC%E3%80%8D"><span class="toc-number">2.</span> <span class="toc-text">🔍 一、普通函数调用的「隐形成本」</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%92%BB-%E7%94%A8%E4%BB%A3%E7%A0%81%E6%84%9F%E5%8F%97%E4%B8%80%E4%B8%8B"><span class="toc-number">2.1.</span> <span class="toc-text">💻 用代码感受一下</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%9A%A1-%E4%BA%8C%E3%80%81%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0%EF%BC%9A%E6%8A%8A%E4%BB%A3%E7%A0%81%E3%80%8C%E7%B2%98%E8%B4%B4%E3%80%8D%E8%BF%87%E6%9D%A5"><span class="toc-number">3.</span> <span class="toc-text">⚡ 二、内联函数：把代码「粘贴」过来</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AD-%E7%94%9F%E6%B4%BB%E6%AF%94%E5%96%BB%EF%BC%9A%E5%A4%8D%E5%88%B6%E7%B2%98%E8%B4%B4-vs-%E8%B7%B3%E8%BD%AC%E9%93%BE%E6%8E%A5"><span class="toc-number">3.1.</span> <span class="toc-text">🎭 生活比喻：复制粘贴 vs 跳转链接</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%92%BB-%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0%E7%9A%84%E5%86%99%E6%B3%95"><span class="toc-number">3.2.</span> <span class="toc-text">💻 内联函数的写法</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%93%8A-%E4%B8%89%E3%80%81%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0-vs-%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0"><span class="toc-number">4.</span> <span class="toc-text">📊 三、内联函数 vs 普通函数</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%86%9A-%E5%9B%9B%E3%80%81%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0-vs-%E5%AE%8F%E5%AE%9A%E4%B9%89"><span class="toc-number">5.</span> <span class="toc-text">🆚 四、内联函数 vs 宏定义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%9C%85-%E4%BA%94%E3%80%81%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E8%AF%A5%E7%94%A8%E5%86%85%E8%81%94%EF%BC%9F"><span class="toc-number">6.</span> <span class="toc-text">✅ 五、什么时候该用内联？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8E%AF-%E6%9C%80%E4%BD%B3%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF"><span class="toc-number">6.1.</span> <span class="toc-text">🎯 最佳使用场景</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%92%BB-%E7%BB%8F%E5%85%B8%E4%BE%8B%E5%AD%90"><span class="toc-number">6.2.</span> <span class="toc-text">💻 经典例子</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%9D%8C-%E5%85%AD%E3%80%81%E4%BB%80%E4%B9%88%E6%97%B6%E5%80%99%E4%B8%8D%E8%AF%A5%E7%94%A8%E5%86%85%E8%81%94%EF%BC%9F"><span class="toc-number">7.</span> <span class="toc-text">❌ 六、什么时候不该用内联？</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9A%AB-%E4%B8%8D%E9%80%82%E5%90%88%E5%86%85%E8%81%94%E7%9A%84%E6%83%85%E5%86%B5"><span class="toc-number">7.1.</span> <span class="toc-text">🚫 不适合内联的情况</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%92%BB-%E5%8F%8D%E9%9D%A2%E4%BE%8B%E5%AD%90"><span class="toc-number">7.2.</span> <span class="toc-text">💻 反面例子</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%8F%A0-%E4%B8%83%E3%80%81%E7%B1%BB%E5%86%85%E5%AE%9A%E4%B9%89%E7%9A%84%E5%87%BD%E6%95%B0%E8%87%AA%E5%8A%A8%E5%86%85%E8%81%94"><span class="toc-number">8.</span> <span class="toc-text">🏠 七、类内定义的函数自动内联</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E2%9A%A0%EF%B8%8F-%E5%85%AB%E3%80%81%E5%86%85%E8%81%94%E7%9A%84%E5%B8%B8%E8%A7%81%E8%AF%AF%E5%8C%BA"><span class="toc-number">9.</span> <span class="toc-text">⚠️ 八、内联的常见误区</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9D%8C-%E8%AF%AF%E5%8C%BA%E4%B8%80%EF%BC%9A%E3%80%8C%E5%8A%A0%E4%BA%86-inline-%E5%B0%B1%E4%B8%80%E5%AE%9A%E4%BC%9A%E5%86%85%E8%81%94%E3%80%8D"><span class="toc-number">9.1.</span> <span class="toc-text">❌ 误区一：「加了 inline 就一定会内联」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9D%8C-%E8%AF%AF%E5%8C%BA%E4%BA%8C%EF%BC%9A%E3%80%8C%E5%86%85%E8%81%94%E4%B8%80%E5%AE%9A%E6%9B%B4%E5%BF%AB%E3%80%8D"><span class="toc-number">9.2.</span> <span class="toc-text">❌ 误区二：「内联一定更快」</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9D%8C-%E8%AF%AF%E5%8C%BA%E4%B8%89%EF%BC%9A%E3%80%8C%E6%89%80%E6%9C%89%E5%B0%8F%E5%87%BD%E6%95%B0%E9%83%BD%E8%AF%A5%E5%86%85%E8%81%94%E3%80%8D"><span class="toc-number">9.3.</span> <span class="toc-text">❌ 误区三：「所有小函数都该内联」</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%F0%9F%8E%93-%E6%80%BB%E7%BB%93%EF%BC%9A%E5%86%85%E8%81%94%E5%87%BD%E6%95%B0%E9%80%9F%E6%9F%A5%E8%A1%A8"><span class="toc-number">10.</span> <span class="toc-text">🎓 总结：内联函数速查表</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%A0-%E8%AE%B0%E5%BF%86%E5%8F%A3%E8%AF%80"><span class="toc-number">10.1.</span> <span class="toc-text">🧠 记忆口诀</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E2%9C%85-%E6%96%B0%E6%89%8B%E8%A1%8C%E5%8A%A8%E5%BB%BA%E8%AE%AE"><span class="toc-number">10.2.</span> <span class="toc-text">✅ 新手行动建议</span></a></li></ol></li></ol>
+                    <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%91-%E7%9B%AE%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">📑 目录</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#1-%F0%9F%A7%A9-inline-%E7%9A%84%E6%9C%AC%E8%B4%A8%EF%BC%9A%E4%B8%8D%E6%98%AF%E4%BC%98%E5%8C%96%EF%BC%8C%E6%98%AF-ODR-%E8%A7%84%E5%88%99"><span class="toc-number">2.</span> <span class="toc-text">1. 🧩 inline 的本质：不是优化，是 ODR 规则</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-%E2%9D%8C-%E9%94%99%E8%AF%AF%E6%A1%88%E4%BE%8B%EF%BC%9A%E5%A4%B4%E6%96%87%E4%BB%B6%E6%94%BE%E6%99%AE%E9%80%9A%E5%87%BD%E6%95%B0%E5%AE%9A%E4%B9%89%E5%AF%BC%E8%87%B4%E9%87%8D%E5%A4%8D"><span class="toc-number">3.</span> <span class="toc-text">2. ❌ 错误案例：头文件放普通函数定义导致重复</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%81-%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9E%84"><span class="toc-number">3.1.</span> <span class="toc-text">📁 项目结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%84-math-h"><span class="toc-number">3.2.</span> <span class="toc-text">📄 math.h</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%84-a-cpp"><span class="toc-number">3.3.</span> <span class="toc-text">📄 a.cpp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%84-b-cpp"><span class="toc-number">3.4.</span> <span class="toc-text">📄 b.cpp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%84-main-cpp"><span class="toc-number">3.5.</span> <span class="toc-text">📄 main.cpp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%A7-%E7%BC%96%E8%AF%91%E8%BF%87%E7%A8%8B"><span class="toc-number">3.6.</span> <span class="toc-text">🔧 编译过程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A4%94-%E9%94%99%E8%AF%AF%E5%8E%9F%E5%9B%A0"><span class="toc-number">3.7.</span> <span class="toc-text">🤔 错误原因</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%92%8A-%E4%B8%89%E7%A7%8D%E4%BF%AE%E5%A4%8D%E6%96%B9%E6%A1%88"><span class="toc-number">3.8.</span> <span class="toc-text">💊 三种修复方案</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-%E2%9C%85-%E6%AD%A3%E7%A1%AE%E7%94%A8%E6%B3%95%E4%B8%80%EF%BC%9A%E7%B1%BB%E5%86%85%E5%AE%9E%E7%8E%B0%E7%9A%84%E6%88%90%E5%91%98%E5%87%BD%E6%95%B0%EF%BC%88%E9%9A%90%E5%BC%8F-inline%EF%BC%89"><span class="toc-number">4.</span> <span class="toc-text">3. ✅ 正确用法一：类内实现的成员函数（隐式 inline）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%84-math-h-1"><span class="toc-number">4.1.</span> <span class="toc-text">📄 math.h</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%84-main-cpp-1"><span class="toc-number">4.2.</span> <span class="toc-text">📄 main.cpp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A7%A0-%E4%B8%BA%E4%BB%80%E4%B9%88%E6%AD%A3%E7%A1%AE"><span class="toc-number">4.3.</span> <span class="toc-text">🧠 为什么正确</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-a-cpp-%E5%92%8C-b-cpp-%E5%90%8C%E6%97%B6-include-%E4%B9%9F%E4%B8%8D%E4%BC%9A%E6%8A%A5%E9%94%99"><span class="toc-number">4.4.</span> <span class="toc-text">✅ a.cpp 和 b.cpp 同时 include 也不会报错</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-%E2%9C%85-%E6%AD%A3%E7%A1%AE%E7%94%A8%E6%B3%95%E4%BA%8C%EF%BC%9A%E6%98%BE%E5%BC%8F-inline-%E5%87%BD%E6%95%B0"><span class="toc-number">5.</span> <span class="toc-text">4. ✅ 正确用法二：显式 inline 函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%84-math-h-2"><span class="toc-number">5.1.</span> <span class="toc-text">📄 math.h</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%84-a-cpp-1"><span class="toc-number">5.2.</span> <span class="toc-text">📄 a.cpp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%84-main-cpp-2"><span class="toc-number">5.3.</span> <span class="toc-text">📄 main.cpp</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E2%9C%85-%E6%AD%A3%E7%A1%AE%E7%94%A8%E6%B3%95%E4%B8%89%EF%BC%9A%E6%A8%A1%E6%9D%BF%EF%BC%88%E9%9A%90%E5%BC%8F-inline%EF%BC%89"><span class="toc-number">6.</span> <span class="toc-text">5. ✅ 正确用法三：模板（隐式 inline）</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%84-math-h-3"><span class="toc-number">6.1.</span> <span class="toc-text">📄 math.h</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%84-main-cpp-3"><span class="toc-number">6.2.</span> <span class="toc-text">📄 main.cpp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A7%A0-%E6%A8%A1%E6%9D%BF%E5%BF%85%E9%A1%BB%E5%9C%A8%E5%A4%B4%E6%96%87%E4%BB%B6%E4%B8%AD%E7%9A%84%E5%8E%9F%E5%9B%A0"><span class="toc-number">6.3.</span> <span class="toc-text">🧠 模板必须在头文件中的原因</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#6-%E2%9C%85-%E6%AD%A3%E7%A1%AE%E7%94%A8%E6%B3%95%E5%9B%9B%EF%BC%9Ainline-%E7%B1%BB%E5%A4%96%E5%AE%9A%E4%B9%89"><span class="toc-number">7.</span> <span class="toc-text">6. ✅ 正确用法四：inline + 类外定义</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%84-math-hpp"><span class="toc-number">7.1.</span> <span class="toc-text">📄 math.hpp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%84-main-cpp-4"><span class="toc-number">7.2.</span> <span class="toc-text">📄 main.cpp</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#7-%E2%9C%85-%E6%AD%A3%E7%A1%AE%E7%94%A8%E6%B3%95%E4%BA%94%EF%BC%9A%E5%85%A8%E5%B1%80-constexpr-x2F-const-%E5%8F%98%E9%87%8F"><span class="toc-number">8.</span> <span class="toc-text">7. ✅ 正确用法五：全局 constexpr &#x2F; const 变量</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%84-const-h"><span class="toc-number">8.1.</span> <span class="toc-text">📄 const.h</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%84-a-cpp-2"><span class="toc-number">8.2.</span> <span class="toc-text">📄 a.cpp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%84-main-cpp-5"><span class="toc-number">8.3.</span> <span class="toc-text">📄 main.cpp</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#8-%F0%9F%93%82-%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%E7%94%A8-hpp"><span class="toc-number">9.</span> <span class="toc-text">8. 📂 什么情况下用 .hpp</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#9-%F0%9F%94%8D-inline-%E5%88%B0%E5%BA%95%E4%BC%9A%E4%B8%8D%E4%BC%9A%E5%B1%95%E5%BC%80%E4%BB%A3%E7%A0%81%EF%BC%9F"><span class="toc-number">10.</span> <span class="toc-text">9. 🔍 inline 到底会不会展开代码？</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%84-inline-concept-h"><span class="toc-number">10.1.</span> <span class="toc-text">📄 inline_concept.h</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%93%84-main-cpp-6"><span class="toc-number">10.2.</span> <span class="toc-text">📄 main.cpp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%A4%96-%E7%8E%B0%E4%BB%A3%E7%BC%96%E8%AF%91%E5%99%A8%E7%9A%84%E5%AE%9E%E9%99%85%E8%A1%8C%E4%B8%BA"><span class="toc-number">10.3.</span> <span class="toc-text">🤖 现代编译器的实际行为</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#10-%F0%9F%8E%93-%E6%80%BB%E7%BB%93%E9%80%9F%E6%9F%A5%E8%A1%A8"><span class="toc-number">11.</span> <span class="toc-text">10. 🎓 总结速查表</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9C%85-%E4%BB%80%E4%B9%88%E8%83%BD%E6%94%BE%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-number">11.1.</span> <span class="toc-text">✅ 什么能放头文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E2%9D%8C-%E4%BB%80%E4%B9%88%E4%B8%8D%E8%83%BD%E6%94%BE%E5%A4%B4%E6%96%87%E4%BB%B6"><span class="toc-number">11.2.</span> <span class="toc-text">❌ 什么不能放头文件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%F0%9F%94%A7-%E4%BF%AE%E6%AD%A3%E5%A5%BD%E8%A7%81%E9%94%99%E8%AF%AF%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="toc-number">11.3.</span> <span class="toc-text">🔧 修正好见错误的步骤</span></a></li></ol></li></ol>
                     </div>
                 </span>
             </div>
@@ -1055,6 +1059,18 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">inline</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">ODR</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">头文件</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">Qt</a>
               </li>
              
@@ -1063,11 +1079,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">内联函数</a>
+                <a href="javascript:void(0)" class="js-tag color5">类型转换</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">inline</a>
+                <a href="javascript:void(0)" class="js-tag color5">cast</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1075,11 +1091,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">类型转换</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">cast</a>
+                <a href="javascript:void(0)" class="js-tag color5">book</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1092,10 +1104,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">CMake</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">book</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1135,6 +1143,18 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">浅拷贝</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">内存</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">模板</a>
               </li>
              
@@ -1159,23 +1179,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">浅拷贝</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">深拷贝</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">Linux</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">VMware</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">内存</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1188,54 +1196,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">设计模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">bug</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">github</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">clashverge</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">git</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">编程技术</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">博客</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">node</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">npm</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color3">bug解决日记</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">pdf</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1259,11 +1219,59 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
+                <a href="javascript:void(0)" class="js-tag color4">bug</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">github</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">clashverge</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">面向对象</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">编程技术</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">hexo</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">博客</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">git</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">node.js</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">npm</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">pdf</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color3">bug解决日记</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color1">linux</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">Markdown</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1283,27 +1291,19 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">top</a>
-              </li>
-             
-              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">Ubuntu</a>
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">vim</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">代理模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">结构型模式</a>
+                <a href="javascript:void(0)" class="js-tag color4">top</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">浮生六记</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color4">vim</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1315,7 +1315,11 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">原型模式</a>
+                <a href="javascript:void(0)" class="js-tag color5">代理模式</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">结构型模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1327,11 +1331,7 @@
               </li>
              
               <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color2">c</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color5">文件操作</a>
+                <a href="javascript:void(0)" class="js-tag color5">原型模式</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1340,6 +1340,14 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color3">指针</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color2">c</a>
+              </li>
+             
+              <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color5">文件操作</a>
               </li>
              
               <li class="article-tag-list-item">
@@ -1367,15 +1375,15 @@
               </li>
              
               <li class="article-tag-list-item">
+                <a href="javascript:void(0)" class="js-tag color1">float</a>
+              </li>
+             
+              <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color2">简单工厂模式</a>
               </li>
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">策略模式</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color1">float</a>
               </li>
              
               <li class="article-tag-list-item">
